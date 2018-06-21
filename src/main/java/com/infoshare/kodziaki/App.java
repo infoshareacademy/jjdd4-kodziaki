@@ -1,12 +1,14 @@
 package com.infoshare.kodziaki;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
+import static com.infoshare.kodziaki.ChooseOption.chooseOption;
+import static com.infoshare.kodziaki.Menu.mainMenu;
+
+public class App {
     public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
+
+        mainMenu();
+
+        chooseOption();
+
     }
 }
