@@ -1,15 +1,30 @@
 package com.infoshare.kodziaki;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.io.UncheckedIOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class CsvReader <T> {
-    public static final String SEPARATOR = ";";
+
+    public static List<Place> readFile(String filePath) throws IOException {
+        FileReader fileReader = new FileReader(filePath);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        List<Place> place = new ArrayList<>();
+        String textLine;
+        
+        do {
+            textLine = bufferedReader.readLine();
+            System.out.println(textLine);
+            String[] array = textLine.split(";");
+
+        } while (textLine != null);
+
+        bufferedReader.close();
+    }
+
 
 
 
