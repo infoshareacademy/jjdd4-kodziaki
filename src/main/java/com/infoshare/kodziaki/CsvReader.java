@@ -1,36 +1,49 @@
 package com.infoshare.kodziaki;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class CsvReader <T> {
+public class CsvReader {
 
     public static List<Place> readFile(String filePath) throws IOException {
         FileReader fileReader = new FileReader(filePath);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        List<Place> place = new ArrayList<>();
-        String textLine;
-        
+        List<Place> places = new ArrayList<>();
+        String textLine = bufferedReader.readLine();
+
         do {
             textLine = bufferedReader.readLine();
-            System.out.println(textLine);
-            String[] array = textLine.split(";");
+            String[] array = textLine.split(";"); // coś tu nie gra
+            places.add(new Place(
+                    Integer.parseInt(array[0]),
+                    array[1],
+                    placeType.valueOf(array[2]),
+                    Double.parseDouble(array[3]),
+                    Double.parseDouble(array[4]),
+                    Integer.parseInt(array[5]),
+                    Integer.parseInt(array[6]),
+                    array[7],
+                    array[8],
+                    Boolean.parseBoolean(array[9]),
+                    Boolean.parseBoolean(array[10]),
+                    Boolean.parseBoolean(array[11]),
+                    Boolean.parseBoolean(array[12]),
+                    array[13]));
 
         } while (textLine != null);
 
         bufferedReader.close();
+        return places;
     }
-
-
-
-
 }
-
-
 
 
 //public class CsvReader<T> {

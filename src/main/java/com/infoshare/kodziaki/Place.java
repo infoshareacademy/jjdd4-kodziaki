@@ -6,8 +6,18 @@ public class Place {
     int id;
     private placeType placeType;
 
-    private BigDecimal price;
+    public double getPrice() {
+        return price;
+    }
+
+    private double price;
+
+    public double getArea() {
+        return area;
+    }
+
     private double area;
+
     private int rooms;
     private int floor;
 
@@ -22,32 +32,36 @@ public class Place {
     private boolean animalAllowed;
     private boolean onlyLongTerm;
 
-    public void setId(int id) { this.id = id; }
+    public Place() { }
 
-    public void setPlaceType(com.infoshare.kodziaki.placeType placeType) { this.placeType = placeType; }
-
-    public void setPrice(BigDecimal price) { this.price = price; }
-
-    public void setArea(double area) { this.area = area; }
-
-    public void setRooms(int rooms) { this.rooms = rooms; }
-
-    public void setFloor(int floor) { this.floor = floor; }
-
-    public void setDistrict(String district) { this.district = district; }
-
-    public void setCity(String city) { this.city = city; }
-
-    public void setDescription(String description) { this.description = description; }
-
-    public void setTitle(String title) { this.title = title; }
-
-    public void setHasElevator(boolean hasElevator) { this.hasElevator = hasElevator; }
-
-    public void setSmokingAllowed(boolean smokingAllowed) { this.smokingAllowed = smokingAllowed; }
-
-    public void setAnimalAllowed(boolean animalAllowed) { this.animalAllowed = animalAllowed; }
-
-    public void setOnlyLongTerm(boolean onlyLongTerm) { this.onlyLongTerm = onlyLongTerm; }
+    public Place(int id,
+                 String title,
+                 placeType placeType,
+                 double price,
+                 double area,
+                 int rooms,
+                 int floor,
+                 String district,
+                 String city,
+                 boolean hasElevator,
+                 boolean smokingAllowed,
+                 boolean animalAllowed,
+                 boolean onlyLongTerm,
+                 String description) {
+        this.id = id;
+        this.title = title;
+        this.placeType = placeType;
+        this.price = price;
+        this.area = area;
+        this.rooms = rooms;
+        this.floor = floor;
+        this.district = district;
+        this.city = city;
+        this.hasElevator = hasElevator;
+        this.smokingAllowed = smokingAllowed;
+        this.animalAllowed = animalAllowed;
+        this.onlyLongTerm = onlyLongTerm;
+        this.description = description;
+    }
 
 }
