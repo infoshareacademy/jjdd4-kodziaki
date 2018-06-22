@@ -1,4 +1,7 @@
 package com.infoshare.kodziaki;
 
-public class placeType {
+public enum placeType {
+    APARTMENT,
+    ROOM,
+    BED
 }
