@@ -15,7 +15,7 @@ public class App
 
         notice.add
                 (new Place(
-                0102,
+                1,
                 "Ogloszenie",
                  placeType.APARTMENT,
                 1500,
@@ -31,9 +31,9 @@ public class App
                 "...dmjeidfmnefimn"));
 
         notice.add(new Place(
-                0103,
+                2,
                 "Ogloszenie2",
-                placeType.ROOM,
+                 placeType.ROOM,
                 1200,
                 39,
                 2,
@@ -48,20 +48,21 @@ public class App
 
 
         for( Place a : notice ){
-            System.out.println(a.getId()
-                    +" "+ a.getPlaceType()
-                    +" "+ a.getPrice()
-                    + " " + a.getArea()
-                    + " " + a.getRooms()
-                    + " " + a.getFloor()
-                    + " " + a.getDistrict()
-                    +" " + a.getCity()
-                    + " "+ a.getDescription()
-                    + " " + a.getTitle()
-                    + " "+ a.isHasElevator()
-                    + " "+ a.isSmokingAllowed()
-                    + " " + a.isAnimalAllowed()
-                    +" "+ a.isOnlyLongTerm() );
+            System.out.println(
+                    "| id: " + a.getId()
+                    + "\n | Typ ogloszenia: "+ a.getPlaceType()
+                    + "\n | cena: "+ a.getPrice()
+                    + "\n | Powierzchnia: " + a.getArea()
+                    + "\n | Liczba Pokoi:  " + a.getRooms()
+                    + "\n | Piętro: " + a.getFloor()
+                    + "\n | Dzielnica: " + a.getDistrict()
+                    + "\n | Miasto: " + a.getCity()
+                    + "\n | Opis: "+ a.getDescription()
+                    + "\n | Tytuł: " + a.getTitle()
+                    + "\n | Winda:  "+ a.isHasElevator()
+                    + "\n | Palący: "+ a.isSmokingAllowed()
+                    + "\n | Posiadanie zwierząt: " + a.isAnimalAllowed()
+                    + "\n | Dlugoterminowa umowa: "+ a.isOnlyLongTerm() );
 
         }
 
