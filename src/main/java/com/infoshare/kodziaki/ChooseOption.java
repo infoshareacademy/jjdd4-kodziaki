@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Place.AddPlaceAds.addPlaceAds;
@@ -9,13 +10,25 @@ public class ChooseOption {
 
     public static void chooseOption() {
 
+        int option = 0;
         Scanner scannerOption = new Scanner(System.in);
-        int option = scannerOption.nextInt();
+        boolean optionCorrect = false;
 
-        while (option < 0 || option > 2) {
-            System.out.println("Ups! Niepoprawny wybór :( Wybierz opcję 1 lub 2");
-            option = scannerOption.nextInt();
-        }
+        do {
+            try {
+                option = scannerOption.nextInt();
+
+                if (option >= 0 && option <= 2){
+                    optionCorrect = true;
+                } else {
+                    System.out.println("Oj! Zły format. Wybierz 1 lub 2");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Oj! Zły format. Wybierz 1 lub 2");
+            }
+        } while (!optionCorrect);
+
+
 
         switch (option) {
             case 1:
