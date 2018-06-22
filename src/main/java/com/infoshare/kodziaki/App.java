@@ -7,6 +7,8 @@ package com.infoshare.kodziaki;
 public class App 
 {
     public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
+
+        Place place = new Place();
+        System.out.println(place);
     }
 }
