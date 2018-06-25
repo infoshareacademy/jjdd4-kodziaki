@@ -2,6 +2,7 @@ package com.infoshare.kodziaki;
 
 import java.io.BufferedReader;
 import java.io.Reader;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,8 +21,8 @@ public class CsvReader {
                 .map(array -> new Place(
                         Integer.parseInt(array[0]),
                         array[1],
-                        placeType.valueOf(array[2]),
-                        Double.parseDouble(array[3]),
+                        PlaceType.valueOf(array[2]),
+                        BigDecimal.valueOf(Double.parseDouble(array[3])),
                         Double.parseDouble(array[4]),
                         Integer.parseInt(array[5]),
                         Integer.parseInt(array[6]),
@@ -31,7 +32,10 @@ public class CsvReader {
                         Boolean.parseBoolean(array[10]),
                         Boolean.parseBoolean(array[11]),
                         Boolean.parseBoolean(array[12]),
-                        array[13]))
+                        array[13],
+                        array[14],
+                        array[15]
+                        ))
                 .collect(Collectors.toList());
     }
 }

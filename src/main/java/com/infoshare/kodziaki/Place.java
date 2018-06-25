@@ -1,23 +1,15 @@
 package com.infoshare.kodziaki;
 
 import java.math.BigDecimal;
+import com.infoshare.kodziaki.PlaceType;
 
 public class Place {
-    int id;
-    private placeType placeType;
 
-    public double getPrice() {
-        return price;
-    }
+    private int id;
+    private PlaceType placeType;
 
-    private double price;
-
-    public double getArea() {
-        return area;
-    }
-
+    private BigDecimal price;
     private double area;
-
     private int rooms;
     private int floor;
 
@@ -32,12 +24,14 @@ public class Place {
     private boolean animalAllowed;
     private boolean onlyLongTerm;
 
-    public Place() { }
+    private String author;
+    private String phoneNumber;
+
 
     public Place(int id,
                  String title,
-                 placeType placeType,
-                 double price,
+                 PlaceType placeType,
+                 BigDecimal price,
                  double area,
                  int rooms,
                  int floor,
@@ -47,7 +41,9 @@ public class Place {
                  boolean smokingAllowed,
                  boolean animalAllowed,
                  boolean onlyLongTerm,
-                 String description) {
+                 String description,
+                 String author,
+                 String phoneNumber) {
         this.id = id;
         this.title = title;
         this.placeType = placeType;
@@ -62,25 +58,39 @@ public class Place {
         this.animalAllowed = animalAllowed;
         this.onlyLongTerm = onlyLongTerm;
         this.description = description;
+        this.author = author;
+        this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", placeType=" + placeType +
-                ", price=" + price +
-                ", area=" + area +
-                ", rooms=" + rooms +
-                ", floor=" + floor +
-                ", district='" + district + '\'' +
-                ", city='" + city + '\'' +
-                ", description='" + description + '\'' +
-                ", title='" + title + '\'' +
-                ", hasElevator=" + hasElevator +
-                ", smokingAllowed=" + smokingAllowed +
-                ", animalAllowed=" + animalAllowed +
-                ", onlyLongTerm=" + onlyLongTerm +
-                '}';
-    }
+    public int getId() { return id; }
+
+    public PlaceType getPlaceType() { return placeType; }
+
+    public BigDecimal getPrice() { return price; }
+
+    public double getArea() { return area; }
+
+    public int getRooms() { return rooms; }
+
+    public int getFloor() { return floor; }
+
+    public String getDistrict() { return district; }
+
+    public String getCity() { return city; }
+
+    public String getDescription() { return description; }
+
+    public String getTitle() { return title; }
+
+    public boolean isHasElevator() { return hasElevator; }
+
+    public boolean isSmokingAllowed() { return smokingAllowed; }
+
+    public boolean isAnimalAllowed() { return animalAllowed; }
+
+    public boolean isOnlyLongTerm() { return onlyLongTerm; }
+
+    public String getAuthor() { return author; }
+
+    public String getPhoneNumber() { return phoneNumber; }
 }

@@ -1,17 +1,11 @@
 package com.infoshare.kodziaki;
-
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.Arrays;
 import java.util.List;
 
 public class App {
-    public static void main( String[] args ) throws IOException {
-
+    public static void main( String[] args ) throws FileNotFoundException {
         List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
-        System.out.println(list);
-
+        list.forEach(System.out::println);
     }
 }
