@@ -1,7 +1,6 @@
 package com.infoshare.kodziaki;
 
 import java.math.BigDecimal;
-import com.infoshare.kodziaki.PlaceType;
 
 public class Place {
 
