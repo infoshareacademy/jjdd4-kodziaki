@@ -20,14 +20,15 @@ public class ChooseOption {
 
                 if (option >= 0 && option <= 2){
                     optionCorrect = true;
+                    break;
                 } else {
                     System.out.println("Oj! Zły format. Wybierz 1 lub 2");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Oj! Zły format. Wybierz 1 lub 2");
+                scannerOption.nextLine();
             }
         } while (!optionCorrect);
-
 
 
         switch (option) {
@@ -38,7 +39,7 @@ public class ChooseOption {
                 addPlaceAds();
                 break;
             case 0:
-                System.out.println("Do zobaczenia!");
+                System.out.println("PAPArtments! Sija!");
                 break;
         }
     }
