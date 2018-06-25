@@ -1,5 +1,5 @@
 package com.infoshare.kodziaki;
 
-public enum placeType {
+enum PlaceType {
     APARTMENT,ROOM,BED
 }
