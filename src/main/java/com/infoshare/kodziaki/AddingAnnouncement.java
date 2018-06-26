@@ -12,7 +12,56 @@ import static java.util.stream.Collectors.joining;
 
 public class AddingAnnouncement {
 
-    public static String readFromUser(String question, List<String> options) {
+    public static Double readDoubleFromUser(String question) {
+        Double input = null;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print(question);
+
+        while (true) {
+            try {
+                input = new Double(scanner.nextLine());
+                if (input < 0) {
+                    System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
+                }
+                else {
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
+            }
+        }
+
+        return input;
+    }
+
+    public static BigDecimal readBigDecimalFromUser(String question) {
+        BigDecimal input = null;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print(question);
+
+        while (true) {
+            try {
+                input = new BigDecimal(scanner.nextLine());
+                if (input.intValue() < 0) {
+                    System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
+                }
+                else {
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
+            }
+        }
+
+        return input;
+    }
+
+    public static boolean readBooleanFromUser(String question) {
+
+        List<String> options = Arrays.asList("tak", "nie");
+
         Scanner scanner = new Scanner(System.in);
         String input = null;
 
@@ -23,149 +72,106 @@ public class AddingAnnouncement {
             if (options.contains(input)) {
                 break;
             } else {
-                System.out.print("Poprawne wartości to: " + options.stream().collect(joining(", ")) + " - Spróbuj jeszcze raz: " );
+                System.out.print("Poprawne wartości to: " + options.stream().collect(joining(", ")) + " - Spróbuj jeszcze raz: ");
+            }
+        }
+
+        return input.equals("tak");
+    }
+
+    public static String readFromUser(String question, List<String> options) {
+
+        Scanner scanner = new Scanner(System.in);
+        String input = null;
+
+        System.out.print(question + " (" + options.stream().collect(joining(", ")) + "): ");
+
+        while (true) {
+            input = scanner.nextLine();
+            if (options.contains(input)) {
+                break;
+            } else {
+                System.out.print("Poprawne wartości to: " + options.stream().collect(joining(", ")) + " - Spróbuj jeszcze raz: ");
             }
         }
         return input;
     }
 
-    public static void adding() {
+    public static Integer readIntegerFromUser(String question) {
 
         Scanner scanner = new Scanner(System.in);
+        Integer input = null;
 
-        System.out.print("Tytuł ogłoszenia: ");
-        String title = null;
-        while (true){
-            try {
-                title = new String(scanner.nextLine());
-                break;
-            } catch (Exception e){
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
+        System.out.print(question);
 
-        System.out.print("Podaj miasto: ");
-        String city = null;
-        while (true){
-            try {
-                city = new String(scanner.nextLine());
-                break;
-            } catch (Exception e){
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        System.out.print("Podaj dzielnice miasta: ");
-        String district = null;
-        while (true){
-            try{
-                district = new String(scanner.nextLine());
-                break;
-            } catch (Exception e){
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        String placeType = readFromUser("Rodzaj zakwaterowania: ", Arrays.asList("apartment", "room", "bed"));
-
-        System.out.print("Podaj powierzchnię w m kw.: ");
-        Double area = null;
-        while (true){
-            try {
-                area = new Double(scanner.nextLine());
-                break;
-            } catch (Exception e) {
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        System.out.print("Liczba pokoi: ");
-        Integer rooms = null;
-        while (true){
-            try{
-                rooms = new Integer(scanner.nextLine());
-                break;
-            }catch (Exception e) {
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        System.out.print("Podaj piętro mieszkania: ");
-        Integer floor = null;
-        while (true){
-            try {
-                floor = new Integer(scanner.nextLine());
-                break;
-            }catch (Exception e){
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        String hasElevator = readFromUser("Czy w budynku jest winda?", Arrays.asList("true", "false"));
-
-        String smokingAllowed = readFromUser("Czy palenie w budynku jest doswolone?", Arrays.asList("true", "false"));
-
-        String animalsAllowed = readFromUser("Czy zwierzęta w budynku są dozwolone?", Arrays.asList("true", "false"));
-
-        String onlyLongTerm = readFromUser("Czy preferujesz wynajem długoterminowy", Arrays.asList("true", "false"));
-
-        System.out.print("Cena: ");
-        BigDecimal price = null;
         while (true) {
             try {
-                price = new BigDecimal(scanner.nextLine());
-                break;
+                input = new Integer(scanner.nextLine());
+                if (input < 0) System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
+                else break;
             } catch (Exception e) {
                 System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
             }
         }
-
-        System.out.print("Dodatkowy opis mieszkania: ");
-        String description = null;
-        while (true){
-            try{
-                description = new String(scanner.nextLine());
-                break;
-            } catch (Exception e){
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        System.out.print("Podaj swoje imię i nazwisko: ");
-        String author = null;
-        while (true){
-            try {
-                author = new String(scanner.nextLine());
-                break;
-            } catch (Exception e){
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        System.out.print("Podaj numer telefonu: ");
-        Integer phoneNumber = null;
-        while (true){
-            try {
-                phoneNumber = new Integer(scanner.nextLine());
-                break;
-            } catch (Exception e){
-                System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
-            }
-        }
-
-        try {
-            Random id = new Random();
-
-            FileWriter file = new FileWriter("/home/mikolajandrzejewski/Projekt Kodziaki/jjdd4-kodziaki/files/ads.csv", true);
-            BufferedWriter add = new BufferedWriter(file);
-            add.write(id.nextInt() + ";" + title + ";" + placeType + ";" + price + ";" + area + ";" + rooms + ";" + floor + ";" + district + ";" + city + ";" + hasElevator + ";" + smokingAllowed + ";" + animalsAllowed + ";" + onlyLongTerm + ";" + description+ ";" +author+ ";" + phoneNumber);
-            add.newLine();
-            add.close();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-
+        return input;
     }
-}
+
+        public static void adding () {
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Tytuł ogłoszenia: ");
+            String title = new String(scanner.nextLine());
+
+            System.out.print("Podaj miasto: ");
+            String city = new String(scanner.nextLine());
+
+            System.out.print("Podaj dzielnice miasta: ");
+            String district = new String(scanner.nextLine());
+
+            String placeType = readFromUser("Rodzaj zakwaterowania: ", Arrays.asList("mieszkanie", "pokoj", "lozko"));
+
+            Double area = readDoubleFromUser("Powierzchnia: ");
+
+            Integer rooms = readIntegerFromUser("Liczba pokoi: ");
+
+            Integer floor = readIntegerFromUser("Piętro: ");
+
+            boolean hasElevator = readBooleanFromUser("Czy w budynku jest winda?");
+
+            boolean smokingAllowed = readBooleanFromUser("Czy palenie w budynku jest doswolone?");
+
+            boolean animalsAllowed = readBooleanFromUser("Czy zwierzęta w budynku są dozwolone?");
+
+            boolean onlyLongTerm = readBooleanFromUser("Czy preferujesz wynajem długoterminowy");
+
+            BigDecimal price = readBigDecimalFromUser("Cena: ");
+
+            System.out.print("Dodatkowy opis mieszkania: ");
+            String description = new String(scanner.nextLine());
+
+            System.out.print("Podaj swoje imię i nazwisko: ");
+            String author = new String(scanner.nextLine());
+
+            System.out.print("Podaj numer telefonu: ");
+            String phoneNumber = new String(scanner.nextLine());
+
+
+
+            try {
+                Random id = new Random();
+
+                FileWriter file = new FileWriter("files/ads.csv", true);
+                BufferedWriter add = new BufferedWriter(file);
+                add.write(id.nextInt() + ";" + title + ";" + placeType + ";" + price + ";" + area + ";" + rooms + ";" + floor + ";" + district + ";" + city + ";" + hasElevator + ";" + smokingAllowed + ";" + animalsAllowed + ";" + onlyLongTerm + ";" + description + ";" + author + ";" + phoneNumber);
+                add.newLine();
+                add.close();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+
+        }
+    }
+
 
