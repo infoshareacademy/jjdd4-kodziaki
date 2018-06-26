@@ -8,46 +8,12 @@ import java.util.List;
 
 import static com.infoshare.kodziaki.placeType.ROOM;
 
-public class Notice {
-    public static void notice() {
-        List<Place> notice = new ArrayList<>();
+public class DisplayAd {
+    public static void displayAd(List<Place> list) {
 
-
-        notice.add
-                (new Place(
-                        "Ogloszenie1",
-                        placeType.APARTMENT,
-                        1500,
-                        45,
-                        2,
-                        2,
-                        "Oliwa",
-                        "Gdańsk",
-                        true,
-                        false,
-                        false,
-                        true,
-                        "...dmjeidfmnefimn"));
-
-        notice.add(new Place(
-                "Ogloszenie2",
-                ROOM,
-                1200,
-                39,
-                2,
-                5,
-                "Bałuty",
-                "Łódz",
-                true,
-                false,
-                true,
-                false,
-                "opis...ikmjefi"));
-
-
-        for( Place a : notice ){
+        for( Place a : list ){
             System.out.println(
-                    "\n | " + a.getTitle()
+                              "\n | " + a.getTitle()
                             + "\n  ");
 
             switch (a.getPlaceType()) {
@@ -66,7 +32,7 @@ public class Notice {
 
 
             System.out.println(
-                    "\n | Cena: " + a.getPrice() + "zł"
+                              "\n | Cena: " + a.getPrice() + "zł"
                             + "\n "
                             + "\n | Powierzchnia: " + a.getArea() + "m2"
                             + "\n "
