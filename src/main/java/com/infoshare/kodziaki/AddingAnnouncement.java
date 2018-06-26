@@ -1,7 +1,6 @@
 package com.infoshare.kodziaki;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
@@ -129,7 +128,7 @@ public class AddingAnnouncement {
             System.out.print("Podaj dzielnice miasta: ");
             String district = new String(scanner.nextLine());
 
-            String placeType = readFromUser("Rodzaj zakwaterowania: ", Arrays.asList("mieszkanie", "pokoj", "lozko"));
+            PlaceType placeType = PlaceType.fromPolishString(readFromUser("Rodzaj zakwaterowania: ", Arrays.asList("mieszkanie", "pokoj", "lozko")));
 
             Double area = readDoubleFromUser("Powierzchnia: ");
 
@@ -156,14 +155,28 @@ public class AddingAnnouncement {
             System.out.print("Podaj numer telefonu: ");
             String phoneNumber = new String(scanner.nextLine());
 
+            Random id = new Random();
 
+            List<Object> values = Arrays.asList(id,title,placeType,price,area,rooms,floor,district,city,hasElevator,smokingAllowed,animalsAllowed,onlyLongTerm,description,author,phoneNumber);
 
             try {
-                Random id = new Random();
+                FileReader file = new FileReader("files/ads.csv");
+                BufferedReader reader = new BufferedReader(file);
+                return reader.lines()
+                        .skip(1)
+                        .sorted()
+                        .findFirst()
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            try {
 
                 FileWriter file = new FileWriter("files/ads.csv", true);
                 BufferedWriter add = new BufferedWriter(file);
-                add.write(id.nextInt() + ";" + title + ";" + placeType + ";" + price + ";" + area + ";" + rooms + ";" + floor + ";" + district + ";" + city + ";" + hasElevator + ";" + smokingAllowed + ";" + animalsAllowed + ";" + onlyLongTerm + ";" + description + ";" + author + ";" + phoneNumber);
+                add.write(values.stream().map(Object::toString).collect(joining(";")));
                 add.newLine();
                 add.close();
             } catch (Exception e) {
