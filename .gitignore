@@ -1,4 +1,7 @@
-.idea
+.idea/
 *.iml
-target
-build
+target/
+build/
+CsvReader.java
+PlaceType.java
+Place.java
