@@ -2,3 +2,6 @@
 *.iml
 target/
 build/
+CsvReader.java
+PlaceType.java
+Place.java
