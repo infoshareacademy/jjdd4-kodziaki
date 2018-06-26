@@ -1,7 +1,6 @@
 package com.infoshare.kodziaki;
 
 public class Place {
-    private int id;
     private placeType placeType;
 
     private int price;
@@ -12,18 +11,18 @@ public class Place {
     private String district;
     private String city;
 
-    private String description;
+
     private String title;
 
     private boolean hasElevator;
     private boolean smokingAllowed;
     private boolean animalAllowed;
     private boolean onlyLongTerm;
+    private String description;
 
     public Place() {}
 
-    public Place(int id,
-                 String title,
+    public Place(String title,
                  placeType placeType,
                  int price,
                  double area,
@@ -36,7 +35,7 @@ public class Place {
                  boolean animalAllowed,
                  boolean onlyLongTerm,
                  String description) {
-        this.id = id;
+
         this.title = title;
         this.placeType = placeType;
         this.price = price;
@@ -52,9 +51,9 @@ public class Place {
         this.description = description;
     }
 
-    public int getId() { return id; }
 
-    public com.infoshare.kodziaki.placeType getPlaceType() { return placeType; }
+
+    public placeType getPlaceType() { return placeType; }
 
     public int getPrice() { return price; }
 
@@ -68,8 +67,6 @@ public class Place {
 
     public String getCity() { return city; }
 
-    public String getDescription() { return description; }
-
     public String getTitle() { return title; }
 
     public boolean isHasElevator() { return hasElevator; }
@@ -79,4 +76,6 @@ public class Place {
     public boolean isAnimalAllowed() { return animalAllowed; }
 
     public boolean isOnlyLongTerm() { return onlyLongTerm; }
+
+    public String getDescription() { return description; }
 }
