@@ -18,24 +18,12 @@ public class CsvReader {
         return reader.lines()
                 .skip(1)
                 .map(l -> l.split(SEPARATOR))
-                .map(array -> new Place(
-                        Integer.parseInt(array[0]),
-                        array[1],
-                        PlaceType.valueOf(array[2]),
-                        BigDecimal.valueOf(Double.parseDouble(array[3])),
-                        BigDecimal.valueOf(Double.parseDouble(array[4])),
-                        Integer.parseInt(array[5]),
-                        Integer.parseInt(array[6]),
-                        array[7],
-                        array[8],
-                        Boolean.parseBoolean(array[9]),
-                        Boolean.parseBoolean(array[10]),
-                        Boolean.parseBoolean(array[11]),
-                        Boolean.parseBoolean(array[12]),
-                        array[13],
-                        array[14],
-                        array[15]
-                        ))
+                .map(array -> new PlaceBuilder()
+                        .setId(Integer.parseInt(array[0]))
+                        .setTitle(array[1])
+                        .setPlaceType(PlaceType.valueOf(array[2]))
+                        .setPrice(BigDecimal.valueOf(Double.parseDouble(array[3])))
+                        .setArea(BigDecimal.valueOf(Double.parseDouble(array[4]))).setRooms(Integer.parseInt(array[5])).setFloor(Integer.parseInt(array[6])).setDistrict(array[7]).setCity(array[8]).setHasElevator(Boolean.parseBoolean(array[9])).setSmokingAllowed(Boolean.parseBoolean(array[10])).setAnimalAllowed(Boolean.parseBoolean(array[11])).setOnlyLongTerm(Boolean.parseBoolean(array[12])).setDescription(array[13]).setAuthor(array[14]).setPhoneNumber(array[15]).createPlace())
                 .collect(Collectors.toList());
     }
 }
