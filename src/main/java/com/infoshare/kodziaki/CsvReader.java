@@ -23,7 +23,7 @@ public class CsvReader {
                         array[1],
                         PlaceType.valueOf(array[2]),
                         BigDecimal.valueOf(Double.parseDouble(array[3])),
-                        Double.parseDouble(array[4]),
+                        BigDecimal.valueOf(Double.parseDouble(array[4])),
                         Integer.parseInt(array[5]),
                         Integer.parseInt(array[6]),
                         array[7],

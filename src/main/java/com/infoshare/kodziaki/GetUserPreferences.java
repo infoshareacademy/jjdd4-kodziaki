@@ -5,6 +5,16 @@ import java.util.Scanner;
 
 public class GetUserPreferences {
 
+    public static void displayMenu() {
+        System.out.println("Opcje wyszukiwania");
+        System.out.println("------------------");
+        System.out.println("|1 Typ nieruchomości");
+        System.out.println("|2 Cena");
+        System.out.println("|3 Powierzchnia");
+        System.out.println("|4 więcej opcji");
+        System.out.println("|5 Wyszukaj");
+    }
+
     public static void getType() {
 
     }
@@ -23,13 +33,7 @@ public class GetUserPreferences {
 
     public static void getUserPreferences() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Opcje wyszukiwania");
-        System.out.println("------------------");
-        System.out.println("|1 Typ nieruchomości");
-        System.out.println("|2 Cena");
-        System.out.println("|3 Powierzchnia");
-        System.out.println("|4 więcej opcji");
+        displayMenu();
 
         switch (scanner.nextInt()) {
             case 1: GetUserPreferences.getType();
@@ -61,10 +65,5 @@ public class GetUserPreferences {
 
 
 
-    }
-
-    public static List<Place> sortAdsByPreferences (List<Place> adsList) {
-
-        return adsList;
     }
 }

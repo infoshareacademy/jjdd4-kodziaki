@@ -8,7 +8,7 @@ public class Place {
     private PlaceType placeType;
 
     private BigDecimal price;
-    private double area;
+    private BigDecimal area;
     private int rooms;
     private int floor;
 
@@ -31,7 +31,7 @@ public class Place {
                  String title,
                  PlaceType placeType,
                  BigDecimal price,
-                 double area,
+                 BigDecimal area,
                  int rooms,
                  int floor,
                  String district,
@@ -67,7 +67,7 @@ public class Place {
 
     public BigDecimal getPrice() { return price; }
 
-    public double getArea() { return area; }
+    public BigDecimal getArea() { return area; }
 
     public int getRooms() { return rooms; }
 
@@ -92,4 +92,26 @@ public class Place {
     public String getAuthor() { return author; }
 
     public String getPhoneNumber() { return phoneNumber; }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "id=" + id +
+                ", placeType=" + placeType +
+                ", price=" + price +
+                ", area=" + area +
+                ", rooms=" + rooms +
+                ", floor=" + floor +
+                ", district='" + district + '\'' +
+                ", city='" + city + '\'' +
+                ", description='" + description + '\'' +
+                ", title='" + title + '\'' +
+                ", hasElevator=" + hasElevator +
+                ", smokingAllowed=" + smokingAllowed +
+                ", animalAllowed=" + animalAllowed +
+                ", onlyLongTerm=" + onlyLongTerm +
+                ", author='" + author + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }
