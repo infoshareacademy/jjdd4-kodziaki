@@ -1,4 +1,4 @@
-package Place;
+package com.infoshare.kodziaki;
 
 public class AddPlaceAds {
 
