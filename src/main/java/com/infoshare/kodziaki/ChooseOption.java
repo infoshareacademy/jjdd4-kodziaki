@@ -4,9 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static com.infoshare.kodziaki.AddPlaceAds.addPlaceAds;
+import static com.infoshare.kodziaki.ReadProperties.setProperties;
 import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
-
-
 
 
 public class ChooseOption {
@@ -41,8 +40,11 @@ public class ChooseOption {
             case 2:
                 addPlaceAds();
                 break;
+            case 3:
+                setProperties();
+                break;
             case 0:
-                System.out.println("PAPArtments! Sija!");
+                System.out.println("PAPArtments!");
                 break;
         }
     }

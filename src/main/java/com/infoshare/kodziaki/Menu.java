@@ -8,6 +8,7 @@ public class Menu {
         System.out.println("Co chcesz zrobić?");
         System.out.println("1. Mieszkania i pokoje: ZOBACZ ogłoszenia");
         System.out.println("2. Mieszkania i pokoje: DODAJ ogłoszenia");
+        System.out.println("3. Ustawienia");
         System.out.println("0. Chcę wyjść z aplikacji");
     }
 }

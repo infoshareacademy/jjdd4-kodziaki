@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <entry key="version">1.0</entry>
     <entry key="newProperty">newValue</entry>
     <entry key="backgroundColor">white</entry>
     <entry key="sys">Windows</entry>
     <entry key="currency">PLN</entry>
-    <entry key="propertiesfilePath">s:/config/filesapplication.xml</entry>
+    <entry key="propertiesFilePath">s:/config/application.xml</entry>
     <entry key="adsFilePath">s:/files/ads.csv</entry>
 </properties>
-
-
-        // tu trzeba zrobić jakąś mapę, listę i wczytać ją z głównej klasy app
