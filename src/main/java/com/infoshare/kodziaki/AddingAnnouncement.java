@@ -4,7 +4,6 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 import static java.util.stream.Collectors.joining;
@@ -59,7 +58,7 @@ public class AddingAnnouncement {
 
     public static boolean readBooleanFromUser(String question) {
 
-        List<String> options = Arrays.asList("tak", "nie");
+        List<String> options = Arrays.asList("TAK", "NIE");
 
         Scanner scanner = new Scanner(System.in);
         String input = null;
@@ -68,17 +67,17 @@ public class AddingAnnouncement {
 
         while (true) {
             input = scanner.nextLine();
-            if (options.contains(input)) {
+            if (options.contains(input.toUpperCase())) {
                 break;
             } else {
                 System.out.print("Poprawne wartości to: " + options.stream().collect(joining(", ")) + " - Spróbuj jeszcze raz: ");
             }
         }
 
-        return input.equals("tak");
+        return input.equalsIgnoreCase("tak");
     }
 
-    public static String readFromUser(String question, List<String> options) {
+    public static String readOptionsFromUser(String question, List<String> options) {
 
         Scanner scanner = new Scanner(System.in);
         String input = null;
@@ -87,7 +86,7 @@ public class AddingAnnouncement {
 
         while (true) {
             input = scanner.nextLine();
-            if (options.contains(input)) {
+            if (options.contains(input.toUpperCase())) {
                 break;
             } else {
                 System.out.print("Poprawne wartości to: " + options.stream().collect(joining(", ")) + " - Spróbuj jeszcze raz: ");
@@ -106,7 +105,7 @@ public class AddingAnnouncement {
         while (true) {
             try {
                 input = new Integer(scanner.nextLine());
-                if (input < 0) System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
+                if (input <= 0) System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
                 else break;
             } catch (Exception e) {
                 System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
@@ -128,9 +127,9 @@ public class AddingAnnouncement {
             System.out.print("Podaj dzielnice miasta: ");
             String district = new String(scanner.nextLine());
 
-            PlaceType placeType = PlaceType.fromPolishString(readFromUser("Rodzaj zakwaterowania: ", Arrays.asList("mieszkanie", "pokoj", "lozko")));
+            PlaceType placeType = PlaceType.fromPolishString(readOptionsFromUser("Rodzaj zakwaterowania: ", Arrays.asList("MIESZKANIE", "POKOJ", "LOZKO")));
 
-            Double area = readDoubleFromUser("Powierzchnia: ");
+            Double area = readDoubleFromUser("Powierzchnia (w m2): ");
 
             Integer rooms = readIntegerFromUser("Liczba pokoi: ");
 
@@ -144,7 +143,7 @@ public class AddingAnnouncement {
 
             boolean onlyLongTerm = readBooleanFromUser("Czy preferujesz wynajem długoterminowy");
 
-            BigDecimal price = readBigDecimalFromUser("Cena: ");
+            BigDecimal price = readBigDecimalFromUser("Cena (PLN): ");
 
             System.out.print("Dodatkowy opis mieszkania: ");
             String description = new String(scanner.nextLine());
@@ -152,30 +151,18 @@ public class AddingAnnouncement {
             System.out.print("Podaj swoje imię i nazwisko: ");
             String author = new String(scanner.nextLine());
 
-            System.out.print("Podaj numer telefonu: ");
-            String phoneNumber = new String(scanner.nextLine());
-
-            Random id = new Random();
-
-            List<Object> values = Arrays.asList(id,title,placeType,price,area,rooms,floor,district,city,hasElevator,smokingAllowed,animalsAllowed,onlyLongTerm,description,author,phoneNumber);
+            System.out.print("Zostaw swojego maila luz numer telefonu: ");
+            String contact = new String(scanner.nextLine());
 
             try {
                 FileReader file = new FileReader("files/ads.csv");
-                BufferedReader reader = new BufferedReader(file);
-                return reader.lines()
-                        .skip(1)
-                        .sorted()
-                        .findFirst()
+                BufferedReader countLines = new BufferedReader(file);
+                long id = countLines.lines().count();
 
+            List<Object> values = Arrays.asList(id,title,placeType,price,area,rooms,floor,district,city,hasElevator,smokingAllowed,animalsAllowed,onlyLongTerm,description,author,contact);
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
-
-                FileWriter file = new FileWriter("files/ads.csv", true);
-                BufferedWriter add = new BufferedWriter(file);
+                FileWriter file1 = new FileWriter("files/ads.csv", true);
+                BufferedWriter add = new BufferedWriter(file1);
                 add.write(values.stream().map(Object::toString).collect(joining(";")));
                 add.newLine();
                 add.close();
