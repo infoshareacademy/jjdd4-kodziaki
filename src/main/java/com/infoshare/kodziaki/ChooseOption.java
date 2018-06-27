@@ -3,8 +3,11 @@ package com.infoshare.kodziaki;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Place.AddPlaceAds.addPlaceAds;
-import static Place.ViewPlaceAds.viewPlaceAds;
+import static com.infoshare.kodziaki.AddPlaceAds.addPlaceAds;
+import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
+
+
+
 
 public class ChooseOption {
 
