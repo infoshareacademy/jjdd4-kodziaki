@@ -23,7 +23,17 @@ public class CsvReader {
                         .setTitle(array[1])
                         .setPlaceType(PlaceType.valueOf(array[2]))
                         .setPrice(BigDecimal.valueOf(Double.parseDouble(array[3])))
-                        .setArea(BigDecimal.valueOf(Double.parseDouble(array[4]))).setRooms(Integer.parseInt(array[5])).setFloor(Integer.parseInt(array[6])).setDistrict(array[7]).setCity(array[8]).setHasElevator(Boolean.parseBoolean(array[9])).setSmokingAllowed(Boolean.parseBoolean(array[10])).setAnimalAllowed(Boolean.parseBoolean(array[11])).setOnlyLongTerm(Boolean.parseBoolean(array[12])).setDescription(array[13]).setAuthor(array[14]).setPhoneNumber(array[15]).createPlace())
+                        .setArea(BigDecimal.valueOf(Double.parseDouble(array[4])))
+                        .setRooms(Integer.parseInt(array[5]))
+                        .setFloor(Integer.parseInt(array[6]))
+                        .setDistrict(array[7])
+                        .setCity(array[8])
+                        .setHasElevator(Boolean.parseBoolean(array[9]))
+                        .setSmokingAllowed(Boolean.parseBoolean(array[10]))
+                        .setAnimalAllowed(Boolean.parseBoolean(array[11]))
+                        .setOnlyLongTerm(Boolean.parseBoolean(array[12]))
+                        .setDescription(array[13]).setAuthor(array[14])
+                        .setPhoneNumber(array[15]).createPlace())
                 .collect(Collectors.toList());
     }
 }
