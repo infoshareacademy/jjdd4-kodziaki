@@ -101,6 +101,21 @@ public class PlaceBuilder {
     }
 
     public Place createPlace() {
-        return new Place(id, title, placeType, price, area, rooms, floor, district, city, hasElevator, smokingAllowed, animalAllowed, onlyLongTerm, description, author, phoneNumber);
+        return new Place(id,
+                title,
+                placeType,
+                price,
+                area,
+                rooms,
+                floor,
+                district,
+                city,
+                hasElevator,
+                smokingAllowed,
+                animalAllowed,
+                onlyLongTerm,
+                description,
+                author,
+                phoneNumber);
     }
 }

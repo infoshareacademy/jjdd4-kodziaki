@@ -16,9 +16,9 @@ class SearchRepositoryByParamTest {
         Place p3 = new PlaceBuilder().setPlaceType(PlaceType.APARTMENT).createPlace();
 
         List<Place> list = Arrays.asList(p1, p2, p3);
-        SearchParam searchParam = new SearchParam();
-        searchParam.setPlaceType(PlaceType.ROOM);
-        List<Place> places = SearchRepositoryByParam.searchByParam(list, searchParam);
+        SearchParameters searchParameters = new SearchParameters();
+        searchParameters.setPlaceType(PlaceType.ROOM);
+        List<Place> places = SearchRepositoryByParameters.searchByParameters(list, searchParameters);
 
         assertThat(places).hasSize(1);
     }

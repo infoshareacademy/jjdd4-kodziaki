@@ -7,14 +7,16 @@ import java.util.List;
 public class App {
     public static void main( String[] args ) throws FileNotFoundException {
 
-        SearchParam searchParam = new SearchParam();
-        searchParam.setPlaceType(PlaceType.APARTMENT);
-        searchParam.setCity("Gdańsk");
-        searchParam.setMinPrice(BigDecimal.valueOf(1000));
+//        SearchParameters searchParameters = new SearchParameters();
+//        searchParameters.setPlaceType(PlaceType.APARTMENT);
+//        searchParameters.setCity("Gdańsk");
+//        searchParameters.setMinPrice(BigDecimal.valueOf(1000));
+//
+//        List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
+//        List<Place> sortedList = SearchRepositoryByParameters.searchByParameters(list, searchParameters);
+//
+//        sortedList.forEach(p -> System.out.println(p.toString()));
 
-        List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
-        List<Place> sortedList = SearchRepositoryByParam.searchByParam(list, searchParam);
-
-        sortedList.forEach(p -> System.out.println(p.toString()));
+        GetUserPreferences.getUserPreferences();
     }
 }
