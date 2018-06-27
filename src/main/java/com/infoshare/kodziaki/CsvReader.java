@@ -35,7 +35,7 @@ public class CsvReader {
                         array[13],
                         array[14],
                         array[15]
-                        ))
+                ))
                 .collect(Collectors.toList());
     }
 }
