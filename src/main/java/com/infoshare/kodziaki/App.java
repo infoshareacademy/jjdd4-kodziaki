@@ -8,11 +8,7 @@ import static com.infoshare.kodziaki.Menu.mainMenu;
 
 public class App {
     public static void main( String[] args ) throws FileNotFoundException {
-        List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
-
         mainMenu();
-
         chooseOption();
-
     }
 }
