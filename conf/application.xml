@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+<comment>conf/application.xml</comment>
     <entry key="version">1.0</entry>
-    <entry key="newProperty">newValue</entry>
-    <entry key="backgroundColor">white</entry>
+    <entry key="language">PL</entry>
     <entry key="sys">Windows</entry>
+    <entry key="backgroundColor">white</entry>
     <entry key="currency">PLN</entry>
     <entry key="propertiesFilePath">s:/config/application.xml</entry>
     <entry key="adsFilePath">s:/files/ads.csv</entry>
+    <entry key="timeZone">UTC+01:00</entry>
 </properties>
