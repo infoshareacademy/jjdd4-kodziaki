@@ -1,22 +1,22 @@
 package com.infoshare.kodziaki;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.math.BigDecimal;
+import java.io.Reader;
 import java.util.List;
 
 public class App {
     public static void main( String[] args ) throws FileNotFoundException {
 
-//        SearchParameters searchParameters = new SearchParameters();
-//        searchParameters.setPlaceType(PlaceType.APARTMENT);
-//        searchParameters.setCity("Gdańsk");
-//        searchParameters.setMinPrice(BigDecimal.valueOf(1000));
-//
-//        List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
-//        List<Place> sortedList = SearchRepositoryByParameters.searchByParameters(list, searchParameters);
-//
-//        sortedList.forEach(p -> System.out.println(p.toString()));
+        Reader reader = new FileReader("./files/ads.csv");
+        List<Place> adsList = CsvReader.readFile(reader);
 
-        GetUserPreferences.getUserPreferences();
+        GetUserPreferences getUserPreferences = new GetUserPreferences();
+        UserPreferences userPreferences = getUserPreferences.getUserPreferences();
+
+        FilterRepositoryByPreferences filterRepositoryByPreferences = new FilterRepositoryByPreferences();
+        List<Place> adsToDisplay = filterRepositoryByPreferences.filterRepositoryByPreferences(adsList, userPreferences);
+
+        adsToDisplay.forEach(ads -> System.out.println(ads.toString()));
     }
 }
