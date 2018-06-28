@@ -14,7 +14,7 @@ import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
 
 public class ChooseOption {
 
-    public static void main( String[] args ) throws FileNotFoundException {
+    public static void chooseOption() throws FileNotFoundException {
         List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
 
         int option = 0;

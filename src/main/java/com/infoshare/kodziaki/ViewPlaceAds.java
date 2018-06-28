@@ -4,13 +4,10 @@ import java.util.List;
 
 public class ViewPlaceAds {
 
-    public void viewPlaceAds(List<Place> list) {
-
+    public static void viewPlaceAds(List<Place> list) {
         for( Place a : list ){
             System.out.println(
-                    "\n | " + a.getTitle()
-                            + "\n  ");
-
+                    "\n | " + a.getTitle() + "\n  ");
             switch (a.getPlaceType()) {
                 case ROOM:
                     System.out.println(" | Do wynajęcia: Pokój");
@@ -24,10 +21,8 @@ public class ViewPlaceAds {
                     System.out.println(" | Do wynajęcia: Łóżko");
                     break;
             }
-
-
             System.out.println(
-                    "\n | Cena: " + a.getPrice() + "zł"
+                              "\n | Cena: " + a.getPrice() + "zł"
                             + "\n "
                             + "\n | Powierzchnia: " + a.getArea() + "m2"
                             + "\n "
