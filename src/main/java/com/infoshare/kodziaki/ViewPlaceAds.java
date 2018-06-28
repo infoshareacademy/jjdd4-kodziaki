@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ViewPlaceAds {
 
-    public static void viewPlaceAds(List<Place> list) {
+    public void viewPlaceAds(List<Place> list) {
 
         for( Place a : list ){
             System.out.println(
