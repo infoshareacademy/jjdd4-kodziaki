@@ -4,8 +4,6 @@ public class Menu {
 
     public static void mainMenu() {
         System.out.println("\n");
-        System.out.println("Witaj w appARTMENTS!");
-        System.out.println("==============================================");
         System.out.println("Co chcesz zrobić?");
         System.out.println("==============================================");
         System.out.println("Wybierz opcję i wciśnij enter.");

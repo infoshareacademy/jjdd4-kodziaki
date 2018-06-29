@@ -12,3 +12,7 @@ id;title;placeType;price;area;rooms;floor;district;city;hasElevator;smokingAllow
 11;Pokój Gdańsk Przymorze;ROOM;550.00;12;3;1;Przymorze;Gdańsk;false;false;true;false;Mam do wynajęcia pokój dla studenta. Wszystkie opłaty w cenie, w tym Internet. Wynajem na cały rok akademicki. Dobra lokalizacja, blisko autobusu i SKM. Tylko dla niepalacych. Kaucja 1 miesiąc.;Anna Nowak;567890234
 12;Miejsce w pokoju dwuosobowym dla dziewczyny;BED;400.00;17;4;3;Zaspa;Gdańsk;false;false;true;false;Szukam lokatorki do pokoju dwuosobowego. W mieszkaniu w sumie 6 studentek. Łazienka i dodatkowa toaleta. Dobra lokalizacja. Kaucja 2 miesiace. Miekszanie nowe, urządzone.;Marzena;4563678278
 13;bardzo ladne mieszkanie centrum wrzeszcza;ROOM;780;12.0;3;3;wrzeszcz;Gdansk;true;false;false;true;Zapraszam serdecznie;Mikolaj A;4506958
+14;Gdansk rzeszcz bardzo ladne mieszkanie;BED;670;45.0;3;5;Morena;Gdańsk;true;false;false;true;alksdjaksld;lkajsdjkla;lkjasdkaljsd
+15;Fajna miejsowka;APARTMENT;1300;66.0;3;3;Zaspa;Gdansk;true;true;true;true;pisz szybko;Paweł P;123456789
+16;Wrzecz 2 pokoje;APARTMENT;1000;55.0;2;4;Wrzeszcz;Gdańsk;false;false;false;true;ekstra mieszkanie;Rafał K;rafał@wp.pl
+17;Łóżko dla dziewczyny w pokoju;BED;400;12.0;1;9;Chylonia;Gdynia;false;true;true;true;Wynajmę łózko dziewczynie w wieku do 19 lat;Maks 45l;maksxxx@maks.wp.pl

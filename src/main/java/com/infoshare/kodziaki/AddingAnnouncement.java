@@ -195,6 +195,9 @@ public class AddingAnnouncement {
 
         saving(list);
 
+        System.out.println("==============================================");
+        System.out.println("Ogłoszenie dodane!");
+
     }
 
 }
