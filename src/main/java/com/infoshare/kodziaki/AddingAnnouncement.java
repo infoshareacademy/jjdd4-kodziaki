@@ -10,7 +10,13 @@ import static java.util.stream.Collectors.joining;
 
 public class AddingAnnouncement {
 
-    String filePath = "files/ads.csv";
+    String filePath;
+
+    public AddingAnnouncement(String filepath) {
+
+        this.filePath=filepath;
+
+    }
 
     public Double readDoubleFromUser(String question) {
         Double input = null;

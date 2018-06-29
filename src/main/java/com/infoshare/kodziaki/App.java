@@ -14,7 +14,7 @@ public class App {
 
         //chooseOption();
 
-        AddingAnnouncement ad1 = new AddingAnnouncement();
+        AddingAnnouncement ad1 = new AddingAnnouncement("files/ads.csv");
 
         ad1.adding();
 
