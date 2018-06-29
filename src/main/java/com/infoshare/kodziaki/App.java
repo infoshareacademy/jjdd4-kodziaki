@@ -1,7 +1,5 @@
 package com.infoshare.kodziaki;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.List;
 
 import static com.infoshare.kodziaki.ChooseOption.chooseOption;
 import static com.infoshare.kodziaki.Menu.mainMenu;
