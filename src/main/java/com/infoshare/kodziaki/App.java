@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki;
+package comy.infoshare.kodziaki;
 
 import java.io.FileNotFoundException;
 
