@@ -16,10 +16,12 @@ public class GetUserPreferences {
         userPreferences.setPlaceType(getPlaceType("Typ nieruchomości (mieszkanie,pokój,miejsce w pokoju): "));
         userPreferences.setCity(getCity("Miasto: "));
         userPreferences.setDistrict(getDistrict(userPreferences.getCity(), "Dzielnica: "));
-        userPreferences.setMinPrice(getBigDecimalParameter("Cena min (zł): "));
-        userPreferences.setMaxPrice(getBigDecimalParameter("Cena max (zł): "));
-        userPreferences.setMinArea(getBigDecimalParameter("Powierzchnia min (m2): "));
-        userPreferences.setMaxArea(getBigDecimalParameter("Powierzchnia max (m2): "));
+
+        userPreferences.setMinPrice(promptUserWithMessage("Cena min (zł): "));
+        userPreferences.setMaxPrice(promptUserWithMessage("Cena max (zł): "));
+        userPreferences.setMinArea(promptUserWithMessage("Powierzchnia min (m2): "));
+        userPreferences.setMaxArea(promptUserWithMessage("Powierzchnia max (m2): "));
+
         userPreferences.setRooms(getIntegerParameter("Ilość pokoi (od 1 do 4): "));
         userPreferences.setHasElevator(getBooleanParameter("Winda w bloku (tak,nie): "));
         userPreferences.setSmokingAllowed(getBooleanParameter("Palenie dozwolone (tak,nie): "));
@@ -77,6 +79,9 @@ public class GetUserPreferences {
                 .distinct()
                 .peek(System.out::println)
                 .collect(Collectors.toList());
+        if (listOfDistricts.size() == 1) {
+            return listOfDistricts.get(0);
+        }
         String parameter = getUserInput();
         if (parameter.equals("")) {
             return null;
@@ -86,23 +91,12 @@ public class GetUserPreferences {
         return processParameter(parameter);
     }
 
-    private BigDecimal getBigDecimalParameter(String message) {
-        System.out.println(message);
-        String parameter = getUserInput();
-        if (parameter.equals("")) {
-            return null;
-        } else if (parameter.matches("[0-9]+")) {
-            return BigDecimal.valueOf(Double.parseDouble(parameter));
-        }
-        return getBigDecimalParameter("Niepoprawna wartość. Podaj jeszcze raz: ");
-    }
-
     private Integer getIntegerParameter(String message) {
         System.out.println(message);
         String parameter = getUserInput();
         if (parameter.equals("")) {
             return null;
-        } else if (parameter.matches("[1-4]+")) {
+        } else if (parameter.matches("[1-9]+")) {
             return Integer.parseInt(parameter);
         }
         return getIntegerParameter("Niepoprawna wartość. Podaj jeszcze raz: ");
@@ -141,5 +135,44 @@ public class GetUserPreferences {
         }
         return listOfAds;
     }
+
+    BigDecimal promptUserWithMessage(String message) {
+        boolean askUserForValue = true;
+        System.out.println(message);
+        while(askUserForValue) {
+            String userInput = getUserInput();
+            if (isCorrectInput(userInput)) {
+                return userInput.equals("") ? null : new BigDecimal(userInput);
+            }
+        }
+        return null;
+    }
+
+    boolean isCorrectInput(String input) {
+        String message = "";
+
+        if (input.isEmpty()){
+            return true;
+        }
+
+        try {
+            if (Double.parseDouble(input) < 0) {
+                message = "Niepoprawna wartość. Podaj jeszcze raz: ";
+            }
+        } catch (Exception e) {
+            message = "Niepoprawna wartość (format danych). Podaj jeszcze raz: ";
+        }
+
+        if (!message.isEmpty()) {
+            System.out.println(message);
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+
 
 }
