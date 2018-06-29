@@ -1,6 +1,9 @@
 package com.infoshare.kodziaki;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import static com.infoshare.kodziaki.AddPlaceAds.addPlaceAds;
@@ -11,7 +14,8 @@ import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
 
 public class ChooseOption {
 
-    public static void chooseOption() {
+    public static void chooseOption() throws FileNotFoundException {
+        List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
 
         int option = 0;
         Scanner scannerOption = new Scanner(System.in);
@@ -36,7 +40,7 @@ public class ChooseOption {
 
         switch (option) {
             case 1:
-                viewPlaceAds();
+                viewPlaceAds(list);
                 break;
             case 2:
                 addPlaceAds();

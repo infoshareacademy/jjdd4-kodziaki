@@ -10,11 +10,11 @@ import static java.util.stream.Collectors.joining;
 
 public class AddingAnnouncement {
 
-    String filePath;
+    private String filePath;
 
     public AddingAnnouncement(String filepath) {
 
-        this.filePath=filepath;
+        this.filePath = filepath;
 
     }
 
