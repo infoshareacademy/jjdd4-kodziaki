@@ -65,29 +65,51 @@ public class UserPreferences {
         return onlyLongTerm;
     }
 
-    public UserPreferences(PlaceType placeType,
-                           String city,
-                           String district,
-                           BigDecimal minPrice,
-                           BigDecimal maxPrice,
-                           BigDecimal minArea,
-                           BigDecimal maxArea,
-                           Integer rooms,
-                           Boolean hasElevator,
-                           Boolean smokingAllowed,
-                           Boolean animalAllowed,
-                           Boolean onlyLongTerm) {
+    public void setPlaceType(PlaceType placeType) {
         this.placeType = placeType;
+    }
+
+    public void setCity(String city) {
         this.city = city;
+    }
+
+    public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public void setMinPrice(BigDecimal minPrice) {
         this.minPrice = minPrice;
+    }
+
+    public void setMaxPrice(BigDecimal maxPrice) {
         this.maxPrice = maxPrice;
+    }
+
+    public void setMinArea(BigDecimal minArea) {
         this.minArea = minArea;
+    }
+
+    public void setMaxArea(BigDecimal maxArea) {
         this.maxArea = maxArea;
+    }
+
+    public void setRooms(Integer rooms) {
         this.rooms = rooms;
+    }
+
+    public void setHasElevator(Boolean hasElevator) {
         this.hasElevator = hasElevator;
+    }
+
+    public void setSmokingAllowed(Boolean smokingAllowed) {
         this.smokingAllowed = smokingAllowed;
+    }
+
+    public void setAnimalAllowed(Boolean animalAllowed) {
         this.animalAllowed = animalAllowed;
+    }
+
+    public void setOnlyLongTerm(Boolean onlyLongTerm) {
         this.onlyLongTerm = onlyLongTerm;
     }
 
