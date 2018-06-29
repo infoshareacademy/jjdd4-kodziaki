@@ -7,6 +7,8 @@ import static com.infoshare.kodziaki.Menu.mainMenu;
 public class App {
     public static void main( String[] args ) {
 
+        graphic();
+
         mainMenu();
 
         chooseOption();

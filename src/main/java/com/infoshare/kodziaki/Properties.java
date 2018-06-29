@@ -29,24 +29,4 @@ public class Properties {
             e.printStackTrace();
         }
     }
-
-
-/*    public static void setProperties(){
-
-        try {
-            java.util.Properties properties = new java.util.Properties();
-            properties.setProperty("backgroundColor", "white");
-            properties.setProperty("currency", "PLN");
-            properties.setProperty("propertiesFilePath", "s:/config/application.xml");
-            properties.setProperty("propertiesFilePath", "s:/files/ads.csv");
-            File file = new File("conf/application.xml");
-            FileOutputStream fileOut = new FileOutputStream(file);
-            properties.storeToXML(fileOut, "conf/application.xml");
-            fileOut.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
