@@ -1,6 +1,7 @@
 package com.infoshare.kodziaki;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public class UserPreferences {
 
@@ -11,7 +12,10 @@ public class UserPreferences {
     private BigDecimal maxPrice;
     private BigDecimal minArea;
     private BigDecimal maxArea;
-    private Integer rooms;
+    private Integer minRooms;
+    private Integer maxRooms;
+    private Integer minFloor;
+    private Integer maxFloor;
     private Boolean hasElevator;
     private Boolean smokingAllowed;
     private Boolean animalAllowed;
@@ -29,9 +33,7 @@ public class UserPreferences {
         return district;
     }
 
-    public BigDecimal getMinPrice() {
-        return minPrice;
-    }
+    public BigDecimal getMinPrice() { return minPrice; }
 
     public BigDecimal getMaxPrice() {
         return maxPrice;
@@ -45,9 +47,15 @@ public class UserPreferences {
         return maxArea;
     }
 
-    public Integer getRooms() {
-        return rooms;
+    public Integer getMinRooms() {
+        return minRooms;
     }
+
+    public Integer getMaxRooms() { return maxRooms; }
+
+    public Integer getMinFloor() { return minFloor; }
+
+    public Integer getMaxFloor() { return maxFloor; }
 
     public Boolean isHasElevator() {
         return hasElevator;
@@ -77,9 +85,7 @@ public class UserPreferences {
         this.district = district;
     }
 
-    public void setMinPrice(BigDecimal minPrice) {
-        this.minPrice = minPrice;
-    }
+    public void setMinPrice(BigDecimal minPrice) { this.minPrice = minPrice; }
 
     public void setMaxPrice(BigDecimal maxPrice) {
         this.maxPrice = maxPrice;
@@ -93,9 +99,15 @@ public class UserPreferences {
         this.maxArea = maxArea;
     }
 
-    public void setRooms(Integer rooms) {
-        this.rooms = rooms;
+    public void setMinRooms(Integer minRooms) {
+        this.minRooms = minRooms;
     }
+
+    public void setMaxRooms(Integer maxRooms) { this.maxRooms = maxRooms; }
+
+    public void setMinFloor(Integer minFloor) { this.minFloor = minFloor; }
+
+    public void setMaxFloor(Integer maxFloor) { this.maxFloor = maxFloor; }
 
     public void setHasElevator(Boolean hasElevator) {
         this.hasElevator = hasElevator;
@@ -123,7 +135,10 @@ public class UserPreferences {
                 ", maxPrice=" + maxPrice +
                 ", minArea=" + minArea +
                 ", maxArea=" + maxArea +
-                ", rooms=" + rooms +
+                ", minRooms=" + minRooms +
+                ", maxRooms=" + maxRooms +
+                ", minFloor=" + minFloor +
+                ", maxFloor=" + maxFloor +
                 ", hasElevator=" + hasElevator +
                 ", smokingAllowed=" + smokingAllowed +
                 ", animalAllowed=" + animalAllowed +
