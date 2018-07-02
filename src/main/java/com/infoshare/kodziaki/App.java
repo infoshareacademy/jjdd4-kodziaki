@@ -16,8 +16,9 @@ public class App {
         UserPreferences userPreferences = getUserPreferences.getUserPreferences(adsList);
 
         FilterRepositoryByPreferences filterRepositoryByPreferences = new FilterRepositoryByPreferences();
-        List<Place> adsToDisplay = filterRepositoryByPreferences.filterRepositoryByPreferences(adsList, userPreferences);
+        Optional<List<Place>> adsToDisplay = filterRepositoryByPreferences.filterRepositoryByPreferences(adsList, userPreferences);
 
-        adsToDisplay.forEach(ads -> System.out.println(ads.toString()));
+        adsToDisplay.ifPresent(places -> places
+                .forEach(p -> System.out.println(p.toString())));
     }
 }
