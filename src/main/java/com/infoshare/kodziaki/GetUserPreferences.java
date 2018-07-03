@@ -8,8 +8,10 @@ class GetUserPreferences {
 
     UserPreferences getUserPreferences(List<Place> adsList) {
 
-        System.out.println("Podaj opcje wyszukiwania");
-        System.out.println("------------------------");
+        System.out.println();
+        System.out.println("==============================================");
+        System.out.println("Podaj opcje wyszukiwania.");
+        System.out.println("==============================================");
 
         UserPreferences userPreferences = new UserPreferences();
         userPreferences.setPlaceType(receivePlaceType());
@@ -27,7 +29,6 @@ class GetUserPreferences {
         userPreferences.setSmokingAllowed(receiveYesOrNo("Palenie dozwolone "));
         userPreferences.setAnimalAllowed(receiveYesOrNo("Zwierzeta dozwolone "));
         userPreferences.setOnlyLongTerm(receiveYesOrNo("Wynajem długoterminowy "));
-        System.out.println(userPreferences.toString());
 
         return userPreferences;
     }

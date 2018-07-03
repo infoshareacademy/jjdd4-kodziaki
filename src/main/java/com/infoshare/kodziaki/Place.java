@@ -93,25 +93,4 @@ public class Place {
 
     public String getPhoneNumber() { return phoneNumber; }
 
-    @Override
-    public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", placeType=" + placeType +
-                ", price=" + price +
-                ", area=" + area +
-                ", rooms=" + rooms +
-                ", floor=" + floor +
-                ", district='" + district + '\'' +
-                ", city='" + city + '\'' +
-                ", description='" + description + '\'' +
-                ", title='" + title + '\'' +
-                ", hasElevator=" + hasElevator +
-                ", smokingAllowed=" + smokingAllowed +
-                ", animalAllowed=" + animalAllowed +
-                ", onlyLongTerm=" + onlyLongTerm +
-                ", author='" + author + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }

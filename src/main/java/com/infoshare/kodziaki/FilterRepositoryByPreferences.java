@@ -66,7 +66,6 @@ public class FilterRepositoryByPreferences {
         return input;
     }
 
-
     private Stream<Place> filterByRooms(Stream<Place> input, UserPreferences userPreferences) {
         try {
             if (userPreferences.getMinRooms() != null) {

@@ -32,8 +32,10 @@ public class CsvReader {
                         .setSmokingAllowed(Boolean.parseBoolean(array[10]))
                         .setAnimalAllowed(Boolean.parseBoolean(array[11]))
                         .setOnlyLongTerm(Boolean.parseBoolean(array[12]))
-                        .setDescription(array[13]).setAuthor(array[14])
-                        .setPhoneNumber(array[15]).createPlace())
+                        .setDescription(array[13])
+                        .setAuthor(array[14])
+                        .setPhoneNumber(array[15])
+                        .createPlace())
                 .collect(Collectors.toList());
     }
 }

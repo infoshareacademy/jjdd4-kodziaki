@@ -1,7 +1,6 @@
 package com.infoshare.kodziaki;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 public class UserPreferences {
 
@@ -35,9 +34,7 @@ public class UserPreferences {
 
     public BigDecimal getMinPrice() { return minPrice; }
 
-    public BigDecimal getMaxPrice() {
-        return maxPrice;
-    }
+    public BigDecimal getMaxPrice() { return maxPrice; }
 
     public BigDecimal getMinArea() {
         return minArea;
@@ -125,24 +122,4 @@ public class UserPreferences {
         this.onlyLongTerm = onlyLongTerm;
     }
 
-    @Override
-    public String toString() {
-        return "UserPreferences{" +
-                "placeType=" + placeType +
-                ", city='" + city + '\'' +
-                ", district='" + district + '\'' +
-                ", minPrice=" + minPrice +
-                ", maxPrice=" + maxPrice +
-                ", minArea=" + minArea +
-                ", maxArea=" + maxArea +
-                ", minRooms=" + minRooms +
-                ", maxRooms=" + maxRooms +
-                ", minFloor=" + minFloor +
-                ", maxFloor=" + maxFloor +
-                ", hasElevator=" + hasElevator +
-                ", smokingAllowed=" + smokingAllowed +
-                ", animalAllowed=" + animalAllowed +
-                ", onlyLongTerm=" + onlyLongTerm +
-                '}';
-    }
 }
