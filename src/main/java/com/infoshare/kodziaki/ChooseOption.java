@@ -6,16 +6,19 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.infoshare.kodziaki.AddPlaceAds.addPlaceAds;
+import static com.infoshare.kodziaki.Menu.mainMenu;
+
+import static com.infoshare.kodziaki.Properties.displayProperties;
 import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
-
-
 
 
 public class ChooseOption {
 
+
+
     public static void chooseOption() throws FileNotFoundException {
-        List<Place> list = CsvReader.readFile(new FileReader("files/ads.csv"));
+
+        AddingAnnouncement ad1 = new AddingAnnouncement(Properties.getAdsFilePath());
 
         int option = 0;
         Scanner scannerOption = new Scanner(System.in);
@@ -25,7 +28,7 @@ public class ChooseOption {
             try {
                 option = scannerOption.nextInt();
 
-                if (option >= 0 && option <= 2){
+                if (option >= 0 && option <= 3){
                     optionCorrect = true;
                     break;
                 } else {
@@ -40,13 +43,24 @@ public class ChooseOption {
 
         switch (option) {
             case 1:
+                List<Place> list = CsvReader.readFile(new FileReader(Properties.getAdsFilePath()));
+                //tutaj trafi obiekt klasy UserPreferences i zostanie na nim wywołane filtrowanie
                 viewPlaceAds(list);
+                mainMenu();
+                chooseOption();
                 break;
             case 2:
-                addPlaceAds();
+                ad1.adding();
+                mainMenu();
+                chooseOption();
+                break;
+            case 3:
+                displayProperties();
+                mainMenu();
+                chooseOption();
                 break;
             case 0:
-                System.out.println("PAPArtments! Sija!");
+                System.out.println("PAPArtments!");
                 break;
         }
     }

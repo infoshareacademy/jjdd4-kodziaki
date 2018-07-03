@@ -22,8 +22,8 @@ public class ViewPlaceAds {
                     break;
             }
             System.out.println(
-                              "\n | Cena: " + a.getPrice() + "zł"
-                            + "\n "
+                              "\n | Cena: " + a.getPrice() + " " + Properties.getCurrency()
+                            + "\n"
                             + "\n | Powierzchnia: " + a.getArea() + "m2"
                             + "\n "
                             + "\n | Liczba Pokoi:  " + a.getRooms()
@@ -44,6 +44,9 @@ public class ViewPlaceAds {
                             + "\n "
                             + "\n | Opis: " + a.getDescription()
                             + "\n "
+                            + "\n | Kontakt: " + a.getPhoneNumber()
+                            + "\n "
+                            + "\n | Autor: " + a.getAuthor()
                             + "\n "
                             + "\n "); }
     }
