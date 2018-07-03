@@ -3,7 +3,6 @@ package com.infoshare.kodziaki;
 import java.io.*;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.InvalidPropertiesFormatException;
 import java.util.Map;
 
 public class Properties {
@@ -30,12 +29,8 @@ public class Properties {
                 String value = properties.getProperty(key);
                 mapWithProperties.putIfAbsent(key, value);
             }
-        } catch (InvalidPropertiesFormatException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Wystąpił błąd wczytywania konfiguracji.");
         }
     }
 

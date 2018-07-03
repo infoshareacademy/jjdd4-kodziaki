@@ -16,3 +16,4 @@ id;title;placeType;price;area;rooms;floor;district;city;hasElevator;smokingAllow
 15;Fajna miejsowka;APARTMENT;1300;66.0;3;3;Zaspa;Gdansk;true;true;true;true;pisz szybko;Paweł P;123456789
 16;Wrzecz 2 pokoje;APARTMENT;1000;55.0;2;4;Wrzeszcz;Gdańsk;false;false;false;true;ekstra mieszkanie;Rafał K;rafał@wp.pl
 17;Łóżko dla dziewczyny w pokoju;BED;400;12.0;1;9;Chylonia;Gdynia;false;true;true;true;Wynajmę łózko dziewczynie w wieku do 19 lat;Maks 45l;maksxxx@maks.wp.pl
+18;Chata wuja Toma;APARTMENT;1800;60.0;3;3;Wyscigi;Sopot;true;false;true;true;Wuj Tom zaprasza do swej chaty;Wuj Tom;fkjgbdkjxfd
