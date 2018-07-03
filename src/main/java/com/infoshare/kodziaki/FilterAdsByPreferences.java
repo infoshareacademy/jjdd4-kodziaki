@@ -5,9 +5,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FilterRepositoryByPreferences {
+public class FilterAdsByPreferences {
 
-    Optional<List<Place>> filterRepositoryByPreferences(List<Place> adsList, UserPreferences userPrefereces) {
+    Optional<List<Place>> filterAdsByPreferences(List<Place> adsList, UserPreferences userPrefereces) {
 
         Stream<Place> adsListStream = adsList.stream();
         adsListStream = filterByPlaceType(adsListStream, userPrefereces.getPlaceType());

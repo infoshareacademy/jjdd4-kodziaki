@@ -8,10 +8,9 @@ class GetUserPreferences {
 
     UserPreferences getUserPreferences(List<Place> adsList) {
 
-        System.out.println();
-        System.out.println("==============================================");
-        System.out.println("Podaj opcje wyszukiwania.");
-        System.out.println("==============================================");
+        System.out.println("==============================================" +
+                "\nPodaj opcje wyszukiwania." +
+                "\n==============================================");
 
         UserPreferences userPreferences = new UserPreferences();
         userPreferences.setPlaceType(receivePlaceType());

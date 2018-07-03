@@ -22,7 +22,7 @@ public class ViewPlaceAds {
                     break;
             }
             System.out.println(
-                    "\n | Cena: " + a.getPrice() + " " + Properties.getCurrency()
+                              "\n | Cena: " + a.getPrice() + " " + Properties.getCurrency()
                             + "\n"
                             + "\n | Powierzchnia: " + a.getArea() + "m2"
                             + "\n "

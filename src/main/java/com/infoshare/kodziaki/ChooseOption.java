@@ -1,21 +1,17 @@
 package com.infoshare.kodziaki;
 
-        import java.io.FileNotFoundException;
-        import java.io.FileReader;
-        import java.util.InputMismatchException;
-        import java.util.List;
-        import java.util.Optional;
-        import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
-        import static com.infoshare.kodziaki.Menu.mainMenu;
-
-        import static com.infoshare.kodziaki.Properties.displayProperties;
-        import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
-
+import static com.infoshare.kodziaki.Menu.mainMenu;
+import static com.infoshare.kodziaki.Properties.displayProperties;
+import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
 
 public class ChooseOption {
-
-
 
     public static void chooseOption() throws FileNotFoundException {
 
@@ -27,7 +23,7 @@ public class ChooseOption {
             try {
                 option = scannerOption.nextInt();
 
-                if (option >= 0 && option <= 3){
+                if (option >= 0 && option <= 3) {
                     optionCorrect = true;
                     break;
                 } else {
@@ -45,13 +41,16 @@ public class ChooseOption {
                 GetUserPreferences getUserPreferences = new GetUserPreferences();
                 UserPreferences userPreferences = getUserPreferences.getUserPreferences(adsList);
 
-                FilterRepositoryByPreferences filterRepository = new FilterRepositoryByPreferences();
-                Optional<List<Place>> filteredAdsList = filterRepository.filterRepositoryByPreferences(adsList, userPreferences);
+                FilterAdsByPreferences filterAdsByPreferences = new FilterAdsByPreferences();
+                Optional<List<Place>> filteredAdsList =
+                        filterAdsByPreferences.filterAdsByPreferences(adsList, userPreferences);
 
                 if (filteredAdsList.isPresent()) {
                     viewPlaceAds(filteredAdsList.get());
                 } else {
-                    System.out.println("Niestety nie znaleźliśmy ogłoszeń o podanych parametrach :(");
+                    System.out.println("==============================================" +
+                            "\nNie znaleźliśmy ogłoszeń o podanych parametrach :(" +
+                            "\nZmień opcje wyszukiwania i spróbuj jeszcze raz.");
                 }
                 mainMenu();
                 chooseOption();
