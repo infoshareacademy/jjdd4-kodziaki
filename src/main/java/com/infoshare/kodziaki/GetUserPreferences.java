@@ -16,8 +16,8 @@ class GetUserPreferences {
         userPreferences.setPlaceType(receivePlaceType());
         userPreferences.setCity(receiveCity(adsList));
         userPreferences.setDistrict(receiveDistrict(userPreferences.getCity(), adsList));
-        userPreferences.setMinPrice(receiveBigDecimalValue("Min. cena [zł] "));
-        userPreferences.setMaxPrice(receiveBigDecimalValue("Max. cena [zł] "));
+        userPreferences.setMinPrice(receiveBigDecimalValue("Min. cena [" + Properties.getCurrency() + "] "));
+        userPreferences.setMaxPrice(receiveBigDecimalValue("Max. cena [" + Properties.getCurrency() + "] "));
         userPreferences.setMinArea(receiveBigDecimalValue("Min. powierzchnia [m2] "));
         userPreferences.setMaxArea(receiveBigDecimalValue("Max. powierzchnia [m2] "));
         userPreferences.setMinRooms(receiveIntegerValue("Min. liczba pokoi "));
@@ -96,11 +96,11 @@ class GetUserPreferences {
                     .collect(Collectors.toList());
         }
 
-        Map<String, Set<String>> districts = new TreeMap<>();
-        adsList.forEach(ad -> {
-            districts.putIfAbsent(ad.getCity(), new TreeSet<>());
-            districts.get(ad.getCity()).add(ad.getDistrict());
-        });
+        Map<String, Set<String>> districts = adsList.stream()
+                .collect(Collectors
+                        .groupingBy(Place::getCity, Collectors
+                                .mapping(Place::getDistrict, Collectors.toSet())));
+
         districts.forEach((a, b) -> {
             System.out.println(a);
             b.forEach(d -> System.out.println(" |".concat(d)));

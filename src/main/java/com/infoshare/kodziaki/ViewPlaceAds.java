@@ -14,11 +14,11 @@ public class ViewPlaceAds {
                     break;
 
                 case APARTMENT:
-                    System.out.println(" | Do wynajęcia: Apartament");
+                    System.out.println(" | Do wynajęcia: Mieszkanie");
                     break;
 
                 case BED:
-                    System.out.println(" | Do wynajęcia: Łóżko");
+                    System.out.println(" | Do wynajęcia: Miejsce w pokoju");
                     break;
             }
             System.out.println(

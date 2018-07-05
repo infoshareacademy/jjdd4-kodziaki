@@ -19,3 +19,4 @@ id;title;placeType;price;area;rooms;floor;district;city;hasElevator;smokingAllow
 18;Chata wuja Toma;APARTMENT;1800;60.0;3;3;Wyścigi;Sopot;true;false;true;true;Wuj Tom zaprasza do swej chaty;Wuj Tom;fkjgbdkjxfd
 13;bardzo ladne mieszkanie centrum wrzeszcza;ROOM;780;12.0;3;3;Wrzeszcz;Gdańsk;true;false;false;true;Zapraszam serdecznie;Mikolaj A;4506958
 14;Mieszkanie do wynajęcia na Niedźwiedniku;APARTMENT;1500;70.0;4;4;Niedźwiednik;Gdańsk;false;false;true;true;Przestronne mieszkanie z pełnym umeblowaniem. Osobna kuchnia, łazienka i toaleta oraz balkon. Mieszkanie w spokojnej okolicy, w otoczeniu lasu. Niedaleko przystanek PKM i węzeł autobusowy.;Marta;555444333
+21;Samodzielny pokój dwuosobowy z łazienką;ROOM;1200;16.0;1;2;Górny;Sopot;false;false;true;true;Wynajem od września na rok akademicki. Samodzielny pokój z łazienką jak kawalerka. Pełne wyposażenie. Blisko SKM, PKP, ZKM, UG Wydział Zarządzania. Cena 1200zł plus prąd wg zużycia.;Zbigniew;zbysiu@wp.pl
