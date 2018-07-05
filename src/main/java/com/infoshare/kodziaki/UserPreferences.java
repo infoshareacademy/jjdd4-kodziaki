@@ -9,8 +9,8 @@ public class UserPreferences {
     private String district;
     private BigDecimal minPrice;
     private BigDecimal maxPrice;
-    private BigDecimal minArea;
-    private BigDecimal maxArea;
+    private Double minArea;
+    private Double maxArea;
     private Integer minRooms;
     private Integer maxRooms;
     private Integer minFloor;
@@ -36,11 +36,11 @@ public class UserPreferences {
 
     public BigDecimal getMaxPrice() { return maxPrice; }
 
-    public BigDecimal getMinArea() {
+    public Double getMinArea() {
         return minArea;
     }
 
-    public BigDecimal getMaxArea() {
+    public Double getMaxArea() {
         return maxArea;
     }
 
@@ -88,11 +88,11 @@ public class UserPreferences {
         this.maxPrice = maxPrice;
     }
 
-    public void setMinArea(BigDecimal minArea) {
+    public void setMinArea(Double minArea) {
         this.minArea = minArea;
     }
 
-    public void setMaxArea(BigDecimal maxArea) {
+    public void setMaxArea(Double maxArea) {
         this.maxArea = maxArea;
     }
 

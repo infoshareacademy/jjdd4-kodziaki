@@ -8,9 +8,10 @@ class GetUserPreferences {
 
     UserPreferences getUserPreferences(List<Place> adsList) {
 
-        System.out.println("==============================================" +
-                "\nPodaj opcje wyszukiwania." +
-                "\n==============================================");
+        System.out.println("\n"
+                + "\n=============================================="
+                + "\nPodaj opcje wyszukiwania."
+                + "\n==============================================");
 
         UserPreferences userPreferences = new UserPreferences();
         userPreferences.setPlaceType(receivePlaceType());
@@ -18,8 +19,8 @@ class GetUserPreferences {
         userPreferences.setDistrict(receiveDistrict(userPreferences.getCity(), adsList));
         userPreferences.setMinPrice(receiveBigDecimalValue("Min. cena [" + Properties.getCurrency() + "] "));
         userPreferences.setMaxPrice(receiveBigDecimalValue("Max. cena [" + Properties.getCurrency() + "] "));
-        userPreferences.setMinArea(receiveBigDecimalValue("Min. powierzchnia [m2] "));
-        userPreferences.setMaxArea(receiveBigDecimalValue("Max. powierzchnia [m2] "));
+        userPreferences.setMinArea(receiveDoubleValue("Min. powierzchnia [m2] "));
+        userPreferences.setMaxArea(receiveDoubleValue("Max. powierzchnia [m2] "));
         userPreferences.setMinRooms(receiveIntegerValue("Min. liczba pokoi "));
         userPreferences.setMaxRooms(receiveIntegerValue("Max. liczba pokoi "));
         userPreferences.setMinFloor(receiveIntegerValue("Piętro (od) "));
@@ -151,6 +152,23 @@ class GetUserPreferences {
             try {
                 if (Double.parseDouble(parameter) >= 0) {
                     return new BigDecimal(parameter);
+                } else System.out.println("Wartość nie może być mniejsza niż 0. Wpisz jeszcze raz: ");
+            } catch (Exception e) {
+                System.out.println("Niepoprawna wartość. Wpisz jeszcze raz:");
+            }
+        }
+        return null;
+    }
+
+    private Double receiveDoubleValue(String message) {
+        System.out.println(message + "(ENTER aby pominąć):");
+        Boolean askUserForValue = true;
+        while (askUserForValue) {
+            String parameter = receiveUserInput();
+            if (parameter.equals("")) return null;
+            try {
+                if (Double.parseDouble(parameter) >= 0) {
+                    return Double.parseDouble(parameter);
                 } else System.out.println("Wartość nie może być mniejsza niż 0. Wpisz jeszcze raz: ");
             } catch (Exception e) {
                 System.out.println("Niepoprawna wartość. Wpisz jeszcze raz:");

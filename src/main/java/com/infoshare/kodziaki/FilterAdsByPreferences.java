@@ -55,10 +55,10 @@ public class FilterAdsByPreferences {
     private Stream<Place> filterByArea(Stream<Place> input, UserPreferences userPreferences) {
         try {
             if (userPreferences.getMinArea() != null) {
-                input = input.filter(p -> p.getArea().compareTo(userPreferences.getMinArea()) >= 0);
+                input = input.filter(p -> p.getArea() >= userPreferences.getMinArea());
             }
             if (userPreferences.getMaxArea() != null) {
-                input = input.filter(p -> p.getArea().compareTo(userPreferences.getMaxArea()) <= 0);
+                input = input.filter(p -> p.getArea() <= userPreferences.getMaxArea());
             }
         } catch (Exception e) {
             return null;

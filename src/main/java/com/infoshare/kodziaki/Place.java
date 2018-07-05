@@ -8,7 +8,7 @@ public class Place {
     private PlaceType placeType;
 
     private BigDecimal price;
-    private BigDecimal area;
+    private double area;
     private int rooms;
     private int floor;
 
@@ -31,7 +31,7 @@ public class Place {
                  String title,
                  PlaceType placeType,
                  BigDecimal price,
-                 BigDecimal area,
+                 double area,
                  int rooms,
                  int floor,
                  String district,
@@ -67,7 +67,7 @@ public class Place {
 
     public BigDecimal getPrice() { return price; }
 
-    public BigDecimal getArea() { return area; }
+    public double getArea() { return area; }
 
     public int getRooms() { return rooms; }
 

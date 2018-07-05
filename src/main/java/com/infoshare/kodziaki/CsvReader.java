@@ -23,7 +23,7 @@ public class CsvReader {
                         .setTitle(array[1])
                         .setPlaceType(PlaceType.valueOf(array[2]))
                         .setPrice(BigDecimal.valueOf(Double.parseDouble(array[3])))
-                        .setArea(BigDecimal.valueOf(Double.parseDouble(array[4])))
+                        .setArea(Double.parseDouble(array[4]))
                         .setRooms(Integer.parseInt(array[5]))
                         .setFloor(Integer.parseInt(array[6]))
                         .setDistrict(array[7])

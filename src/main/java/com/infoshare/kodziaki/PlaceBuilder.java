@@ -7,7 +7,7 @@ public class PlaceBuilder {
     private String title;
     private PlaceType placeType;
     private BigDecimal price;
-    private BigDecimal area;
+    private double area;
     private int rooms;
     private int floor;
     private String district;
@@ -40,7 +40,7 @@ public class PlaceBuilder {
         return this;
     }
 
-    public PlaceBuilder setArea(BigDecimal area) {
+    public PlaceBuilder setArea(double area) {
         this.area = area;
         return this;
     }
