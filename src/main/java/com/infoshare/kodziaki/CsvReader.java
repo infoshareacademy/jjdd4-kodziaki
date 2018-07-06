@@ -1,6 +1,7 @@
 package com.infoshare.kodziaki;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,34 +10,39 @@ import java.util.stream.Collectors;
 public class CsvReader {
     private static final String SEPARATOR = ";";
 
-    public static List<Place> readFile(Reader source) {
-        if (source == null) {
-            throw new RuntimeException("file path is wrong");
+    public static List<Place> readFile(Reader source) throws IOException, NumberFormatException {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(source);
+            return reader.lines()
+                    .skip(1)
+                    .map(l -> l.split(SEPARATOR))
+                    .map(array -> new PlaceBuilder()
+                            .withId(Integer.parseInt(array[0]))
+                            .withTitle(array[1])
+                            .withPlaceType(PlaceType.valueOf(array[2]))
+                            .withPrice(BigDecimal.valueOf(Double.parseDouble(array[3])))
+                            .withArea(Double.parseDouble(array[4]))
+                            .withRooms(Integer.parseInt(array[5]))
+                            .withFloor(Integer.parseInt(array[6]))
+                            .withDistrict(array[7])
+                            .withCity(array[8])
+                            .withHasElevator(Boolean.parseBoolean(array[9]))
+                            .withSmokingAllowed(Boolean.parseBoolean(array[10]))
+                            .withAnimalAllowed(Boolean.parseBoolean(array[11]))
+                            .withOnlyLongTerm(Boolean.parseBoolean(array[12]))
+                            .withDescription(array[13])
+                            .withAuthor(array[14])
+                            .withPhoneNumber(array[15])
+                            .buildPlace())
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new NumberFormatException();
+        } finally {
+            if (source != null) {
+                reader.close();
+            }
         }
-
-        BufferedReader reader = new BufferedReader(source);
-        return reader.lines()
-                .skip(1)
-                .map(l -> l.split(SEPARATOR))
-                .map(array -> new Place(
-                        Integer.parseInt(array[0]),
-                        array[1],
-                        PlaceType.valueOf(array[2]),
-                        BigDecimal.valueOf(Double.parseDouble(array[3])),
-                        Double.parseDouble(array[4]),
-                        Integer.parseInt(array[5]),
-                        Integer.parseInt(array[6]),
-                        array[7],
-                        array[8],
-                        Boolean.parseBoolean(array[9]),
-                        Boolean.parseBoolean(array[10]),
-                        Boolean.parseBoolean(array[11]),
-                        Boolean.parseBoolean(array[12]),
-                        array[13],
-                        array[14],
-                        array[15]
-                ))
-                .collect(Collectors.toList());
     }
 }
 

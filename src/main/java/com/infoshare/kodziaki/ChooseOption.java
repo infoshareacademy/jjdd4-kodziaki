@@ -2,23 +2,19 @@ package com.infoshare.kodziaki;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import static com.infoshare.kodziaki.Menu.mainMenu;
-
 import static com.infoshare.kodziaki.Properties.displayProperties;
 import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
 
-
 public class ChooseOption {
 
-
-
-    public static void chooseOption() throws FileNotFoundException {
-
-        AddingAnnouncement ad1 = new AddingAnnouncement(Properties.getAdsFilePath());
+    public static void chooseOption() {
 
         int option = 0;
         Scanner scannerOption = new Scanner(System.in);
@@ -28,7 +24,7 @@ public class ChooseOption {
             try {
                 option = scannerOption.nextInt();
 
-                if (option >= 0 && option <= 3){
+                if (option >= 0 && option <= 3) {
                     optionCorrect = true;
                     break;
                 } else {
@@ -40,17 +36,33 @@ public class ChooseOption {
             }
         } while (!optionCorrect);
 
-
         switch (option) {
             case 1:
-                List<Place> list = CsvReader.readFile(new FileReader(Properties.getAdsFilePath()));
-                //tutaj trafi obiekt klasy UserPreferences i zostanie na nim wywołane filtrowanie
-                viewPlaceAds(list);
+                try {
+                    List<Place> adsList = CsvReader.readFile(new FileReader(Properties.getAdsFilePath()));
+                    GetUserPreferences getUserPreferences = new GetUserPreferences();
+                    UserPreferences userPreferences = getUserPreferences.getUserPreferences(adsList);
+
+                    FilterAdsByPreferences filterAdsByPreferences = new FilterAdsByPreferences();
+                    Optional<List<Place>> filteredAdsList =
+                            filterAdsByPreferences.filterAdsByPreferences(adsList, userPreferences);
+
+                    if (filteredAdsList.isPresent()) {
+                        viewPlaceAds(filteredAdsList.get());
+                    } else {
+                        System.out.println("==============================================" +
+                                "\nNie znaleźliśmy ogłoszeń o podanych parametrach :(" +
+                                "\nZmień opcje wyszukiwania i spróbuj jeszcze raz.");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Błąd odczytu danych - pracujemy nad awarią. Może dodasz w tym czasie jakieś ogłoszenie?");
+                }
                 mainMenu();
                 chooseOption();
                 break;
             case 2:
-                ad1.adding();
+                AddingAnnouncement newAd = new AddingAnnouncement(Properties.getAdsFilePath());
+                newAd.adding();
                 mainMenu();
                 chooseOption();
                 break;

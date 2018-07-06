@@ -153,6 +153,11 @@ public class AddingAnnouncement {
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("\n"
+                + "\n=============================================="
+                + "\nPodaj parametry ogłoszenia."
+                + "\n==============================================");
+
         System.out.print("Tytuł ogłoszenia: ");
         String title = new String(scanner.nextLine());
 
@@ -172,9 +177,9 @@ public class AddingAnnouncement {
 
         boolean hasElevator = readBooleanFromUser("Czy w budynku jest winda?");
 
-        boolean smokingAllowed = readBooleanFromUser("Czy palenie w budynku jest doswolone?");
+        boolean smokingAllowed = readBooleanFromUser("Czy palenie w mieszkaniu jest dozwolone?");
 
-        boolean animalsAllowed = readBooleanFromUser("Czy zwierzęta w budynku są dozwolone?");
+        boolean animalsAllowed = readBooleanFromUser("Czy zwierzęta w mieszkaniu są dozwolone?");
 
         boolean onlyLongTerm = readBooleanFromUser("Czy preferujesz wynajem długoterminowy");
 
@@ -186,7 +191,7 @@ public class AddingAnnouncement {
         System.out.print("Podaj swoje imię i nazwisko: ");
         String author = new String(scanner.nextLine());
 
-        System.out.print("Zostaw swojego maila luz numer telefonu: ");
+        System.out.print("Zostaw swojego maila lub numer telefonu: ");
         String contact = new String(scanner.nextLine());
 
         long id = getId();
