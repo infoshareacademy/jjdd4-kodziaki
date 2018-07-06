@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class FilterAdsByPreferences {
 
-    Optional<List<Place>> filterAdsByPreferences(List<Place> adsList, UserPreferences userPrefereces) {
+    public Optional<List<Place>> filterAdsByPreferences(List<Place> adsList, UserPreferences userPrefereces) {
 
         Stream<Place> adsListStream = adsList.stream();
         adsListStream = filterByPlaceType(adsListStream, userPrefereces.getPlaceType());
