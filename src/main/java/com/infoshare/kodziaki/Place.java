@@ -26,7 +26,6 @@ public class Place {
     private String author;
     private String phoneNumber;
 
-
     public Place(int id,
                  String title,
                  PlaceType placeType,

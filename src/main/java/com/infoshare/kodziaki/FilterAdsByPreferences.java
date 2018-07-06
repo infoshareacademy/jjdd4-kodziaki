@@ -27,7 +27,9 @@ public class FilterAdsByPreferences {
         } catch (Exception e) {
             return Optional.empty();
         }
-        if (adsList.isEmpty()) return Optional.empty();
+        if (adsList.isEmpty()) {
+            return Optional.empty();
+        }
         return Optional.of(adsList);
     }
 

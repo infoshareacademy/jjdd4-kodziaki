@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class GetUserPreferences {
+public class GetUserPreferences {
 
-    UserPreferences getUserPreferences(List<Place> adsList) {
+    public UserPreferences getUserPreferences(List<Place> adsList) {
 
         System.out.println("\n"
                 + "\n=============================================="
@@ -75,7 +75,9 @@ class GetUserPreferences {
         boolean askUserForValue = true;
         while (askUserForValue) {
             String parameter = receiveUserInput();
-            if (parameter.isEmpty()) return null;
+            if (parameter.isEmpty()) {
+                return null;
+            }
             try {
                 return cities
                         .stream()
@@ -110,7 +112,9 @@ class GetUserPreferences {
         Boolean askUserForValue = true;
         while (askUserForValue) {
             String parameter = receiveUserInput();
-            if (parameter.isEmpty()) return null;
+            if (parameter.isEmpty()) {
+                return null;
+            }
             try {
                 return adsList
                         .stream()
@@ -148,7 +152,9 @@ class GetUserPreferences {
         Boolean askUserForValue = true;
         while (askUserForValue) {
             String parameter = receiveUserInput();
-            if (parameter.equals("")) return null;
+            if (parameter.equals("")) {
+                return null;
+            }
             try {
                 if (Double.parseDouble(parameter) >= 0) {
                     return new BigDecimal(parameter);
@@ -165,7 +171,9 @@ class GetUserPreferences {
         Boolean askUserForValue = true;
         while (askUserForValue) {
             String parameter = receiveUserInput();
-            if (parameter.equals("")) return null;
+            if (parameter.equals("")) {
+                return null;
+            }
             try {
                 if (Double.parseDouble(parameter) >= 0) {
                     return Double.parseDouble(parameter);
@@ -182,7 +190,9 @@ class GetUserPreferences {
         Boolean askUserForValue = true;
         while (askUserForValue) {
             String parameter = receiveUserInput();
-            if (parameter.equals("")) return null;
+            if (parameter.equals("")) {
+                return null;
+            }
             try {
                 if (Integer.parseInt(parameter) >= 0) {
                     return Integer.parseInt(parameter);
