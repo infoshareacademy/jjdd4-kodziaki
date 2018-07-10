@@ -1,13 +1,20 @@
 package com.infoshare.kodziaki;
 
 import java.util.List;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class ViewPlaceAds {
+    
 
     public static void viewPlaceAds(List<Place> list) {
+        
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        
         for( Place a : list ){
             System.out.println(
-                    "\n | " + a.getTitle() + "\n  ");
+                    "=================================================="
+                    + "\n | " + a.getTitle().toUpperCase() + "\n  ");
             switch (a.getPlaceType()) {
                 case ROOM:
                     System.out.println(" | Do wynajęcia: Pokój");
@@ -21,33 +28,23 @@ public class ViewPlaceAds {
                     System.out.println(" | Do wynajęcia: Miejsce w pokoju");
                     break;
             }
+             
             System.out.println(
-                              "\n | Cena: " + a.getPrice() + " " + Properties.getCurrency()
-                            + "\n"
-                            + "\n | Powierzchnia: " + a.getArea() + "m2"
-                            + "\n "
+                              "\n | Cena: " + formatter.format(a.getPrice()) + " " + Properties.getCurrency()
+                            + "\n | Powierzchnia: " + a.getArea() + " m2"
                             + "\n | Liczba Pokoi:  " + a.getRooms()
-                            + "\n "
                             + "\n | Piętro: " + a.getFloor()
-                            + "\n "
                             + "\n | Dzielnica: " + a.getDistrict()
-                            + "\n"
                             + "\n | Miasto: " + a.getCity()
-                            + "\n "
                             + "\n | Winda:  " + (a.isHasElevator() ? "Tak" : "Nie")
-                            + "\n "
                             + "\n | Palący: " + (a.isSmokingAllowed() ? "Tak" : "Nie")
-                            + "\n "
                             + "\n | Posiadanie zwierząt: " + (a.isAnimalAllowed() ? "Tak" : "Nie")
-                            + "\n "
                             + "\n | Dlugoterminowa umowa: " + (a.isOnlyLongTerm() ? "Tak" : "Nie")
-                            + "\n "
                             + "\n | Opis: " + a.getDescription()
-                            + "\n "
                             + "\n | Kontakt: " + a.getPhoneNumber()
-                            + "\n "
                             + "\n | Autor: " + a.getAuthor()
-                            + "\n "
-                            + "\n "); }
+                            + "\n"
+                            + "=================================================="
+                            + "\n\n "); }
     }
 }
