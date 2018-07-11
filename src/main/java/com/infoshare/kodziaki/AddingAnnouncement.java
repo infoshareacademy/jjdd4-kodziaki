@@ -186,7 +186,7 @@ public class AddingAnnouncement {
         
         String district = ("Podaj dzielnice miasta: ");
 
-        PlaceType placeType = PlaceType.fromPolishString(readOptionsFromUser("Rodzaj zakwaterowania: ", Arrays.asList("MIESZKANIE", "POKÓJ", "LÓŻKO")));
+        PlaceType placeType = PlaceType.fromPolishString(readOptionsFromUser("Rodzaj zakwaterowania: ", Arrays.asList("MIESZKANIE", "POKÓJ", "ŁÓŻKO")));
 
         Double area = readDoubleFromUser("Powierzchnia (w m2): ");
 
