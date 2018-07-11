@@ -45,6 +45,7 @@ public class ViewPlaceAds {
                             + "\n | Opis: " + a.getDescription()
                             + "\n "
                             + "\n "
+                            + "\n  =========================="
                             + "\n "); }
     }
 }
