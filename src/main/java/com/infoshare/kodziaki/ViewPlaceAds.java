@@ -48,6 +48,7 @@ public class ViewPlaceAds {
                             + "\n "
                             + "\n | Autor: " + a.getAuthor()
                             + "\n "
+                            + "\n  =========================="
                             + "\n "); }
     }
 }
