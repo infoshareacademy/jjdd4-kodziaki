@@ -1,0 +1,1 @@
+tutaj będzie szablon FM z głównym widokiem
