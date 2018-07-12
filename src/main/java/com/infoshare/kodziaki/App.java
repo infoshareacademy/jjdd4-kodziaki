@@ -12,12 +12,12 @@ public class App {
 
     public static void main( String[] args ) throws FileNotFoundException {
 
-        System.out.println("Witaj w appARTMENTS!");
-        System.out.println("==============================================");
-
         readProperties();
 
         logo();
+
+        System.out.println("Witaj w appARTMENTS!");
+        System.out.println("==============================================");
 
         mainMenu();
 

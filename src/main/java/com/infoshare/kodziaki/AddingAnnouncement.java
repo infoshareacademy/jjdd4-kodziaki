@@ -39,6 +39,28 @@ public class AddingAnnouncement {
 
         return input;
     }
+    
+    public String readStringFromUser(String question){
+        String input = null;
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println(question);
+        
+        while (true){
+            try {
+                input = new String(scanner.nextLine());
+                if (input.isEmpty()){
+                    System.out.println("Coś poszło nie tak, spróbuj jeszcze raz: ");
+                } else {
+                    break;
+                }
+            } catch (Exception e) {
+                    System.out.print("Coś poszło nie tak, spróbuj jeszcze raz: ");
+            }
+        }
+        
+        return input;
+    }
 
     public BigDecimal readBigDecimalFromUser(String question) {
         BigDecimal input = null;
@@ -157,17 +179,14 @@ public class AddingAnnouncement {
                 + "\n=============================================="
                 + "\nPodaj parametry ogłoszenia."
                 + "\n==============================================");
+        
+        String title = readStringFromUser("Tytuł ogłoszenia: ");
+        
+        String city = readStringFromUser("Podaj miasto: ");
+        
+        String district = ("Podaj dzielnice miasta: ");
 
-        System.out.print("Tytuł ogłoszenia: ");
-        String title = new String(scanner.nextLine());
-
-        System.out.print("Podaj miasto: ");
-        String city = new String(scanner.nextLine());
-
-        System.out.print("Podaj dzielnice miasta: ");
-        String district = new String(scanner.nextLine());
-
-        PlaceType placeType = PlaceType.fromPolishString(readOptionsFromUser("Rodzaj zakwaterowania: ", Arrays.asList("MIESZKANIE", "POKOJ", "LOZKO")));
+        PlaceType placeType = PlaceType.fromPolishString(readOptionsFromUser("Rodzaj zakwaterowania: ", Arrays.asList("MIESZKANIE", "POKÓJ", "ŁÓŻKO")));
 
         Double area = readDoubleFromUser("Powierzchnia (w m2): ");
 
@@ -183,16 +202,14 @@ public class AddingAnnouncement {
 
         boolean onlyLongTerm = readBooleanFromUser("Czy preferujesz wynajem długoterminowy");
 
-        BigDecimal price = readBigDecimalFromUser("Cena (PLN): ");
+        BigDecimal price = readBigDecimalFromUser("Cena (" + Properties.getCurrency() + "):");
 
-        System.out.print("Dodatkowy opis mieszkania: ");
-        String description = new String(scanner.nextLine());
+        String description = readStringFromUser("Dodatkowy opis mieszkania: ");
+        
+        String author = readStringFromUser("Podaj swoje imię i nazwisko: ");
 
-        System.out.print("Podaj swoje imię i nazwisko: ");
-        String author = new String(scanner.nextLine());
+        String contact = readStringFromUser("Zostaw swojego maila lub numer telefonu: ");
 
-        System.out.print("Zostaw swojego maila lub numer telefonu: ");
-        String contact = new String(scanner.nextLine());
 
         long id = getId();
 
