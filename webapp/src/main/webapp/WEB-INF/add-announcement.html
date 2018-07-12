@@ -1,0 +1,35 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Dodaj ogłoszenie</h1>
+<form method="post" action="/add-announcement">
+    Tytul ogloszenie: <input type="text" name="title"/><br/><br/>
+    Miasto: <input type="text" name="city"/><br/><br/>
+    Dzielnica: <input type="text" name="district"/><br/><br/>
+    Rodzaj zakwaterowania: <input type="radio" name="placeType" value="APARTMENT"/> Mieszkanie
+                            <input type="radio" name="placeType" value="ROOM" /> Pokoj
+                            <input type="radio" name="placeType" value="BED" > Miejsce w pokoju <br/><br/>
+    Powierzchnia (w m2): <input type="text" name="area" /><br/><br/>
+    Liczba pokoi: <input type="text" name="rooms"/><br/><br/>
+    Pietro: <input type="text" name="floor"/><br/><br/>
+    Czy w budynku jest winda? <input type="radio" name="hasElevator" value="True"/> Tak
+                              <input type="radio" name="hasElevator" value="False"/> Nie <br/><br/>
+    Czy palenie w budynku jest dozwolone? <input type="radio" name="smokingAllowed" value="True" /> Tak
+                                            <input type="radio" name="smokingAllowed" value="False" /> Nie <br/><br/>
+    Czy zwierzeta w budynku jest dozwolone?  <input type="radio" name="animalsAllowed" value="True" /> Tak
+                                            <input type="radio" name="animalsAllowed" value="False" /> Nie <br/><br/>
+    Czy preferujesz wynajem dlugoterminowy? <input type="radio" name="onlyLongTerm" value="True" /> Tak
+                                            <input type="radio" name="onlyLongTerm" value="False" /> Nie <br/><br/>
+    Cena: <input type="text" name="price"/> <br/><br/>
+    Dodatkowy opis mieszkanie: <input type="text" name="description"/> <br/><br/>
+    Zostaw swojego maila lub numer telefonu: <input type="text" name="author"/> <br/><br/>
+</form>
+
+</body>
+</html>
