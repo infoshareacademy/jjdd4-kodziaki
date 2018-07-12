@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public enum PlaceType {
     APARTMENT("MIESZKANIE"),
-    ROOM("POKOJ"),
-    BED("LOZKO");
+    ROOM("POKÓJ"),
+    BED("ŁÓŻKO");
 
     private String polishString;
 

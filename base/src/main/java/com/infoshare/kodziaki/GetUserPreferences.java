@@ -27,7 +27,7 @@ public class GetUserPreferences {
         userPreferences.setMaxFloor(receiveIntegerValue("Piętro (do) "));
         userPreferences.setHasElevator(receiveYesOrNo("Winda "));
         userPreferences.setSmokingAllowed(receiveYesOrNo("Palenie dozwolone "));
-        userPreferences.setAnimalAllowed(receiveYesOrNo("Zwierzeta dozwolone "));
+        userPreferences.setAnimalAllowed(receiveYesOrNo("Zwierzęta dozwolone "));
         userPreferences.setOnlyLongTerm(receiveYesOrNo("Wynajem długoterminowy "));
 
         return userPreferences;
@@ -40,9 +40,9 @@ public class GetUserPreferences {
 
     private PlaceType receivePlaceType() {
         System.out.println("Typ ogłoszenia (wpisz 1, 2 lub 3, ENTER aby pominąć): ");
-        System.out.println("1| mieszkanie");
-        System.out.println("2| pokój");
-        System.out.println("3| miejsce w pokoju");
+        System.out.println("1| Mieszkanie");
+        System.out.println("2| Pokój");
+        System.out.println("3| Miejsce w pokoju");
 
         boolean askUserForValue = true;
         while (askUserForValue) {
