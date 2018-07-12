@@ -1,0 +1,43 @@
+<html>
+<body>
+<form method="get" action="/search-ads">
+    <!-- place type -->
+    <h3>Typ nieruchomości</h3>
+    <input type="radio" name="placeType" value="apartment"/>Mieszkanie
+    <input type="radio" name="placeType" value="room"/>Pokój
+    <input type="radio" name="placeType" value="bed"/>Miejsce w pokoju
+
+    <!-- localization -->
+
+    <!-- basic parameters -->
+    <h3>Cena</h3>
+    <input type="number" name="minPrice" placeholder="Od"/><br/>
+    <input type="number" name="maxPrice" placeholder="Do"/><br/>
+
+    <h3>Powierzchnia</h3>
+    <input type="number" name="minArea" placeholder="Od"/><br/>
+    <input type="number" name="maxArea" placeholder="Do"/><br/>
+
+    <h3>Piętro</h3>
+    <input type="number" name="minFloor" placeholder="Od"/><br/>
+    <input type="number" name="maxFloor" placeholder="Do"/><br/>
+
+    <h3>Liczba pokoi</h3>
+    <input type="number" name="minRooms" placeholder="Od"/><br/>
+    <input type="number" name="maxRooms" placeholder="Do"/><br/>
+
+    <!-- more parameters -->
+    <h3>Więcej parametrów</h3>
+    <input type="checkbox" name="animalsAllowed"/>Zwierzaki dozwolone
+    <input type="checkbox" name="smokingAllowed"/>Palenie dozwolone
+    <input type="checkbox" name="isElevator"/>Winda
+    <input type="checkbox" name="onlyLongTerm"/>Tylko wynajem długoterminowy
+
+
+
+
+
+
+</form>
+</body>
+</html>
