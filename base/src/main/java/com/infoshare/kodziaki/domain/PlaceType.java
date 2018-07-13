@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.domain;
 
 import java.util.Arrays;
 

@@ -1,5 +1,7 @@
 package com.infoshare.kodziaki;
 
+import com.infoshare.kodziaki.domain.PlaceType;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Arrays;

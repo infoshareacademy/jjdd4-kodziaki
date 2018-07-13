@@ -1,11 +1,17 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.repository;
 
+import com.infoshare.kodziaki.domain.Place;
+import com.infoshare.kodziaki.domain.PlaceType;
+import com.infoshare.kodziaki.domain.UserPreferences;
+
+import javax.ejb.Stateless;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FilterAdsByPreferences {
+@Stateless
+public class FilterAdsByPreferencesBean {
 
     public Optional<List<Place>> filterAdsByPreferences(List<Place> adsList, UserPreferences userPrefereces) {
 

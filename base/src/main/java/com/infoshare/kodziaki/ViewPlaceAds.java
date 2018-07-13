@@ -1,5 +1,7 @@
 package com.infoshare.kodziaki;
 
+import com.infoshare.kodziaki.domain.Place;
+
 import java.util.List;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
