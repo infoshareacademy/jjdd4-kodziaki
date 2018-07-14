@@ -9,26 +9,27 @@
 <body>
 <h1>Dodaj ogłoszenie</h1>
 <form method="post" action="/add-announcement">
-    Tytul ogloszenie: <input type="text" name="title"/><br/><br/>
+    Tytuł ogłoszenia: <input type="text" name="title"/><br/><br/>
     Miasto: <input type="text" name="city"/><br/><br/>
     Dzielnica: <input type="text" name="district"/><br/><br/>
-    Rodzaj zakwaterowania: <input type="radio" name="placeType" value="APARTMENT"/> Mieszkanie
-                            <input type="radio" name="placeType" value="ROOM" /> Pokoj
-                            <input type="radio" name="placeType" value="BED" > Miejsce w pokoju <br/><br/>
+    Rodzaj zakwaterowania: <input type="radio" name="placeType" value="Mieszkanie"/> Mieszkanie
+                            <input type="radio" name="placeType" value="Pokój" /> Pokój
+                            <input type="radio" name="placeType" value="Łóżko" > Miejsce w pokoju <br/><br/>
     Powierzchnia (w m2): <input type="text" name="area" /><br/><br/>
     Liczba pokoi: <input type="text" name="rooms"/><br/><br/>
-    Pietro: <input type="text" name="floor"/><br/><br/>
-    Czy w budynku jest winda? <input type="radio" name="hasElevator" value="True"/> Tak
-                              <input type="radio" name="hasElevator" value="False"/> Nie <br/><br/>
-    Czy palenie w budynku jest dozwolone? <input type="radio" name="smokingAllowed" value="True" /> Tak
-                                            <input type="radio" name="smokingAllowed" value="False" /> Nie <br/><br/>
-    Czy zwierzeta w budynku jest dozwolone?  <input type="radio" name="animalsAllowed" value="True" /> Tak
-                                            <input type="radio" name="animalsAllowed" value="False" /> Nie <br/><br/>
-    Czy preferujesz wynajem dlugoterminowy? <input type="radio" name="onlyLongTerm" value="True" /> Tak
-                                            <input type="radio" name="onlyLongTerm" value="False" /> Nie <br/><br/>
+    Piętro: <input type="text" name="floor"/><br/><br/>
+    Czy w budynku jest winda? <input type="radio" name="hasElevator" value="Tak"/> Tak
+                              <input type="radio" name="hasElevator" value="Nie"/> Nie <br/><br/>
+    Czy palenie w budynku jest dozwolone? <input type="radio" name="smokingAllowed" value="Tak" /> Tak
+                                            <input type="radio" name="smokingAllowed" value="Nie" /> Nie <br/><br/>
+    Czy zwierzęta w budynku są dozwolone?  <input type="radio" name="animalsAllowed" value="Tak" /> Tak
+                                            <input type="radio" name="animalsAllowed" value="Nie" /> Nie <br/><br/>
+    Czy preferujesz wynajem długoterminowy? <input type="radio" name="onlyLongTerm" value="Tak" /> Tak
+                                            <input type="radio" name="onlyLongTerm" value="Nie" /> Nie <br/><br/>
     Cena: <input type="text" name="price"/> <br/><br/>
     Dodatkowy opis mieszkanie: <input type="text" name="description"/> <br/><br/>
     Zostaw swojego maila lub numer telefonu: <input type="text" name="author"/> <br/><br/>
+    <input type="submit" name="save" value="Dodaj"/><br/><br/>
 </form>
 
 </body>

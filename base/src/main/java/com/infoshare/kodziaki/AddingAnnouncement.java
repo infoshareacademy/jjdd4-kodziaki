@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki;
 
+import javax.ejb.Stateless;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -8,6 +9,7 @@ import java.util.Scanner;
 
 import static java.util.stream.Collectors.joining;
 
+@Stateless
 public class AddingAnnouncement {
 
     private String filePath;
