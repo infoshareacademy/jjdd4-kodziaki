@@ -1,8 +1,8 @@
 package com.infoshare.kodziaki.repository;
 
-import com.infoshare.kodziaki.domain.Place;
-import com.infoshare.kodziaki.domain.PlaceType;
-import com.infoshare.kodziaki.domain.UserPreferences;
+import com.infoshare.kodziaki.model.Place;
+import com.infoshare.kodziaki.model.PlaceType;
+import com.infoshare.kodziaki.model.UserPreferences;
 
 import javax.ejb.Stateless;
 import java.util.List;

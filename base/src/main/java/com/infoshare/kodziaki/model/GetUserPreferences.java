@@ -1,9 +1,6 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.model;
 
-import com.infoshare.kodziaki.domain.Place;
-import com.infoshare.kodziaki.domain.PlaceType;
-import com.infoshare.kodziaki.domain.UserPreferences;
-import com.infoshare.kodziaki.domain.UserPreferencesBuilder;
+import com.infoshare.kodziaki.model.UserPreferencesBuilder;
 
 import java.math.BigDecimal;
 import java.util.*;

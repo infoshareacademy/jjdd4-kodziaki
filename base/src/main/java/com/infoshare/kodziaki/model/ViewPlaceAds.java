@@ -1,6 +1,4 @@
-package com.infoshare.kodziaki;
-
-import com.infoshare.kodziaki.domain.Place;
+package com.infoshare.kodziaki.model;
 
 import java.util.List;
 import java.text.DecimalFormat;

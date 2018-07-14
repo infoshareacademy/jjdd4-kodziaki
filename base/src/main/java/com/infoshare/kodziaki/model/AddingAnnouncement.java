@@ -1,6 +1,4 @@
-package com.infoshare.kodziaki;
-
-import com.infoshare.kodziaki.domain.PlaceType;
+package com.infoshare.kodziaki.model;
 
 import java.io.*;
 import java.math.BigDecimal;

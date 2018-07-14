@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.domain;
+package com.infoshare.kodziaki.model;
 
 import java.math.BigDecimal;
 

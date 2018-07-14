@@ -1,39 +1,74 @@
 <html>
+<head>
+    <meta charset="utf-8">
+</head>
 <body>
 <form method="get" action="/search-ads">
     <!-- place type -->
-    <h3>Typ nieruchomości</h3>
-    <input type="radio" name="placeType" value="apartment"/>Mieszkanie
-    <input type="radio" name="placeType" value="room"/>Pokój
-    <input type="radio" name="placeType" value="bed"/>Miejsce w pokoju
+    <p>Typ nieruchomości</p>
+    <select>
+            <option value="" disabled selected hidden>Wybierz</option>
+            <option value="apartment">Mieszkanie</option>
+            <option value="room">Pokój</option>
+            <option value="bed">Miejsce w pokoju</option>
+    </select>
 
     <!-- localization -->
+    <p>Lokalizacja</p>
     <input type="text" name="city" placeholder="Miasto"/><br/>
     <input type="text" name="district" placeholder="Dzielnica"/><br/>
 
     <!-- basic parameters -->
-    <h3>Cena</h3>
-    <input type="number" name="minPrice" placeholder="Od"/><br/>
-    <input type="number" name="maxPrice" placeholder="Do"/><br/>
+    <p>Cena</p>
 
-    <h3>Powierzchnia</h3>
-    <input type="number" name="minArea" placeholder="Od"/><br/>
-    <input type="number" name="maxArea" placeholder="Do"/><br/>
+    <input list="minPriceList" type="number" name="minPrice" placeholder="Od" min="0" step="0.01"><span>zł</span>
+    <datalist id="minPriceList">
+        <option value="500">
+        <option value="600">
+        <option value="700">
+        <option value="800">
+        <option value="900">
+        <option value="1000">
+        <option value="1500">
+        <option value="2000">
+        <option value="2500">
+    </datalist><br/>
 
-    <h3>Piętro</h3>
-    <input type="number" name="minFloor" placeholder="Od"/><br/>
-    <input type="number" name="maxFloor" placeholder="Do"/><br/>
+    <input list="maxPriceList" type="number" name="maxPrice" placeholder="Do" min="0" step="0.01"><span>zł</span>
+    <datalist id="maxPriceList">
+        <option value="500">
+        <option value="600">
+        <option value="700">
+        <option value="800">
+        <option value="900">
+        <option value="1000">
+        <option value="1500">
+        <option value="2000">
+        <option value="2500">
+    </datalist><br/>
 
-    <h3>Liczba pokoi</h3>
-    <input type="number" name="minRooms" placeholder="Od"/><br/>
-    <input type="number" name="maxRooms" placeholder="Do"/><br/>
+    <p>Powierzchnia</p>
+    <input type="number" name="minArea" placeholder="Od" min="0" step="0.01"/><br/>
+    <input type="number" name="maxArea" placeholder="Do" min="0" step="0.01"/><br/>
+
+    <p>Piętro</p>
+    <input type="number" name="minFloor" placeholder="Od" min="0"/><br/>
+    <input type="number" name="maxFloor" placeholder="Do" min="0"/><br/>
+
+    <p>Liczba pokoi</p>
+    <input type="number" name="minRooms" placeholder="Od" min="0"/><br/>
+    <input type="number" name="maxRooms" placeholder="Do" min="0"/><br/>
 
     <!-- more parameters -->
-    <h3>Więcej parametrów</h3>
-    <input type="checkbox" name="animalsAllowed"/>Zwierzaki dozwolone
-    <input type="checkbox" name="smokingAllowed"/>Palenie dozwolone
-    <input type="checkbox" name="isElevator"/>Winda
-    <input type="checkbox" name="onlyLongTerm"/>Tylko wynajem długoterminowy
+    <p>Więcej parametrów</p>
+    <input type="radio" name="animalsAllowed" value="false" />Nie przepadam za zwierzakami<br/>
+    <input type="radio" name="animalsAllowed" value="true" />Mam zwierzaka!<br/><br/>
+
+    <input type="radio" name="smokingAllowed" value="false" />Palaczom mówię nie<br/>
+    <input type="radio" name="smokingAllowed" value="true" />Palę fajki<br/><br/>
+
+    <input type="checkbox" name="isElevator"/>Jestem leniem, winda musi być<br/>
+    <input type="checkbox" name="onlyLongTerm"/>Interesuje mnie tylko wynajem długoterminowy<br/>
 
 </form>
 </body>

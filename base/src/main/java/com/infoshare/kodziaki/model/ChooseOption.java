@@ -1,7 +1,5 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.model;
 
-import com.infoshare.kodziaki.domain.Place;
-import com.infoshare.kodziaki.domain.UserPreferences;
 import com.infoshare.kodziaki.repository.CsvReader;
 import com.infoshare.kodziaki.repository.FilterAdsByPreferencesBean;
 
@@ -11,9 +9,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import static com.infoshare.kodziaki.Menu.mainMenu;
-import static com.infoshare.kodziaki.Properties.displayProperties;
-import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
+import static com.infoshare.kodziaki.model.Menu.mainMenu;
+import static com.infoshare.kodziaki.model.Properties.displayProperties;
+import static com.infoshare.kodziaki.model.ViewPlaceAds.viewPlaceAds;
 
 public class ChooseOption {
 

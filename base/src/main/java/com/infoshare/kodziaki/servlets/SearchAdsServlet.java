@@ -1,8 +1,8 @@
 package com.infoshare.kodziaki.servlets;
 
 import com.infoshare.kodziaki.dao.AdsRepositoryDaoBean;
-import com.infoshare.kodziaki.domain.PlaceType;
-import com.infoshare.kodziaki.domain.UserPreferences;
+import com.infoshare.kodziaki.model.PlaceType;
+import com.infoshare.kodziaki.model.UserPreferences;
 import com.infoshare.kodziaki.repository.FilterAdsByPreferencesBean;
 
 import javax.inject.Inject;
@@ -65,7 +65,6 @@ public class SearchAdsServlet extends HttpServlet {
                 onlyLongTerm);
 
         filterAdsByPreferencesBean.filterAdsByPreferences(adsRepositoryDaoBean.getAdsList(), userPreferences);
-
     }
 
     private Boolean parseToBoolean(String parameter) {

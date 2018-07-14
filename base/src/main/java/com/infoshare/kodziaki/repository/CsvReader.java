@@ -1,8 +1,8 @@
 package com.infoshare.kodziaki.repository;
 
-import com.infoshare.kodziaki.domain.Place;
-import com.infoshare.kodziaki.domain.PlaceBuilder;
-import com.infoshare.kodziaki.domain.PlaceType;
+import com.infoshare.kodziaki.model.Place;
+import com.infoshare.kodziaki.model.PlaceBuilder;
+import com.infoshare.kodziaki.model.PlaceType;
 
 import java.io.BufferedReader;
 import java.io.IOException;

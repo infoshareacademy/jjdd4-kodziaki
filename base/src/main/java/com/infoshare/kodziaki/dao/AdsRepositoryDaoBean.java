@@ -1,8 +1,8 @@
 package com.infoshare.kodziaki.dao;
 
 import com.infoshare.kodziaki.repository.CsvReader;
-import com.infoshare.kodziaki.domain.Place;
-import com.infoshare.kodziaki.Properties;
+import com.infoshare.kodziaki.model.Place;
+import com.infoshare.kodziaki.model.Properties;
 
 import javax.ejb.Stateless;
 import java.io.FileReader;
