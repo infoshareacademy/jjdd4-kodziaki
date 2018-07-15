@@ -13,16 +13,16 @@
     Miasto: <input type="text" name="city"/><br/><br/>
     Dzielnica: <input type="text" name="district"/><br/><br/>
     Typ nieruchomości:
-    <select>
+    <select name="placeType">
         <option value="" disabled selected hidden>Wybierz</option>
         <option value="apartment">Mieszkanie</option>
         <option value="room">Pokój</option>
         <option value="bed">Miejsce w pokoju</option>
     </select> <br/><br/>
-    Powierzchnia: <input type="number" name="Area" placeholder="Podaj powierzchnie w m2" min="0" step="0.01"/><br/><br/>
+    Powierzchnia: <input type="number" name="area" placeholder="Podaj powierzchnie w m2" min="0" step="0.01"/><br/><br/>
     Liczba pokoi:
-    <select>
-        <option value=""disabled selected hidden>Wybierz</option>
+    <select name="rooms">
+        <option value="" disabled selected hidden>Wybierz</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -35,43 +35,45 @@
         <option value="10">10</option>
     </select> <br/><br/>
     Piętro:
-    <select>
-    <option value=""disabled selected hidden>Wybierz</option>
-    <option value="0">Parter</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-    <option value="17">17</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-    <option value="20">20</option>
-    </select>  <br/><br/>
+    <select name="floor">
+        <option value="" disabled selected hidden>Wybierz</option>
+        <option value="0">Parter</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+    </select> <br/><br/>
     Czy w budynku jest winda? <input type="radio" name="hasElevator" value="Tak"/> Tak
-                              <input type="radio" name="hasElevator" value="Nie"/> Nie <br/><br/>
-    Czy palenie w budynku jest dozwolone? <input type="radio" name="smokingAllowed" value="Tak" /> Tak
-                                            <input type="radio" name="smokingAllowed" value="Nie" /> Nie <br/><br/>
-    Czy zwierzęta w budynku są dozwolone?  <input type="radio" name="animalsAllowed" value="Tak" /> Tak
-                                            <input type="radio" name="animalsAllowed" value="Nie" /> Nie <br/><br/>
-    Czy preferujesz wynajem długoterminowy? <input type="radio" name="onlyLongTerm" value="Tak" /> Tak
-                                            <input type="radio" name="onlyLongTerm" value="Nie" /> Nie <br/><br/>
-    Cena:  <input type="number" name="Price" placeholder="Cena w PLN" min="0" step="0.01"/><br/><br/>
+    <input type="radio" name="hasElevator" value="Nie"/> Nie <br/><br/>
+    Czy palenie w budynku jest dozwolone? <input type="radio" name="smokingAllowed" value="Tak"/> Tak
+    <input type="radio" name="smokingAllowed" value="Nie"/> Nie <br/><br/>
+    Czy zwierzęta w budynku są dozwolone? <input type="radio" name="animalsAllowed" value="Tak"/> Tak
+    <input type="radio" name="animalsAllowed" value="Nie"/> Nie <br/><br/>
+    Czy preferujesz wynajem długoterminowy? <input type="radio" name="onlyLongTerm" value="Tak"/> Tak
+    <input type="radio" name="onlyLongTerm" value="Nie"/> Nie <br/><br/>
+    Cena: <input type="number" name="Price" placeholder="Cena w PLN" min="0" step="0.01"/><br/><br/>
     Dodatkowy opis: <br/><br/>
-    <textarea name="Description" cols="50" rows="10">Tutaj mozesz umiescic dodatkowe informacje dotyczace wynajmu...</textarea> <br/><br/>
-    Zostaw swojego maila lub numer telefonu: <input type="text" name="author"/> <br/><br/>
-    <input type="submit" name="save" value="Dodaj"/>         <input type="reset" value="Wyczyść dane" /> <br/><br/>
+    <textarea name="description" cols="50"
+              rows="10">Tutaj mozesz umiescic dodatkowe informacje dotyczace wynajmu...</textarea> <br/><br/>
+    Podaj swoje imie i nazwisko: <input type="text" name="author"/> <br/><br/>
+    Zostaw swojego maila lub numer telefonu: <input type="text" name="contact"/> <br/><br/>
+    <input type="submit" name="save" value="Dodaj"/> <input type="reset" value="Wyczyść dane"/> <br/><br/>
 </form>
 
 </body>

@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 import static java.util.stream.Collectors.joining;
 
-@Stateless
 public class AddingAnnouncement {
 
     private String filePath;
