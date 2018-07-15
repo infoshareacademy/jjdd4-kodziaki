@@ -1,4 +1,6 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.model;
+
+import com.infoshare.kodziaki.model.UserPreferences;
 
 import java.math.BigDecimal;
 import java.util.*;

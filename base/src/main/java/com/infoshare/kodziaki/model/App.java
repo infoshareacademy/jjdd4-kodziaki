@@ -1,11 +1,11 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.model;
 
 import java.io.FileNotFoundException;
 
-import static com.infoshare.kodziaki.ChooseOption.chooseOption;
-import static com.infoshare.kodziaki.Logo.logo;
-import static com.infoshare.kodziaki.Menu.mainMenu;
-import static com.infoshare.kodziaki.Properties.readProperties;
+import static com.infoshare.kodziaki.model.ChooseOption.chooseOption;
+import static com.infoshare.kodziaki.model.Logo.logo;
+import static com.infoshare.kodziaki.model.Menu.mainMenu;
+import static com.infoshare.kodziaki.model.Properties.readProperties;
 
 
 public class App {

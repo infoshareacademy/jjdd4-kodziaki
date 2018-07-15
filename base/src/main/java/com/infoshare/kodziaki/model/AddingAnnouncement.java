@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.model;
 
 import javax.ejb.Stateless;
 import java.io.*;

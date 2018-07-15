@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.model;
 
 import java.math.BigDecimal;
 
@@ -82,7 +82,9 @@ public class UserPreferences {
         this.district = district;
     }
 
-    public void setMinPrice(BigDecimal minPrice) { this.minPrice = minPrice; }
+    public void setMinPrice(BigDecimal minPrice) {
+        this.minPrice = minPrice;
+    }
 
     public void setMaxPrice(BigDecimal maxPrice) {
         this.maxPrice = maxPrice;
@@ -100,11 +102,17 @@ public class UserPreferences {
         this.minRooms = minRooms;
     }
 
-    public void setMaxRooms(Integer maxRooms) { this.maxRooms = maxRooms; }
+    public void setMaxRooms(Integer maxRooms) {
+        this.maxRooms = maxRooms;
+    }
 
-    public void setMinFloor(Integer minFloor) { this.minFloor = minFloor; }
+    public void setMinFloor(Integer minFloor) {
+        this.minFloor = minFloor;
+    }
 
-    public void setMaxFloor(Integer maxFloor) { this.maxFloor = maxFloor; }
+    public void setMaxFloor(Integer maxFloor) {
+        this.maxFloor = maxFloor;
+    }
 
     public void setHasElevator(Boolean hasElevator) {
         this.hasElevator = hasElevator;
@@ -122,4 +130,59 @@ public class UserPreferences {
         this.onlyLongTerm = onlyLongTerm;
     }
 
+    public UserPreferences(){
+
+    }
+    public UserPreferences(PlaceType placeType,
+                           String city,
+                           String district,
+                           BigDecimal minPrice,
+                           BigDecimal maxPrice,
+                           Double minArea,
+                           Double maxArea,
+                           Integer minRooms,
+                           Integer maxRooms,
+                           Integer minFloor,
+                           Integer maxFloor,
+                           Boolean hasElevator,
+                           Boolean smokingAllowed,
+                           Boolean animalAllowed,
+                           Boolean onlyLongTerm) {
+        this.placeType = placeType;
+        this.city = city;
+        this.district = district;
+        this.minPrice = minPrice;
+        this.maxPrice = maxPrice;
+        this.minArea = minArea;
+        this.maxArea = maxArea;
+        this.minRooms = minRooms;
+        this.maxRooms = maxRooms;
+        this.minFloor = minFloor;
+        this.maxFloor = maxFloor;
+        this.hasElevator = hasElevator;
+        this.smokingAllowed = smokingAllowed;
+        this.animalAllowed = animalAllowed;
+        this.onlyLongTerm = onlyLongTerm;
+    }
+
+    @Override
+    public String toString() {
+        return "UserPreferences{" +
+                "placeType=" + placeType +
+                ", city='" + city + '\'' +
+                ", district='" + district + '\'' +
+                ", minPrice=" + minPrice +
+                ", maxPrice=" + maxPrice +
+                ", minArea=" + minArea +
+                ", maxArea=" + maxArea +
+                ", minRooms=" + minRooms +
+                ", maxRooms=" + maxRooms +
+                ", minFloor=" + minFloor +
+                ", maxFloor=" + maxFloor +
+                ", hasElevator=" + hasElevator +
+                ", smokingAllowed=" + smokingAllowed +
+                ", animalAllowed=" + animalAllowed +
+                ", onlyLongTerm=" + onlyLongTerm +
+                '}';
+    }
 }

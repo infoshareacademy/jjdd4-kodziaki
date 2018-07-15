@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki;
+package com.infoshare.kodziaki.model;
 
 public class Menu {
 
