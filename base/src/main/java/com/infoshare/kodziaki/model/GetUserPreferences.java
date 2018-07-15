@@ -1,6 +1,6 @@
 package com.infoshare.kodziaki.model;
 
-import com.infoshare.kodziaki.model.UserPreferencesBuilder;
+import com.infoshare.kodziaki.model.UserPreferences;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -15,7 +15,7 @@ public class GetUserPreferences {
                 + "\nPodaj opcje wyszukiwania."
                 + "\n==============================================");
 
-        UserPreferences userPreferences = new UserPreferencesBuilder().buildUserPreferences();
+        UserPreferences userPreferences = new UserPreferences();
         userPreferences.setPlaceType(receivePlaceType());
         userPreferences.setCity(receiveCity(adsList));
         userPreferences.setDistrict(receiveDistrict(userPreferences.getCity(), adsList));

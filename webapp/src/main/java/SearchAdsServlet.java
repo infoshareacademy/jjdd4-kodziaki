@@ -1,4 +1,3 @@
-package com.infoshare.kodziaki.servlets;
 
 import com.infoshare.kodziaki.dao.AdsRepositoryDaoBean;
 import com.infoshare.kodziaki.model.PlaceType;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 
 @WebServlet("/search-ads")
@@ -63,6 +63,9 @@ public class SearchAdsServlet extends HttpServlet {
                 smokingAllowed,
                 isElevator,
                 onlyLongTerm);
+
+        PrintWriter writer = resp.getWriter();
+        writer.println(userPreferences.toString());
 
         filterAdsByPreferencesBean.filterAdsByPreferences(adsRepositoryDaoBean.getAdsList(), userPreferences);
     }
