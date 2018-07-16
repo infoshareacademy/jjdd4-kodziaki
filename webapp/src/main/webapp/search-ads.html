@@ -3,14 +3,14 @@
     <meta charset="utf-8">
 </head>
 <body>
-<form method="get" action="/search-ads">
+<form method="post" action="http://127.0.0.1:8080/appPartments/search-ads">
     <!-- place type -->
     <p>Typ nieruchomości</p>
     <select>
-            <option value="" disabled selected hidden>Wybierz</option>
-            <option value="apartment">Mieszkanie</option>
-            <option value="room">Pokój</option>
-            <option value="bed">Miejsce w pokoju</option>
+        <option value="" disabled selected hidden>Wybierz</option>
+        <option value="apartment">Mieszkanie</option>
+        <option value="room">Pokój</option>
+        <option value="bed">Miejsce w pokoju</option>
     </select>
 
     <!-- localization -->
@@ -64,12 +64,14 @@
     <input type="radio" name="animalsAllowed" value="false" />Nie przepadam za zwierzakami<br/>
     <input type="radio" name="animalsAllowed" value="true" />Mam zwierzaka!<br/><br/>
 
-    <input type="radio" name="smokingAllowed" value="false" />Palaczom mówię nie<br/>
+    <input type="radio" name="smokingAllowed" value="false" />Nie palę<br/>
     <input type="radio" name="smokingAllowed" value="true" />Palę fajki<br/><br/>
 
-    <input type="checkbox" name="isElevator"/>Jestem leniem, winda musi być<br/>
+    <input type="checkbox" name="isElevator"/>Jestem leniem, tylko z windą<br/>
     <input type="checkbox" name="onlyLongTerm"/>Interesuje mnie tylko wynajem długoterminowy<br/>
 
+    <input type="submit"/>
+    <input type="reset"/>
 </form>
 </body>
 </html>
