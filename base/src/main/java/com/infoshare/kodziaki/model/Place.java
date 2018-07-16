@@ -1,30 +1,81 @@
 package com.infoshare.kodziaki.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "ADVERTISMENTS")
 public class Place {
 
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "placeType")
+    @NotNull
     private PlaceType placeType;
 
+    @Column(name = "price")
+    @NotNull
     private BigDecimal price;
+
+    @Column(name = "area")
+    @NotNull
     private double area;
+
+    @Column(name = "rooms")
+    @NotNull
     private int rooms;
+
+    @Column(name = "floor")
+    @NotNull
     private int floor;
 
+    @Column(name = "district")
+    @NotNull
     private String district;
+
+    @Column(name = "city")
+    @NotNull
     private String city;
 
+    @Column(name = "description", length = 2048)
+    @NotNull
     private String description;
+
+    @Column(name = "title")
+    @NotNull
     private String title;
 
+    @Column(name = "hasElevator")
+    @NotNull
     private boolean hasElevator;
+
+    @Column(name = "smokingAllowed")
+    @NotNull
     private boolean smokingAllowed;
+
+    @Column(name = "animalAllowed")
+    @NotNull
     private boolean animalAllowed;
+
+    @Column(name = "onlyLongTerm")
+    @NotNull
     private boolean onlyLongTerm;
 
+    @Column(name = "author")
+    @NotNull
     private String author;
+
+    @Column(name = "phoneNumber")
+    @NotNull
     private String phoneNumber;
+
+    public Place() {
+
+    }
 
     public Place(int id,
                  String title,
