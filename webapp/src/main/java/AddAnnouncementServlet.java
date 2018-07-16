@@ -1,4 +1,5 @@
 import com.infoshare.kodziaki.dao.AddAnnouncementDao;
+import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.PlaceType;
 
 import javax.inject.Inject;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-@WebServlet("/add-announcement")
+@WebServlet(urlPatterns = "/add-announcement")
 public class AddAnnouncementServlet extends HttpServlet {
 
     @Inject
@@ -91,7 +92,5 @@ public class AddAnnouncementServlet extends HttpServlet {
         }
         return true;
     }
-    
-    AddAnnouncementDao a1 = new AddAnnouncementDao();
 
 }
