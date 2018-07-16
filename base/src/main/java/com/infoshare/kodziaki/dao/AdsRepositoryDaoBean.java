@@ -12,6 +12,7 @@ import java.util.List;
 @Stateless
 public class AdsRepositoryDaoBean {
     public List<Place> getAdsList() throws IOException {
-        return CsvReader.readFile(new FileReader(Properties.getAdsFilePath()));
+        CsvReader csvReader = new CsvReader();
+        return csvReader.readFile(new FileReader(Properties.getAdsFilePath()));
     }
 }

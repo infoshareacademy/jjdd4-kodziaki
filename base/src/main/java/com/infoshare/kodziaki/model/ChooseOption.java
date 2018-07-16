@@ -40,7 +40,8 @@ public class ChooseOption {
         switch (option) {
             case 1:
                 try {
-                    List<Place> adsList = CsvReader.readFile(new FileReader(Properties.getAdsFilePath()));
+                    CsvReader csvReader = new CsvReader();
+                    List<Place> adsList = csvReader.readFile(new FileReader(Properties.getAdsFilePath()));
                     GetUserPreferences getUserPreferences = new GetUserPreferences();
                     UserPreferences userPreferences = getUserPreferences.getUserPreferences(adsList);
 
