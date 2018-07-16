@@ -1,22 +1,17 @@
-package Freemarker;
+package freemarker;
 
 import freemarker.template.Configuration;
-import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.servlet.ServletContext;
 import java.io.IOException;
 
 @ApplicationScoped
-public class FreemarkerClient {
-
-
-    private final String TEMPLATE_DIRECTORY_PATH = "WEB-INF/fm-templates";
+public class ConfigProvider {
 
     private Configuration configuration;
 
-    public Template getTemplate(ServletContext servletContext, String templateName) throws IOException {
+    public Configuration getConfiguration() throws IOException {
 
         if (configuration == null) {
             configuration = new Configuration(Configuration.VERSION_2_3_28);
@@ -25,9 +20,8 @@ public class FreemarkerClient {
             configuration.setLogTemplateExceptions(false);
             configuration.setWrapUncheckedExceptions(true);
         }
-        configuration.setServletContextForTemplateLoading(servletContext, TEMPLATE_DIRECTORY_PATH);
 
-        Template template = configuration.getTemplate(templateName);
-        return template;
+        return configuration;
+
     }
 }

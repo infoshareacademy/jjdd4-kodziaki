@@ -1,3 +1,5 @@
+package servlets;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -6,9 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
-import Freemarker.FreemarkerClient;
+import freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -23,12 +24,14 @@ public class MainPageServlet extends HttpServlet {
     private Logger LOG = LoggerFactory.getLogger(MainPageServlet.class);
 
     @Inject
-    private FreemarkerClient templateProvider;
+    private TemplateProvider templateProvider;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Template template = templateProvider.getTemplate(getServletContext(), "MainPage.ftlh");
-        Map<String, Object> dataModel = new HashMap<>(); // po co to? //
+        Map<String, Object> dataModel = new HashMap<>();
+
+        response.setContentType("text/html;charset=UTF-8");
 
         try {
             template.process(dataModel, response.getWriter());

@@ -30,11 +30,6 @@
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-            <#include "Header.ftlh">
-    </header>
-
     <!-- Page Features -->
     <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4">
@@ -51,7 +46,7 @@
         </div>
     </div>
 
-        <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
+    <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
 
     <div class="row2 text-center">
         <div class="col-lg-3 col-md-6 mb-4">
