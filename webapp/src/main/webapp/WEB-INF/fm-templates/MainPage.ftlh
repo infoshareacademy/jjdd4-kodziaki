@@ -49,11 +49,9 @@
         <div class="col-lg-3 col-md-6 mb-4">
             <#include "TeaseAdPromoted.ftlh">
         </div>
-    </div>
 
         <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
 
-    <div class="row2 text-center">
         <div class="col-lg-3 col-md-6 mb-4">
             <#include "TeaseAdNew.ftlh">
         </div>

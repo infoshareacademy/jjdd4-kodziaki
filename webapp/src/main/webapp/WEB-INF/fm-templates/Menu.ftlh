@@ -10,7 +10,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Search.ftlh">Szukaj ogłoszenia</a>
+                    <a class="nav-link" href="SearchAds.ftlh">Szukaj ogłoszenia</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Dodaj ogłoszenie</a>
