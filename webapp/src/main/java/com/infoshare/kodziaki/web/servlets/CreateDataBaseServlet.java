@@ -33,7 +33,7 @@ public class CreateDataBaseServlet extends HttpServlet {
             String path = getServletContext().getResource("/WEB-INF/files/ads.csv").getPath();
             List<Place> ads = csvReader.readFile(new FileReader(path));
             for (Place place: ads) {
-                placeDao.save(place);
+                placeDao.saveAd(place);
             }
         } catch (IOException e) {
             e.printStackTrace();

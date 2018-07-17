@@ -71,69 +71,36 @@ public class UserPreferences {
         return onlyLongTerm;
     }
 
-    public void setPlaceType(PlaceType placeType) {
-        this.placeType = placeType;
-    }
+    public void setPlaceType(PlaceType placeType) { this.placeType = placeType; }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+    public void setCity(String city) { this.city = city; }
 
-    public void setDistrict(String district) {
-        this.district = district;
-    }
+    public void setDistrict(String district) { this.district = district; }
 
-    public void setMinPrice(BigDecimal minPrice) {
-        this.minPrice = minPrice;
-    }
+    public void setMinPrice(BigDecimal minPrice) { this.minPrice = minPrice; }
 
-    public void setMaxPrice(BigDecimal maxPrice) {
-        this.maxPrice = maxPrice;
-    }
+    public void setMaxPrice(BigDecimal maxPrice) { this.maxPrice = maxPrice; }
 
-    public void setMinArea(Double minArea) {
-        this.minArea = minArea;
-    }
+    public void setMinArea(Double minArea) { this.minArea = minArea; }
 
-    public void setMaxArea(Double maxArea) {
-        this.maxArea = maxArea;
-    }
+    public void setMaxArea(Double maxArea) { this.maxArea = maxArea; }
 
-    public void setMinRooms(Integer minRooms) {
-        this.minRooms = minRooms;
-    }
+    public void setMinRooms(Integer minRooms) { this.minRooms = minRooms; }
 
-    public void setMaxRooms(Integer maxRooms) {
-        this.maxRooms = maxRooms;
-    }
+    public void setMaxRooms(Integer maxRooms) { this.maxRooms = maxRooms; }
 
-    public void setMinFloor(Integer minFloor) {
-        this.minFloor = minFloor;
-    }
+    public void setMinFloor(Integer minFloor) { this.minFloor = minFloor; }
 
-    public void setMaxFloor(Integer maxFloor) {
-        this.maxFloor = maxFloor;
-    }
+    public void setMaxFloor(Integer maxFloor) { this.maxFloor = maxFloor; }
 
-    public void setHasElevator(Boolean hasElevator) {
-        this.hasElevator = hasElevator;
-    }
+    public void setHasElevator(Boolean hasElevator) { this.hasElevator = hasElevator; }
 
-    public void setSmokingAllowed(Boolean smokingAllowed) {
-        this.smokingAllowed = smokingAllowed;
-    }
+    public void setSmokingAllowed(Boolean smokingAllowed) { this.smokingAllowed = smokingAllowed; }
 
-    public void setAnimalAllowed(Boolean animalAllowed) {
-        this.animalAllowed = animalAllowed;
-    }
+    public void setAnimalAllowed(Boolean animalAllowed) { this.animalAllowed = animalAllowed; }
 
-    public void setOnlyLongTerm(Boolean onlyLongTerm) {
-        this.onlyLongTerm = onlyLongTerm;
-    }
+    public void setOnlyLongTerm(Boolean onlyLongTerm) { this.onlyLongTerm = onlyLongTerm; }
 
-    public UserPreferences(){
-
-    }
     public UserPreferences(PlaceType placeType,
                            String city,
                            String district,
@@ -164,26 +131,5 @@ public class UserPreferences {
         this.smokingAllowed = smokingAllowed;
         this.animalAllowed = animalAllowed;
         this.onlyLongTerm = onlyLongTerm;
-    }
-
-    @Override
-    public String toString() {
-        return "UserPreferences{" +
-                "placeType=" + placeType +
-                ", city='" + city + '\'' +
-                ", district='" + district + '\'' +
-                ", minPrice=" + minPrice +
-                ", maxPrice=" + maxPrice +
-                ", minArea=" + minArea +
-                ", maxArea=" + maxArea +
-                ", minRooms=" + minRooms +
-                ", maxRooms=" + maxRooms +
-                ", minFloor=" + minFloor +
-                ", maxFloor=" + maxFloor +
-                ", hasElevator=" + hasElevator +
-                ", smokingAllowed=" + smokingAllowed +
-                ", animalAllowed=" + animalAllowed +
-                ", onlyLongTerm=" + onlyLongTerm +
-                '}';
     }
 }

@@ -20,26 +20,75 @@ public class PlaceDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public int save(Place place) {
+    public void saveAd(Place place) {
         entityManager.persist(place);
-        return place.getId();
     }
 
-    public List<Place> find(UserPreferences p) {
+    public List<Place> getAdsFilteredBy(UserPreferences pref) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Place> criteriaQuery = criteriaBuilder.createQuery(Place.class);
         Root<Place> root = criteriaQuery.from(Place.class);
         List<Predicate> predicates = new ArrayList<>();
-
-        if (p.isAnimalAllowed() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("animalAllowed"), p.isAnimalAllowed()));
+        
+        if (pref.getPlaceType() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("placeType"), pref.getPlaceType()));
         }
 
-        if (p.getMaxArea() != null) {
-            predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("area"), p.getMaxArea()));
+        if (pref.getCity() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("city"), pref.getCity()));
         }
 
-        predicates.add(criteriaBuilder.greaterThan(root.get("price"), 700));
+        if (pref.getDistrict() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("district"), pref.getDistrict()));
+        }
+
+        if (pref.getMinPrice() != null) {
+            predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), pref.getMinPrice()));
+        }
+        
+        if (pref.getMaxPrice() != null) {
+            predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("price"), pref.getMaxPrice()));
+        }
+
+        if (pref.getMinArea() != null) {
+            predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("area"), pref.getMinArea()));
+        }
+
+        if (pref.getMaxArea() != null) {
+            predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("area"), pref.getMaxArea()));
+        }
+
+        if (pref.getMinFloor() != null) {
+            predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("floor"), pref.getMinFloor()));
+        }
+
+        if (pref.getMaxFloor() != null) {
+            predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("floor"), pref.getMaxFloor()));
+        }
+
+        if (pref.getMinRooms() != null) {
+            predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("rooms"), pref.getMinRooms()));
+        }
+
+        if (pref.getMaxRooms() != null) {
+            predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("rooms"), pref.getMaxRooms()));
+        }
+
+        if (pref.isAnimalAllowed() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("animalAllowed"), pref.isAnimalAllowed()));
+        }
+
+        if (pref.isSmokingAllowed() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("smokingAllowed"), pref.isSmokingAllowed()));
+        }
+
+        if (pref.isHasElevator() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("hasElevator"), pref.isHasElevator()));
+        }
+
+        if (pref.isOnlyLongTerm() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("onlyLongTerm"), pref.isOnlyLongTerm()));
+        }
 
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
         Query query = entityManager.createQuery(criteriaQuery);
