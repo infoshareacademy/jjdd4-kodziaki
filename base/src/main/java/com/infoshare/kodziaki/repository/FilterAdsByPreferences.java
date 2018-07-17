@@ -10,8 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Stateless
-public class FilterAdsByPreferencesBean {
+public class FilterAdsByPreferences {
 
     public Optional<List<Place>> filterAdsByPreferences(List<Place> adsList, UserPreferences userPrefereces) {
 

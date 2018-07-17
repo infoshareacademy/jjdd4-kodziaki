@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki.model;
 
+import javax.enterprise.context.RequestScoped;
 import java.math.BigDecimal;
 
 public class UserPreferences {

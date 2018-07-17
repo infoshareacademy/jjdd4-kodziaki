@@ -1,7 +1,7 @@
 package com.infoshare.kodziaki.model;
 
 import com.infoshare.kodziaki.repository.CsvReader;
-import com.infoshare.kodziaki.repository.FilterAdsByPreferencesBean;
+import com.infoshare.kodziaki.repository.FilterAdsByPreferences;
 
 import java.io.FileReader;
 import java.util.InputMismatchException;
@@ -45,7 +45,7 @@ public class ChooseOption {
                     GetUserPreferences getUserPreferences = new GetUserPreferences();
                     UserPreferences userPreferences = getUserPreferences.getUserPreferences(adsList);
 
-                    FilterAdsByPreferencesBean filterAdsByPreferences = new FilterAdsByPreferencesBean();
+                    FilterAdsByPreferences filterAdsByPreferences = new FilterAdsByPreferences();
                     Optional<List<Place>> filteredAdsList =
                             filterAdsByPreferences.filterAdsByPreferences(adsList, userPreferences);
 

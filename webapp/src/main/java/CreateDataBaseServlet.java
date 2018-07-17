@@ -24,20 +24,20 @@ public class CreateDataBaseServlet extends HttpServlet {
     private PlaceDao placeDao;
 
     /* Used to create database from csv file*/
-//    @Override
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//
-//        try {
-//            String path = getServletContext().getResource("/WEB-INF/files/ads.csv").getPath();
-//            List<Place> ads = csvReader.readFile(new FileReader(path));
-//            for (Place place: ads) {
-//                placeDao.save(place);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+
+        try {
+            String path = getServletContext().getResource("/WEB-INF/files/ads.csv").getPath();
+            List<Place> ads = csvReader.readFile(new FileReader(path));
+            for (Place place: ads) {
+                placeDao.save(place);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

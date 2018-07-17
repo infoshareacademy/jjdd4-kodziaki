@@ -1,6 +1,8 @@
 
+import com.infoshare.kodziaki.dao.PlaceDao;
+import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.PlaceType;
-import com.infoshare.kodziaki.repository.FilterAdsByPreferencesBean;
+import com.infoshare.kodziaki.model.UserPreferences;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -11,12 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.List;
 
 @WebServlet("/search-ads")
 public class SearchAdsServlet extends HttpServlet {
 
     @Inject
-    private FilterAdsByPreferencesBean filterAdsByPreferencesBean;
+    private PlaceDao placeDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,56 +34,55 @@ public class SearchAdsServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         writer.print("siema doPost");
 
-        PlaceType placeType = parseToPlaceType(req);
+        UserPreferences userPreferences = new UserPreferences();
 
-        String city = req.getParameter("city");
-        String district = req.getParameter("district");
+        userPreferences.setMinPrice();
 
-        BigDecimal minPrice = parseToBigDecimal(req.getParameter("minPrice"));
-        BigDecimal maxPrice = parseToBigDecimal(req.getParameter("maxPrice"));
+        userPreferences.setMinArea(parseToDouble(req.getParameter("minArea")));
+        userPreferences.setMaxArea(parseToDouble(req.getParameter("maxArea")));
 
-        Double minArea = parseToDouble(req.getParameter("minArea"));
-        Double maxArea = parseToDouble(req.getParameter("maxArea"));
+        userPreferences.setMinFloor(parseToInteger(req.getParameter("minFloor")));
+        userPreferences.setMaxFloor(parseToInteger(req.getParameter("maxFloor")));
 
-        Integer minFloor = parseToInteger(req.getParameter("minFloor"));
-        Integer maxFloor = parseToInteger(req.getParameter("maxFloor"));
+        userPreferences.setMinRooms(parseToInteger(req.getParameter("minRooms")));
+        userPreferences.setMaxRooms(parseToInteger(req.getParameter("maxRooms")));
 
-        Integer minRooms = parseToInteger(req.getParameter("minRooms"));
-        Integer maxRooms = parseToInteger(req.getParameter("maxRooms"));
+        userPreferences.setAnimalAllowed(parseToBoolean(req.getParameter("animalsAllowed")));
+        userPreferences.setSmokingAllowed(parseToBoolean(req.getParameter("smokingAllowed")));
+        userPreferences.setHasElevator(parseToBoolean(req.getParameter("isElevator")));
+        userPreferences.setOnlyLongTerm(parseToBoolean(req.getParameter("onlyLongTerm")));
 
-        Boolean animalsAllowed = parseToBoolean(req.getParameter("animalsAllowed"));
-        Boolean smokingAllowed = parseToBoolean(req.getParameter("smokingAllowed"));
-        Boolean isElevator = parseToBoolean(req.getParameter("isElevator"));
-        Boolean onlyLongTerm = parseToBoolean(req.getParameter("onlyLongTerm"));
+        userPreferences.setMinPrice(parseToBigDecimal(req.getParameter("minPrice")));
+        userPreferences.setMaxPrice(parseToBigDecimal(req.getParameter("maxPrice")));
 
-        UserPreferences userPreferences = new UserPreferences(
-                placeType,
-                city,
-                district,
-                minPrice,
-                maxPrice,
-                minArea,
-                maxArea,
-                minFloor,
-                maxFloor,
-                minRooms,
-                maxRooms,
-                animalsAllowed,
-                smokingAllowed,
-                isElevator,
-                onlyLongTerm);
+        writer.println(userPreferences.getMinPrice());
+        writer.println(userPreferences.getMaxPrice());
 
-        PrintWriter writer = resp.getWriter();
-        writer.println(userPreferences.toString());
+//
+//        List<Place> places = placeDao.find(userPreferences);
+//        places.stream().map(Place::getId).peek(writer::println);
 
-        filterAdsByPreferencesBean.filterAdsByPreferences(adsRepositoryDaoBean.getAdsList(), userPreferences);
+//        PlaceType placeType = parseToPlaceType(req);
+
+//        String city = req.getParameter("city");
+//        String district = req.getParameter("district");
+//
+//        BigDecimal minPrice = parseToBigDecimal(req.getParameter("minPrice"));
+//        BigDecimal maxPrice = parseToBigDecimal(req.getParameter("maxPrice"));
+
     }
 
     private Boolean parseToBoolean(String parameter) {
         if (parameter == null) {
-            return false;
+            return null;
         }
-        return true;
+        switch (parameter) {
+            case "true":
+                return true;
+            case "false":
+                return false;
+        }
+        return null;
     }
 
     private Integer parseToInteger(String parameter) {
@@ -103,18 +105,18 @@ public class SearchAdsServlet extends HttpServlet {
         }
         return BigDecimal.valueOf(Double.parseDouble(parameter));
     }
-
-    private PlaceType parseToPlaceType(HttpServletRequest req) {
-        switch (req.getParameter("placeType")) {
-            case "apartment":
-                return PlaceType.APARTMENT;
-            case "room":
-                return PlaceType.ROOM;
-            case "bed":
-                return PlaceType.BED;
-            default:
-                return null;
-        }
-    }
+//
+//    private PlaceType parseToPlaceType(HttpServletRequest req) {
+//        switch (req.getParameter("placeType")) {
+//            case "apartment":
+//                return PlaceType.APARTMENT;
+//            case "room":
+//                return PlaceType.ROOM;
+//            case "bed":
+//                return PlaceType.BED;
+//            default:
+//                return null;
+//        }
+//    }
 
 }
