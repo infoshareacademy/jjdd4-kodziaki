@@ -1,7 +1,6 @@
+package com.infoshare.kodziaki.web.servlets;
 
-import com.infoshare.kodziaki.dao.PlaceDao;
-import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.PlaceType;
+import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.model.UserPreferences;
 
 import javax.inject.Inject;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
-import java.util.List;
 
 @WebServlet("/search-ads")
 public class SearchAdsServlet extends HttpServlet {

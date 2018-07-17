@@ -1,8 +1,5 @@
 package com.infoshare.kodziaki.model;
 
-import com.infoshare.kodziaki.repository.CsvReader;
-import com.infoshare.kodziaki.repository.FilterAdsByPreferences;
-
 import java.io.FileReader;
 import java.util.InputMismatchException;
 import java.util.List;

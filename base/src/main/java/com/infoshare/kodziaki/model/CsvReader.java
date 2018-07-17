@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.repository;
+package com.infoshare.kodziaki.model;
 
 import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.PlaceBuilder;

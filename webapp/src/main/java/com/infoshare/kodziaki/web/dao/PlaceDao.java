@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.dao;
+package com.infoshare.kodziaki.web.dao;
 
 import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.UserPreferences;
