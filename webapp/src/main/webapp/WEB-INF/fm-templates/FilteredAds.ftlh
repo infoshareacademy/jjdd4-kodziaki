@@ -31,7 +31,7 @@
 <div class="container">
     <ul>
         <#list ads as ad>
-            <#include TeaseAd>
+            <#include "TeaseAd.ftlh">
         </#list>
     </ul>
 </div>

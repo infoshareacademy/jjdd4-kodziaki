@@ -31,8 +31,8 @@
 <div class="container">
 
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4">Tytuł: ${ad.title}
-        <small>Miasto: ${ad.city}, Dzielnica: ${ad.district}</small>
+    <h1 class="my-4">Tytuł:
+        <small>Miasto: , Dzielnica: </small>
     </h1>
 
     <!-- Portfolio Item Row -->
@@ -45,19 +45,33 @@
         <div class="col-md-4">
             <h3 class="my-3">Szczegółowe informacje:</h3>
             <ul>
-                <li>Typ: ${ad.placeType}</li>
-                <li>Powierzchnia: ${ad.area} </li>
-                <li>Liczba pokoi: ${ad.rooms}</li>
-                <li>Piętro: #{ad.floor}</li>
-                <li>Winda: ${ad.hasElevator} </li>
-                <li>Zwierzęta dozwolone: ${ad.animalAllowed} </li>
-                <li>Dla niepalących: ${ad.smokingAllowed}</li>
-                <li>Długoterminowo: ${ad.onlyLongTerm} </li>
-                <li>Opis: ${ad.description}</li>
-                <li>Cena: ${ad.price}</li>
-                <li>Autor: ${ad.author}</li>
-                <li>Kontakt: ${ad.phoneNumber}</li>
-                <li>ID: ${ad.id}</li>
+                <li>Typ: </li>
+                <li>Powierzchnia: </li>
+                <li>Liczba pokoi: </li>
+                <li>Piętro: </li>
+                <li>Winda: </li>
+                <li>Zwierzęta dozwolone: </li>
+                <li>Dla niepalących: </li>
+                <li>Długoterminowo:  </li>
+                <li>Opis: </li>
+                <li>Cena: </li>
+                <li>Autor: </li>
+                <li>Kontakt: </li>
+                <li>ID: </li>
+
+                <#--<li>Typ: ${ad.placeType}</li>-->
+                <#--<li>Powierzchnia: ${ad.area} </li>-->
+                <#--<li>Liczba pokoi: ${ad.rooms}</li>-->
+                <#--<li>Piętro: #{ad.floor}</li>-->
+                <#--<li>Winda: ${ad.hasElevator} </li>-->
+                <#--<li>Zwierzęta dozwolone: ${ad.animalAllowed} </li>-->
+                <#--<li>Dla niepalących: ${ad.smokingAllowed}</li>-->
+                <#--<li>Długoterminowo: ${ad.onlyLongTerm} </li>-->
+                <#--<li>Opis: ${ad.description}</li>-->
+                <#--<li>Cena: ${ad.price}</li>-->
+                <#--<li>Autor: ${ad.author}</li>-->
+                <#--<li>Kontakt: ${ad.phoneNumber}</li>-->
+                <#--<li>ID: ${ad.id}</li>-->
             </ul>
         </div>
 

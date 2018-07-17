@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/app-partments-webapp-1.0-SNAPSHOT/search")
+@WebServlet("/search")
 public class SearchAdsServlet extends HttpServlet {
 
     private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
