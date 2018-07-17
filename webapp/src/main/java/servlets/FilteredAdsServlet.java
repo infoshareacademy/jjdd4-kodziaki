@@ -16,16 +16,26 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/app-partments-webapp-1.0-SNAPSHOT/search")
-public class SearchAdsServlet extends HttpServlet {
+@WebServlet("/app-partments-webapp-1.0-SNAPSHOT/filtered")
+public class FilteredAdsServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
+    private Logger LOG = LoggerFactory.getLogger(FilteredAdsServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
 
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+        // tutaj metody do szukania ogłoszeń? Dao? FindAll itp.?
+    }
+
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
+
+        Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
 
         response.setContentType("text/html;charset=UTF-8");

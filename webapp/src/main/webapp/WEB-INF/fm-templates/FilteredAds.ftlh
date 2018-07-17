@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>appPARTMENTS: Search Ads</title>
+    <title>appPARTMENTS: Filtered Ads</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,19 +29,11 @@
 
 <!-- Page Content -->
 <div class="container">
-
-    <!-- -->
-    <!-- -->
-    <!-- -->
-    <!-- -->
-    <!-- -->
-    <!-- tutaj będzie formularz do wyszukiwania ogłoszeń -->
-    <!-- -->
-    <!-- -->
-    <!-- -->
-    <!-- -->
-    <!-- -->
-
+    <ul>
+        <#list ads as ad>
+            <#include TeaseAd>
+        </#list>
+    </ul>
 </div>
 <!-- /.container -->
 

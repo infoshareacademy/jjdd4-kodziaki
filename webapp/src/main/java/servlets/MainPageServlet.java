@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 
 
-@WebServlet("/main")
+@WebServlet("/app-partments-webapp-1.0-SNAPSHOT/main")
 public class MainPageServlet extends HttpServlet {
 
     private Logger LOG = LoggerFactory.getLogger(MainPageServlet.class);

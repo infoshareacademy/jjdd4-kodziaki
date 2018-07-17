@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+    <title>appPARTMENTS main</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,16 +53,16 @@
         <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
 
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdNew.ftlh">
+            <#include "TeaseAd.ftlh">
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdNew.ftlh">
+            <#include "TeaseAd.ftlh">
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdNew.ftlh">
+            <#include "TeaseAd.ftlh">
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdNew.ftlh">
+            <#include "TeaseAd.ftlh">
         </div>
     </div>
     <!-- /.row -->

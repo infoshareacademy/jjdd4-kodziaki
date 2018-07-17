@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+    <title>appPARTMENTS: Detailed Ad</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,8 +31,8 @@
 <div class="container">
 
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4">${ad.title}
-        <small>${ad.city}, ${ad.district}</small>
+    <h1 class="my-4">Tytuł: ${ad.title}
+        <small>Miasto: ${ad.city}, Dzielnica: ${ad.district}</small>
     </h1>
 
     <!-- Portfolio Item Row -->
@@ -106,4 +106,3 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-

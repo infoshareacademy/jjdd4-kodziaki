@@ -10,13 +10,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="SearchAds.ftlh">Szukaj ogłoszenia</a>
+                    <a class="nav-link" href="/filtered">Szukaj ogłoszenia</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dodaj ogłoszenie</a>
+                    <a class="nav-link" href="/add">Dodaj ogłoszenie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Zaloguj się</a>
+                    <a class="nav-link" href="/login">Zaloguj się</a>
                 </li>
             </ul>
         </div>
