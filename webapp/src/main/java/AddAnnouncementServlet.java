@@ -1,4 +1,4 @@
-import com.infoshare.kodziaki.dao.AddAnnouncementDao;
+import com.infoshare.kodziaki.dao.PlaceDao;
 import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.PlaceType;
 
@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -15,40 +16,60 @@ import java.math.BigDecimal;
 public class AddAnnouncementServlet extends HttpServlet {
 
     @Inject
-    private AddAnnouncementDao addAnnouncementDao;
+    private PlaceDao placeDao;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
-        String title = req.getParameter("title");
+        String titleParam = req.getParameter("title");
 
-        PlaceType placeType = parseToPlaceType(req);
+        PlaceType placeTypeParam = parseToPlaceType(req);
 
-        BigDecimal price = parseToBigDecimal(req.getParameter("price"));
+        BigDecimal priceParam = parseToBigDecimal(req.getParameter("price"));
 
-        Double area = parseToDouble(req.getParameter("area"));
+        Double areaParam = parseToDouble(req.getParameter("area"));
 
-        Integer rooms = parseToInteger(req.getParameter("rooms"));
+        Integer roomsParam = parseToInteger(req.getParameter("rooms"));
 
-        Integer floor = parseToInteger(req.getParameter("floor"));
+        Integer floorParam = parseToInteger(req.getParameter("floor"));
 
-        String district = req.getParameter("district");
+        String districtParam = req.getParameter("district");
 
-        String city = req.getParameter("city");
+        String cityParam = req.getParameter("city");
 
-        Boolean isElevator = parseToBoolean(req.getParameter("isElevator"));
+        Boolean hasElevatorParam = parseToBoolean(req.getParameter("isElevator"));
 
-        Boolean smokingAllowed = parseToBoolean(req.getParameter("smokingAllowed"));
+        Boolean smokingAllowedParam = parseToBoolean(req.getParameter("smokingAllowed"));
 
-        Boolean animalsAllowed = parseToBoolean(req.getParameter("animalsAllowed"));
+        Boolean animalAllowedParam = parseToBoolean(req.getParameter("animalsAllowed"));
 
-        Boolean onlyLongTerm = parseToBoolean(req.getParameter("onlyLongTerm"));
+        Boolean onlyLongTermParam = parseToBoolean(req.getParameter("onlyLongTerm"));
 
-        String descriprion = req.getParameter("description");
+        String descriptionParam = req.getParameter("description");
 
-        String author = req.getParameter("author");
+        String authorParam = req.getParameter("author");
 
-        String contact = req.getParameter("contact");
+        String phoneNumberParam = req.getParameter("phoneNumber");
+
+        final Place place1 =  new Place();
+
+        place1.setTitle(titleParam);
+        place1.setPlaceType(placeTypeParam);
+        place1.setPrice(priceParam);
+        place1.setArea(areaParam);
+        place1.setRooms(roomsParam);
+        place1.setFloor(floorParam);
+        place1.setDistrict(districtParam);
+        place1.setCity(cityParam);
+        place1.setHasElevator(hasElevatorParam);
+        place1.setSmokingAllowed(smokingAllowedParam);
+        place1.setAnimalAllowed(animalAllowedParam);
+        place1.setOnlyLongTerm(onlyLongTermParam);
+        place1.setDescription(descriptionParam);
+        place1.setAuthor(authorParam);
+        place1.setPhoneNumber(phoneNumberParam);
+
+        placeDao.save(place1);
 
         }
 

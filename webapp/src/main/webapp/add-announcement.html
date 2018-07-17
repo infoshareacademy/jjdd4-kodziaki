@@ -8,20 +8,20 @@
 </head>
 <body>
 <h1>Dodaj ogłoszenie</h1>
-<form method="post" action="/add-announcement">
-    Tytuł ogłoszenia: <input type="text" name="title"/><br/><br/>
-    Miasto: <input type="text" name="city"/><br/><br/>
-    Dzielnica: <input type="text" name="district"/><br/><br/>
-    Typ nieruchomości:
-    <select name="placeType">
+<form method="post" action="add-announcement">
+    Tytuł ogłoszenia: <input type="text" name="title" required/><br/><br/>
+    Miasto: <input type="text" name="city" required/><br/><br/>
+    Dzielnica: <input type="text" name="district" required/><br/><br/>
+    Typ nieruchomości :
+    <select name="placeType" required>
         <option value="" disabled selected hidden>Wybierz</option>
         <option value="apartment">Mieszkanie</option>
         <option value="room">Pokój</option>
         <option value="bed">Miejsce w pokoju</option>
     </select> <br/><br/>
-    Powierzchnia: <input type="number" name="area" placeholder="Podaj powierzchnie w m2" min="0" step="0.01"/><br/><br/>
+    Powierzchnia: <input type="number" name="area" placeholder="Podaj powierzchnie w m2" min="0" step="0.01" required/><br/><br/>
     Liczba pokoi:
-    <select name="rooms">
+    <select name="rooms" required>
         <option value="" disabled selected hidden>Wybierz</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -35,7 +35,7 @@
         <option value="10">10</option>
     </select> <br/><br/>
     Piętro:
-    <select name="floor">
+    <select name="floor" required>
         <option value="" disabled selected hidden>Wybierz</option>
         <option value="0">Parter</option>
         <option value="1">1</option>
@@ -59,20 +59,20 @@
         <option value="19">19</option>
         <option value="20">20</option>
     </select> <br/><br/>
-    Czy w budynku jest winda? <input type="radio" name="hasElevator" value="Tak"/> Tak
-    <input type="radio" name="hasElevator" value="Nie"/> Nie <br/><br/>
-    Czy palenie w budynku jest dozwolone? <input type="radio" name="smokingAllowed" value="Tak"/> Tak
-    <input type="radio" name="smokingAllowed" value="Nie"/> Nie <br/><br/>
-    Czy zwierzęta w budynku są dozwolone? <input type="radio" name="animalsAllowed" value="Tak"/> Tak
-    <input type="radio" name="animalsAllowed" value="Nie"/> Nie <br/><br/>
-    Czy preferujesz wynajem długoterminowy? <input type="radio" name="onlyLongTerm" value="Tak"/> Tak
-    <input type="radio" name="onlyLongTerm" value="Nie"/> Nie <br/><br/>
-    Cena: <input type="number" name="Price" placeholder="Cena w PLN" min="0" step="0.01"/><br/><br/>
+    Czy w budynku jest winda? <input type="radio" name="hasElevator" value="True"/> Tak
+    <input type="radio" name="hasElevator" value="False"/> Nie <br/><br/>
+    Czy palenie w budynku jest dozwolone? <input type="radio" name="smokingAllowed" value="True"/> Tak
+    <input type="radio" name="smokingAllowed" value="False"/> Nie <br/><br/>
+    Czy zwierzęta w budynku są dozwolone? <input type="radio" name="animalAllowed" value="True"/> Tak
+    <input type="radio" name="animalAllowed" value="False"/> Nie <br/><br/>
+    Czy preferujesz wynajem długoterminowy? <input type="radio" name="onlyLongTerm" value="True"/> Tak
+    <input type="radio" name="onlyLongTerm" value="False"/> Nie <br/><br/>
+    Cena: <input type="number" name="price" placeholder="Cena w PLN" min="0" step="0.01"/><br/><br/>
     Dodatkowy opis: <br/><br/>
     <textarea name="description" cols="50"
-              rows="10">Tutaj mozesz umiescic dodatkowe informacje dotyczace wynajmu...</textarea> <br/><br/>
-    Podaj swoje imie i nazwisko: <input type="text" name="author"/> <br/><br/>
-    Zostaw swojego maila lub numer telefonu: <input type="text" name="contact"/> <br/><br/>
+              rows="10" required>Tutaj mozesz umiescic dodatkowe informacje dotyczace wynajmu...</textarea> <br/><br/>
+    Podaj swoje imie i nazwisko: <input type="text" name="author" required/> <br/><br/>
+    Zostaw swoj numer telefonu: <input type="text" name="phoneNumber" required/> <br/><br/>
     <input type="submit" name="save" value="Dodaj"/> <input type="reset" value="Wyczyść dane"/> <br/><br/>
 </form>
 
