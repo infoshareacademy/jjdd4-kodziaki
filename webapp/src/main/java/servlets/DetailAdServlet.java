@@ -26,12 +26,12 @@ public class DetailAdServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
-        Map<String, Object> dataModel = new HashMap<>();
+        Map<String, Object> detailAdParams = new HashMap<>();
 
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(dataModel.get(dataModel), response.getWriter());
+            template.process(detailAdParams.get(detailAdParams), response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }

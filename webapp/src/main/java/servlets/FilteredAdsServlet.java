@@ -36,12 +36,12 @@ public class FilteredAdsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
-        Map<String, Object> dataModel = new HashMap<>();
+        Map<String, Object> filteredAds = new HashMap<>();
 
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(dataModel, response.getWriter());
+            template.process(filteredAds, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }

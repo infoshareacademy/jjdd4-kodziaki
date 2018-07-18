@@ -16,24 +16,28 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/search")
-public class SearchAdsServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
+
+    private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
 
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
-        Map<String, String> adsParams = new HashMap<>();
+        Template template = templateProvider.getTemplate(getServletContext(), "Login.ftlh");
+        Map<String, Object> dataModel = new HashMap<>();
 
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(adsParams, response.getWriter());
+            template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }
+
     }
+
 }

@@ -4,8 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
  */
 
-body {
+html, body {
   padding-top: 54px;
+  min-height: 100%;
 }
 
 @media (min-width: 992px) {

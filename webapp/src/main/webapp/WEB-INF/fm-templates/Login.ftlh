@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>appPARTMENTS: Filtered Ads</title>
+    <title>appPARTMENTS main</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,11 +29,20 @@
 
 <!-- Page Content -->
 <div class="container">
-    <ul>
-        <#list filteredAds as ad>
-            <#include "TeaseAd.ftlh">
-        </#list>
-    </ul>
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+            <#include "Header.ftlh">
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4">
+            </br></br>Wiemy kim jesteś.</br></br>
+        </div>
+    </div>
+    <!-- /.row -->
+
 </div>
 <!-- /.container -->
 
