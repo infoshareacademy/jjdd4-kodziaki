@@ -68,5 +68,5 @@
         <label><input type="checkbox">Długoterminowo</label>
     </div>
     <div>
-        <button type="submit" class="search-button" href="filtered">Poka co tam macie</button
+        <button type="submit" class="search-button" href="filtered"> Poka co tam macie bo chcę już mieszkać </button>
     </div>
