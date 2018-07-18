@@ -24,7 +24,27 @@ public class PlaceDao {
         entityManager.persist(place);
     }
 
-    public List<Place> getAdsFilteredBy(UserPreferences pref) {
+    public List<Place> getAllAds() {
+        final Query query = entityManager.createQuery("SELECT p FROM Place p");
+        return (List<Place>) query.getResultList();
+    }
+
+    public Place findById(int id) {
+        return entityManager.find(Place.class, id);
+    }
+
+    public void delete(int id) {
+        final Place place = entityManager.find(Place.class, id);
+        if (place != null) {
+            entityManager.remove(place);
+        }
+    }
+
+    public Place update(Place place) {
+        return entityManager.merge(place);
+    }
+
+    public List<Place> getAdsByUserPreferences(UserPreferences pref) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Place> criteriaQuery = criteriaBuilder.createQuery(Place.class);
         Root<Place> root = criteriaQuery.from(Place.class);
