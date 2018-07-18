@@ -1,8 +1,8 @@
 package com.infoshare.kodziaki.web.servlets;
 
+import com.infoshare.kodziaki.model.CsvReader;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.CsvReader;
 
 import javax.inject.Inject;
 import javax.servlet.ServletConfig;
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/create-db")
@@ -24,24 +25,18 @@ public class CreateDataBaseServlet extends HttpServlet {
     @Inject
     private PlaceDao placeDao;
 
-    /* Used to create database from csv file*/
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String path = getServletContext().getResource("/WEB-INF/files/ads.csv").getPath();
             List<Place> ads = csvReader.readFile(new FileReader(path));
             for (Place place: ads) {
                 placeDao.saveAd(place);
+                PrintWriter writer = resp.getWriter();
+                writer.println(place.getDistrict());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
     }
 }

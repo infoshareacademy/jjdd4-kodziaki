@@ -49,19 +49,19 @@ public class Place {
     @NotNull
     private String title;
 
-    @Column(name = "hasElevator")
+    @Column(name = "hasElevator", columnDefinition = "BOOLEAN")
     @NotNull
     private boolean hasElevator;
 
-    @Column(name = "smokingAllowed")
+    @Column(name = "smokingAllowed", columnDefinition = "BOOLEAN")
     @NotNull
     private boolean smokingAllowed;
 
-    @Column(name = "animalAllowed")
+    @Column(name = "animalAllowed", columnDefinition = "BOOLEAN")
     @NotNull
     private boolean animalAllowed;
 
-    @Column(name = "onlyLongTerm")
+    @Column(name = "onlyLongTerm", columnDefinition = "BOOLEAN")
     @NotNull
     private boolean onlyLongTerm;
 

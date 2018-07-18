@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki.web.servlets;
 
+import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.PlaceType;
 import com.infoshare.kodziaki.model.UserPreferences;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/search-ads")
@@ -36,7 +38,7 @@ public class SearchAdsServlet extends HttpServlet {
 
         UserPreferences userPreferences = new UserPreferences(
                 parseToPlaceType(req.getParameter("placeType")),
-                req.getParameter("city"),
+                "Gda?sk",//req.getParameter("city"),
                 req.getParameter("district"),
                 parseToBigDecimal(req.getParameter("minPrice")),
                 parseToBigDecimal(req.getParameter("maxPrice")),
@@ -52,12 +54,12 @@ public class SearchAdsServlet extends HttpServlet {
                 parseToBoolean(req.getParameter("onlyLongTerm"))
         );
 
+        resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("userPreferences", userPreferences);
-        dataModel.put("ads", placeDao.getAdsFilteredBy(userPreferences));
-//        places.stream().map(Place::getId).peek(writer::println);
-
-
+        List<Place> adsList = placeDao.getAdsFilteredBy(userPreferences);
+//        adsList.stream().peek(p -> writer.println(p.getDistrict()));
+        dataModel.put("ads", adsList);
 
     }
 
@@ -65,13 +67,13 @@ public class SearchAdsServlet extends HttpServlet {
         if (parameter == null) {
             return null;
         }
-        switch (parameter) {
-            case "true":
-                return true;
-            case "false":
-                return false;
-        }
-        return null;
+//        switch (parameter) {
+//            case "true":
+//                return true;
+//            case "false":
+//                return false;
+//        }
+        return Boolean.valueOf(parameter);
     }
 
     private Integer parseToInteger(String parameter) {
@@ -99,15 +101,15 @@ public class SearchAdsServlet extends HttpServlet {
         if (parameter == null) {
             return null;
         }
-        switch (parameter) {
-            case "apartment":
-                return PlaceType.APARTMENT;
-            case "room":
-                return PlaceType.ROOM;
-            case "bed":
-                return PlaceType.BED;
-        }
-        return null;
+//        switch (parameter) {
+//            case "apartment":
+//                return PlaceType.APARTMENT;
+//            case "room":
+//                return PlaceType.ROOM;
+//            case "bed":
+//                return PlaceType.BED;
+//        }
+        return PlaceType.valueOf(parameter.toUpperCase());
     }
 
 }

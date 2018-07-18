@@ -101,6 +101,10 @@ public class UserPreferences {
 
     public void setOnlyLongTerm(Boolean onlyLongTerm) { this.onlyLongTerm = onlyLongTerm; }
 
+    public UserPreferences() {
+
+    }
+
     public UserPreferences(PlaceType placeType,
                            String city,
                            String district,
@@ -131,5 +135,27 @@ public class UserPreferences {
         this.smokingAllowed = smokingAllowed;
         this.animalAllowed = animalAllowed;
         this.onlyLongTerm = onlyLongTerm;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("UserPreferences{");
+        sb.append("placeType=").append(placeType);
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", district='").append(district).append('\'');
+        sb.append(", minPrice=").append(minPrice);
+        sb.append(", maxPrice=").append(maxPrice);
+        sb.append(", minArea=").append(minArea);
+        sb.append(", maxArea=").append(maxArea);
+        sb.append(", minRooms=").append(minRooms);
+        sb.append(", maxRooms=").append(maxRooms);
+        sb.append(", minFloor=").append(minFloor);
+        sb.append(", maxFloor=").append(maxFloor);
+        sb.append(", hasElevator=").append(hasElevator);
+        sb.append(", smokingAllowed=").append(smokingAllowed);
+        sb.append(", animalAllowed=").append(animalAllowed);
+        sb.append(", onlyLongTerm=").append(onlyLongTerm);
+        sb.append('}');
+        return sb.toString();
     }
 }

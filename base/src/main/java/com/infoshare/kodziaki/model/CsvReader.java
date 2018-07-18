@@ -1,10 +1,6 @@
 package com.infoshare.kodziaki.model;
 
-import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.PlaceBuilder;
-import com.infoshare.kodziaki.model.PlaceType;
-
-import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -12,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Stateless
+@RequestScoped
 public class CsvReader {
     private static final String SEPARATOR = ";";
 

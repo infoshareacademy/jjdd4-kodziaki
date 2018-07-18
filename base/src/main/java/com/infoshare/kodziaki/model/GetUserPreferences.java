@@ -13,7 +13,7 @@ public class GetUserPreferences {
                 + "\nPodaj opcje wyszukiwania."
                 + "\n==============================================");
 
-        UserPreferences userPreferences = new UserPreferencesBuilder().buildUserPreferences();
+        UserPreferences userPreferences = new UserPreferences();
         userPreferences.setPlaceType(receivePlaceType());
         userPreferences.setCity(receiveCity(adsList));
         userPreferences.setDistrict(receiveDistrict(userPreferences.getCity(), adsList));
