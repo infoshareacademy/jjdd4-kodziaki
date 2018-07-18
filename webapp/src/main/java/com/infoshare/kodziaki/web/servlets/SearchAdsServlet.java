@@ -33,12 +33,6 @@ public class SearchAdsServlet extends HttpServlet {
         final List<Place> result = placeDao.getAllAds();
         LOG.info("Found {} objects", result.size());
 
-//        resp.setContentType("text/html;charset=UTF-8");
-//        for (Place place : result) {
-//            resp.getWriter().println(place.toString());
-//            resp.getWriter().println("-------------");
-//        }
-
 //        Template template = templateProvider.getTemplate(getServletContext(), "search-ads.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("adsList", result);
@@ -70,9 +64,6 @@ public class SearchAdsServlet extends HttpServlet {
                 parseToBoolean(req.getParameter("animalsAllowed")),
                 parseToBoolean(req.getParameter("onlyLongTerm"))
         );
-
-//        resp.setContentType("text/html;charset=UTF-8");
-//        resp.getWriter().println(userPreferences.toString());
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("userPreferences", userPreferences);

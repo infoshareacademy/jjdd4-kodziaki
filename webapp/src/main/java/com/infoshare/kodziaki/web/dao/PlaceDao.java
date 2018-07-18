@@ -1,9 +1,7 @@
 package com.infoshare.kodziaki.web.dao;
 
 import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.PlaceType;
 import com.infoshare.kodziaki.model.UserPreferences;
-import com.infoshare.kodziaki.web.servlets.SearchAdsServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
