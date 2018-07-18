@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ADVERTISMENTS")
+@Table(name = "ADS")
 public class Place {
 
     @Id

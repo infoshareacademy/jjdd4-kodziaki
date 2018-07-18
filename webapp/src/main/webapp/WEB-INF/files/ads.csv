@@ -21,4 +21,3 @@ id;title;placeType;price;area;rooms;floor;district;city;hasElevator;smokingAllow
 20;Mieszkanie do wynajęcia na Niedźwiedniku;APARTMENT;1500;70.0;4;4;Niedźwiednik;Gdańsk;false;false;true;true;Przestronne mieszkanie z pełnym umeblowaniem. Osobna kuchnia, łazienka i toaleta oraz balkon. Mieszkanie w spokojnej okolicy, w otoczeniu lasu. Niedaleko przystanek PKM i węzeł autobusowy.;Marta;555444333
 21;Samodzielny pokój dwuosobowy z łazienką;ROOM;1200;16.0;1;2;Górny;Sopot;false;false;true;true;Wynajem od września na rok akademicki. Samodzielny pokój z łazienką jak kawalerka. Pełne wyposażenie. Blisko SKM, PKP, ZKM, UG Wydział Zarządzania. Cena 1200zł plus prąd wg zużycia.;Zbigniew;zbysiu@wp.pl
 22;Piekne mieszkanie w centrum Zaspy;APARTMENT;2500;45.0;3;2;Zaspa;Gdańsk;true;false;false;true;Sloneczne mieszkanie, blisko skm, sklepy, zapraszam serdecznie;Mikolaj A;456939283
-23;jkl\;BED;12;12.0;3;2;kjh\;jkh\;false;false;false;false;23;wqkelj;mmmmmm@git.pl
