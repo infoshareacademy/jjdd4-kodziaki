@@ -71,15 +71,20 @@ public class SearchAdsServlet extends HttpServlet {
                 parseToBoolean(req.getParameter("onlyLongTerm"))
         );
 
-        resp.setContentType("text/html;charset=UTF-8");
-        resp.getWriter().println(userPreferences.toString());
-//
-//        Map<String, Object> dataModel = new HashMap<>();
-//        dataModel.put("userPreferences", userPreferences);
-//        List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
+//        resp.setContentType("text/html;charset=UTF-8");
+//        resp.getWriter().println(userPreferences.toString());
 
-//        adsList.stream().peek(p -> writer.println(p.getDistrict()));
-//        dataModel.put("ads", adsList);
+        Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("userPreferences", userPreferences);
+
+        List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
+        if (adsList.isEmpty()) {
+            resp.getWriter().write("empty list");
+        }
+
+        PrintWriter writer = resp.getWriter();
+        adsList.stream().forEach(p -> writer.println(p.toString()));
+        dataModel.put("ads", adsList);
 
     }
 
