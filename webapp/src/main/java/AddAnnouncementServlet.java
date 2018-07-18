@@ -3,13 +3,10 @@ import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.PlaceType;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
-import java.io.IOException;
 import java.math.BigDecimal;
 
 @WebServlet(urlPatterns = "/add-announcement")
@@ -23,27 +20,27 @@ public class AddAnnouncementServlet extends HttpServlet {
 
         String titleParam = req.getParameter("title");
 
-        PlaceType placeTypeParam = parseToPlaceType(req);
+        PlaceType placeTypeParam = PlaceType.valueOf(req.getParameter("placeType").toUpperCase());
 
-        BigDecimal priceParam = parseToBigDecimal(req.getParameter("price"));
+        BigDecimal priceParam = new BigDecimal(req.getParameter("price"));
 
-        Double areaParam = parseToDouble(req.getParameter("area"));
+        Double areaParam = Double.parseDouble(req.getParameter("area"));
 
-        Integer roomsParam = parseToInteger(req.getParameter("rooms"));
+        Integer roomsParam = Integer.valueOf(req.getParameter("rooms"));
 
-        Integer floorParam = parseToInteger(req.getParameter("floor"));
+        Integer floorParam = Integer.valueOf(req.getParameter("floor"));
 
         String districtParam = req.getParameter("district");
 
         String cityParam = req.getParameter("city");
 
-        Boolean hasElevatorParam = parseToBoolean(req.getParameter("isElevator"));
+        Boolean hasElevatorParam = Boolean.valueOf(req.getParameter("hasElevator"));
 
-        Boolean smokingAllowedParam = parseToBoolean(req.getParameter("smokingAllowed"));
+        Boolean smokingAllowedParam = Boolean.valueOf(req.getParameter("smokingAllowed"));
 
-        Boolean animalAllowedParam = parseToBoolean(req.getParameter("animalsAllowed"));
+        Boolean animalAllowedParam = Boolean.valueOf(req.getParameter("animalAllowed"));
 
-        Boolean onlyLongTermParam = parseToBoolean(req.getParameter("onlyLongTerm"));
+        Boolean onlyLongTermParam = Boolean.valueOf(req.getParameter("onlyLongTerm"));
 
         String descriptionParam = req.getParameter("description");
 
@@ -72,46 +69,4 @@ public class AddAnnouncementServlet extends HttpServlet {
         placeDao.save(place1);
 
         }
-
-    private PlaceType parseToPlaceType(HttpServletRequest req) {
-        switch (req.getParameter("placeType")) {
-            case "apartment":
-                return PlaceType.APARTMENT;
-            case "room":
-                return PlaceType.ROOM;
-            case "bed":
-                return PlaceType.BED;
-            default:
-                return null;
-        }
-    }
-
-    private BigDecimal parseToBigDecimal(String price) {
-        if (price.equals("")) {
-            return null;
-        }
-        return BigDecimal.valueOf(Double.parseDouble(price));
-    }
-
-    private Double parseToDouble(String area) {
-        if (area.equals("")) {
-            return null;
-        }
-        return Double.parseDouble(area);
-    }
-
-    private Integer parseToInteger(String parameter) {
-        if (parameter.equals("")) {
-            return null;
-        }
-        return Integer.parseInt(parameter);
-    }
-
-    private Boolean parseToBoolean(String parameter) {
-        if (parameter == null) {
-            return false;
-        }
-        return true;
-    }
-
 }
