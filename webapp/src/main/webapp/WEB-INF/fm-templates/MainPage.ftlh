@@ -37,32 +37,38 @@
 
     <!-- Page Features -->
     <div class="row text-center">
-<#if ads??>
-    <p>jest</p>
-<#else> <p>nie ma</p>
-</#if>
         <#list ads as ad>
-        <p>${ad.title}</p>
             <div class="col-lg-3 col-md-6 mb-4">
-
-            <#include "TeaseAdPromoted.ftlh">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Tytuł: ${ad.title} </h4>
+                        <h5 class=""city">Miasto: ${ad.city}, Dzielnica: ${ad.district}</h5>
+                        <p class="card-text">Opis: <i></i></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="id" class="btn btn-primary">Zobacz</a>
+                    </div>
+                </div>
             </div>
         </#list>
 
         <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
 
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
+            <div class="card">
+                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Tytuł: ${ad.title} </h4>
+                    <h5 class=""city">Miasto: ${ad.city}, Dzielnica: ${ad.district}</h5>
+                    <p class="card-text">Opis: <i></i></p>
+                </div>
+                <div class="card-footer">
+                    <a href="id" class="btn btn-primary">Zobacz</a>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
-        </div>
+    </#list>
     </div>
     <!-- /.row -->
 

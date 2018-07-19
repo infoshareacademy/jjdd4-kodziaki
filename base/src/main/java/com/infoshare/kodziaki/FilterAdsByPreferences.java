@@ -1,10 +1,5 @@
-package com.infoshare.kodziaki.model;
+package com.infoshare.kodziaki;
 
-import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.PlaceType;
-import com.infoshare.kodziaki.model.UserPreferences;
-
-import javax.ejb.Stateless;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

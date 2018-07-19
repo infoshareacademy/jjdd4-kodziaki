@@ -1,4 +1,4 @@
-package freemarker;
+package com.infoshare.kodziaki.web.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;

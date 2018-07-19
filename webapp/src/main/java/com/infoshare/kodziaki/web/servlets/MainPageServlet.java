@@ -1,4 +1,4 @@
-package servlets;
+package com.infoshare.kodziaki.web.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.infoshare.kodziaki.model.Place;
+import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
-import freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -37,9 +37,9 @@ public class MainPageServlet extends HttpServlet {
 
         Template template = templateProvider.getTemplate(getServletContext(), "MainPage.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
-        List<Place> adsList = placeDao.getAllAds();
-        List<Place> four = adsList.stream().limit(4).collect(Collectors.toList());
-        dataModel.put("ads", four);
+
+        List<Place> adsList = placeDao.getXAds(4);
+        dataModel.put("ads", adsList);
 
         response.setContentType("text/html;charset=UTF-8");
 

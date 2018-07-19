@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.model;
+package com.infoshare.kodziaki;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

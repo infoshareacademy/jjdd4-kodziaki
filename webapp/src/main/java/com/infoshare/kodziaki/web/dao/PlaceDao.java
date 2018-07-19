@@ -1,7 +1,7 @@
 package com.infoshare.kodziaki.web.dao;
 
-import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.UserPreferences;
+import com.infoshare.kodziaki.Place;
+import com.infoshare.kodziaki.UserPreferences;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +15,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Stateless
 public class PlaceDao {
@@ -44,9 +45,21 @@ public class PlaceDao {
         }
     }
 
-    public List<Place> getFewAds(int number) {
+//    public List<Place> getXRandomAds(int x) {
+//
+//        Query queryCount = entityManager.createQuery("SELECT COUNT(p) FROM Place p");
+//        Integer size = (Integer) queryCount.getSingleResult();
+//
+//        int[] index = new Random().ints(0, size, x).toArray();
+//        Query query = entityManager.createQuery("SELECT p FROM Place p WHERE INDEX(p) IN :indexes");
+//        query.setParameter("indexes", index);
+//
+//        return (List<Place>) query.getResultList();
+//    }
+
+    public List<Place> getXAds(int x) {
         final Query query = entityManager.createQuery("SELECT p FROM Place p");
-        return (List<Place>) query.getResultList();
+        return (List<Place>) query.setMaxResults(x).getResultList();
     }
 
     public Place update(Place place) {

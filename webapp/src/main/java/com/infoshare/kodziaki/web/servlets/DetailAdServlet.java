@@ -1,6 +1,6 @@
-package servlets;
+package com.infoshare.kodziaki.web.servlets;
 
-import freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;

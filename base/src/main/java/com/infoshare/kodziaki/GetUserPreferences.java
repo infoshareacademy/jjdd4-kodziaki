@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.model;
+package com.infoshare.kodziaki;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -17,8 +17,8 @@ public class GetUserPreferences {
         userPreferences.setPlaceType(receivePlaceType());
         userPreferences.setCity(receiveCity(adsList));
         userPreferences.setDistrict(receiveDistrict(userPreferences.getCity(), adsList));
-        userPreferences.setMinPrice(receiveBigDecimalValue("Min. cena [" + Properties.getCurrency() + "] "));
-        userPreferences.setMaxPrice(receiveBigDecimalValue("Max. cena [" + Properties.getCurrency() + "] "));
+        userPreferences.setMinPrice(receiveBigDecimalValue("Min. cena [" + com.infoshare.kodziaki.Properties.getCurrency() + "] "));
+        userPreferences.setMaxPrice(receiveBigDecimalValue("Max. cena [" + com.infoshare.kodziaki.Properties.getCurrency() + "] "));
         userPreferences.setMinArea(receiveDoubleValue("Min. powierzchnia [m2] "));
         userPreferences.setMaxArea(receiveDoubleValue("Max. powierzchnia [m2] "));
         userPreferences.setMinRooms(receiveIntegerValue("Min. liczba pokoi "));

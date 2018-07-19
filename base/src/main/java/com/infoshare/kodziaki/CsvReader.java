@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.model;
+package com.infoshare.kodziaki;
 
 import javax.enterprise.context.RequestScoped;
 import java.io.BufferedReader;

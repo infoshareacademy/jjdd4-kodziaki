@@ -1,6 +1,6 @@
-package servlets;
+package com.infoshare.kodziaki.web.servlets;
 
-import freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -16,28 +16,34 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/filtered")
+public class FilteredAdsServlet extends HttpServlet {
 
-
-    private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
+    private Logger LOG = LoggerFactory.getLogger(FilteredAdsServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
 
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+        // tutaj metody do szukania ogłoszeń? Dao? FindAll itp.?
+    }
+
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Template template = templateProvider.getTemplate(getServletContext(), "Login.ftlh");
-        Map<String, Object> dataModel = new HashMap<>();
+
+        Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
+        Map<String, Object> filteredAds = new HashMap<>();
 
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(dataModel, response.getWriter());
+            template.process(filteredAds, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }
-
     }
-
 }

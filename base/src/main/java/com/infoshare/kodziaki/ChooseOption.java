@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.model;
+package com.infoshare.kodziaki;
 
 import java.io.FileReader;
 import java.util.InputMismatchException;
@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import static com.infoshare.kodziaki.model.Menu.mainMenu;
-import static com.infoshare.kodziaki.model.Properties.displayProperties;
-import static com.infoshare.kodziaki.model.ViewPlaceAds.viewPlaceAds;
+import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
 
 public class ChooseOption {
 
@@ -56,18 +54,18 @@ public class ChooseOption {
                 } catch (Exception e) {
                     System.out.println("Błąd odczytu danych - pracujemy nad awarią. Może dodasz w tym czasie jakieś ogłoszenie?");
                 }
-                mainMenu();
+                Menu.mainMenu();
                 chooseOption();
                 break;
             case 2:
                 AddingAnnouncement newAd = new AddingAnnouncement(Properties.getAdsFilePath());
                 newAd.adding();
-                mainMenu();
+                Menu.mainMenu();
                 chooseOption();
                 break;
             case 3:
-                displayProperties();
-                mainMenu();
+                Properties.displayProperties();
+                Menu.mainMenu();
                 chooseOption();
                 break;
             case 0:

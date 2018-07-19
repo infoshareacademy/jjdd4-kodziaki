@@ -47,7 +47,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.infoshare.kodziaki.model.App</mainClass>
+                            <mainClass>com.infoshare.kodziaki.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

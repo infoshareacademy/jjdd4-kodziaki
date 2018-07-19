@@ -1,7 +1,7 @@
 package com.infoshare.kodziaki.web.servlets;
 
-import com.infoshare.kodziaki.model.CsvReader;
-import com.infoshare.kodziaki.model.Place;
+import com.infoshare.kodziaki.CsvReader;
+import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 
 import javax.inject.Inject;
