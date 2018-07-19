@@ -28,23 +28,6 @@ public class SearchAdsServlet extends HttpServlet {
     private PlaceDao placeDao;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-
-        final List<Place> result = placeDao.getAllAds();
-        LOG.info("Found {} objects", result.size());
-
-//        Template template = templateProvider.getTemplate(getServletContext(), "search-ads.ftlh");
-        Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("adsList", result);
-
-//        try {
-//            template.process(dataModel, resp.getWriter());
-//        } catch (TemplateException e) {
-//            LOG.info("Template not found", e.getMessage());
-//        }
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
 
@@ -70,13 +53,18 @@ public class SearchAdsServlet extends HttpServlet {
         dataModel.put("userPreferences", userPreferences);
 
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
-        if (adsList.isEmpty()) {
-            resp.getWriter().write("empty list");
-        }
-
-        PrintWriter writer = resp.getWriter();
-        adsList.stream().forEach(p -> writer.println(p.toString()));
         dataModel.put("ads", adsList);
+
+
+//        Template template = templateProvider.getTemplate(getServletContext(), "search-ads.ftlh");
+//        try {
+//            template.process(dataModel, resp.getWriter());
+//        } catch (TemplateException e) {
+//            LOG.info("Template not found", e.getMessage());
+//        }
+//
+//        PrintWriter writer = resp.getWriter();
+//        adsList.stream().forEach(p -> writer.println(p.toString()));
 
     }
 
