@@ -1,6 +1,7 @@
 package com.infoshare.kodziaki.web.dao;
 
 import com.infoshare.kodziaki.model.Place;
+import com.infoshare.kodziaki.model.PlaceType;
 import com.infoshare.kodziaki.model.UserPreferences;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,80 +54,80 @@ public class PlaceDao {
         CriteriaQuery<Place> criteriaQuery = criteriaBuilder.createQuery(Place.class);
         Root<Place> root = criteriaQuery.from(Place.class);
         List<Predicate> predicates = new ArrayList<>();
-        
-//        if (pref.getPlaceType() != null) {
-//            predicates.add(criteriaBuilder.equal(root.get("placeType"), pref.getPlaceType()));
-//            LOG.debug("sorted by parameter: placeType");
-//        }
-//
-//        if (pref.getCity() != null) {
-//            predicates.add(criteriaBuilder.equal(root.get("city"), pref.getCity()));
-//            LOG.debug("sorted by parameter: city");
-//        }
-//
-//        if (pref.getDistrict() != null) {
-//            predicates.add(criteriaBuilder.equal(root.get("district"), pref.getDistrict()));
-//            LOG.debug("sorted by parameter: district");
-//        }
+
+        if (pref.getPlaceType() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("placeType"), pref.getPlaceType()));
+            LOG.info("sorted by parameter: placeType");
+        }
+
+        if (pref.getCity() != null && !pref.getCity().isEmpty()) {
+            predicates.add(criteriaBuilder.equal(root.get("city"), pref.getCity()));
+            LOG.info("sorted by parameter: city");
+        }
+
+        if (pref.getDistrict() != null && !pref.getDistrict().isEmpty()) {
+            predicates.add(criteriaBuilder.equal(root.get("district"), pref.getDistrict()));
+            LOG.info("sorted by parameter: district");
+        }
 
         if (pref.getMinPrice() != null) {
             predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), pref.getMinPrice()));
-            LOG.debug("sorted by parameter: minPrice");
+            LOG.info("sorted by parameter: minPrice");
         }
 
         if (pref.getMaxPrice() != null) {
             predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("price"), pref.getMaxPrice()));
-            LOG.debug("sorted by parameter: maxPrice");
+            LOG.info("sorted by parameter: maxPrice");
         }
 
         if (pref.getMinArea() != null) {
             predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("area"), pref.getMinArea()));
-            LOG.debug("sorted by parameter: minArea");
+            LOG.info("sorted by parameter: minArea");
         }
 
         if (pref.getMaxArea() != null) {
             predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("area"), pref.getMaxArea()));
-            LOG.debug("sorted by parameter: maxArea");
+            LOG.info("sorted by parameter: maxArea");
         }
 
         if (pref.getMinFloor() != null) {
             predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("floor"), pref.getMinFloor()));
-            LOG.debug("sorted by parameter: minFloor");
+            LOG.info("sorted by parameter: minFloor");
         }
 
         if (pref.getMaxFloor() != null) {
             predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("floor"), pref.getMaxFloor()));
-            LOG.debug("sorted by parameter: maxFloor");
+            LOG.info("sorted by parameter: maxFloor");
         }
 
         if (pref.getMinRooms() != null) {
             predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("rooms"), pref.getMinRooms()));
-            LOG.debug("sorted by parameter: minRooms");
+            LOG.info("sorted by parameter: minRooms");
         }
 
         if (pref.getMaxRooms() != null) {
             predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("rooms"), pref.getMaxRooms()));
-            LOG.debug("sorted by parameter: maxRooms");
+            LOG.info("sorted by parameter: maxRooms");
         }
 
         if (pref.isAnimalAllowed() != null) {
             predicates.add(criteriaBuilder.equal(root.get("animalAllowed"), pref.isAnimalAllowed()));
-            LOG.debug("sorted by parameter: isAnimalAllowed");
+            LOG.info("sorted by parameter: isAnimalAllowed");
         }
 
         if (pref.isSmokingAllowed() != null) {
             predicates.add(criteriaBuilder.equal(root.get("smokingAllowed"), pref.isSmokingAllowed()));
-            LOG.debug("sorted by parameter: isSmokingAllowed");
+            LOG.info("sorted by parameter: isSmokingAllowed");
         }
 
         if (pref.isHasElevator() != null) {
             predicates.add(criteriaBuilder.equal(root.get("hasElevator"), pref.isHasElevator()));
-            LOG.debug("sorted by parameter: hasElevator");
+            LOG.info("sorted by parameter: hasElevator");
         }
 
         if (pref.isOnlyLongTerm() != null) {
             predicates.add(criteriaBuilder.equal(root.get("onlyLongTerm"), pref.isOnlyLongTerm()));
-            LOG.debug("sorted by parameter: isOnlyLongTerm");
+            LOG.info("sorted by parameter: isOnlyLongTerm");
         }
 
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));

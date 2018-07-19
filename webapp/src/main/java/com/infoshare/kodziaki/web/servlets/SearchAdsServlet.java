@@ -28,7 +28,7 @@ public class SearchAdsServlet extends HttpServlet {
     private PlaceDao placeDao;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
         final List<Place> result = placeDao.getAllAds();
         LOG.info("Found {} objects", result.size());
@@ -46,6 +46,7 @@ public class SearchAdsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        req.setCharacterEncoding("UTF-8");
 
         UserPreferences userPreferences = new UserPreferences(
                 parseToPlaceType(req.getParameter("placeType")),
