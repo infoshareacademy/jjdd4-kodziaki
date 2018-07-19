@@ -1,7 +1,6 @@
 package com.infoshare.kodziaki.web.dao;
 
 import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.PlaceType;
 import com.infoshare.kodziaki.model.UserPreferences;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +42,11 @@ public class PlaceDao {
         if (place != null) {
             entityManager.remove(place);
         }
+    }
+
+    public List<Place> getFewAds(int number) {
+        final Query query = entityManager.createQuery("SELECT p FROM Place p");
+        return (List<Place>) query.getResultList();
     }
 
     public Place update(Place place) {

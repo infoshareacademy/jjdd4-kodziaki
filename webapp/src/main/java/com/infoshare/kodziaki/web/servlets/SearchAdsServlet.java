@@ -4,6 +4,9 @@ import com.infoshare.kodziaki.model.Place;
 import com.infoshare.kodziaki.model.PlaceType;
 import com.infoshare.kodziaki.model.UserPreferences;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
+import freemarker.TemplateProvider;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,10 +22,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/search-ads")
+@WebServlet("/search")
 public class SearchAdsServlet extends HttpServlet {
 
     private Logger LOG = LoggerFactory.getLogger(SearchAdsServlet.class);
+
+    @Inject
+    private TemplateProvider templateProvider;
 
     @Inject
     private PlaceDao placeDao;
@@ -55,17 +61,14 @@ public class SearchAdsServlet extends HttpServlet {
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
         dataModel.put("ads", adsList);
 
+        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
+        resp.setContentType("text/html;charset=UTF-8");
 
-//        Template template = templateProvider.getTemplate(getServletContext(), "search-ads.ftlh");
-//        try {
-//            template.process(dataModel, resp.getWriter());
-//        } catch (TemplateException e) {
-//            LOG.info("Template not found", e.getMessage());
-//        }
-//
-//        PrintWriter writer = resp.getWriter();
-//        adsList.stream().forEach(p -> writer.println(p.toString()));
-
+        try {
+            template.process(dataModel, resp.getWriter());
+        } catch (TemplateException e) {
+            LOG.info("Template not found", e.getMessage());
+        }
     }
 
     private Boolean parseToBoolean(String parameter) {
