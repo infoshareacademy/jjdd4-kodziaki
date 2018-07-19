@@ -37,14 +37,14 @@
 
     <!-- Page Features -->
     <div class="row text-center">
-        <#list ads as ad>
+        <#list promotedAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
                     <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                     <div class="card-body">
-                        <h4 class="card-title">Tytuł: ${ad.title} </h4>
-                        <h5 class=""city">Miasto: ${ad.city}, Dzielnica: ${ad.district}</h5>
-                        <p class="card-text">Opis: <i></i></p>
+                        <h4 class="card-title">${ad.title} </h4>
+                        <h5 class=""city">${ad.city}, ${ad.district}</h5>
+                        <p class="card-text">Opis: <i>${ad.description}</i></p>
                     </div>
                     <div class="card-footer">
                         <a href="id" class="btn btn-primary">Zobacz</a>
@@ -55,20 +55,21 @@
 
         <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
 
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Tytuł: ${ad.title} </h4>
-                    <h5 class=""city">Miasto: ${ad.city}, Dzielnica: ${ad.district}</h5>
-                    <p class="card-text">Opis: <i></i></p>
-                </div>
-                <div class="card-footer">
-                    <a href="id" class="btn btn-primary">Zobacz</a>
+        <#list newestAds as ad>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">${ad.title} </h4>
+                        <h5 class=""city">${ad.city}, ${ad.district}</h5>
+                        <p class="card-text">Opis: <i>${ad.description}</i></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="id" class="btn btn-primary">Zobacz</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </#list>
+        </#list>
     </div>
     <!-- /.row -->
 

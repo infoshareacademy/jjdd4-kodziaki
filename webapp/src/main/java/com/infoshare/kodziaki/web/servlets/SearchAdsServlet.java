@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,18 @@ public class SearchAdsServlet extends HttpServlet {
 
     @Inject
     private PlaceDao placeDao;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
+        resp.setContentType("text/html;charset=UTF-8");
+        Map<String, Object> dataModel = new HashMap<>();
+        try {
+            template.process(dataModel, resp.getWriter());
+        } catch (TemplateException e) {
+            LOG.info("Template not found", e.getMessage());
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -54,19 +67,18 @@ public class SearchAdsServlet extends HttpServlet {
                 parseToBoolean(req.getParameter("onlyLongTerm"))
         );
 
-        Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("userPreferences", userPreferences);
-
+        Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
+        Map<String, Object> filteredAds = new HashMap<>();
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
-        dataModel.put("ads", adsList);
+        filteredAds.put("filteredAds", adsList);
+        filteredAds.put("userPreferences", userPreferences);
 
-        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(dataModel, resp.getWriter());
+            template.process(filteredAds, resp.getWriter());
         } catch (TemplateException e) {
-            LOG.info("Template not found", e.getMessage());
+            LOG.error(e.getMessage());
         }
     }
 
