@@ -68,6 +68,5 @@
             <button type="submit">Poka co tam macie</button>
             <input type="reset"/>
         </div>
-
     </form>
 </div>
