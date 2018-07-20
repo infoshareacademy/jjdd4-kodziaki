@@ -4,4 +4,12 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <data-source>
+        <name>java:ds/kodziakids</name>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <url>jdbc:mysql://0.0.0.0:6603/ads?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <user>root</user>
+        <password>pass123</password>
+    </data-source>
+
 </web-app>

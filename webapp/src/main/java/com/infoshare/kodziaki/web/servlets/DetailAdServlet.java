@@ -1,6 +1,6 @@
-package servlets;
+package com.infoshare.kodziaki.web.servlets;
 
-import freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/search")
-public class SearchAdsServlet extends HttpServlet {
+@WebServlet("/id")
+public class DetailAdServlet extends HttpServlet {
 
     private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
 
@@ -25,13 +25,13 @@ public class SearchAdsServlet extends HttpServlet {
     private TemplateProvider templateProvider;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
-        Map<String, String> adsParams = new HashMap<>();
+        Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
+        Map<String, Object> detailAdParams = new HashMap<>();
 
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(adsParams, response.getWriter());
+            template.process(detailAdParams.get(detailAdParams), response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }
