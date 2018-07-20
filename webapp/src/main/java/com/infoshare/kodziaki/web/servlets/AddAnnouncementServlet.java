@@ -1,6 +1,8 @@
-import com.infoshare.kodziaki.dao.PlaceDao;
-import com.infoshare.kodziaki.model.Place;
-import com.infoshare.kodziaki.model.PlaceType;
+package com.infoshare.kodziaki.web.servlets;
+
+import com.infoshare.kodziaki.Place;
+import com.infoshare.kodziaki.PlaceType;
+import com.infoshare.kodziaki.web.dao.PlaceDao;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -49,6 +51,7 @@ public class AddAnnouncementServlet extends HttpServlet {
 
         final Place place = new Place();
 
+        place.setId(placeDao.getLastId()+1);
         place.setTitle(titleParam);
         place.setPlaceType(placeTypeParam);
         place.setPrice(priceParam);
@@ -65,7 +68,7 @@ public class AddAnnouncementServlet extends HttpServlet {
         place.setAuthor(authorParam);
         place.setPhoneNumber(phoneNumberParam);
 
-        placeDao.save(place);
+        placeDao.saveAd(place);
         logger.log(Level.INFO, "New place has been addes " + place);
     }
 

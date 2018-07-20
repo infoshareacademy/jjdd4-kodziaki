@@ -37,33 +37,35 @@
 
     <!-- Page Features -->
     <div class="row text-center">
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdPromoted.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdPromoted.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdPromoted.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAdPromoted.ftlh">
-        </div>
+        <#list promotedAds as ad>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">${ad.title} </h4>
+                        <h5 class=""city">${ad.city}, ${ad.district}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a href="id" class="btn btn-primary">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </#list>
 
-        <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "TeaseAd.ftlh">
-        </div>
+        <#list newestAds as ad>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">${ad.title} </h4>
+                        <h5 class=""city">${ad.city}, ${ad.district}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a href="id" class="btn btn-primary">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </#list>
     </div>
     <!-- /.row -->
 

@@ -7,7 +7,7 @@
     <persistence-unit name="kodziakiPU" transaction-type="JTA">
         <jta-data-source>java:ds/kodziakids</jta-data-source>
 
-        <class>com.infoshare.kodziaki.model.Place</class>
+        <class>com.infoshare.kodziaki.Place</class>
 
         <properties>
             <!-- Hibernate settings -->

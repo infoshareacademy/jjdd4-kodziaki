@@ -1,4 +1,4 @@
-package com.infoshare.kodziaki.model;
+package com.infoshare.kodziaki;
 public class Logo {
     public static void logo() {
         System.out.println("                    _____        _____ _______ __  __ ______ _   _ _______ _____  ");

@@ -1,15 +1,15 @@
-package com.infoshare.kodziaki.model;
+package com.infoshare.kodziaki;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ADVERTISMENTS")
+@Table(name = "ADS")
 public class Place {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -174,4 +174,26 @@ public class Place {
     public void setAuthor(String author) { this.author = author; }
 
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Place{");
+        sb.append("id=").append(id);
+        sb.append(", placeType=").append(placeType);
+        sb.append(", price=").append(price);
+        sb.append(", area=").append(area);
+        sb.append(", rooms=").append(rooms);
+        sb.append(", floor=").append(floor);
+        sb.append(", district='").append(district).append('\'');
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", hasElevator=").append(hasElevator);
+        sb.append(", smokingAllowed=").append(smokingAllowed);
+        sb.append(", animalAllowed=").append(animalAllowed);
+        sb.append(", onlyLongTerm=").append(onlyLongTerm);
+        sb.append(", author='").append(author).append('\'');
+        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
