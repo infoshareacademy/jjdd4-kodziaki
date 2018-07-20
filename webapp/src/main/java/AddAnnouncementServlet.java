@@ -10,28 +10,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = "/add-announcement")
 public class AddAnnouncementServlet extends HttpServlet {
+
+    Logger logger = Logger.getLogger(getClass().getName());
 
     @Inject
     private PlaceDao placeDao;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            savePlace(req);
+        } catch (Exception e) {
+            resp.getWriter().println("Wystapil blad: " + e.getMessage());
+        }
+    }
 
+    private void savePlace(HttpServletRequest req) {
         String titleParam = req.getParameter("title");
-        PlaceType placeTypeParam = PlaceType.valueOf(req.getParameter("placeType").toUpperCase());
-        BigDecimal priceParam = new BigDecimal(req.getParameter("price"));
-        Double areaParam = Double.parseDouble(req.getParameter("area"));
-        Integer roomsParam = Integer.valueOf(req.getParameter("rooms"));
-        Integer floorParam = Integer.valueOf(req.getParameter("floor"));
+        PlaceType placeTypeParam = validatePlaceType(req.getParameter("placeType").toUpperCase());
+        BigDecimal priceParam = validateBigDecimal(req.getParameter("price"));
+        Double areaParam = validateDouble(req.getParameter("area"));
+        Integer roomsParam = validateInteger(req.getParameter("rooms"));
+        Integer floorParam = validateInteger(req.getParameter("floor"));
         String districtParam = req.getParameter("district");
         String cityParam = req.getParameter("city");
-        Boolean hasElevatorParam = Boolean.valueOf(req.getParameter("hasElevator"));
-        Boolean smokingAllowedParam = Boolean.valueOf(req.getParameter("smokingAllowed"));
-        Boolean animalAllowedParam = Boolean.valueOf(req.getParameter("animalAllowed"));
-        Boolean onlyLongTermParam = Boolean.valueOf(req.getParameter("onlyLongTerm"));
+        Boolean hasElevatorParam = validateBoolean(req.getParameter("hasElevator"));
+        Boolean smokingAllowedParam = validateBoolean(req.getParameter("smokingAllowed"));
+        Boolean animalAllowedParam = validateBoolean(req.getParameter("animalAllowed"));
+        Boolean onlyLongTermParam = validateBoolean(req.getParameter("onlyLongTerm"));
         String descriptionParam = req.getParameter("description");
         String authorParam = req.getParameter("author");
         String phoneNumberParam = req.getParameter("phoneNumber");
@@ -55,6 +66,52 @@ public class AddAnnouncementServlet extends HttpServlet {
         place.setPhoneNumber(phoneNumberParam);
 
         placeDao.save(place);
-
+        logger.log(Level.INFO, "New place has been addes " + place);
     }
+
+    private Integer validateInteger(String value) {
+        try {
+            return Integer.valueOf(value);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Invalid value: " + value);
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+        }
+    }
+
+    private Boolean validateBoolean(String value) {
+        try {
+            return Boolean.valueOf(value);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Invalid value: " + value);
+        }
+        throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+    }
+
+    private Double validateDouble(String value) {
+        try {
+            return Double.valueOf(value);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Invalid value: " + value);
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+        }
+    }
+
+    private PlaceType validatePlaceType(String value) {
+        try {
+            return PlaceType.valueOf(value);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Invalid value: " + value);
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+        }
+    }
+
+    private BigDecimal validateBigDecimal(String value) {
+        try {
+            return new BigDecimal(value);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Invalid value: " + value);
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+        }
+    }
+
 }
