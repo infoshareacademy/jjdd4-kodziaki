@@ -44,7 +44,6 @@
                     <div class="card-body">
                         <h4 class="card-title">${ad.title} </h4>
                         <h5 class=""city">${ad.city}, ${ad.district}</h5>
-                        <p class="card-text">Opis: <i>${ad.description}</i></p>
                     </div>
                     <div class="card-footer">
                         <a href="id" class="btn btn-primary">Zobacz</a>
@@ -53,8 +52,6 @@
             </div>
         </#list>
 
-        <!-- tu będzie formmularz rozwijany z miastem zaciągający właściwość z listy mieszkań -- PHP?? -->
-
         <#list newestAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
@@ -62,7 +59,6 @@
                     <div class="card-body">
                         <h4 class="card-title">${ad.title} </h4>
                         <h5 class=""city">${ad.city}, ${ad.district}</h5>
-                        <p class="card-text">Opis: <i>${ad.description}</i></p>
                     </div>
                     <div class="card-footer">
                         <a href="id" class="btn btn-primary">Zobacz</a>

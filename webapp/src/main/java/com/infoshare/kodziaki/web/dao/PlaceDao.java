@@ -45,18 +45,6 @@ public class PlaceDao {
         }
     }
 
-//    public List<Place> getXRandomAds(int x) {
-//
-//        Query queryCount = entityManager.createQuery("SELECT COUNT(p) FROM Place p");
-//        Integer size = (Integer) queryCount.getSingleResult();
-//
-//        int[] index = new Random().ints(0, size, x).toArray();
-//        Query query = entityManager.createQuery("SELECT p FROM Place p WHERE INDEX(p) IN :indexes");
-//        query.setParameter("indexes", index);
-//
-//        return (List<Place>) query.getResultList();
-//    }
-
     public List<Place> getXAds(int x) {
         final Query query = entityManager.createQuery("SELECT p FROM Place p");
         return (List<Place>) query.setMaxResults(x).getResultList();
