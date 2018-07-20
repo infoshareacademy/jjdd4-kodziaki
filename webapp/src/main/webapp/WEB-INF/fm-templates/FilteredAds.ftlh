@@ -35,7 +35,10 @@
                 <div class="card">
                     <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                     <div class="card-body">
-                        <h4 class="card-title">${ad.title} </h4>
+                        <h4 class="card-title"><b>${ad.title}</b></h4>
+                            <#if ad.id == 3 || ad.id == 7 || ad.id == 11 || ad.id == 18>
+                                 <h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>
+                            </#if>
                         <h5 class="" city">${ad.city}, ${ad.district}</h5>
                     </div>
                     <div class="card-footer">
