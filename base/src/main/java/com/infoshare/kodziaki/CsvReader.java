@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki;
 
+import javax.enterprise.context.RequestScoped;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -7,10 +8,11 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequestScoped
 public class CsvReader {
     private static final String SEPARATOR = ";";
 
-    public static List<Place> readFile(Reader source) throws IOException, NumberFormatException {
+    public List<Place> readFile(Reader source) throws IOException, NumberFormatException {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(source);

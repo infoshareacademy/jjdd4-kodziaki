@@ -1,8 +1,8 @@
-package freemarker;
+package com.infoshare.kodziaki.web.freemarker;
 
+import com.infoshare.kodziaki.web.freemarker.ConfigProvider;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateExceptionHandler;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
