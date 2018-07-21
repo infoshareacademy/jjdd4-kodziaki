@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>appPARTMENTS: Detailed Ad</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <#include "Menu.ftlh">
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">Tytuł: $(randomPlace.title)
+        <small>Miasto: $(randomPlace.city), Dzielnica: $(randomPlace.district)</small>
+    </h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Szczegółowe informacje:</h3>
+            <ul>
+                <li>Typ: ${randomPlace.placeType}</li>
+                <li>Powierzchnia: ${randomPlace.area} </li>
+                <li>Liczba pokoi: ${randomPlace.rooms}</li>
+                <li>Piętro: #{randomPlace.floor}</li>
+                <li>Winda: ${randomPlace.hasElevator} </li>
+                <li>Zwierzęta dozwolone: ${randomPlace.animalAllowed} </li>
+                <li>Dla niepalących: ${randomPlace.smokingAllowed}</li>
+                <li>Długoterminowo: ${randomPlace.onlyLongTerm} </li>
+                <li>Opis: ${randomPlace.description}</li>
+                <li>Cena: ${randomPlace.price}</li>
+                <li>Autor: ${randomPlace.author}</li>
+                <li>Kontakt: ${randomPlace.phoneNumber}</li>
+                <li>ID: ${randomPlace.id}</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Related Projects Row -->
+    <h3 class="my-4">Zdjęcia</h3>
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            </a>
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<#include "Footer.ftlh">
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>

@@ -16,7 +16,7 @@
                     <a class="nav-link" href="add">Dodaj ogłoszenie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="luckyshot">Szczęśliwy traf</a>
+                    <a class="nav-link" href="random">Szczęśliwy traf</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Zaloguj się</a>
