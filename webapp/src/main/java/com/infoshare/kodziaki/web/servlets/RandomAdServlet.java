@@ -1,6 +1,5 @@
 package com.infoshare.kodziaki.web.servlets;
 
-import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -16,9 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 @WebServlet("/random")
 public class RandomAdServlet extends HttpServlet {
@@ -37,7 +34,7 @@ public class RandomAdServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("randomPlace", placeDao.getXRandomAds(1));
+        dataModel.put("randomPlace", placeDao.getXRandomAds(1).get(0));
 
         try {
             template.process(dataModel, response.getWriter());

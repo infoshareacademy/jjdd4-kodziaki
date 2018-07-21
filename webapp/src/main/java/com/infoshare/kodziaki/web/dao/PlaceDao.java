@@ -161,4 +161,8 @@ public class PlaceDao {
         return (List<Place>) query.getResultList();
     }
 
+    public Long getLastId() {
+        Query queryLastId = entityManager.createQuery("SELECT COUNT(*) FROM Place p");
+        return (Long) queryLastId.getSingleResult();
+    }
 }

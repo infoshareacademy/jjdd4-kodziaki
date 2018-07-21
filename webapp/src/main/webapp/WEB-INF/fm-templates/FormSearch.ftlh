@@ -64,9 +64,7 @@
         <input type="checkbox" name="isElevator" value="true"/>Winda obowiązkowo<br/>
         <input type="checkbox" name="onlyLongTerm" value="true"/>Interesuje mnie tylko wynajem długoterminowy<br/>
 
-        <div>
-            <button type="submit">Poka co tam macie</button>
-            <input type="reset"/>
-        </div>
+        <input type="submit" name="save" value="Szukaj"/> 
+        <input type="reset" value="Wyczyść dane"/> <br/><br/>
     </form>
 </div>
