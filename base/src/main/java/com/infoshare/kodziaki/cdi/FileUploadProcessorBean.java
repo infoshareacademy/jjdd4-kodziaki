@@ -1,11 +1,10 @@
 package com.infoshare.kodziaki.cdi;
 
-import com.infoshare.kodziaki.exceptions.UserImageNotFound;
+import com.infoshare.kodziaki.exceptions.UserCsvReaderNotFound;
 
 import javax.enterprise.context.RequestScoped;
 
 
-import javax.inject.Inject;
 import javax.servlet.http.Part;
 import java.io.*;
 import java.nio.file.Paths;
@@ -16,15 +15,15 @@ public class FileUploadProcessorBean {
 
     private static final String SETTINGS_FILE = "settings.properties";
 
-    public File uploadImageFile(Part filePart) throws IOException, UserImageNotFound {
+    public File uploadCsvReader(Part filePart) throws IOException, UserCsvReaderNotFound {
 
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
         if (fileName == null || fileName.isEmpty()) {
-            throw new UserImageNotFound("No user image has been uploaded");
+            throw new UserCsvReaderNotFound("No user image has been uploaded");
         }
 
-        File file = new File(getUploadImageFilesPath() + fileName);
+        File file = new File(getUploadCsvReadersPath() + fileName);
 
         InputStream fileContent = filePart.getInputStream();
         OutputStream os = new FileOutputStream(file);
@@ -41,7 +40,7 @@ public class FileUploadProcessorBean {
         return file;
     }
 
-    public String getUploadImageFilesPath() throws IOException {
+    public String getUploadCsvReadersPath() throws IOException {
         Properties settings = new Properties();
         settings.load(Thread.currentThread()
                 .getContextClassLoader().getResource(SETTINGS_FILE).openStream());
