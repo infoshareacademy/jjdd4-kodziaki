@@ -1,14 +1,4 @@
-!doctype html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Dodaj ogłoszenie</h1>
-<form method="post" action="add-announcement">
+<form method="post" action="http://127.0.0.1:8080/appPartments/add">
     Tytuł ogłoszenia: <input type="text" name="title" required/><br/><br/>
     Miasto: <input type="text" name="city" required/><br/><br/>
     Dzielnica: <input type="text" name="district" required/><br/><br/>
@@ -78,7 +68,4 @@
     Podaj swoje imie i nazwisko: <input type="text" name="author" required/> <br/><br/>
     Zostaw swoj numer telefonu: <input type="number" name="phoneNumber" required/> <br/><br/>
     <input type="submit" name="save" value="Dodaj"/> <input type="reset" value="Wyczyść dane"/> <br/><br/>
-</form>
-
-</body>
-</html>
+</form>http://127.0.0.1:8080/appPartments/search

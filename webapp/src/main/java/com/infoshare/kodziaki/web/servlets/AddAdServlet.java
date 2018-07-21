@@ -8,7 +8,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.slf4j.LoggerFactory;
 
-
-@WebServlet("/add-announcement")
-public class AddAnnouncementServlet extends HttpServlet {
+@WebServlet("/add")
+public class AddAdServlet extends HttpServlet {
 
     Logger logger = Logger.getLogger(getClass().getName());
 
@@ -32,29 +29,41 @@ public class AddAnnouncementServlet extends HttpServlet {
     
     @Inject
     private TemplateProvider templateProvider;
-   
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        Template template = templateProvider.getTemplate(getServletContext(), "AddingAnnouncement.ftlh");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Template template = templateProvider.getTemplate(getServletContext(), "AddAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
-        
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.log(Level.INFO, "Template not found", e.getMessage());
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        
+        Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
+        resp.setContentType("text/html;charset=UTF-8");
+        Map<String, Object> dataModel = new HashMap<>();
         
         try {
-            savePlace(req);
+            Place place = savePlace(req);
+            dataModel.put("addedAd", place);
         } catch (Exception e) {
             resp.getWriter().println("Wystapil blad: " + e.getMessage());
         }
+
+        try {
+            template.process(dataModel, resp.getWriter());
+        } catch (TemplateException e) {
+            logger.log(Level.INFO, "Template not found", e.getMessage());
+        }
     }
 
-    private void savePlace(HttpServletRequest req) {
+    private Place savePlace(HttpServletRequest req) {
         String titleParam = req.getParameter("title");
         PlaceType placeTypeParam = validatePlaceType(req.getParameter("placeType").toUpperCase());
         BigDecimal priceParam = validateBigDecimal(req.getParameter("price"));
@@ -91,7 +100,9 @@ public class AddAnnouncementServlet extends HttpServlet {
         place.setPhoneNumber(phoneNumberParam);
 
         placeDao.saveAd(place);
-        logger.log(Level.INFO, "New place has been addes " + place);
+        logger.log(Level.INFO, "New place has been added " + place);
+
+        return place;
     }
 
     private Integer validateInteger(String value) {
