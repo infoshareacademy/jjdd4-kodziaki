@@ -30,10 +30,10 @@
 <!-- Page Content -->
 <div class="container">
 
+    <#list randomPlace as random>
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4">Tytuł: $(randomPlace.title)
-        <small>Miasto: $(randomPlace.city), Dzielnica: $(randomPlace.district)</small>
-    </h1>
+        <h1 class="my-4"><b>${random.title}</b></h1>
+        <h2>${random.city}, ${random.district}</h2>
 
     <!-- Portfolio Item Row -->
     <div class="row">
@@ -43,23 +43,24 @@
         </div>
 
         <div class="col-md-4">
-            <h3 class="my-3">Szczegółowe informacje:</h3>
+            <h3 class="my-3">Szczegółowe informacje</h3>
             <ul>
-                <li>Typ: ${randomPlace.placeType}</li>
-                <li>Powierzchnia: ${randomPlace.area} </li>
-                <li>Liczba pokoi: ${randomPlace.rooms}</li>
-                <li>Piętro: #{randomPlace.floor}</li>
-                <li>Winda: ${randomPlace.hasElevator} </li>
-                <li>Zwierzęta dozwolone: ${randomPlace.animalAllowed} </li>
-                <li>Dla niepalących: ${randomPlace.smokingAllowed}</li>
-                <li>Długoterminowo: ${randomPlace.onlyLongTerm} </li>
-                <li>Opis: ${randomPlace.description}</li>
-                <li>Cena: ${randomPlace.price}</li>
-                <li>Autor: ${randomPlace.author}</li>
-                <li>Kontakt: ${randomPlace.phoneNumber}</li>
-                <li>ID: ${randomPlace.id}</li>
+                <li>Cena: ${random.price}</li>
+                <li>Typ: ${random.placeType}</li>
+                <li>Powierzchnia: ${random.area} </li>
+                <li>Liczba pokoi: ${random.rooms}</li>
+                <li>Piętro: #{random.floor}</li>
+                <li>Winda: ${random.hasElevator?string("tak", "nie")} </li>
+                <li>Zwierzęta dozwolone: ${random.animalAllowed?string("tak", "nie")} </li>
+                <li>Palenie dozwolone: ${random.smokingAllowed?string("tak", "nie")}</li>
+                <li>Tylko wynajemn długoterminowy: ${random.onlyLongTerm?string("tak", "nie")} </li>
+                <li>Opis: ${random.description}</li>
+                <li>Autor: ${random.author}</li>
+                <li>Kontakt: ${random.phoneNumber}</li>
+                <li>ID: ${random.id}</li>
             </ul>
         </div>
+        </#list>
     </div>
     <!-- /.row -->
 

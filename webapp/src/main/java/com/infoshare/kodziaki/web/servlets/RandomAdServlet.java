@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki.web.servlets;
 
+import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -31,25 +32,17 @@ public class RandomAdServlet extends HttpServlet {
     private PlaceDao placeDao;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Template template = templateProvider.getTemplate(getServletContext(), "RandomAd.ftlh");
+
         response.setContentType("text/html;charset=UTF-8");
-        Map<String, Object> detailAdParams = new HashMap<>();
+        Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("randomPlace", placeDao.getXRandomAds(1));
 
         try {
-            template.process(detailAdParams.get(detailAdParams), response.getWriter());
+            template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }
     }
-    
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        req.setCharacterEncoding("UTF-8");
-     
-        List<Place> adsList = placeDao.getAllAds();
-        Random r = new Random();
-        Place randomPlace = adsList.get((int)Math.random() * adsList.length);    
-        
-    }    
-
 }

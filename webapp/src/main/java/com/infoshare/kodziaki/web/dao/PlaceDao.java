@@ -13,9 +13,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Stateless
 public class PlaceDao {
@@ -45,12 +43,30 @@ public class PlaceDao {
         }
     }
 
-    public List<Place> getXAds(int x) {
-        final Query query = entityManager.createQuery("SELECT p FROM Place p");
-        return (List<Place>) query.setMaxResults(x).getResultList();
+    public List<Place> getXRandomAds(int num) {
+
+        Query queryIds = entityManager.createQuery("SELECT p.id FROM Place p");
+        List<Integer> ids = queryIds.getResultList();
+
+        if (num <= ids.size()) {
+
+            final Set<Integer> randomIds = new HashSet<>();
+            Random r = new Random();
+
+            while (randomIds.size() != num) {
+                randomIds.add(r.nextInt(ids.size()));
+            }
+
+            Query query = entityManager.createQuery("SELECT P FROM Place p WHERE p.id IN :ids");
+            query.setParameter("ids", randomIds);
+            return query.getResultList();
+
+        } else {
+            return new ArrayList<>();
+        }
     }
 
-    public List<Place> getPromotedAds(){
+    public List<Place> getPromotedAds() {
         final Query query = entityManager.createQuery("SELECT p FROM Place p WHERE p.isPromoted = true");
         return (List<Place>) query.getResultList();
     }
