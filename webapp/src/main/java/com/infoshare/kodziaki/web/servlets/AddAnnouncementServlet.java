@@ -51,7 +51,7 @@ public class AddAnnouncementServlet extends HttpServlet {
 
         final Place place = new Place();
 
-        place.setId(placeDao.getLastId()+1);
+        place.setId(placeDao.getLastId().intValue() + 1);
         place.setTitle(titleParam);
         place.setPlaceType(placeTypeParam);
         place.setPrice(priceParam);
