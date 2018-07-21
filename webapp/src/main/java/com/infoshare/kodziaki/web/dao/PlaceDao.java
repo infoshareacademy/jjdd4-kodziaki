@@ -51,6 +51,11 @@ public class PlaceDao {
         return (List<Place>) query.setMaxResults(x).getResultList();
     }
 
+    public List<Place> getPromotedAds(){
+        final Query query = entityManager.createQuery("SELECT p FROM Place p WHERE p.isPromoted = true");
+        return (List<Place>) query.getResultList();
+    }
+
     public Place update(Place place) {
         return entityManager.merge(place);
     }

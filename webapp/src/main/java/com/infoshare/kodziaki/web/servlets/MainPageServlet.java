@@ -39,7 +39,8 @@ public class MainPageServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
 
         List<Place> adsList = placeDao.getXAds(4);  // w dao dodac getXRandomAds(), getXNewestAds(), getXPromotedAds()
-        dataModel.put("promotedAds", adsList);
+        List<Place> promotedAds = placeDao.getPromotedAds();
+        dataModel.put("promotedAds", promotedAds);
         dataModel.put("newestAds", adsList);
 
         response.setContentType("text/html;charset=UTF-8");
