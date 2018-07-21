@@ -3,6 +3,9 @@ package com.infoshare.kodziaki.web.servlets;
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.PlaceType;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
+import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,19 +15,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.slf4j.LoggerFactory;
 
-@WebServlet(urlPatterns = "/add-announcement")
+
+@WebServlet("/add-announcement")
 public class AddAnnouncementServlet extends HttpServlet {
 
     Logger logger = Logger.getLogger(getClass().getName());
 
     @Inject
     private PlaceDao placeDao;
+    
+    @Inject
+    private TemplateProvider templateProvider;
+   
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        Template template = templateProvider.getTemplate(getServletContext(), "AddingAnnouncement.ftlh");
+        resp.setContentType("text/html;charset=UTF-8");
+        Map<String, Object> dataModel = new HashMap<>();
+        
+        try {
+            template.process(dataModel, resp.getWriter());
+        } catch (TemplateException e) {
+            logger.log(Level.INFO, "Template not found", e.getMessage());
+        }
+        
         try {
             savePlace(req);
         } catch (Exception e) {
