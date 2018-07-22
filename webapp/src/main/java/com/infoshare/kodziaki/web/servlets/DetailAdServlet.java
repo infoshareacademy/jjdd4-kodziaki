@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki.web.servlets;
 
+import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -16,22 +17,26 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/id")
+@WebServlet("/detailed")
 public class DetailAdServlet extends HttpServlet {
 
     private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
+    
+    @Inject
+    private PlaceDao placeDao;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
-        Map<String, Object> detailAdParams = new HashMap<>();
-
         response.setContentType("text/html;charset=UTF-8");
+        Map<String, Object> detailAd = new HashMap<>();
+        int id = Integer.parseInt(request.getParameter("id"));
+        detailAd.put("ad", placeDao.findById(id));
 
         try {
-            template.process(detailAdParams.get(detailAdParams), response.getWriter());
+            template.process(detailAd, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }

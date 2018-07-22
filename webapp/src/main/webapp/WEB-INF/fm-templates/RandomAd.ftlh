@@ -30,14 +30,9 @@
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Message after adding ad -->
-    <#if message??>
-        <p>${message}</p>
-    </#if>
-
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4"><b>${ad.title}</b></h1>
-    <h2>${ad.city}, ${ad.district}</h2>
+    <h1 class="my-4"><b>${randomPlace.title}</b></h1>
+    <h2>${randomPlace.city}, ${randomPlace.district}</h2>
 
     <!-- Portfolio Item Row -->
     <div class="row">
@@ -49,19 +44,19 @@
         <div class="col-md-4">
             <h3 class="my-3">Szczegółowe informacje</h3>
             <ul>
-                <li>Cena: ${ad.price}</li>
-                <li>Typ: ${ad.placeType}</li>
-                <li>Powierzchnia: ${ad.area} </li>
-                <li>Liczba pokoi: ${ad.rooms}</li>
-                <li>Piętro: #{ad.floor}</li>
-                <li>Winda: ${ad.hasElevator?string("tak", "nie")} </li>
-                <li>Zwierzęta: ${ad.animalAllowed?string("dozwolone", "niedozwolone")} </li>
-                <li>Palenie: ${ad.smokingAllowed?string("dozwolone", "niedozwolone")}</li>
-                <li>Tylko wynajemn długoterminowy: ${ad.onlyLongTerm?string("tak", "nie")} </li>
-                <li>Opis: ${ad.description}</li>
-                <li>Autor: ${ad.author}</li>
-                <li>Kontakt: ${ad.phoneNumber}</li>
-                <li>ID: ${ad.id}</li>
+                <li>Cena: ${randomPlace.price}</li>
+                <li>Typ: ${randomPlace.placeType}</li>
+                <li>Powierzchnia: ${randomPlace.area} </li>
+                <li>Liczba pokoi: ${randomPlace.rooms}</li>
+                <li>Piętro: #{randomPlace.floor}</li>
+                <li>Winda: ${randomPlace.hasElevator?string("tak", "nie")} </li>
+                <li>Zwierzęta: ${randomPlace.animalAllowed?string("dozwolone", "niedozwolone")} </li>
+                <li>Palenie: ${randomPlace.smokingAllowed?string("dozwolone", "niedozwolone")}</li>
+                <li>Tylko wynajemn długoterminowy: ${randomPlace.onlyLongTerm?string("tak", "nie")} </li>
+                <li>Opis: ${randomPlace.description}</li>
+                <li>Autor: ${randomPlace.author}</li>
+                <li>Kontakt: ${randomPlace.phoneNumber}</li>
+                <li>ID: ${randomPlace.id}</li>
             </ul>
         </div>
     </div>

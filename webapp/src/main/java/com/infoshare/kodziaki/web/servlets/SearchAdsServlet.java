@@ -49,29 +49,18 @@ public class SearchAdsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
 
-        UserPreferences userPreferences = new UserPreferences(
-                parseToPlaceType(req.getParameter("placeType")),
-                req.getParameter("city"),
-                req.getParameter("district"),
-                parseToBigDecimal(req.getParameter("minPrice")),
-                parseToBigDecimal(req.getParameter("maxPrice")),
-                parseToDouble(req.getParameter("minArea")),
-                parseToDouble(req.getParameter("maxArea")),
-                parseToInteger(req.getParameter("minRooms")),
-                parseToInteger(req.getParameter("maxRooms")),
-                parseToInteger(req.getParameter("minFloor")),
-                parseToInteger(req.getParameter("maxFloor")),
-                parseToBoolean(req.getParameter("isElevator")),
-                parseToBoolean(req.getParameter("smokingAllowed")),
-                parseToBoolean(req.getParameter("animalsAllowed")),
-                parseToBoolean(req.getParameter("onlyLongTerm"))
-        );
+        UserPreferences userPreferences = null;
+        try {
+            userPreferences = getUserPreferences(req);
+        } catch (Exception e) {
+            resp.getWriter().println("Wystapił błąd: " + e.getMessage());
+        }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
         Map<String, Object> filteredAds = new HashMap<>();
+
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
         filteredAds.put("filteredAds", adsList);
-        filteredAds.put("userPreferences", userPreferences);
 
         resp.setContentType("text/html;charset=UTF-8");
 
@@ -80,6 +69,26 @@ public class SearchAdsServlet extends HttpServlet {
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }
+    }
+
+    private UserPreferences getUserPreferences(HttpServletRequest req) {
+        return new UserPreferences(
+                    parseToPlaceType(req.getParameter("placeType")),
+                    req.getParameter("city"),
+                    req.getParameter("district"),
+                    parseToBigDecimal(req.getParameter("minPrice")),
+                    parseToBigDecimal(req.getParameter("maxPrice")),
+                    parseToDouble(req.getParameter("minArea")),
+                    parseToDouble(req.getParameter("maxArea")),
+                    parseToInteger(req.getParameter("minRooms")),
+                    parseToInteger(req.getParameter("maxRooms")),
+                    parseToInteger(req.getParameter("minFloor")),
+                    parseToInteger(req.getParameter("maxFloor")),
+                    parseToBoolean(req.getParameter("isElevator")),
+                    parseToBoolean(req.getParameter("smokingAllowed")),
+                    parseToBoolean(req.getParameter("animalsAllowed")),
+                    parseToBoolean(req.getParameter("onlyLongTerm"))
+            );
     }
 
     private Boolean parseToBoolean(String parameter) {
