@@ -53,6 +53,7 @@ public class AddAdServlet extends HttpServlet {
         try {
             Place place = savePlace(req);
             dataModel.put("ad", place);
+            dataModel.put("message", "Ogłoszenie zostało dodane.");
         } catch (Exception e) {
             resp.getWriter().println("Wystapił blad: " + e.getMessage());
         }

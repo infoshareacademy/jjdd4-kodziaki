@@ -30,6 +30,11 @@
 <!-- Page Content -->
 <div class="container">
 
+    <!-- Message after adding ad -->
+    <#if message??>
+        <p>${message}</p>
+    </#if>
+
     <!-- Portfolio Item Heading -->
     <h1 class="my-4"><b>${ad.title}</b></h1>
     <h2>${ad.city}, ${ad.district}</h2>
