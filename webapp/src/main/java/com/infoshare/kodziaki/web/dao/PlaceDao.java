@@ -15,7 +15,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Stateless
 public class PlaceDao {
@@ -145,4 +144,8 @@ public class PlaceDao {
         return (List<Place>) query.getResultList();
     }
 
+    public Long getLastId() {
+        Query queryLastId = entityManager.createQuery("SELECT COUNT(*) FROM Place p");
+        return (Long) queryLastId.getSingleResult();
+    }
 }

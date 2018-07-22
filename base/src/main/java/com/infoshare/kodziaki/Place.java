@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 public class Place {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -72,7 +71,7 @@ public class Place {
     @Column(name = "phoneNumber")
     @NotNull
     private String phoneNumber;
-    
+
     @Column(name = "promoted")
     private boolean isPromoted;
 
@@ -147,6 +146,38 @@ public class Place {
     public String getPhoneNumber() { return phoneNumber; }
 
     public boolean isPromoted() { return isPromoted; }
+
+    public void setId(int id) { this.id = id; }
+
+    public void setPlaceType(PlaceType placeType) { this.placeType = placeType; }
+
+    public void setPrice(BigDecimal price) { this.price = price; }
+
+    public void setArea(double area) { this.area = area; }
+
+    public void setRooms(int rooms) { this.rooms = rooms; }
+
+    public void setFloor(int floor) { this.floor = floor; }
+
+    public void setDistrict(String district) { this.district = district; }
+
+    public void setCity(String city) { this.city = city; }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public void setTitle(String title) { this.title = title; }
+
+    public void setHasElevator(boolean hasElevator) { this.hasElevator = hasElevator; }
+
+    public void setSmokingAllowed(boolean smokingAllowed) { this.smokingAllowed = smokingAllowed; }
+
+    public void setAnimalAllowed(boolean animalAllowed) { this.animalAllowed = animalAllowed; }
+
+    public void setOnlyLongTerm(boolean onlyLongTerm) { this.onlyLongTerm = onlyLongTerm; }
+
+    public void setAuthor(String author) { this.author = author; }
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
     public void setPromoted(boolean promoted) { isPromoted = promoted; }
 
