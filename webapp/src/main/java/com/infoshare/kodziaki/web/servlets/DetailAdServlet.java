@@ -31,10 +31,12 @@ public class DetailAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
         response.setContentType("text/html;charset=UTF-8");
-        Map<String, Object> detailAdParams = new HashMap<>();
+        Map<String, Object> detailAd = new HashMap<>();
+        int id = Integer.parseInt(request.getParameter("id"));
+        detailAd.put("ad", placeDao.findById(id));
 
         try {
-            template.process(detailAdParams.get(detailAdParams), response.getWriter());
+            template.process(detailAd, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }

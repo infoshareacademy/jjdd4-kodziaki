@@ -47,7 +47,7 @@
                         <h5 class=""city">${ad.city}, ${ad.district}</h5>
                     </div>
                     <div class="card-footer">
-                        <a href="id" class="btn btn-primary">Zobacz</a>
+                        <a href="http://127.0.0.1:8080/appPartments/detailed?id=${ad.id}" class="btn btn-primary">Zobacz</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         <h5 class="city">${ad.city}, ${ad.district}</h5>
                     </div>
                     <div class="card-footer">
-                        <a href="id" class="btn btn-primary">Zobacz</a>
+                        <a href="http://127.0.0.1:8080/appPartments/detailed?id=${ad.id}" class="btn btn-primary">Zobacz</a>
                     </div>
                 </div>
             </div>

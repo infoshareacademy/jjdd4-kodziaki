@@ -45,16 +45,16 @@ public class AddAdServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         
-        Template template = templateProvider.getTemplate(getServletContext(), "AddedAd.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         req.setCharacterEncoding("UTF-8");
         
         try {
             Place place = savePlace(req);
-            dataModel.put("addedAd", place);
+            dataModel.put("ad", place);
         } catch (Exception e) {
-            resp.getWriter().println("Wystapil blad: " + e.getMessage());
+            resp.getWriter().println("Wystapił blad: " + e.getMessage());
         }
 
         try {
