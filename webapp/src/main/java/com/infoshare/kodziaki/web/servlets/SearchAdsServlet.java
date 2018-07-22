@@ -53,7 +53,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             userPreferences = getUserPreferences(req);
         } catch (Exception e) {
-            resp.getWriter().println("Wystapil blad: " + e.getMessage());
+            resp.getWriter().println("Wystapił błąd: " + e.getMessage());
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");

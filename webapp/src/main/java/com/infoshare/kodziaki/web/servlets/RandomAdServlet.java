@@ -20,7 +20,7 @@ import java.util.Map;
 @WebServlet("/random")
 public class RandomAdServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
+    private Logger LOG = LoggerFactory.getLogger(RandomAdServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;

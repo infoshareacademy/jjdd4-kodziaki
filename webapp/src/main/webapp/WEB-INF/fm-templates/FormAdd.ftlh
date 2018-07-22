@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" action="http://127.0.0.1:8080/appPartments/add">
+    <form method="post" action="/appPartments/add">
         Tytuł ogłoszenia: <input type="text" name="title" required/><br/><br/>
         Miasto: <input type="text" name="city" required/><br/><br/>
         Dzielnica: <input type="text" name="district" required/><br/><br/>

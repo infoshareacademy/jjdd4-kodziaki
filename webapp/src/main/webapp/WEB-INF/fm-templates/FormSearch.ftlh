@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" action="http://127.0.0.1:8080/appPartments/search">
+    <form method="post" action="/appPartments/search">
         <!-- place type -->
         <p>Typ nieruchomości</p>
         <select name="placeType">
