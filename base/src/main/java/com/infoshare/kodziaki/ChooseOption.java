@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import static com.infoshare.kodziaki.Menu.mainMenu;
-import static com.infoshare.kodziaki.Properties.displayProperties;
 import static com.infoshare.kodziaki.ViewPlaceAds.viewPlaceAds;
 
 public class ChooseOption {
@@ -37,7 +35,8 @@ public class ChooseOption {
         switch (option) {
             case 1:
                 try {
-                    List<Place> adsList = CsvReader.readFile(new FileReader(Properties.getAdsFilePath()));
+                    CsvReader csvReader = new CsvReader();
+                    List<Place> adsList = csvReader.readFile(new FileReader(Properties.getAdsFilePath()));
                     GetUserPreferences getUserPreferences = new GetUserPreferences();
                     UserPreferences userPreferences = getUserPreferences.getUserPreferences(adsList);
 
@@ -55,18 +54,18 @@ public class ChooseOption {
                 } catch (Exception e) {
                     System.out.println("Błąd odczytu danych - pracujemy nad awarią. Może dodasz w tym czasie jakieś ogłoszenie?");
                 }
-                mainMenu();
+                Menu.mainMenu();
                 chooseOption();
                 break;
             case 2:
                 AddingAnnouncement newAd = new AddingAnnouncement(Properties.getAdsFilePath());
                 newAd.adding();
-                mainMenu();
+                Menu.mainMenu();
                 chooseOption();
                 break;
             case 3:
-                displayProperties();
-                mainMenu();
+                Properties.displayProperties();
+                Menu.mainMenu();
                 chooseOption();
                 break;
             case 0:
