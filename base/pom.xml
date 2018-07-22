@@ -26,6 +26,7 @@
           <groupId>javax</groupId>
           <artifactId>javaee-api</artifactId>
           <version>RELEASE</version>
+        <scope>provided</scope>
       </dependency>
   </dependencies>
 

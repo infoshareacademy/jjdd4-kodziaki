@@ -20,7 +20,7 @@ public class FileUploadProcessorBean {
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
         if (fileName == null || fileName.isEmpty()) {
-            throw new UserCsvReaderNotFound("No user image has been uploaded");
+            throw new UserCsvReaderNotFound("No CsvReader has been uploaded");
         }
 
         File file = new File(getUploadCsvReadersPath() + fileName);
@@ -44,7 +44,7 @@ public class FileUploadProcessorBean {
         Properties settings = new Properties();
         settings.load(Thread.currentThread()
                 .getContextClassLoader().getResource(SETTINGS_FILE).openStream());
-        return settings.getProperty("Upload.Path.Images");
+        return settings.getProperty("Upload.CsvReader");
     }
 }
 
