@@ -122,7 +122,7 @@ public class AddAdServlet extends HttpServlet {
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Invalid value: " + value);
         }
-        throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+        throw new RuntimeException("Value '" + value + "' cannot be parsed into Boolean");
     }
 
     private Double validateDouble(String value) {
@@ -130,7 +130,7 @@ public class AddAdServlet extends HttpServlet {
             return Double.valueOf(value);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Invalid value: " + value);
-            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into Double");
         }
     }
 
@@ -139,7 +139,7 @@ public class AddAdServlet extends HttpServlet {
             return PlaceType.valueOf(value);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Invalid value: " + value);
-            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into PlaceType");
         }
     }
 
@@ -148,7 +148,7 @@ public class AddAdServlet extends HttpServlet {
             return new BigDecimal(value);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Invalid value: " + value);
-            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into BigDecimal");
         }
     }
 
