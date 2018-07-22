@@ -15,8 +15,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Random;
 
 @Stateless
 public class PlaceDao {
