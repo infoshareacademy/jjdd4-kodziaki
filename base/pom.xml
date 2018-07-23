@@ -30,9 +30,7 @@
             <version>RELEASE</version>
 
         </dependency>
-    </dependencies>
 
-    <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <scope>provided</scope>
