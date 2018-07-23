@@ -62,6 +62,7 @@
                 <li>Autor: ${ad.author}</li>
                 <li>Kontakt: ${ad.phoneNumber}</li>
                 <li>ID: ${ad.id}</li>
+                <li>odwiedzin: ${ad.visits}</li>
             </ul>
         </div>
     </div>

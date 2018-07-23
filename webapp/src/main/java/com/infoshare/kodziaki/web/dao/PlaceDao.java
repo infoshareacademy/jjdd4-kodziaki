@@ -75,6 +75,14 @@ public class PlaceDao {
         return entityManager.merge(place);
     }
 
+    public void updateAdVisits(int id) {
+        final Place place = entityManager.find(Place.class, id);
+        if (place != null) {
+            place.setVisits(place.getVisits() + 1);
+            entityManager.merge(place);
+        }
+    }
+
     public List<Place> getAdsByUserPreferences(UserPreferences pref) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Place> criteriaQuery = criteriaBuilder.createQuery(Place.class);

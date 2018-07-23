@@ -25,19 +25,22 @@ public class CreateDataBaseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
-        // filling database with ads from csv
         try {
             String path = getServletContext().getResource("/WEB-INF/files/ads.csv").getPath();
             List<Place> ads = csvReader.readFile(new FileReader(path));
-            ads.get(3).setPromoted(true);
-            ads.get(7).setPromoted(true);
-            ads.get(11).setPromoted(true);
-            ads.get(18).setPromoted(true);
+            setFewAdsAsPromoted(ads);
             for (Place place: ads) {
                 placeDao.saveAd(place);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setFewAdsAsPromoted(List<Place> ads) {
+        ads.get(3).setPromoted(true);
+        ads.get(7).setPromoted(true);
+        ads.get(11).setPromoted(true);
+        ads.get(18).setPromoted(true);
     }
 }

@@ -75,6 +75,9 @@ public class Place {
     @Column(name = "promoted")
     private boolean isPromoted;
 
+    @Column(name = "visits")
+    private long visits;
+
     public Place() {
 
     }
@@ -147,6 +150,8 @@ public class Place {
 
     public boolean isPromoted() { return isPromoted; }
 
+    public long getVisits() { return visits; }
+
     public void setId(int id) { this.id = id; }
 
     public void setPlaceType(PlaceType placeType) { this.placeType = placeType; }
@@ -181,4 +186,5 @@ public class Place {
 
     public void setPromoted(boolean promoted) { isPromoted = promoted; }
 
+    public void setVisits(long visits) { this.visits = visits; }
 }
