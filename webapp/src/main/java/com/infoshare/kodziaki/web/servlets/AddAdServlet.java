@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 @WebServlet("/add")
@@ -149,7 +150,7 @@ public class AddAdServlet extends HttpServlet {
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Invalid value: " + value);
             throw new RuntimeException("Value '" + value + "' cannot be parsed into BigDecimal");
-        }
+            }
     }
 
 }

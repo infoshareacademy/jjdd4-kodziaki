@@ -4,8 +4,9 @@ import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ import java.util.Map;
 @WebServlet("/detailed")
 public class DetailAdServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
+    Logger logger = LogManager.getLogger(DetailAdServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
@@ -35,10 +36,12 @@ public class DetailAdServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         detailAd.put("ad", placeDao.findById(id));
 
+        logger.info("Aplikacja zostala uruchomiona");
+
         try {
             template.process(detailAd, response.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }
