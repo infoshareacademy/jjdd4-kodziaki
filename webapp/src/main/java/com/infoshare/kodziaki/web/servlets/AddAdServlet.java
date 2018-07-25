@@ -42,9 +42,7 @@ public class AddAdServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "AddAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
-
-        Map<String, List<Location>> locationsList = locationDao.findAll().stream().collect(Collectors.groupingBy(Location::getCity));
-        dataModel.put("locations", locationsList);
+        dataModel.put("locations", sortDistrictsByCities());
 
         try {
             template.process(dataModel, resp.getWriter());
@@ -74,6 +72,13 @@ public class AddAdServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.log(Level.INFO, "Template not found", e.getMessage());
         }
+    }
+
+    private Map<String, List<Location>> sortDistrictsByCities() {
+        return locationDao
+                .findAll()
+                .stream()
+                .collect(Collectors.groupingBy(Location::getCity));
     }
 
     private Place savePlace(HttpServletRequest req) {
