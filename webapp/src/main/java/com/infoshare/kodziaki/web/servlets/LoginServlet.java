@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.security.enterprise.credential.Credential;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +25,15 @@ public class LoginServlet extends HttpServlet {
 
     @Inject
     private TemplateProvider templateProvider;
+
+    public static HttpResponse executeGet(
+            HttpTransport transport, JsonFactory jsonFactory, String accessToken, GenericUrl url)
+            throws IOException {
+        Credential credential =
+                new Credential(BearerToken.authorizationHeaderAccessMethod()).setAccessToken(accessToken);
+        HttpRequestFactory requestFactory = transport.createRequestFactory(credential);
+        return requestFactory.buildGetRequest(url).execute();
+    }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

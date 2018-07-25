@@ -5,6 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="680649103500-59lgm340117h0kclrnoie501745m9ovc.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -39,6 +40,7 @@
     <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4">
             </br></br>Wiemy kim jesteś.</br></br>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
         </div>
     </div>
     <!-- /.row -->
@@ -52,6 +54,8 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
 </body>
 
