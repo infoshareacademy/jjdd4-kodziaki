@@ -2,8 +2,10 @@ package com.infoshare.kodziaki.web.servlets;
 
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.PlaceType;
+import com.infoshare.kodziaki.web.dao.LocationDao;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.model.Location;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -15,9 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @WebServlet("/add")
 public class AddAdServlet extends HttpServlet {
@@ -30,11 +34,18 @@ public class AddAdServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
 
+    @Inject
+    private LocationDao locationDao;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Template template = templateProvider.getTemplate(getServletContext(), "AddAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
+
+        Map<String, List<Location>> locationsList = locationDao.findAll().stream().collect(Collectors.groupingBy(Location::getCity));
+        dataModel.put("locations", locationsList);
+
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
@@ -72,8 +83,8 @@ public class AddAdServlet extends HttpServlet {
         Double areaParam = validateDouble(req.getParameter("area"));
         Integer roomsParam = validateInteger(req.getParameter("rooms"));
         Integer floorParam = validateInteger(req.getParameter("floor"));
-        String districtParam = req.getParameter("district");
-        String cityParam = req.getParameter("city");
+        String cityParam = validateCity(req.getParameter("localization"));
+        String districtParam = validateDistrict(req.getParameter("localization"));
         Boolean hasElevatorParam = validateBoolean(req.getParameter("hasElevator"));
         Boolean smokingAllowedParam = validateBoolean(req.getParameter("smokingAllowed"));
         Boolean animalAllowedParam = validateBoolean(req.getParameter("animalAllowed"));
@@ -105,6 +116,16 @@ public class AddAdServlet extends HttpServlet {
         logger.log(Level.INFO, "New place has been added " + place);
 
         return place;
+    }
+
+    private String validateCity(String localization) {
+        String[] localizationParams = localization.split(",");
+        return localizationParams[0];
+    }
+
+    private String validateDistrict(String localization) {
+        String[] localizationParams = localization.split(",");
+        return localizationParams[1];
     }
 
     private Integer validateInteger(String value) {
