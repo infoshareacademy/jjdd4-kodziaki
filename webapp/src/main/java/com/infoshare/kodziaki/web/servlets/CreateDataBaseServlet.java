@@ -66,5 +66,7 @@ public class CreateDataBaseServlet extends HttpServlet {
         ads.get(7).setPromoted(true);
         ads.get(11).setPromoted(true);
         ads.get(18).setPromoted(true);
+        ads.get(20).setPromoted(true);
+        ads.get(1).setPromoted(true);
     }
 }

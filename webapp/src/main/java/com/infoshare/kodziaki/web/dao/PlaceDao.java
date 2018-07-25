@@ -2,6 +2,7 @@ package com.infoshare.kodziaki.web.dao;
 
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.UserPreferences;
+import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,7 @@ public class PlaceDao {
         entityManager.persist(place);
     }
 
-    public List<Place> getAllAds() {
+    public List<Place> getAll() {
         final Query query = entityManager.createQuery("SELECT p FROM Place p");
         return (List<Place>) query.getResultList();
     }
@@ -42,6 +43,22 @@ public class PlaceDao {
             entityManager.remove(place);
         }
     }
+
+    public List<Object[]> getDistrictsStatistics() {
+        final Query query = entityManager.createQuery("SELECT p.district,SUM(visits) FROM Place p GROUP BY p.district order by sum(visits) desc");
+        return (List<Object[]>) query.getResultList();
+    }
+
+    public List<Object[]> getCitiesStatistics() {
+        final Query query = entityManager.createQuery("SELECT p.city,SUM(visits) FROM Place p GROUP BY p.city order by sum(visits) desc");
+        return (List<Object[]>) query.getResultList();
+    }
+
+    public List<Place> getAdsStatistics() {
+        final Query query = entityManager.createQuery("SELECT p FROM Place p ORDER BY visits desc");
+        return (List<Place>) query.getResultList();
+    }
+
 
     public List<Place> getXRandomAds(int num) {
 
@@ -66,9 +83,14 @@ public class PlaceDao {
         }
     }
 
-    public List<Place> getPromotedAds() {
+    public List<Place> getXMostPopularAds() {
+        final Query query = entityManager.createQuery("SELECT p FROM Place p ORDER BY visits desc");
+        return (List<Place>) query.setMaxResults(4).getResultList();
+    }
+
+    public List<Place> getXPromotedAds() {
         final Query query = entityManager.createQuery("SELECT p FROM Place p WHERE p.isPromoted = true");
-        return (List<Place>) query.getResultList();
+        return (List<Place>) query.setMaxResults(4).getResultList();
     }
 
     public Place update(Place place) {
@@ -173,4 +195,5 @@ public class PlaceDao {
         Query queryLastId = entityManager.createQuery("SELECT COUNT(*) FROM Place p");
         return (Long) queryLastId.getSingleResult();
     }
+
 }

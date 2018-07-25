@@ -35,9 +35,9 @@ public class MainPageServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "MainPage.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
 
-        List<Place> randomAds = placeDao.getXRandomAds(4);
-        List<Place> promotedAds = placeDao.getPromotedAds();
-        dataModel.put("newestAds", randomAds);
+        List<Place> mostPopularAds = placeDao.getXMostPopularAds();
+        List<Place> promotedAds = placeDao.getXPromotedAds();
+        dataModel.put("mostPopularAds", mostPopularAds);
         dataModel.put("promotedAds", promotedAds);
 
         response.setContentType("text/html;charset=UTF-8");
