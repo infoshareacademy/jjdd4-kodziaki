@@ -2,16 +2,21 @@ package com.infoshare.kodziaki.web.servlets;
 
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.PlaceType;
+import com.infoshare.kodziaki.web.dao.ImageUploadDao;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
+import com.infoshare.kodziaki.web.dao.UserImageNotFound;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -26,6 +31,9 @@ public class AddAdServlet extends HttpServlet {
 
     @Inject
     private PlaceDao placeDao;
+
+    @Inject
+    private ImageUploadDao imageUploadDao;
     
     @Inject
     private TemplateProvider templateProvider;
@@ -65,7 +73,7 @@ public class AddAdServlet extends HttpServlet {
         }
     }
 
-    private Place savePlace(HttpServletRequest req) {
+    private Place savePlace(HttpServletRequest req) throws IOException, ServletException {
         String titleParam = req.getParameter("title");
         PlaceType placeTypeParam = validatePlaceType(req.getParameter("placeType").toUpperCase());
         BigDecimal priceParam = validateBigDecimal(req.getParameter("price"));
@@ -100,6 +108,15 @@ public class AddAdServlet extends HttpServlet {
         place.setDescription(descriptionParam);
         place.setAuthor(authorParam);
         place.setPhoneNumber(phoneNumberParam);
+
+        Part filePart = req.getPart("image");
+        File file = null;
+        try {
+            file = imageUploadDao.uploadImageFile(filePart);
+            Place.setImageURL("/images/" + file.getName());
+        } catch (UserImageNotFound userImageNotFound) {
+            logger.log(Level.SEVERE, userImageNotFound.getMessage());
+        }
 
         placeDao.saveAd(place);
         logger.log(Level.INFO, "New place has been added " + place);

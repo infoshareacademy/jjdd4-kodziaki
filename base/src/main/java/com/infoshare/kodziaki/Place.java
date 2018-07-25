@@ -2,6 +2,7 @@ package com.infoshare.kodziaki;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.Consumes;
 import java.math.BigDecimal;
 
 @Entity
@@ -74,6 +75,9 @@ public class Place {
 
     @Column(name = "promoted")
     private boolean isPromoted;
+
+    @Column(name = "image")
+    private String imageURL;
 
     public Place() {
 
@@ -181,4 +185,7 @@ public class Place {
 
     public void setPromoted(boolean promoted) { isPromoted = promoted; }
 
+    public String getImageURL() { return imageURL; }
+
+    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
 }
