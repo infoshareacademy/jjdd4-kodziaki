@@ -37,10 +37,28 @@ public class PlaceDao {
         return entityManager.find(Place.class, id);
     }
 
+
+    public Long getLastId() {
+        Query queryLastId = entityManager.createQuery("SELECT COUNT(*) FROM Place p");
+        return (Long) queryLastId.getSingleResult();
+    }
+
     public void delete(int id) {
         final Place place = entityManager.find(Place.class, id);
         if (place != null) {
             entityManager.remove(place);
+        }
+    }
+
+    public Place update(Place place) {
+        return entityManager.merge(place);
+    }
+
+    public void updateAdVisits(int id) {
+        final Place place = entityManager.find(Place.class, id);
+        if (place != null) {
+            place.setVisits(place.getVisits() + 1);
+            entityManager.merge(place);
         }
     }
 
@@ -58,7 +76,6 @@ public class PlaceDao {
         final Query query = entityManager.createQuery("SELECT p FROM Place p ORDER BY visits desc");
         return (List<Place>) query.getResultList();
     }
-
 
     public List<Place> getXRandomAds(int num) {
 
@@ -90,19 +107,21 @@ public class PlaceDao {
 
     public List<Place> getXPromotedAds() {
         final Query query = entityManager.createQuery("SELECT p FROM Place p WHERE p.isPromoted = true");
-        return (List<Place>) query.setMaxResults(4).getResultList();
-    }
+        List<Place> allPromoted = (List<Place>) query.getResultList();
 
-    public Place update(Place place) {
-        return entityManager.merge(place);
-    }
+        final Set<Integer> randomIndexes = new HashSet<>();
+        Random r = new Random();
 
-    public void updateAdVisits(int id) {
-        final Place place = entityManager.find(Place.class, id);
-        if (place != null) {
-            place.setVisits(place.getVisits() + 1);
-            entityManager.merge(place);
+        while (randomIndexes.size() != 4) {
+            randomIndexes.add(r.nextInt(allPromoted.size()));
         }
+
+        List<Place> randomPromoted = new ArrayList<>();
+        for (Integer num : randomIndexes) {
+            randomPromoted.add(allPromoted.get(num));
+        }
+
+        return randomPromoted;
     }
 
     public List<Place> getAdsByUserPreferences(UserPreferences pref) {
@@ -189,11 +208,6 @@ public class PlaceDao {
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
         Query query = entityManager.createQuery(criteriaQuery);
         return (List<Place>) query.getResultList();
-    }
-
-    public Long getLastId() {
-        Query queryLastId = entityManager.createQuery("SELECT COUNT(*) FROM Place p");
-        return (Long) queryLastId.getSingleResult();
     }
 
 }
