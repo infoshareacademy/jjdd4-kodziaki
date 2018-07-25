@@ -2,11 +2,9 @@ package com.infoshare.kodziaki.web.servlets;
 
 import com.infoshare.kodziaki.CsvReader;
 import com.infoshare.kodziaki.Place;
-import com.infoshare.kodziaki.cdi.FileUploadProcessorBean;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 
 import javax.inject.Inject;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +14,6 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/create-db")
-@MultipartConfig
 public class CreateDataBaseServlet extends HttpServlet {
 
     @Inject

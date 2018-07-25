@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" action="/appPartments/add">
+    <form method="post" action="/appPartments/add" enctype="multipart/form-data">
         Tytuł ogłoszenia: <input type="text" name="title" required/><br/><br/>
         Miasto: <input type="text" name="city" required/><br/><br/>
         Dzielnica: <input type="text" name="district" required/><br/><br/>
@@ -69,6 +69,7 @@
                   rows="10"></textarea> <br/><br/>
         Podaj swoje imie i nazwisko: <input type="text" name="author" required/> <br/><br/>
         Zostaw swoj numer telefonu: <input type="number" name="phoneNumber" required/> <br/><br/>
+        Dodaj zdjecie: Dodaj zdjęcie: <input type="file" name="image"/><br/><br/>
         <input type="submit" name="save" value="Dodaj"/> <input type="reset" value="Wyczyść dane"/> <br/><br/>
     </form>
 </div>

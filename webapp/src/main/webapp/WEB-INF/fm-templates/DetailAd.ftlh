@@ -43,7 +43,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+            <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${ad.imageURL}" alt="">
         </div>
 
         <div class="col-md-4">

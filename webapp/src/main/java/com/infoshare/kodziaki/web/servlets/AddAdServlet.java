@@ -11,6 +11,7 @@ import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @WebServlet("/add")
+@MultipartConfig
 public class AddAdServlet extends HttpServlet {
 
     Logger logger = Logger.getLogger(getClass().getName());
@@ -113,9 +115,10 @@ public class AddAdServlet extends HttpServlet {
         File file = null;
         try {
             file = imageUploadDao.uploadImageFile(filePart);
-            Place.setImageURL("/images/" + file.getName());
-        } catch (UserImageNotFound userImageNotFound) {
-            logger.log(Level.SEVERE, userImageNotFound.getMessage());
+            place.setImageURL("/images/" + file.getName());
+        } catch ( Exception e) {
+            logger.log(Level.SEVERE, "Image not found");
+            throw new RuntimeException("Image not found");
         }
 
         placeDao.saveAd(place);
