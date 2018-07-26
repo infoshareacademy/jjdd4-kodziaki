@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 @WebServlet("/add")
 public class AddAdServlet extends HttpServlet {
 
+
     Logger logger = Logger.getLogger(getClass().getName());
 
     @Inject

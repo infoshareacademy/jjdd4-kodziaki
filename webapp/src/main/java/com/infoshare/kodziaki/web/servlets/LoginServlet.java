@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
 
     private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
+
     @Inject
     private TemplateProvider templateProvider;
 

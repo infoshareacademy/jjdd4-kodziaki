@@ -3,6 +3,8 @@ package com.infoshare.kodziaki.web.servlets;
 import com.infoshare.kodziaki.CsvReader;
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +18,7 @@ import java.util.List;
 @WebServlet("/create-db")
 public class CreateDataBaseServlet extends HttpServlet {
 
+    Logger logger = LogManager.getLogger(CreateDataBaseServlet.class);
     @Inject
     private CsvReader csvReader;
 
@@ -38,6 +41,8 @@ public class CreateDataBaseServlet extends HttpServlet {
             }
         } catch (IOException e) {
             e.printStackTrace();
+
         }
+        logger.info("Aplikacja zostala uruchomiona");
     }
 }
