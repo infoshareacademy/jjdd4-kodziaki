@@ -6,18 +6,7 @@ import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.jackson.JacksonFactory;
-import org.riversun.oauth2.google.OAuthSession;
-
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.services.oauth2.Oauth2;
-import com.google.api.services.oauth2.model.Userinfoplus;
-
 import javax.inject.Inject;
-import javax.security.enterprise.credential.Credential;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
         GoogleCredential credential = new GoogleCredential(BearerToken.authorizationHeaderAccessMethod()).setAccessToken(accessToken);
 
-                OAuthSession.getInstance().createCredential(request);
+        OAuthSession.getInstance().createCredential(request);
 
         try {
             String idToken = request.getParameter("id_token");
