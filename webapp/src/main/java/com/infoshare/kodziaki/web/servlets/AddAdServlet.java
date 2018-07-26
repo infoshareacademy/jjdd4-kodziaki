@@ -21,9 +21,11 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @WebServlet("/add")
 @MultipartConfig
@@ -112,6 +114,7 @@ public class AddAdServlet extends HttpServlet {
         place.setPhoneNumber(phoneNumberParam);
 
         Part filePart = req.getPart("image");
+
         File file = null;
         try {
             file = imageUploadDao.uploadImageFile(filePart);
@@ -120,7 +123,6 @@ public class AddAdServlet extends HttpServlet {
             logger.log(Level.SEVERE, "Image not found");
             throw new RuntimeException("Image not found");
         }
-
         placeDao.saveAd(place);
         logger.log(Level.INFO, "New place has been added " + place);
 
