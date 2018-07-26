@@ -2,7 +2,6 @@ package com.infoshare.kodziaki.web.dao;
 
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.UserPreferences;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
