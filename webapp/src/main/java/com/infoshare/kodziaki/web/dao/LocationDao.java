@@ -18,7 +18,7 @@ import java.util.List;
 @Stateless
 public class LocationDao {
 
-    private Logger LOG = LoggerFactory.getLogger(PlaceDao.class);
+    private Logger LOG = LoggerFactory.getLogger(LocationDao.class);
 
     @PersistenceContext
     private EntityManager entityManager;
