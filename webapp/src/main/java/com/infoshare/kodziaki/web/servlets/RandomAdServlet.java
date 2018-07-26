@@ -34,7 +34,7 @@ public class RandomAdServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("randomPlace", placeDao.getXRandomAds(1).get(0));
+        dataModel.put("randomPlace", placeDao.getRandomAd());
 
         try {
             template.process(dataModel, response.getWriter());

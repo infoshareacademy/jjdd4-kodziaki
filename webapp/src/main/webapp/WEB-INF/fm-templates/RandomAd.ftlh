@@ -57,6 +57,7 @@
                 <li>Autor: ${randomPlace.author}</li>
                 <li>Kontakt: ${randomPlace.phoneNumber}</li>
                 <li>ID: ${randomPlace.id}</li>
+                <li>odwiedzin: ${randomPlace.visits}</li>
             </ul>
         </div>
     </div>
