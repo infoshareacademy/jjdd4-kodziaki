@@ -17,6 +17,9 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
 
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="----- your google client id here -----------">
+
 </head>
 
 <body>
@@ -54,6 +57,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 

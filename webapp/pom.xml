@@ -54,6 +54,31 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.28</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-servlet</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-appengine</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-java6</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>1.23.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,14 +93,8 @@
                         <artifactId>junit-platform-surefire-provider</artifactId>
                         <version>1.2.0</version>
                     </dependency>
-                    <dependency>
-                        <groupId>com.google.oauth-client</groupId>
-                        <artifactId>google-oauth-client</artifactId>
-                        <version>1.23.0</version>
-                    </dependency>
                 </dependencies>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
