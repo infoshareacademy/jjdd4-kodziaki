@@ -63,12 +63,14 @@ public class PlaceDao {
     }
 
     public List<Object[]> getDistrictsStatistics() {
-        final Query query = entityManager.createQuery("SELECT p.district,SUM(visits) FROM Place p GROUP BY p.district order by sum(visits) desc");
+        final Query query = entityManager
+                .createQuery("SELECT p.district,SUM(visits) FROM Place p GROUP BY p.district order by sum(visits) desc");
         return (List<Object[]>) query.getResultList();
     }
 
     public List<Object[]> getCitiesStatistics() {
-        final Query query = entityManager.createQuery("SELECT p.city,SUM(visits) FROM Place p GROUP BY p.city order by sum(visits) desc");
+        final Query query = entityManager
+                .createQuery("SELECT p.city,SUM(visits) FROM Place p GROUP BY p.city order by sum(visits) desc");
         return (List<Object[]>) query.getResultList();
     }
 
@@ -98,6 +100,15 @@ public class PlaceDao {
         } else {
             return new ArrayList<>();
         }
+    }
+
+    public Place getRandomAd() {
+        Query queryIds = entityManager.createQuery("SELECT p.id FROM Place p");
+        List<Integer> ids = queryIds.getResultList();
+
+        Random r = new Random();
+        int random = r.nextInt(ids.size()-1);
+        return findById(random);
     }
 
     public List<Place> getXMostPopularAds() {
