@@ -7,7 +7,7 @@
     <data-source>
         <name>java:ds/kodziakids</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://0.0.0.0:6603/ads?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <url>jdbc:mysql://db:3306/ads?useLegacyDatetimeCode=false&amp;amp;serverTimezone=Europe/Warsaw</url>
         <user>root</user>
         <password>pass123</password>
     </data-source>
