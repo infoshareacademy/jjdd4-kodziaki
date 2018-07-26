@@ -17,23 +17,16 @@ public class ImageUploadDao {
     public File uploadImageFile(Part filePart) throws IOException {
 
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-
         if (fileName == null || fileName.isEmpty()) {
             throw new IOException("No user image has been uploaded");
         }
 
         File file = new File(getUploadImageFilesPath() + fileName);
-
         Files.deleteIfExists(file.toPath());
-
         InputStream fileContent = filePart.getInputStream();
-
         Files.copy(fileContent, file.toPath());
-
         fileContent.close();
-
         return file;
-
     }
 
     public String getUploadImageFilesPath() throws IOException {
