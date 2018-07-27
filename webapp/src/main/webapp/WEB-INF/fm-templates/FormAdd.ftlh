@@ -69,7 +69,21 @@
                   rows="10"></textarea> <br/><br/>
         Podaj swoje imie i nazwisko: <input type="text" name="author" required/> <br/><br/>
         Zostaw swoj numer telefonu: <input type="number" name="phoneNumber" required/> <br/><br/>
-        Dodaj zdjecie: <input type="file" name="image" value="Dodaj" multiple /><br/><br/>
-        <input type="submit" name="save" value="Dodaj"/> <input type="reset" value="Wyczyść dane"/> <br/><br/>
+
+        Dodaj zdjęcie główne: <br/><br/>
+        <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image1" id="file"/>
+        <label style="border-style: groove; font-weight: 900; cursor: pointer;" for="file">Dodaj</label><br/><br/>
+
+        Dodatkowe zdjęcia: <br/><br/>
+        <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image2" id="file"/>
+        <label style="border-style: groove; font-weight: 900; cursor: pointer;" for="file">Dodaj</label>
+        <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image3" id="file"/>
+        <label style="border-style: groove; font-weight: 900; cursor: pointer;" for="file">Dodaj</label>
+        <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image4" id="file"/>
+        <label style="border-style: groove; font-weight: 900; cursor: pointer;" for="file">Dodaj</label>
+        <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image5" id="file"/>
+        <label style="border-style: groove; font-weight: 900; cursor: pointer;" for="file">Dodaj</label><br/><br/>
+
+        <input type="submit" name="save" value="Dodaj ogłoszenie"/> <input type="reset" value="Wyczyść dane"/> <br/><br/>
     </form>
 </div>

@@ -113,21 +113,66 @@ public class AddAdServlet extends HttpServlet {
         place.setAuthor(authorParam);
         place.setPhoneNumber(phoneNumberParam);
 
-        Part filePart = req.getPart("image");
+        Part filePart1 = req.getPart("image1");
 
-        File file = null;
+        File file1 = null;
         try {
-            file = imageUploadDao.uploadImageFile(filePart);
-            place.setImageURL("/images/" + file.getName());
-        } catch ( Exception e) {
+            file1 = imageUploadDao.uploadImageFile(filePart1);
+            place.setImageURL1("/images/" + file1.getName());
+        } catch (Exception e1) {
             logger.log(Level.SEVERE, "Image not found");
-            throw new RuntimeException("Image not found");
+            throw new RuntimeException("Image not found1");
         }
+
+        Part filePart2 = req.getPart("image2");
+
+        File file2 = null;
+        try {
+            file2 = imageUploadDao.uploadImageFile(filePart2);
+            place.setImageURL2("/images/" + file2.getName());
+        } catch (Exception e2) {
+            logger.log(Level.SEVERE, "Image not found");
+            throw new RuntimeException("Image not found2");
+        }
+
+        Part filePart3 = req.getPart("image3");
+
+        File file3 = null;
+        try {
+            file3 = imageUploadDao.uploadImageFile(filePart3);
+            place.setImageURL3("/images/" + file3.getName());
+        } catch (Exception e3) {
+            logger.log(Level.SEVERE, "Image not found");
+            throw new RuntimeException("Image not found3");
+        }
+
+        Part filePart4 = req.getPart("image4");
+
+        File file4 = null;
+        try {
+            file4 = imageUploadDao.uploadImageFile(filePart4);
+            place.setImageURL4("/images/" + file4.getName());
+        } catch (Exception e4) {
+            logger.log(Level.SEVERE, "Image not found");
+            throw new RuntimeException("Image not found4");
+        }
+
+        Part filePart5 = req.getPart("image5");
+
+        File file5 = null;
+        try {
+            file5 = imageUploadDao.uploadImageFile(filePart5);
+            place.setImageURL5("/images/" + file5.getName());
+        } catch (Exception e5) {
+            logger.log(Level.SEVERE, "Image not found");
+            throw new RuntimeException("Image not found5");
+        }
+
         placeDao.saveAd(place);
         logger.log(Level.INFO, "New place has been added " + place);
-
         return place;
     }
+
 
     private Integer validateInteger(String value) {
         try {
