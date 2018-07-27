@@ -1,12 +1,14 @@
 package com.infoshare.kodziaki.web.servlets;
 
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.google.GoogleAuthorizationHelper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,17 +16,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+    private AuthenticationController googleAuthorizationHelper;
+    private String domain;
+
 
     private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
+
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        domain = config.getServletContext().getInitParameter("com.auth0.domain");
+        try {
+            googleAuthorizationHelper = GoogleAuthorizationHelper.getInstance(config);
+        } catch (UnsupportedEncodingException e) {
+            throw new ServletException("Couldn't create the AuthenticationController instance. Check the configuration.", e);
+        }
+    }
 
     @Override
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,15 +69,6 @@ public class LoginServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
-//    public static HttpResponse executeGet(
-//            HttpTransport transport, JsonFactory jsonFactory, String accessToken, GenericUrl url)
-//            throws IOException {
-//        Credential credential =
-//                new Credential(BearerToken.authorizationHeaderAccessMethod()).setAccessToken(accessToken);
-//        HttpRequestFactory requestFactory = transport.createRequestFactory(credential);
-//        return requestFactory.buildGetRequest(url).execute();
-//    }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
