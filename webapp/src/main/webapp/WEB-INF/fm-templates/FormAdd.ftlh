@@ -68,10 +68,10 @@
         <textarea name="description" required cols="50"
                   rows="10"></textarea> <br/><br/>
         Podaj swoje imie i nazwisko: <input type="text" name="author" required/> <br/><br/>
-        Zostaw swoj numer telefonu: <input type="number" name="phoneNumber" required/> <br/><br/>
+        Zostaw swoj numer telefonu: <input type="number" name="phoneNumber" min="0" required/> <br/><br/>
 
         Dodaj zdjecia: <br/><br/>
-        <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image" id="file" multiple=""/>
+        <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image" id="file" multiple="" required/>
         <label style="border-style: groove; font-weight: 900; cursor: pointer;" for="file">Dodaj</label><br/><br/>
 
         <input type="submit" name="save" value="Dodaj ogłoszenie"/> <input type="reset" value="Wyczyść dane"/> <br/><br/>

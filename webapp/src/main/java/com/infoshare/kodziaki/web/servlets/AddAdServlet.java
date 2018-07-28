@@ -40,7 +40,7 @@ public class AddAdServlet extends HttpServlet {
 
     @Inject
     private ImageUploadDao imageUploadDao;
-    
+
     @Inject
     private TemplateProvider templateProvider;
 
@@ -58,12 +58,12 @@ public class AddAdServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        
+
         Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         req.setCharacterEncoding("UTF-8");
-        
+
         try {
             Place place = savePlace(req);
             dataModel.put("ad", place);
@@ -115,17 +115,60 @@ public class AddAdServlet extends HttpServlet {
         place.setAuthor(authorParam);
         place.setPhoneNumber(phoneNumberParam);
 
-       File file = null;
+        File file = null;
 
         try {
             List<Part> fileParts = req.getParts().stream().filter(part -> "image".equals(part.getName())).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
             for (Part filePart : fileParts)
-                
+
+                if (fileParts.size() == 0) {
+                    place.setImageURL1("/images/kodziaki.jpg");
+                    place.setImageURL2("/images/kodziaki.jpg");
+                    place.setImageURL3("/images/kodziaki.jpg");
+                    place.setImageURL4("/images/kodziaki.jpg");
+                    place.setImageURL5("/images/kodziaki.jpg");
+                }
+
+            if (fileParts.size() == 1) {
+                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                place.setImageURL2("/images/kodziaki.jpg");
+                place.setImageURL3("/images/kodziaki.jpg");
+                place.setImageURL4("/images/kodziaki.jpg");
+                place.setImageURL5("/images/kodziaki.jpg");
+            }
+
+            if (fileParts.size() == 2) {
+                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
+                place.setImageURL3("/images/kodziaki.jpg");
+                place.setImageURL4("/images/kodziaki.jpg");
+                place.setImageURL5("/images/kodziaki.jpg");
+            }
+
+            if (fileParts.size() == 3) {
+                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
+                place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
+                place.setImageURL4("/images/kodziaki.jpg");
+                place.setImageURL5("/images/kodziaki.jpg");
+            }
+
+            if (fileParts.size() == 4) {
+                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
+                place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
+                place.setImageURL4("/images/" + imageUploadDao.uploadImageFile(fileParts.get(3)).getName());
+                place.setImageURL5("/images/kodziaki.jpg");
+            }
+
+            if (fileParts.size() == 5) {
                 place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
                 place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
                 place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
                 place.setImageURL4("/images/" + imageUploadDao.uploadImageFile(fileParts.get(3)).getName());
                 place.setImageURL5("/images/" + imageUploadDao.uploadImageFile(fileParts.get(4)).getName());
+            }
+
 
         } catch (Exception e1) {
             logger.log(Level.SEVERE, "Image not found");
