@@ -161,7 +161,7 @@ public class AddAdServlet extends HttpServlet {
                 place.setImageURL5("/images/kodziaki.jpg");
             }
 
-            if (fileParts.size() == 5) {
+            if (fileParts.size() >= 5) {
                 place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
                 place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
                 place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
