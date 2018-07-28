@@ -38,7 +38,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+            <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${randomPlace.imageURL1}" alt="">
         </div>
 
         <div class="col-md-4">
@@ -69,25 +69,25 @@
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${randomPlace.imageURL2}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${randomPlace.imageURL3}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${randomPlace.imageURL4}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${randomPlace.imageURL1}" alt="">
             </a>
         </div>
 
