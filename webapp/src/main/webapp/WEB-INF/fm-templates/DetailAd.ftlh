@@ -43,7 +43,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${ad.imageURL1}" alt="">
+            <img width="750" height="500" src="http://127.0.0.1:8080/appPartments${ad.imageURL1}" alt="">
         </div>
 
         <div class="col-md-4">
@@ -74,25 +74,25 @@
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${ad.imageURL2}" alt="">
+                <img width="254" height="200" src="http://127.0.0.1:8080/appPartments${ad.imageURL2}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${ad.imageURL3}" alt="">
+                <img width="254" height="200" src="http://127.0.0.1:8080/appPartments${ad.imageURL3}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${ad.imageURL4}" alt="">
+                <img width="254" height="200" src="http://127.0.0.1:8080/appPartments${ad.imageURL4}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://127.0.0.1:8080/appPartments${ad.imageURL5}" alt="">
+                <img width="254" height="200" src="http://127.0.0.1:8080/appPartments${ad.imageURL5}" alt="">
             </a>
         </div>
 
