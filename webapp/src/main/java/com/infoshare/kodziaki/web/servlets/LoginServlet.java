@@ -1,7 +1,10 @@
 package com.infoshare.kodziaki.web.servlets;
 
+import com.google.api.client.auth.oauth2.BearerToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
-import com.infoshare.kodziaki.web.google.GoogleAuthorizationHelper;
+import com.infoshare.kodziaki.web.authorization.AuthenticationControllerProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -17,32 +20,29 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-
-    private AuthenticationController googleAuthorizationHelper;
-    private String domain;
-
 
     private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
     @Inject
     private TemplateProvider templateProvider;
 
+    private AuthenticationController authenticationController;
+    private String domain;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         domain = config.getServletContext().getInitParameter("com.auth0.domain");
         try {
-            googleAuthorizationHelper = GoogleAuthorizationHelper.getInstance(config);
+            authenticationController = AuthenticationControllerProvider.getInstance(config);
         } catch (UnsupportedEncodingException e) {
-            throw new ServletException("Couldn't create the AuthenticationController instance. Check the configuration.", e);
+            throw new ServletException("Wystąpił błąd.", e);
         }
     }
+
 
     @Override
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,17 +71,21 @@ public class LoginServlet extends HttpServlet {
     }
 
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
         Template template = templateProvider.getTemplate(getServletContext(), "Login.ftlh");
-        Map<String, Object> dataModel = new HashMap<>();
-
-        response.setContentType("text/html;charset=UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(dataModel, response.getWriter());
+            template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
         }
+
+        String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
+                .withAudience(String.format("https://%s/userinfo", domain))
+                .build();
+        resp.sendRedirect(authorizeUrl);
 
     }
 

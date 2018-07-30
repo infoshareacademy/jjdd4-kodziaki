@@ -19,6 +19,9 @@
                     <a class="nav-link" href="random">Szczęśliwy traf</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="about">O nas</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="login">Zaloguj się</a>
                 </li>
             </ul>
