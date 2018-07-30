@@ -1,6 +1,5 @@
 package com.infoshare.kodziaki.web.servlets;
 
-import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -46,14 +44,15 @@ public class MainPageServlet extends HttpServlet {
             LOG.error(e.getMessage());
         }
 
-        final String accessToken = (String) SessionUtils.get(req, "accessToken");
-        final String idToken = (String) SessionUtils.get(req, "idToken");
+        final String accessToken = (String) SessionUtils.get(request, "accessToken");
+        final String idToken = (String) SessionUtils.get(request, "idToken");
         if (accessToken != null) {
             request.setAttribute("userId", accessToken);
         } else if (idToken != null) {
             request.setAttribute("userId", idToken);
         }
-        logger.info("authenticated as id={} accesToken={}", idToken, accessToken);
+
+        LOG.info("authenticated as id={} accesToken={}", idToken, accessToken);
 
     }
 }

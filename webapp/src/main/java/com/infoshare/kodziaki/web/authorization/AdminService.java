@@ -1,7 +1,6 @@
 package com.infoshare.kodziaki.web.authorization;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.logging.Logger;
 import javax.ejb.Singleton;

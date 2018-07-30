@@ -1,6 +1,6 @@
 package com.infoshare.kodziaki.web.filters;
 
-import com.infoshare.kodziaki.web.google.UserSession;
+import com.infoshare.kodziaki.web.model.UserSession;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
