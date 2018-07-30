@@ -3,8 +3,10 @@ package com.infoshare.kodziaki.web.servlets;
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.PlaceType;
 import com.infoshare.kodziaki.UserPreferences;
+import com.infoshare.kodziaki.web.dao.LocationDao;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.model.Location;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -21,6 +23,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet("/search")
 public class SearchAdsServlet extends HttpServlet {
@@ -33,11 +36,18 @@ public class SearchAdsServlet extends HttpServlet {
     @Inject
     private PlaceDao placeDao;
 
+    @Inject
+    private LocationDao locationDao;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
+
         resp.setContentType("text/html;charset=UTF-8");
+
+        Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("locations", sortDistrictsByCities());
+
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
@@ -71,11 +81,18 @@ public class SearchAdsServlet extends HttpServlet {
         }
     }
 
+    private Map<String, List<Location>> sortDistrictsByCities() {
+        return locationDao
+                .findAll()
+                .stream()
+                .collect(Collectors.groupingBy(Location::getCity));
+    }
+
     private UserPreferences getUserPreferences(HttpServletRequest req) {
         return new UserPreferences(
                     parseToPlaceType(req.getParameter("placeType")),
-                    req.getParameter("city"),
-                    req.getParameter("district"),
+                    getCityParam(req.getParameter("localization")),
+                    getDistrictParam(req.getParameter("localization")),
                     parseToBigDecimal(req.getParameter("minPrice")),
                     parseToBigDecimal(req.getParameter("maxPrice")),
                     parseToDouble(req.getParameter("minArea")),
@@ -89,6 +106,19 @@ public class SearchAdsServlet extends HttpServlet {
                     parseToBoolean(req.getParameter("animalsAllowed")),
                     parseToBoolean(req.getParameter("onlyLongTerm"))
             );
+    }
+
+    private String getCityParam(String parameter) {
+        String[] localizationParams = parameter.split(",");
+        return localizationParams[0];
+    }
+
+    private String getDistrictParam(String parameter) {
+        String[] localizationParams = parameter.split(",");
+        if (localizationParams.length < 2) {
+            return null;
+        }
+        return localizationParams[1];
     }
 
     private Boolean parseToBoolean(String parameter) {
