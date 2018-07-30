@@ -29,7 +29,9 @@ public class LoginServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
 
-    private AuthenticationController authenticationController;
+    @Inject
+    private AuthenticationControllerProvider authenticationControllerProvider;
+
     private String domain;
 
     @Override
@@ -82,7 +84,7 @@ public class LoginServlet extends HttpServlet {
             LOG.error(e.getMessage());
         }
 
-        String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
+        String authorizeUrl = authenticationControllerProvider.buildAuthorizeUrl(req, redirectUri)
                 .withAudience(String.format("https://%s/userinfo", domain))
                 .build();
         resp.sendRedirect(authorizeUrl);

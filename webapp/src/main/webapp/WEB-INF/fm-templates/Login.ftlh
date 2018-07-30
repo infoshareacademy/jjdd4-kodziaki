@@ -44,6 +44,9 @@
         <div class="col-lg-3 col-md-6 mb-4">
             </br></br>Wiemy kim jesteś.</br></br>
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <form method=”GET” action=”googleplus”>
+                <button type=”submit”>Login</button>
+            </form>
         </div>
     </div>
     <!-- /.row -->
