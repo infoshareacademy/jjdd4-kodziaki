@@ -1,0 +1,22 @@
+version: "2"
+services:
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass123
+      - MYSQL_DATABASE=ads
+      - MYSQL_USER=kodziaki
+      - MYSQL_PASSWORD=kodziaki
+    ports:
+      - 4202:3306
+  app:
+    build:
+      context: ./webapp
+    ports:
+      - 4200:8080
+      - 4201:9990
+    depends_on:
+      - db
+    links:
+      - db
+    dns: 8.8.8.8

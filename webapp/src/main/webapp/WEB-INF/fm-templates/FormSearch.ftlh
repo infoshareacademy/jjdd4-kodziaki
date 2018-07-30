@@ -1,6 +1,6 @@
 <div class="container">
     <form method="post" action="/appPartments/search">
-        <!-- place type -->
+
         <p>Typ nieruchomości</p>
         <select name="placeType">
             <option value="all" selected>Pokaż wszystkie</option>
@@ -9,12 +9,19 @@
             <option value="bed">Miejsce w pokoju</option>
         </select>
 
-        <!-- localization -->
-        <p>Lokalizacja</p>
-        <input type="text" name="city" placeholder="Miasto"/><br/>
-        <input type="text" name="district" placeholder="Dzielnica"/><br/>
+        <p>Lokalizacja:</p>
+        <select name="localization" required>
+            <#list locations as key,values>
+                <optgroup label="${key}">
+                    <option value="${key}">całe miasto ${key}</option>
+                    <#list values as value>
+                        <option value="${key},${value.district}">${value.district}</option>
+                    </#list>
+                </optgroup>
+            </#list>
+        </select>
+        </br></br>
 
-        <!-- basic parameters -->
         <p>Cena</p>
         <input list="minPriceList" type="number" name="minPrice" placeholder="Od" min="0" step="0.01"><span>zł</span>
         <datalist id="minPriceList">
@@ -54,7 +61,6 @@
         <input type="number" name="minRooms" placeholder="Od" min="0"/><br/>
         <input type="number" name="maxRooms" placeholder="Do" min="0"/><br/>
 
-        <!-- more parameters -->
         <input type="radio" name="animalsAllowed" value="false" />Mam alergię na zwierzęta<br/>
         <input type="radio" name="animalsAllowed" value="true" />Mam zwierzaka<br/><br/>
 
