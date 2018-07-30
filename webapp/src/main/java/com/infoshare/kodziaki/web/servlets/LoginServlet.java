@@ -3,6 +3,7 @@ package com.infoshare.kodziaki.web.servlets;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import org.hibernate.annotations.common.util.impl.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +21,7 @@ import java.util.Map;
 public class LoginServlet extends HttpServlet {
 
 
-    private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
 
 
     @Inject
@@ -36,7 +37,7 @@ public class LoginServlet extends HttpServlet {
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
+            logger.info("Template not found ");
         }
 
     }

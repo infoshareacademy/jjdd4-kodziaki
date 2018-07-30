@@ -20,7 +20,7 @@ import java.util.Map;
 @WebServlet("/random")
 public class RandomAdServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(RandomAdServlet.class);
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
 
     @Inject
     private TemplateProvider templateProvider;
@@ -39,7 +39,7 @@ public class RandomAdServlet extends HttpServlet {
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
+            logger.info("Template not found ");
         }
     }
 }

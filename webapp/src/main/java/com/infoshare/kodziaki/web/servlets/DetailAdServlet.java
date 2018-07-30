@@ -17,11 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+
 
 @WebServlet("/detailed")
 public class DetailAdServlet extends HttpServlet {
 
-    Logger logger = LogManager.getLogger(DetailAdServlet.class);
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
 
     @Inject
     private TemplateProvider templateProvider;
@@ -38,12 +40,12 @@ public class DetailAdServlet extends HttpServlet {
         placeDao.updateAdVisits(id);
         dataModel.put("ad", placeDao.findById(id));
 
-        logger.info("Aplikacja zostala uruchomiona");
+        logger.info("Application has been launched");
 
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            logger.error(e.getMessage());
+            logger.log(Level.INFO, "Template not found", e.getMessage());
         }
     }
 }

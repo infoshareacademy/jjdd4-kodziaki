@@ -22,7 +22,7 @@ import java.util.Map;
 @WebServlet("/main")
 public class MainPageServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(MainPageServlet.class);
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
 
     @Inject
     private PlaceDao placeDao;
@@ -43,7 +43,7 @@ public class MainPageServlet extends HttpServlet {
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
+            logger.info("Template not found ");
         }
     }
 }

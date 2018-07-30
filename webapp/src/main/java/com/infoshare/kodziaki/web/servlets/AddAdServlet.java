@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -67,6 +66,7 @@ public class AddAdServlet extends HttpServlet {
             dataModel.put("message", "Ogłoszenie zostało dodane.");
         } catch (Exception e) {
             resp.getWriter().println("Wystapił blad: " + e.getMessage());
+
         }
 
         try {

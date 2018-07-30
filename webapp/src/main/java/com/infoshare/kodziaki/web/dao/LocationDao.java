@@ -18,10 +18,9 @@ import java.util.List;
 @Stateless
 public class LocationDao {
 
-    private Logger LOG = LoggerFactory.getLogger(LocationDao.class);
-
     @PersistenceContext
     private EntityManager entityManager;
+    private Logger LOG = LoggerFactory.getLogger(PlaceDao.class);
 
     public void save(Location location) {
         entityManager.persist(location);
@@ -30,6 +29,7 @@ public class LocationDao {
     public List<Location> findAll() {
         final Query query = entityManager.createQuery("SELECT l FROM Location l");
         return (List<Location>) query.getResultList();
+
     }
 
     public Location findByName(String district, String city) {
@@ -44,6 +44,7 @@ public class LocationDao {
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
         Query query = entityManager.createQuery(criteriaQuery);
         return (Location) query.getSingleResult();
+
     }
 
     public Location findById(long id) {

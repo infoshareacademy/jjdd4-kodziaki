@@ -26,7 +26,7 @@ import java.util.List;
 @WebServlet("/create-db")
 public class CreateDataBaseServlet extends HttpServlet {
 
-    Logger logger = LogManager.getLogger(CreateDataBaseServlet.class);
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
     @Inject
     private CsvReader csvReader;
 
@@ -46,12 +46,14 @@ public class CreateDataBaseServlet extends HttpServlet {
 
             loadAdsFromCsv();
             loadLocationsFromCsv();
+            logger.info("Application has been launched");
 
         } catch (IOException e) {
             e.printStackTrace();
+            logger.info("Application has an error ");
 
         }
-        logger.info("Aplikacja zostala uruchomiona");
+
     }
 
     private void loadLocationsFromCsv() throws IOException {
@@ -59,6 +61,7 @@ public class CreateDataBaseServlet extends HttpServlet {
         List<Location> locations = locationCsvReader.readFile(new FileReader(locationCsvPath));
         for (Location location: locations) {
             locationDao.save(location);
+            logger.info("Locations are loaded ");
         }
     }
 
@@ -68,6 +71,7 @@ public class CreateDataBaseServlet extends HttpServlet {
         setFewAdsAsPromoted(ads);
         for (Place place : ads) {
             placeDao.saveAd(place);
+            logger.info("Locations are loaded ");
         }
     }
 
@@ -78,5 +82,6 @@ public class CreateDataBaseServlet extends HttpServlet {
         ads.get(18).setPromoted(true);
         ads.get(20).setPromoted(true);
         ads.get(1).setPromoted(true);
+
     }
 }

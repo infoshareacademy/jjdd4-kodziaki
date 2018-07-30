@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @WebServlet("/search")
 public class SearchAdsServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(SearchAdsServlet.class);
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
 
     @Inject
     private TemplateProvider templateProvider;
@@ -51,7 +51,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            LOG.info("Template not found", e.getMessage());
+            logger.info("Template not found ");
         }
     }
 
@@ -64,6 +64,7 @@ public class SearchAdsServlet extends HttpServlet {
             userPreferences = getUserPreferences(req);
         } catch (Exception e) {
             resp.getWriter().println("Wystapił błąd: " + e.getMessage());
+            logger.info("Error ");
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
@@ -77,7 +78,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             template.process(filteredAds, resp.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
+            logger.info("Template not found ");
         }
     }
 
@@ -104,13 +105,14 @@ public class SearchAdsServlet extends HttpServlet {
                     parseToBoolean(req.getParameter("isElevator")),
                     parseToBoolean(req.getParameter("smokingAllowed")),
                     parseToBoolean(req.getParameter("animalsAllowed")),
-                    parseToBoolean(req.getParameter("onlyLongTerm"))
-            );
+                    parseToBoolean(req.getParameter("onlyLongTerm")));
+
     }
 
     private String getCityParam(String parameter) {
         String[] localizationParams = parameter.split(",");
         return localizationParams[0];
+
     }
 
     private String getDistrictParam(String parameter) {
