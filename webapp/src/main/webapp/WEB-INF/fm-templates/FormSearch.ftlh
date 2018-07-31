@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" action="/appPartments/search">
+    <form method="post" action="/search">
 
         <p>Typ nieruchomości</p>
         <select name="placeType">
