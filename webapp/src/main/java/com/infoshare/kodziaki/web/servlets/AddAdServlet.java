@@ -3,8 +3,10 @@ package com.infoshare.kodziaki.web.servlets;
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.PlaceType;
 import com.infoshare.kodziaki.web.dao.ImageUploadDao;
+import com.infoshare.kodziaki.web.dao.LocationDao;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.model.Location;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -44,11 +46,16 @@ public class AddAdServlet extends HttpServlet {
     @Inject
     private TemplateProvider templateProvider;
 
+    @Inject
+    private LocationDao locationDao;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Template template = templateProvider.getTemplate(getServletContext(), "AddAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("locations", sortDistrictsByCities());
+
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
@@ -79,151 +86,169 @@ public class AddAdServlet extends HttpServlet {
         }
     }
 
-    private Place savePlace(HttpServletRequest req) throws IOException, ServletException {
-        String titleParam = req.getParameter("title");
-        PlaceType placeTypeParam = validatePlaceType(req.getParameter("placeType").toUpperCase());
-        BigDecimal priceParam = validateBigDecimal(req.getParameter("price"));
-        Double areaParam = validateDouble(req.getParameter("area"));
-        Integer roomsParam = validateInteger(req.getParameter("rooms"));
-        Integer floorParam = validateInteger(req.getParameter("floor"));
-        String districtParam = req.getParameter("district");
-        String cityParam = req.getParameter("city");
-        Boolean hasElevatorParam = validateBoolean(req.getParameter("hasElevator"));
-        Boolean smokingAllowedParam = validateBoolean(req.getParameter("smokingAllowed"));
-        Boolean animalAllowedParam = validateBoolean(req.getParameter("animalAllowed"));
-        Boolean onlyLongTermParam = validateBoolean(req.getParameter("onlyLongTerm"));
-        String descriptionParam = req.getParameter("description");
-        String authorParam = req.getParameter("author");
-        String phoneNumberParam = req.getParameter("phoneNumber");
+        private Map<String, List<Location>> sortDistrictsByCities () {
+            return locationDao
+                    .findAll()
+                    .stream()
+                    .collect(Collectors.groupingBy(Location::getCity));
+        }
 
-        final Place place = new Place();
+        private Place savePlace (HttpServletRequest req){
+            String titleParam = req.getParameter("title");
+            PlaceType placeTypeParam = validatePlaceType(req.getParameter("placeType").toUpperCase());
+            BigDecimal priceParam = validateBigDecimal(req.getParameter("price"));
+            Double areaParam = validateDouble(req.getParameter("area"));
+            Integer roomsParam = validateInteger(req.getParameter("rooms"));
+            Integer floorParam = validateInteger(req.getParameter("floor"));
+            String cityParam = validateCity(req.getParameter("localization"));
+            String districtParam = validateDistrict(req.getParameter("localization"));
+            Boolean hasElevatorParam = validateBoolean(req.getParameter("hasElevator"));
+            Boolean smokingAllowedParam = validateBoolean(req.getParameter("smokingAllowed"));
+            Boolean animalAllowedParam = validateBoolean(req.getParameter("animalAllowed"));
+            Boolean onlyLongTermParam = validateBoolean(req.getParameter("onlyLongTerm"));
+            String descriptionParam = req.getParameter("description");
+            String authorParam = req.getParameter("author");
+            String phoneNumberParam = req.getParameter("phoneNumber");
 
-        place.setId(placeDao.getLastId().intValue() + 1);
-        place.setTitle(titleParam);
-        place.setPlaceType(placeTypeParam);
-        place.setPrice(priceParam);
-        place.setArea(areaParam);
-        place.setRooms(roomsParam);
-        place.setFloor(floorParam);
-        place.setDistrict(districtParam);
-        place.setCity(cityParam);
-        place.setHasElevator(hasElevatorParam);
-        place.setSmokingAllowed(smokingAllowedParam);
-        place.setAnimalAllowed(animalAllowedParam);
-        place.setOnlyLongTerm(onlyLongTermParam);
-        place.setDescription(descriptionParam);
-        place.setAuthor(authorParam);
-        place.setPhoneNumber(phoneNumberParam);
+            final Place place = new Place();
 
-        File file = null;
+            place.setId(placeDao.getLastId().intValue() + 1);
+            place.setTitle(titleParam);
+            place.setPlaceType(placeTypeParam);
+            place.setPrice(priceParam);
+            place.setArea(areaParam);
+            place.setRooms(roomsParam);
+            place.setFloor(floorParam);
+            place.setDistrict(districtParam);
+            place.setCity(cityParam);
+            place.setHasElevator(hasElevatorParam);
+            place.setSmokingAllowed(smokingAllowedParam);
+            place.setAnimalAllowed(animalAllowedParam);
+            place.setOnlyLongTerm(onlyLongTermParam);
+            place.setDescription(descriptionParam);
+            place.setAuthor(authorParam);
+            place.setPhoneNumber(phoneNumberParam);
 
-        try {
-            List<Part> fileParts = req.getParts().stream().filter(part -> "image".equals(part.getName())).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
-            for (Part filePart : fileParts)
+            File file = null;
 
-                if (fileParts.size() == 0) {
-                    place.setImageURL1("/images/kodziaki.jpg");
+            try {
+                List<Part> fileParts = req.getParts().stream().filter(part -> "image".equals(part.getName())).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
+                for (Part filePart : fileParts)
+
+                    if (fileParts.size() == 0) {
+                        place.setImageURL1("/images/kodziaki.jpg");
+                        place.setImageURL2("/images/kodziaki.jpg");
+                        place.setImageURL3("/images/kodziaki.jpg");
+                        place.setImageURL4("/images/kodziaki.jpg");
+                        place.setImageURL5("/images/kodziaki.jpg");
+                    }
+
+                if (fileParts.size() == 1) {
+                    place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
                     place.setImageURL2("/images/kodziaki.jpg");
                     place.setImageURL3("/images/kodziaki.jpg");
                     place.setImageURL4("/images/kodziaki.jpg");
                     place.setImageURL5("/images/kodziaki.jpg");
                 }
 
-            if (fileParts.size() == 1) {
-                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
-                place.setImageURL2("/images/kodziaki.jpg");
-                place.setImageURL3("/images/kodziaki.jpg");
-                place.setImageURL4("/images/kodziaki.jpg");
-                place.setImageURL5("/images/kodziaki.jpg");
+                if (fileParts.size() == 2) {
+                    place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                    place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
+                    place.setImageURL3("/images/kodziaki.jpg");
+                    place.setImageURL4("/images/kodziaki.jpg");
+                    place.setImageURL5("/images/kodziaki.jpg");
+                }
+
+                if (fileParts.size() == 3) {
+                    place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                    place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
+                    place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
+                    place.setImageURL4("/images/kodziaki.jpg");
+                    place.setImageURL5("/images/kodziaki.jpg");
+                }
+
+                if (fileParts.size() == 4) {
+                    place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                    place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
+                    place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
+                    place.setImageURL4("/images/" + imageUploadDao.uploadImageFile(fileParts.get(3)).getName());
+                    place.setImageURL5("/images/kodziaki.jpg");
+                }
+
+                if (fileParts.size() >= 5) {
+                    place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
+                    place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
+                    place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
+                    place.setImageURL4("/images/" + imageUploadDao.uploadImageFile(fileParts.get(3)).getName());
+                    place.setImageURL5("/images/" + imageUploadDao.uploadImageFile(fileParts.get(4)).getName());
+                }
+
+
+            } catch (Exception e1) {
+                logger.log(Level.SEVERE, "Image not found");
+                throw new RuntimeException("Image not found");
             }
 
-            if (fileParts.size() == 2) {
-                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
-                place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
-                place.setImageURL3("/images/kodziaki.jpg");
-                place.setImageURL4("/images/kodziaki.jpg");
-                place.setImageURL5("/images/kodziaki.jpg");
+            placeDao.saveAd(place);
+            logger.log(Level.INFO, "New place has been added " + place);
+            return place;
+        }
+
+
+        private String validateCity (String localization){
+            String[] localizationParams = localization.split(",");
+            return localizationParams[0];
+        }
+
+        private String validateDistrict (String localization){
+            String[] localizationParams = localization.split(",");
+            return localizationParams[1];
+        }
+
+        private Integer validateInteger (String value){
+            try {
+                return Integer.valueOf(value);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, "Invalid value: " + value);
+                throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
             }
+        }
 
-            if (fileParts.size() == 3) {
-                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
-                place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
-                place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
-                place.setImageURL4("/images/kodziaki.jpg");
-                place.setImageURL5("/images/kodziaki.jpg");
+        private Boolean validateBoolean (String value){
+            try {
+                return Boolean.valueOf(value);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, "Invalid value: " + value);
             }
+            throw new RuntimeException("Value '" + value + "' cannot be parsed into Boolean");
+        }
 
-            if (fileParts.size() == 4) {
-                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
-                place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
-                place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
-                place.setImageURL4("/images/" + imageUploadDao.uploadImageFile(fileParts.get(3)).getName());
-                place.setImageURL5("/images/kodziaki.jpg");
+        private Double validateDouble (String value){
+            try {
+                return Double.valueOf(value);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, "Invalid value: " + value);
+                throw new RuntimeException("Value '" + value + "' cannot be parsed into Double");
             }
+        }
 
-            if (fileParts.size() >= 5) {
-                place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
-                place.setImageURL2("/images/" + imageUploadDao.uploadImageFile(fileParts.get(1)).getName());
-                place.setImageURL3("/images/" + imageUploadDao.uploadImageFile(fileParts.get(2)).getName());
-                place.setImageURL4("/images/" + imageUploadDao.uploadImageFile(fileParts.get(3)).getName());
-                place.setImageURL5("/images/" + imageUploadDao.uploadImageFile(fileParts.get(4)).getName());
+        private PlaceType validatePlaceType (String value){
+            try {
+                return PlaceType.valueOf(value);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, "Invalid value: " + value);
+                throw new RuntimeException("Value '" + value + "' cannot be parsed into PlaceType");
             }
-
-
-        } catch (Exception e1) {
-            logger.log(Level.SEVERE, "Image not found");
-            throw new RuntimeException("Image not found");
         }
 
-        placeDao.saveAd(place);
-        logger.log(Level.INFO, "New place has been added " + place);
-        return place;
-    }
-
-
-    private Integer validateInteger(String value) {
-        try {
-            return Integer.valueOf(value);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Invalid value: " + value);
-            throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
+        private BigDecimal validateBigDecimal (String value){
+            try {
+                return new BigDecimal(value);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, "Invalid value: " + value);
+                throw new RuntimeException("Value '" + value + "' cannot be parsed into BigDecimal");
+            }
         }
+
     }
 
-    private Boolean validateBoolean(String value) {
-        try {
-            return Boolean.valueOf(value);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Invalid value: " + value);
-        }
-        throw new RuntimeException("Value '" + value + "' cannot be parsed into Boolean");
-    }
-
-    private Double validateDouble(String value) {
-        try {
-            return Double.valueOf(value);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Invalid value: " + value);
-            throw new RuntimeException("Value '" + value + "' cannot be parsed into Double");
-        }
-    }
-
-    private PlaceType validatePlaceType(String value) {
-        try {
-            return PlaceType.valueOf(value);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Invalid value: " + value);
-            throw new RuntimeException("Value '" + value + "' cannot be parsed into PlaceType");
-        }
-    }
-
-    private BigDecimal validateBigDecimal(String value) {
-        try {
-            return new BigDecimal(value);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Invalid value: " + value);
-            throw new RuntimeException("Value '" + value + "' cannot be parsed into BigDecimal");
-        }
-    }
-
-}

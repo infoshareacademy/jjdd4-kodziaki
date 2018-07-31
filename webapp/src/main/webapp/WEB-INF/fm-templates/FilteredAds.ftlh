@@ -42,7 +42,7 @@
                         <h5 class="" city">${ad.city}, ${ad.district}</h5>
                     </div>
                     <div class="card-footer">
-                        <a href="/appPartments/detailed?id=${ad.id}" class="btn btn-primary">Zobacz</a>
+                        <a href="/detailed?id=${ad.id}" class="btn btn-primary">Zobacz</a>
                     </div>
                 </div>
             </div>

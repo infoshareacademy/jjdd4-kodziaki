@@ -91,6 +91,9 @@ public class Place {
     @Column(name = "image5")
     private String imageURL5;
 
+    @Column(name = "visits")
+    private long visits;
+
     public Place() {
 
     }
@@ -163,6 +166,8 @@ public class Place {
 
     public boolean isPromoted() { return isPromoted; }
 
+    public long getVisits() { return visits; }
+
     public void setId(int id) { this.id = id; }
 
     public void setPlaceType(PlaceType placeType) { this.placeType = placeType; }
@@ -216,4 +221,5 @@ public class Place {
     public String getImageURL5() { return imageURL5; }
 
     public void setImageURL5(String imageURL5) { this.imageURL5 = imageURL5; }
+    public void setVisits(long visits) { this.visits = visits; }
 }
