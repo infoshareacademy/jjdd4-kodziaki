@@ -44,15 +44,5 @@ public class MainPageServlet extends HttpServlet {
             LOG.error(e.getMessage());
         }
 
-        final String accessToken = (String) SessionUtils.get(request, "accessToken");
-        final String idToken = (String) SessionUtils.get(request, "idToken");
-        if (accessToken != null) {
-            request.setAttribute("userId", accessToken);
-        } else if (idToken != null) {
-            request.setAttribute("userId", idToken);
-        }
-
-        LOG.info("authenticated as id={} accesToken={}", idToken, accessToken);
-
     }
 }

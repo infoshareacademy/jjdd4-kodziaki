@@ -49,6 +49,11 @@
             <version>2.3.28</version>
         </dependency>
         <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>auth0-servlet</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-plus</artifactId>
             <version>v1-rev541-1.23.0</version>

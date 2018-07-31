@@ -24,7 +24,6 @@ public class GooglePlusServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
-        //Configure
         ServiceBuilder builder= new ServiceBuilder();
         OAuthService service = builder.provider(Google2Api.class)
                 .apiKey(CLIENT_ID)
@@ -33,8 +32,8 @@ public class GooglePlusServlet extends HttpServlet {
                 .scope("openid profile email " +
                         "https://www.googleapis.com/auth/plus.login " +
                         "https://www.googleapis.com/auth/plus.me")
-                .debug(System.out)
-                .build(); //Now build the call
+                .debug()
+                .build();
 
         HttpSession session = request.getSession();
         session.setAttribute("oauth2Service", service);
@@ -42,7 +41,3 @@ public class GooglePlusServlet extends HttpServlet {
         response.sendRedirect(service.getAuthorizationUrl(null));
     }
 }
-
-// https://www.google.com/search?client=ubuntu&channel=fs&q=Google2Api+class&ie=utf-8&oe=utf-8
-// https://oneminutedistraction.wordpress.com/2014/04/29/using-oauth-for-your-javaee-login/
-// https://console.developers.google.com/apis/credentials?project=apppartments-1532526845285
