@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +13,7 @@
     <title>appPartments - logowanie</title>
 </head>
 <body>
-<h2>RODO itd.</h2>
+<h2>Zaloguj si? i pami?taj o RODO itd.</h2>
 <br>
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
@@ -32,7 +30,7 @@
         //do not post all above info to the server because that is not secure.
         //just send the id_token
 
-        var redirectUrl = 'login';
+        var redirectUrl = 'http://0.0.0.0.:4200';
 
         //using jquery to post data dynamically
         var form = $('<form action="' + redirectUrl + '" method="post">' +
