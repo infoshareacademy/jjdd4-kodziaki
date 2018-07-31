@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <title>appPARTMENTS main</title>
 
     <!-- Bootstrap core CSS -->

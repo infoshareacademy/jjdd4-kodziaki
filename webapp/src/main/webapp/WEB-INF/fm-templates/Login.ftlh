@@ -5,6 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="680649103500-59lgm340117h0kclrnoie501745m9ovc.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -16,9 +17,6 @@
 
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
-
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="----- your google client id here -----------">
 
 </head>
 
@@ -42,7 +40,7 @@
     <!-- Page Features -->
     <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "login.jsp">
+            <#include "../login.jsp">
             <#--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
                 <#--<form method=”GET” action=”googleplus”></form>-->
         </div>
@@ -58,8 +56,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
 
 </body>
