@@ -111,9 +111,15 @@
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.2.1.Final</version>
+
                 <configuration>
                     <name>appPartments.war</name>
+                    <hostname>localhost</hostname>
+                    <port>4201</port>
+                    <username>admin</username>
+                    <password>admin</password>
                 </configuration>
+
                 <executions>
                     <execution>
                         <phase>install</phase>
