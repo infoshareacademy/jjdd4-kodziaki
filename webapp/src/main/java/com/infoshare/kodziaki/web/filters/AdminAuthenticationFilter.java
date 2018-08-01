@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 @WebFilter(
         filterName = "AdminAuthenticationFilter",
-        urlPatterns = {"appPartments/admin/*"},
+        urlPatterns = {"admin/*"},
                 initParams = {@WebInitParam(name = "isAdmin", value = "true")
         })
 public class AdminAuthenticationFilter implements Filter {

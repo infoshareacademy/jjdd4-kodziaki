@@ -3,6 +3,7 @@ package com.infoshare.kodziaki.web.servlets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.infoshare.kodziaki.web.authorization.IdTokenVerifierAndParser;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
+import com.infoshare.kodziaki.web.model.UserSession;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -57,8 +58,9 @@ public class LoginServlet extends HttpServlet {
             GoogleIdToken.Payload payLoad = IdTokenVerifierAndParser.getPayload(idToken);
             String name = (String) payLoad.get("name");
             String email = payLoad.getEmail();
-            System.out.println("User name: " + name);
-            System.out.println("User email: " + email);
+
+            LOG.info("User name: " + name + "is logged");
+            LOG.info("User email: " + email);
 
             HttpSession session = req.getSession(true);
             session.setAttribute("userLogged", true);

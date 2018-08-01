@@ -2,6 +2,7 @@ package com.infoshare.kodziaki;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.registry.infomodel.User;
 import java.math.BigDecimal;
 
 @Entity
@@ -78,6 +79,10 @@ public class Place {
     @Column(name = "visits")
     private long visits;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Place() {
 
     }
@@ -97,7 +102,8 @@ public class Place {
                  boolean onlyLongTerm,
                  String description,
                  String author,
-                 String phoneNumber) {
+                 String phoneNumber,
+                 User user) {
         this.id = id;
         this.title = title;
         this.placeType = placeType;
@@ -114,6 +120,7 @@ public class Place {
         this.description = description;
         this.author = author;
         this.phoneNumber = phoneNumber;
+        this.user = user;
     }
 
     public int getId() { return id; }
@@ -187,4 +194,9 @@ public class Place {
     public void setPromoted(boolean promoted) { isPromoted = promoted; }
 
     public void setVisits(long visits) { this.visits = visits; }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
 }

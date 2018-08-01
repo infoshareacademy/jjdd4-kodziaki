@@ -1,11 +1,15 @@
 package com.infoshare.kodziaki.web.model;
 
+import com.infoshare.kodziaki.Place;
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User<Set> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +24,9 @@ public class User {
 
     @Column (name = "isAdmin")
     private boolean isAdmin = false;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Place> ads;
 
     public User() {
     }
@@ -36,7 +43,6 @@ public class User {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
-
 
     public Integer getId() {
         return id;
@@ -58,7 +64,12 @@ public class User {
         return email;
     }
 
-    public void setEmail(String mail) {
+    public void setEmail(String email) {
         this.email = email;
     }
+
+    public List<Place> getAds() { return ads; }
+
+    public void setAds(List<Place> ads) { this.ads = ads; }
+
 }
