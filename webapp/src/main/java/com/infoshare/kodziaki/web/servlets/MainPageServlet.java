@@ -33,9 +33,13 @@ public class MainPageServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "MainPage.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
 
-        dataModel.put("mostPopularAds", placeDao.getXMostPopularAds());
-        dataModel.put("promotedAds", placeDao.getXPromotedAds());
-        dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+        try {
+            dataModel.put("mostPopularAds", placeDao.getXMostPopularAds());
+            dataModel.put("promotedAds", placeDao.getXPromotedAds());
+            dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+        } catch (Exception e) {
+            dataModel.put("message", "Brak wczytanej bazy danych");
+        }
 
         response.setContentType("text/html;charset=UTF-8");
 
