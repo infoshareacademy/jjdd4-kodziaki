@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+
 <!doctype html>
 <html>
 <head>
@@ -8,6 +10,7 @@
     <title>appPartmens</title>
 </head>
 <body>
-    <h2>Siema, tu Kodziaki!</h2>
+
+        <a href="create-db">Wczytaj bazę danych</a>
 </body>
 </html>

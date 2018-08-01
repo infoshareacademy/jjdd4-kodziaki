@@ -16,6 +16,9 @@
                     <a class="nav-link" href="add">Dodaj ogłoszenie</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="panel">Panel</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="random">Szczęśliwy traf</a>
                 </li>
                 <li class="nav-item">
