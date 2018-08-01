@@ -35,6 +35,10 @@
             <#include "Header.ftlh">
     </header>
 
+    <#if message??>
+        <p>${message}</p>
+    </#if>
+
     <!-- Page Features -->
     <div class="row text-center">
         <#list promotedAds as ad>
