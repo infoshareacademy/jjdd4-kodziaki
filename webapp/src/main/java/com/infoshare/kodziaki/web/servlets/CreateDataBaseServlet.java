@@ -7,8 +7,6 @@ import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import com.infoshare.kodziaki.web.model.Location;
 import com.infoshare.kodziaki.web.model.LocationCsvReader;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,10 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.HashMap;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Map;
 
 
 @WebServlet("/create-db")
@@ -44,7 +42,7 @@ public class CreateDataBaseServlet extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
 
         resp.setContentType("text/html;charset=UTF-8");
@@ -56,15 +54,6 @@ public class CreateDataBaseServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        Template template = templateProvider.getTemplate(getServletContext(), "MainPage.ftlh");
-//        Map<String, Object> dataModel = new HashMap<>();
-//
-//        try {
-//            template.process(dataModel, resp.getWriter());
-//        } catch (TemplateException e) {
-//            logger.error(e.getMessage());
-//        }
     }
 
     private void loadLocationsFromCsv() throws IOException {
