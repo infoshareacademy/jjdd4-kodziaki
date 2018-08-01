@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="680649103500-59lgm340117h0kclrnoie501745m9ovc.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="428144478815-v80q409bhp3lrcel6272tesu1t5nf0gf.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -40,7 +40,7 @@
     <!-- Page Features -->
     <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "../login.jsp">
+            <#include "login.jsp">
             <#--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
                 <#--<form method=”GET” action=”googleplus”></form>-->
         </div>

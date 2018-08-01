@@ -23,7 +23,9 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <#include "Menu.ftlh">
+    <div class="container">
+        <#include "Menu.ftlh">
+    </div>
 </nav>
 
 <!-- Page Content -->

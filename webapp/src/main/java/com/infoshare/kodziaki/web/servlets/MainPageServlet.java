@@ -35,6 +35,7 @@ public class MainPageServlet extends HttpServlet {
 
         dataModel.put("mostPopularAds", placeDao.getXMostPopularAds());
         dataModel.put("promotedAds", placeDao.getXPromotedAds());
+        dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
 
         response.setContentType("text/html;charset=UTF-8");
 

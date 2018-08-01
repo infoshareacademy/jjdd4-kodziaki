@@ -45,4 +45,5 @@ public class UserSession implements Serializable {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
 }

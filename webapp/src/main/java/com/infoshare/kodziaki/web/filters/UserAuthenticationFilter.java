@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 @WebFilter(
         filterName = "UserAuthenticationFilter",
-        urlPatterns = {"appPartments/add", "*/save", "/admin/*"}
+        urlPatterns = {"/add", "/save", "/admin/*"}
         )
 public class UserAuthenticationFilter implements Filter {
 
@@ -33,14 +33,14 @@ public class UserAuthenticationFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) req;
-        User user = (User) request.getSession().getAttribute("user");
         HttpServletResponse response = (HttpServletResponse) resp;
 
-        if (userSession.isLogged() != true) {
+        try {
+            boolean isLoggedIn = (boolean)request.getSession().getAttribute("userLogged");
+            filterChain.doFilter(req, resp);
+        } catch (Exception e) {
             resp.getWriter().println("Nie posiadasz uprawnień - zaloguj się");
             response.sendRedirect("/login");
-        } else {
-            filterChain.doFilter(req, resp);
         }
     }
 }

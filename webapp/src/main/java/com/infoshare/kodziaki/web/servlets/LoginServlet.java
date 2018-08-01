@@ -61,11 +61,8 @@ public class LoginServlet extends HttpServlet {
             System.out.println("User email: " + email);
 
             HttpSession session = req.getSession(true);
-            session.setAttribute("userName", true);
+            session.setAttribute("userLogged", true);
             resp.sendRedirect("/main");
-//            req.getServletContext()
-//                    .getRequestDispatcher("/main").forward(req, resp);
-
 
         } catch (Exception e) {
             throw new RuntimeException(e);

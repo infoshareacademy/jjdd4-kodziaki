@@ -8,6 +8,7 @@ import java.io.IOException;
 
 @Singleton
 public class AdminService {
+
     Logger logger = Logger.getLogger(getClass().getName());
 
     private final AdminConfig adminConfig;
