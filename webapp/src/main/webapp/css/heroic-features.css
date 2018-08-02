@@ -20,6 +20,10 @@ html, body {
   height: 100%;
 }
 
+.cards {
+  margin-bottom: 30px;
+}
+
 .jumbotron {
   background-image: url("../images/city-view.jpg");
   background-size: cover;
@@ -27,6 +31,14 @@ html, body {
   width: auto;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.header-text {
+  font-size: 50px;
+}
+
+.main-button {
+  margin-top: 120px;
 }
 
 .main-page-section {

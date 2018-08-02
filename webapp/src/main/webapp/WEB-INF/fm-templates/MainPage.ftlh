@@ -41,11 +41,10 @@
     </#if>
 
     <!-- Page Features -->
-    </br></br>
 
     <h5 class="main-page-section">Polecamy!</h5>
 
-    <div class="row text-center">
+    <div class="row text-center cards">
         <#list promotedAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
@@ -64,11 +63,10 @@
             </div>
         </#list>
     </div>
-    </br></br>
 
     <h5 class="main-page-section">Najczęściej odwiedzane</h5>
 
-    <div class="row text-center">
+    <div class="row text-center cards">
         <#list mostPopularAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
@@ -86,7 +84,6 @@
             </div>
         </#list>
     </div>
-    </br></br>
     <!-- /.row -->
 
 </div>
