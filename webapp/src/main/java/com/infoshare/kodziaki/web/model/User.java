@@ -25,9 +25,6 @@ public class User<Set> {
     @Column (name = "isAdmin")
     private boolean isAdmin = false;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Place> ads;
-
     public User() {
     }
 
@@ -67,9 +64,5 @@ public class User<Set> {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public List<Place> getAds() { return ads; }
-
-    public void setAds(List<Place> ads) { this.ads = ads; }
 
 }

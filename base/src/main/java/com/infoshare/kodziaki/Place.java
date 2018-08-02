@@ -79,10 +79,6 @@ public class Place {
     @Column(name = "visits")
     private long visits;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
     public Place() {
 
     }
