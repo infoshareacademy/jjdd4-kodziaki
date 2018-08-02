@@ -7,6 +7,8 @@ import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import com.infoshare.kodziaki.web.model.Location;
 import com.infoshare.kodziaki.web.model.LocationCsvReader;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @WebServlet("/create-db")
@@ -42,17 +46,20 @@ public class CreateDataBaseServlet extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         resp.setContentType("text/html;charset=UTF-8");
+
         try {
 
             loadAdsFromCsv();
             loadLocationsFromCsv();
+            logger.info("Database has been loaded");
+            resp.sendRedirect("/main");
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.info("Database hasn't been loaded");
+            resp.sendRedirect("/main");
         }
     }
 
@@ -60,7 +67,7 @@ public class CreateDataBaseServlet extends HttpServlet {
         String locationCsvPath = getServletContext().getResource("/WEB-INF/files/districts.csv").getPath();
         logger.info("locations file path: " + locationCsvPath);
         List<Location> locations = locationCsvReader.readFile(new InputStreamReader(new FileInputStream(locationCsvPath), "UTF-8"));
-        for (Location location: locations) {
+        for (Location location : locations) {
             locationDao.save(location);
         }
         logger.info("locations have been saved in database");
