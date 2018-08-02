@@ -1,6 +1,7 @@
 package com.infoshare.kodziaki.web.servlets;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.infoshare.kodziaki.web.authorization.AdminConfig;
 import com.infoshare.kodziaki.web.authorization.IdTokenVerifierAndParser;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import com.infoshare.kodziaki.web.model.UserSession;
@@ -23,6 +24,9 @@ import java.util.Map;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
+    @Inject
+    AdminConfig adminConfig;
 
     private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
@@ -64,6 +68,13 @@ public class LoginServlet extends HttpServlet {
 
             HttpSession session = req.getSession(true);
             session.setAttribute("userLogged", true);
+            session.setAttribute("user", name);
+            session.setAttribute("email", email);
+
+            if (adminConfig.getAdmins().contains(email)){
+                session.setAttribute("adminLogged", true);
+            }
+
             resp.sendRedirect("/main");
 
         } catch (Exception e) {

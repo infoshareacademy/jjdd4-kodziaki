@@ -22,26 +22,27 @@ public class AdminAuthenticationFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
-        Boolean isAdmin = Boolean.valueOf(filterConfig.getInitParameter("isAdmin"));
+//        Boolean isAdmin = Boolean.valueOf(filterConfig.getInitParameter("isAdmin"));
     }
 
     @Override
     public void destroy() {
-        Boolean isAdmin = Boolean.valueOf(false);
+//        Boolean isAdmin = Boolean.valueOf(false);
     }
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) req;
-        User user = (User) request.getSession().getAttribute("user");
         HttpServletResponse response = (HttpServletResponse) resp;
 
-        if (userSession.isAdmin() != true) {
+        try {
+            boolean isAdmin = (boolean)request.getSession().getAttribute("adminLogged");
+            filterChain.doFilter(req, resp);
+        } catch (Exception e) {
             resp.getWriter().println("Nie posiadasz uprawnień - zaloguj się");
             response.sendRedirect("/login");
-        } else {
-            filterChain.doFilter(req, resp);
         }
+
     }
 }
