@@ -5,8 +5,7 @@ import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.LocationDao;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import com.infoshare.kodziaki.web.model.Location;
 import com.infoshare.kodziaki.web.model.LocationCsvReader;
@@ -22,11 +21,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.logging.Logger;
 
 @WebServlet("/create-db")
 public class CreateDataBaseServlet extends HttpServlet {
 
-    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
+    Logger logger = Logger.getLogger(getClass().getName());
+
     @Inject
     private CsvReader csvReader;
 

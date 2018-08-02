@@ -13,6 +13,8 @@ public class LocationCsvReader {
 
     private static final String SEPARATOR = ",";
 
+    Logger logger = Logger.getLogger(getClass().getName());
+
 
     public List<Location> readFile(Reader source) throws IOException, NumberFormatException {
         BufferedReader reader = null;
@@ -32,6 +34,8 @@ public class LocationCsvReader {
         } finally {
             if (source != null) {
                 reader.close();
+                logger.info("Exception");
+
 
 
 

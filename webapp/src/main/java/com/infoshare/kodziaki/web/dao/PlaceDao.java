@@ -2,8 +2,6 @@ package com.infoshare.kodziaki.web.dao;
 
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.UserPreferences;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,11 +12,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.*;
+import java.util.logging.Logger;
 
 @Stateless
 public class PlaceDao {
 
-    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(getClass().getName());
+    Logger logger = Logger.getLogger(getClass().getName());
+
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -218,6 +218,8 @@ public class PlaceDao {
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
         Query query = entityManager.createQuery(criteriaQuery);
         return (List<Place>) query.getResultList();
+
+
     }
 
 }

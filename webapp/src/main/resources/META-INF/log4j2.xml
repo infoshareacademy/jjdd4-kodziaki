@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <File name="DbFile" fileName="logs/db.log">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss} %level %logger - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+        <Async name="AsyncDbFile">
+            <AppenderRef ref="DbFile"/>
+        </Async>
+        <File name="HtmlFile" fileName="logs/app.html" append="false">
+            <HTMLLayout charset="UTF-8" title="EmployeesDemo logs" />
+        </File>
+        <Async name="AsyncHtmlFile">
+            <AppenderRef ref="HtmlFile"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="AsyncHtmlFile"/>
+        </Root>
+        <logger level="DEBUG" name="log4j_2.repository.FileDataBase" additivity="false">
+            <AppenderRef ref="AsyncDbFile"/>
+        </logger>
+    </Loggers>
+</Configuration>
