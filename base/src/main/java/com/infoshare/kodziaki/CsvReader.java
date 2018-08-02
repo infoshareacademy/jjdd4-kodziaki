@@ -23,8 +23,7 @@ public class CsvReader {
         try {
             reader = new BufferedReader(source);
             logger.info("PARSE CSV");
-            logger.info(source.toString());
-            return reader.lines()
+            List<Place> places = reader.lines()
                     .skip(1)
                     .map(l -> l.split(SEPARATOR))
                     .map(array -> new PlaceBuilder()
@@ -46,6 +45,11 @@ public class CsvReader {
                             .withPhoneNumber(array[15])
                             .buildPlace())
                     .collect(Collectors.toList());
+            logger.info("AFTER PARSE CSV");
+            places.forEach(place -> {
+                logger.info("CITY = " + place.getCity());
+            });
+            return places;
         } catch (Exception e) {
             throw new NumberFormatException();
         } finally {
