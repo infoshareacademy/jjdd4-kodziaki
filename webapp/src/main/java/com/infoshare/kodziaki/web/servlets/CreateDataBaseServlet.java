@@ -42,17 +42,16 @@ public class CreateDataBaseServlet extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         resp.setContentType("text/html;charset=UTF-8");
-        try {
 
+        try {
             loadAdsFromCsv();
             loadLocationsFromCsv();
-
         } catch (IOException e) {
             e.printStackTrace();
+            resp.sendRedirect("/error-db");
         }
     }
 

@@ -53,6 +53,7 @@ public class SearchAdsServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             LOG.info("Template not found", e.getMessage());
+            resp.sendRedirect("/error");
         }
     }
 
@@ -80,6 +81,7 @@ public class SearchAdsServlet extends HttpServlet {
             template.process(filteredAds, resp.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
+            resp.sendRedirect("/error");
         }
     }
 
