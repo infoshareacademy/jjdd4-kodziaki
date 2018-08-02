@@ -1,5 +1,8 @@
 package com.infoshare.kodziaki;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.enterprise.context.RequestScoped;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,12 +13,17 @@ import java.util.stream.Collectors;
 
 @RequestScoped
 public class CsvReader {
+    private Logger logger = LoggerFactory.getLogger(CsvReader.class);
+
+
     private static final String SEPARATOR = ";";
 
     public List<Place> readFile(Reader source) throws IOException, NumberFormatException {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(source);
+            logger.info("PARSE CSV");
+            logger.info(source.toString());
             return reader.lines()
                     .skip(1)
                     .map(l -> l.split(SEPARATOR))
