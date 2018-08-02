@@ -30,7 +30,8 @@
 <!-- Page Content -->
 <div class="container-form">
 
-<!-- TU BĘDZIE OBRAZEK I DANE KONTAKTOWE -->
+<img class="us" src="../images/us.png"/>
+    <!-- TU BĘDZIE OBRAZEK I DANE KONTAKTOWE -->
 
 </div>
 <!-- /.container -->

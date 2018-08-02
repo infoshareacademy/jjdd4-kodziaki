@@ -32,7 +32,7 @@
 <div class="container">
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
+    <header class="jumbotron jumbotron-fluid">
             <#include "Header.ftlh">
     </header>
 
@@ -41,15 +41,20 @@
     </#if>
 
     <!-- Page Features -->
+    </br></br>
+
+    <h5 class="main-page-section">Polecamy!</h5>
+
     <div class="row text-center">
         <#list promotedAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <img class="card-img-top" src="../images/room1.jpg" alt="">
                     <div class="card-body">
-                        <h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>
-                        <h4 class="card-title"><b>${ad.title}</b></h4>
-                        <h5 class="" city">${ad.city}, ${ad.district}</h5>
+                        <#--<h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>-->
+                            <img class="star" src="../images/star3.png"/>
+                        <h5 class="card-title"><b>${ad.title}</b></h5>
+                        <p class="" city">${ad.city}, ${ad.district}</p>
                     </div>
                     <div class="card-footer">
                         <a href="/detailed?id=${ad.id}"
@@ -61,15 +66,17 @@
     </div>
     </br></br>
 
+    <h5 class="main-page-section">Najczęściej odwiedzane</h5>
+
     <div class="row text-center">
         <#list mostPopularAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <img class="card-img-top" src="../images/room2.jpg" alt="">
                     <div class="card-body">
-                    <#--<h5 class="promoted" style="color:#6666ff;">*NOWOŚĆ!*</h5>-->
-                        <h4 class="card-title"><b>${ad.title}</b></h4>
-                        <h5 class="city">${ad.city}, ${ad.district}</h5>
+                        <h5 class="card-title"><b>${ad.title}</b></h5>
+                        <p class="city">${ad.city}, ${ad.district}</p>
+                        <p>wyświetleń: ${ad.visits}</p>
                     </div>
                     <div class="card-footer">
                         <a href="/detailed?id=${ad.id}"
@@ -79,6 +86,7 @@
             </div>
         </#list>
     </div>
+    </br></br>
     <!-- /.row -->
 
 </div>

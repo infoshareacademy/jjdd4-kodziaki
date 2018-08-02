@@ -19,3 +19,24 @@ html, body {
 .card {
   height: 100%;
 }
+
+.jumbotron {
+  background-image: url("../images/city-view.jpg");
+  background-size: cover;
+  height: 400px;
+  width: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.main-page-section {
+  color: grey;
+}
+
+.star {
+  max-height: 20px;
+}
+
+.us {
+  max-width: 800px;
+}
