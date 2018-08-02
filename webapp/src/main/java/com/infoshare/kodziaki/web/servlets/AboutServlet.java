@@ -29,6 +29,7 @@ public class AboutServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "About.ftlh");
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
         request.setCharacterEncoding("UTF-8");
 
         try {

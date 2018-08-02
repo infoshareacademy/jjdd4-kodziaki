@@ -15,7 +15,6 @@
 <h2>Zaloguj się i pamiętaj o RODO</h2>
 <br>
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
-<a href="#" onclick="signOut();">Sign out</a>
 
 <script>
     function onSignIn(googleUser) {
@@ -37,14 +36,6 @@
         $('body').append(form);
         form.submit();
     }
-
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-        });
-    }
-
 </script>
 </body>
 </html>

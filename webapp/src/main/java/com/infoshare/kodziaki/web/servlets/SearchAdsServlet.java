@@ -46,6 +46,7 @@ public class SearchAdsServlet extends HttpServlet {
 
         Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
         dataModel.put("locations", sortDistrictsByCities());
 
         try {
@@ -68,6 +69,7 @@ public class SearchAdsServlet extends HttpServlet {
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
         Map<String, Object> filteredAds = new HashMap<>();
+        filteredAds.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
 
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
         filteredAds.put("filteredAds", adsList);
