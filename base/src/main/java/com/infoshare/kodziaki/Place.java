@@ -221,5 +221,6 @@ public class Place {
     public String getImageURL5() { return imageURL5; }
 
     public void setImageURL5(String imageURL5) { this.imageURL5 = imageURL5; }
+
     public void setVisits(long visits) { this.visits = visits; }
 }

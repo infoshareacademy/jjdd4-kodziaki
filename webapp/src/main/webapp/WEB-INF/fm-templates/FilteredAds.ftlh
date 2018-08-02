@@ -33,7 +33,7 @@
         <#list filteredAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img width="254" height="200" src="http://127.0.0.1:8080/appPartments${ad.imageURL1}" alt="">
+                    <img width="254" height="200" src="http://127.0.0.1:4200/${ad.imageURL1}" alt="">
                     <div class="card-body">
                         <h4 class="card-title"><b>${ad.title}</b></h4>
                             <#if ad.id == 3 || ad.id == 7 || ad.id == 11 || ad.id == 18>

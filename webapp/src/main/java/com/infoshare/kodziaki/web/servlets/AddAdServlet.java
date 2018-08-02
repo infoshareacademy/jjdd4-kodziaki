@@ -84,6 +84,7 @@ public class AddAdServlet extends HttpServlet {
         } catch (TemplateException e) {
             logger.log(Level.INFO, "Template not found", e.getMessage());
         }
+
     }
 
         private Map<String, List<Location>> sortDistrictsByCities () {
@@ -132,7 +133,7 @@ public class AddAdServlet extends HttpServlet {
             File file = null;
 
             try {
-                List<Part> fileParts = req.getParts().stream().filter(part -> "image".equals(part.getName())).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
+                List<Part> fileParts = req.getParts().stream().filter(part -> "image".equals(part.getName())).collect(Collectors.toList());
                 for (Part filePart : fileParts)
 
                     if (fileParts.size() == 0) {

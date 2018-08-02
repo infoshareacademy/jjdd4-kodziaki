@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" action="/appPartments/add">
+    <form method="post" action="/add" enctype="multipart/form-data">
         Tytuł ogłoszenia: <input type="text" name="title" required/><br/><br/>
 
         Lokalizacja:

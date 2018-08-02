@@ -6,7 +6,7 @@ COPY target/appPartments.war /opt/jboss/wildfly/standalone/deployments/
 RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
 
 
-COPY src/main/resources/images1 /opt/
+COPY src/main/resources/images/ /home/kodziaki/images/
 CMD ["echo Waiting 5 seconds"]
 CMD ["sleep", "5"]
 CMD ["echo Starting Wildfly"]
