@@ -6,3 +6,6 @@
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
     </div>
 </footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>

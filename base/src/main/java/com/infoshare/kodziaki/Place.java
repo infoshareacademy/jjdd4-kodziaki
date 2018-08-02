@@ -2,6 +2,7 @@ package com.infoshare.kodziaki;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.registry.infomodel.User;
 import java.math.BigDecimal;
 
 @Entity
@@ -187,4 +188,5 @@ public class Place {
     public void setPromoted(boolean promoted) { isPromoted = promoted; }
 
     public void setVisits(long visits) { this.visits = visits; }
+
 }

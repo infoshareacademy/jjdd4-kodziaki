@@ -34,12 +34,14 @@ public class RandomAdServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
         dataModel.put("randomPlace", placeDao.getRandomAd());
 
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
+
         }
     }
 }

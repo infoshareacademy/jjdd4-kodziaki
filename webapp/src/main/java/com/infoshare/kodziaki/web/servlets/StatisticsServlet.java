@@ -36,6 +36,7 @@ public class StatisticsServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "Statistics.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
 
         dataModel.put("districts", placeDao.getDistrictsStatistics());
         dataModel.put("cities", placeDao.getCitiesStatistics());

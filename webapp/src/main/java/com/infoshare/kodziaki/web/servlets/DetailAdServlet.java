@@ -33,6 +33,8 @@ public class DetailAdServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+
         int id = Integer.parseInt(request.getParameter("id"));
         placeDao.updateAdVisits(id);
         dataModel.put("ad", placeDao.findById(id));

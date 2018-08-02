@@ -1,1 +1,8 @@
 node_modules
+unused
+Credential.java
+GetUserInfo.java
+Google2Api.java
+GooglePlusServlet.java
+CallbackServlet.java
+AuthenticationControllerProvider.java
