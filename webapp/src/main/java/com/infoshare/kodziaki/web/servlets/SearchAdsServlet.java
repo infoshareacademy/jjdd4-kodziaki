@@ -45,12 +45,13 @@ public class SearchAdsServlet extends HttpServlet {
 
         Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
         dataModel.put("locations", sortDistrictsByCities());
 
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            logger.info("Template not found ");
+            logger.severe("Template not found ");
         }
     }
 
@@ -63,11 +64,12 @@ public class SearchAdsServlet extends HttpServlet {
             userPreferences = getUserPreferences(req);
         } catch (Exception e) {
             resp.getWriter().println("Wystapił błąd: " + e.getMessage());
-            logger.info("Error ");
+            logger.severe("Error ");
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
         Map<String, Object> filteredAds = new HashMap<>();
+        filteredAds.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
 
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
         filteredAds.put("filteredAds", adsList);
@@ -77,7 +79,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             template.process(filteredAds, resp.getWriter());
         } catch (TemplateException e) {
-            logger.info("Template not found ");
+            logger.severe("Template not found ");
         }
     }
 

@@ -1,6 +1,5 @@
 package com.infoshare.kodziaki.web.servlets;
 
-import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -33,15 +32,22 @@ public class MainPageServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "MainPage.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
 
-        dataModel.put("mostPopularAds", placeDao.getXMostPopularAds());
-        dataModel.put("promotedAds", placeDao.getXPromotedAds());
+        dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
 
         response.setContentType("text/html;charset=UTF-8");
+
+        try {
+            dataModel.put("mostPopularAds", placeDao.getXMostPopularAds());
+            dataModel.put("promotedAds", placeDao.getXPromotedAds());
+        } catch (Exception e) {
+            dataModel.put("message", "Brak wczytanej bazy danych");
+        }
 
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             logger.info("Template not found ");
         }
+
     }
 }

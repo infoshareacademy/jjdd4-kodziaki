@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Appenders>
-        <File name="DbFile" fileName="logs/db.log">
+        <File name="file" fileName="/home/dawidmurawski/projektk/jjdd4-kodziaki/db.log">
             <PatternLayout>
                 <Pattern>%d{HH:mm:ss} %level %logger - %msg%n</Pattern>
             </PatternLayout>
@@ -17,10 +17,10 @@
         </Async>
     </Appenders>
     <Loggers>
-        <Root level="DEBUG">
-            <AppenderRef ref="AsyncHtmlFile"/>
+        <Root level="INFO">
+            <AppenderRef ref="file"/>
         </Root>
-        <logger level="DEBUG" name="log4j_2.repository.FileDataBase" additivity="false">
+        <logger level="INFO" name="log4j_2.repository.FileDataBase" additivity="false">
             <AppenderRef ref="AsyncDbFile"/>
         </logger>
     </Loggers>

@@ -2,4 +2,6 @@
 *.iml
 target/
 build/
+unused/
+
 

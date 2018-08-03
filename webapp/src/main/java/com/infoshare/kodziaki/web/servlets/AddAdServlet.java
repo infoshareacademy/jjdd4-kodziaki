@@ -43,6 +43,7 @@ public class AddAdServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "AddAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
         dataModel.put("locations", sortDistrictsByCities());
 
         try {
@@ -57,7 +58,10 @@ public class AddAdServlet extends HttpServlet {
         
         Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
+
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+
         req.setCharacterEncoding("UTF-8");
         
         try {
