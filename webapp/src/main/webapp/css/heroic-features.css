@@ -45,7 +45,7 @@ html, body {
   color: grey;
 }
 
-.star {
+img.card-body {
   max-height: 20px;
 }
 

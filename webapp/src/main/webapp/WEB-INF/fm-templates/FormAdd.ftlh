@@ -60,7 +60,7 @@
 
             <div class="form-group col-md-4">
                 <label>Piętro</label>
-                <select name="floors" class="form-control form-control-sm" required>
+                <select name="floor" class="form-control form-control-sm" required>
                     <option value="" disabled selected hidden>Wybierz</option>
                     <option value="0">Parter</option>
                     <option value="1">1</option>
