@@ -36,7 +36,7 @@
                     <img width="254" height="200" src="http://127.0.0.1:4200/${ad.imageURL1}" alt="">
                     <div class="card-body">
                         <h4 class="card-title"><b>${ad.title}</b></h4>
-                            <#if ad.id == 3 || ad.id == 7 || ad.id == 11 || ad.id == 18>
+                            <#if ad.id == 3 || ad.id == 7 || ad.id == 11 || ad.id == 18 || ad.id == 1 || ad.id == 20>
                                  <h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>
                             </#if>
                         <h5 class="" city">${ad.city}, ${ad.district}</h5>

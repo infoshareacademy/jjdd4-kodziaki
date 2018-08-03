@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <title>appPARTMENTS main</title>
 
     <!-- Bootstrap core CSS -->
@@ -34,6 +35,10 @@
     <header class="jumbotron my-4">
             <#include "Header.ftlh">
     </header>
+
+    <#if message??>
+        <p>${message}</p>
+    </#if>
 
     <!-- Page Features -->
     <div class="row text-center">

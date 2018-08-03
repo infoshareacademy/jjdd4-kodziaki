@@ -5,6 +5,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="428144478815-v80q409bhp3lrcel6272tesu1t5nf0gf.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -38,7 +40,9 @@
     <!-- Page Features -->
     <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4">
-            </br></br>Wiemy kim jesteś.</br></br>
+            <#include "login.jsp">
+            <#--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+                <#--<form method=”GET” action=”googleplus”></form>-->
         </div>
     </div>
     <!-- /.row -->
@@ -52,6 +56,8 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
 
 </body>
 

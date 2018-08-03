@@ -3,6 +3,7 @@ package com.infoshare.kodziaki;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
+import javax.xml.registry.infomodel.User;
 import java.math.BigDecimal;
 
 @Entity
@@ -223,4 +224,5 @@ public class Place {
     public void setImageURL5(String imageURL5) { this.imageURL5 = imageURL5; }
 
     public void setVisits(long visits) { this.visits = visits; }
+
 }

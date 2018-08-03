@@ -8,6 +8,6 @@
     <title>appPartmens</title>
 </head>
 <body>
-    <h2>Siema, tu Kodziaki!</h2>
+<h2>Siema, tu Kodziaki!</h2>
 </body>
 </html>
