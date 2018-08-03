@@ -60,7 +60,7 @@ public class CreateDataBaseServlet extends HttpServlet {
 
         } catch (IOException e) {
             logger.info("Database hasn't been loaded");
-            resp.sendRedirect("/main");
+            resp.sendRedirect("/error-db");
         }
     }
 

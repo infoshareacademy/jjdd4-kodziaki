@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import org.owasp.html.HtmlPolicyBuilder;
 
 @WebServlet("/add")
 public class AddAdServlet extends HttpServlet {
@@ -49,6 +50,7 @@ public class AddAdServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.log(Level.INFO, "Template not found", e.getMessage());
+            resp.sendRedirect("/error");
         }
     }
 
@@ -75,6 +77,7 @@ public class AddAdServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.log(Level.INFO, "Template not found", e.getMessage());
+            resp.sendRedirect("/error");
         }
     }
 

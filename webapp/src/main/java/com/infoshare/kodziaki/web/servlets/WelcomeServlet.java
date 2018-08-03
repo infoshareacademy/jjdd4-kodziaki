@@ -36,6 +36,7 @@ public class WelcomeServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
+            resp.sendRedirect("/error");
         }
 
     }

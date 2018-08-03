@@ -53,6 +53,7 @@ public class SearchAdsServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             LOG.info("Template not found", e.getMessage());
+            resp.sendRedirect("/error");
         }
     }
 
@@ -64,7 +65,8 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             userPreferences = getUserPreferences(req);
         } catch (Exception e) {
-            resp.getWriter().println("Wystapił błąd: " + e.getMessage());
+            LOG.info("User Preferences not loaded", e.getMessage());
+            resp.sendRedirect("/error-db");
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
@@ -80,6 +82,7 @@ public class SearchAdsServlet extends HttpServlet {
             template.process(filteredAds, resp.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
+            resp.sendRedirect("/error");
         }
     }
 
