@@ -21,6 +21,6 @@
 <div class="container-form">
 <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
 <a class="btn btn-primary" href="main" role="button">Przejdź do aplikacji</a>
-    </div>
+</div>
 </body>
 </html>

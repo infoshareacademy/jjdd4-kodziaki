@@ -19,3 +19,10 @@ html, body {
 .card {
   height: 100%;
 }
+
+.error {
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+}
