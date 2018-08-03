@@ -76,19 +76,19 @@ public class Place {
     @Column(name = "promoted")
     private boolean isPromoted;
 
-    @Column(name = "image1")
+    @Column(name = "imageURL1")
     private String imageURL1;
 
-    @Column(name = "image2")
+    @Column(name = "imageURL2")
     private String imageURL2;
 
-    @Column(name = "image3")
+    @Column(name = "imageURL3")
     private String imageURL3;
 
-    @Column(name = "image4")
+    @Column(name = "imageURL4")
     private String imageURL4;
 
-    @Column(name = "image5")
+    @Column(name = "imageURL5")
     private String imageURL5;
 
     @Column(name = "visits")

@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Dodaj ogłoszenie</h1>
-<form method="post" action="add" enctype="multipart/form-data">
+<form method="post" action="/add" enctype="multipart/form-data">
     Tytuł ogłoszenia: <input type="text" name="title" required/><br/><br/>
     Miasto: <input type="text" name="city" required/><br/><br/>
     Dzielnica: <input type="text" name="district" required/><br/><br/>
@@ -79,7 +79,7 @@
     Zostaw swoj numer telefonu: <input type="number" name="phoneNumber" required/> <br/><br/>
 
     Dodaj zdjęcie główne: <br/><br/>
-    <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image1" id="file" multiple=""  />
+    <input style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" type="file" name="image" id="file" multiple=""  />
     <label style="border-style: groove; font-weight: 900; cursor: pointer;" for="file">Dodaj</label><br/><br/>
 
     <input type="submit" name="save" value="Dodaj ogłoszenie"/> <input type="reset" value="Wyczyść dane"/> <br/><br/> -->

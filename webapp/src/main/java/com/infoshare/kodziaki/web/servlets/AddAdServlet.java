@@ -94,7 +94,7 @@ public class AddAdServlet extends HttpServlet {
                     .collect(Collectors.groupingBy(Location::getCity));
         }
 
-        private Place savePlace (HttpServletRequest req){
+        private Place savePlace (HttpServletRequest req) {
             String titleParam = req.getParameter("title");
             PlaceType placeTypeParam = validatePlaceType(req.getParameter("placeType").toUpperCase());
             BigDecimal priceParam = validateBigDecimal(req.getParameter("price"));
