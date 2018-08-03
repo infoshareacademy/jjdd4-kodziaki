@@ -17,6 +17,7 @@ public class LocationCsvReader {
 
         try {
             reader = new BufferedReader(source);
+
             return reader.lines()
                     .skip(1)
                     .map(l -> l.split(SEPARATOR))
