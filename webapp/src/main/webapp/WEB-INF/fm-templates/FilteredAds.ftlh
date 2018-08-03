@@ -53,6 +53,7 @@
             <h2>Spróbuj jeszcze raz.</h2><a class="btn btn-primary" href="search"> >>>>>>> </a>
         </#if>
     </div>
+
 </div>
 <!-- /.container -->
 
