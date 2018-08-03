@@ -148,6 +148,7 @@ public class AddAdServlet extends HttpServlet {
                         place.setImageURL5("/images/kodziaki.jpg");
                     }
 
+
                 if (fileParts.size() == 1) {
                     place.setImageURL1("/images/" + imageUploadDao.uploadImageFile(fileParts.get(0)).getName());
                     place.setImageURL2("/images/kodziaki.jpg");
@@ -191,7 +192,7 @@ public class AddAdServlet extends HttpServlet {
 
             } catch (Exception e1) {
                 logger.log(Level.SEVERE, "Image not found");
-                throw new RuntimeException("Image not found");
+                throw new RuntimeException("Image not found", e1);
             }
 
             placeDao.saveAd(place);
