@@ -157,7 +157,7 @@
         <label class="btn btn-primary" for="file">Dodaj zdjęcia</label><br/><br/>
 
 
-        <button class="btn btn-primary" type="submit" name="save">Dodaj</button>
+        <button class="btn btn-primary" type="submit" name="save">Dodaj ogłoszenie</button>
         <button class="btn btn-primary" type="reset" name="reset">Wyczyść dane</button>
         <br>
         <br>

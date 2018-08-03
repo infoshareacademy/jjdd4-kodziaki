@@ -46,6 +46,7 @@ public class StatisticsServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.log(Level.INFO, "Template not found", e.getMessage());
+            resp.sendRedirect("/error");
         }
     }
 }
