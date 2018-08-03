@@ -36,12 +36,7 @@
             <#include "Header.ftlh">
     </header>
 
-    <#--<#if message??>-->
-        <#--<p>${message}</p>-->
-    <#--</#if>-->
-
     <!-- Page Features -->
-
     <#if promotedAds??>
         <h5 class="main-page-section">Polecamy!</h5>
 
@@ -51,8 +46,7 @@
                 <div class="card">
                     <img class="card-img-top" src="../images/room1.jpg" alt="">
                     <div class="card-body">
-                    <#--<h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>-->
-                        <img class="star" src="../images/star3.png"/>
+                        <img class="star" src="../../images/star3.png"/>
                         <h5 class="card-title"><b>${ad.title}</b></h5>
                         <p class="" city">${ad.city}, ${ad.district}</p>
                     </div>
