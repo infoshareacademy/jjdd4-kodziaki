@@ -35,6 +35,7 @@ public class RandomAdServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", request.getSession().getAttribute("adminLogged"));
         dataModel.put("randomPlace", placeDao.getRandomAd());
 
         try {

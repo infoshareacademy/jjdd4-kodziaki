@@ -22,7 +22,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import org.owasp.html.HtmlPolicyBuilder;
 
 @WebServlet("/add")
 public class AddAdServlet extends HttpServlet {
@@ -62,6 +61,7 @@ public class AddAdServlet extends HttpServlet {
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", req.getSession().getAttribute("adminLogged"));
 
         req.setCharacterEncoding("UTF-8");
         

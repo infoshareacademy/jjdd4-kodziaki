@@ -1,14 +1,11 @@
 package com.infoshare.kodziaki.web.filters;
 
-import com.infoshare.kodziaki.web.model.UserSession;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.registry.infomodel.User;
 import java.io.IOException;
-import javax.inject.Inject;
 
 @WebFilter(
         filterName = "AdminAuthenticationFilter",

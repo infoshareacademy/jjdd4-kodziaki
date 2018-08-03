@@ -34,6 +34,7 @@ public class DetailAdServlet extends HttpServlet {
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", request.getSession().getAttribute("adminLogged"));
 
         int id = Integer.parseInt(request.getParameter("id"));
         placeDao.updateAdVisits(id);
