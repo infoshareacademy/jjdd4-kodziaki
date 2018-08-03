@@ -36,13 +36,14 @@
             <#include "Header.ftlh">
     </header>
 
-    <#if message??>
-        <p>${message}</p>
-    </#if>
+    <#--<#if message??>-->
+        <#--<p>${message}</p>-->
+    <#--</#if>-->
 
     <!-- Page Features -->
 
-    <h5 class="main-page-section">Polecamy!</h5>
+    <#if promotedAds??>
+        <h5 class="main-page-section">Polecamy!</h5>
 
     <div class="row text-center cards">
         <#list promotedAds as ad>
@@ -50,8 +51,8 @@
                 <div class="card">
                     <img class="card-img-top" src="../images/room1.jpg" alt="">
                     <div class="card-body">
-                        <#--<h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>-->
-                            <img class="star" src="../images/star3.png"/>
+                    <#--<h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>-->
+                        <img class="star" src="../images/star3.png"/>
                         <h5 class="card-title"><b>${ad.title}</b></h5>
                         <p class="" city">${ad.city}, ${ad.district}</p>
                     </div>
@@ -84,6 +85,12 @@
             </div>
         </#list>
     </div>
+
+    <#else>
+        <h5 class="main-page-section">Baza danych nie została wczytana.</h5>
+    <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
+    </#if>
+
     <!-- /.row -->
 
 </div>
