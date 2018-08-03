@@ -36,7 +36,6 @@ public class MainPageServlet extends HttpServlet {
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
         dataModel.put("isAdminLoggedIn", request.getSession().getAttribute("adminLogged"));
 
-
         response.setContentType("text/html;charset=UTF-8");
 
         try {

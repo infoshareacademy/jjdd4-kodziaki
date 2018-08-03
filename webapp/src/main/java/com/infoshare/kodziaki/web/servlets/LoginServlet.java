@@ -2,6 +2,7 @@ package com.infoshare.kodziaki.web.servlets;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.infoshare.kodziaki.web.authorization.AdminConfig;
+import com.infoshare.kodziaki.web.authorization.AdminService;
 import com.infoshare.kodziaki.web.authorization.IdTokenVerifierAndParser;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -26,6 +27,9 @@ public class LoginServlet extends HttpServlet {
 
     @Inject
     private AdminConfig adminConfig;
+
+    @Inject
+    private AdminService adminService;
 
     private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
@@ -71,7 +75,12 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", name);
             session.setAttribute("email", email);
 
-            if (adminConfig.getAdmins().contains(email)){
+//          Working piece of code below for further tests.
+//            if (adminConfig.getAdmins().contains(email)){
+//                session.setAttribute("adminLogged", true);
+//            }
+
+            if (adminService.isAdmin(email)){
                 session.setAttribute("adminLogged", true);
             }
 
