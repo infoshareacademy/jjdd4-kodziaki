@@ -41,7 +41,7 @@ public class MainPageServlet extends HttpServlet {
             dataModel.put("mostPopularAds", placeDao.getXMostPopularAds());
             dataModel.put("promotedAds", placeDao.getXPromotedAds());
         } catch (Exception e) {
-            dataModel.put("message", "Brak wczytanej bazy danych");
+                LOG.info(e.getMessage());
         }
 
         try {
