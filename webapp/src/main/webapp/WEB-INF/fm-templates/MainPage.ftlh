@@ -45,7 +45,7 @@
         <#list promotedAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img width="254" height="200" src="http://127.0.0.1:4200/${ad.imageURL1}" alt="">
+                    <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl/${ad.imageURL1}" alt="">
                     <div class="card-body">
                         <h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>
                         <h4 class="card-title"><b>${ad.title}</b></h4>
@@ -65,7 +65,7 @@
         <#list mostPopularAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img width="254" height="200" src="http://127.0.0.1:4200/${ad.imageURL1}" alt="">
+                    <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl/${ad.imageURL1}" alt="">
                     <div class="card-body">
                     <#--<h5 class="promoted" style="color:#6666ff;">*NOWOŚĆ!*</h5>-->
                         <h4 class="card-title"><b>${ad.title}</b></h4>
