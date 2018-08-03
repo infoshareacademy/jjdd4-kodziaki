@@ -24,9 +24,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="about">O nas</a>
                 </li>
-                <#--<li class="nav-item">-->
-                    <#--<a class="nav-link" href="login">Zaloguj się</a>-->
-                <#--</li>-->
                 <li class="nav-item">
                     <#if isLoggedIn??>
                         <a class="nav-link" href="logout">Wyloguj się</a>
