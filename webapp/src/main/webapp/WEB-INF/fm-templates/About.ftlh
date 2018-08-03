@@ -30,7 +30,8 @@
 <!-- Page Content -->
 <div class="container-form">
 
-<!-- TU BĘDZIE OBRAZEK I DANE KONTAKTOWE -->
+    <img class="us" src="../images/us.png"/>
+    <a href="http://www.fanpop.com/clubs/top-cat/images/2652924/title/tc-gang-screencap">źródło</a>
 
 </div>
 <!-- /.container -->

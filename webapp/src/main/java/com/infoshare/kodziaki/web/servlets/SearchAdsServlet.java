@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,16 +71,16 @@ public class SearchAdsServlet extends HttpServlet {
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
-        Map<String, Object> filteredAds = new HashMap<>();
-        filteredAds.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
 
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
-        filteredAds.put("filteredAds", adsList);
+        dataModel.put("filteredAds", adsList);
 
         resp.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(filteredAds, resp.getWriter());
+            template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
             resp.sendRedirect("/error");
