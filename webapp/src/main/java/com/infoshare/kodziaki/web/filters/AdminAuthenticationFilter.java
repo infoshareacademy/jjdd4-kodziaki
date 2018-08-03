@@ -12,22 +12,19 @@ import javax.inject.Inject;
 
 @WebFilter(
         filterName = "AdminAuthenticationFilter",
-        urlPatterns = {"admin/*"},
+        urlPatterns = {"/admin/*"},
                 initParams = {@WebInitParam(name = "isAdmin", value = "true")
         })
 public class AdminAuthenticationFilter implements Filter {
 
-    @Inject
-    private UserSession userSession;
-
     @Override
     public void init(FilterConfig filterConfig) {
-//        Boolean isAdmin = Boolean.valueOf(filterConfig.getInitParameter("isAdmin"));
+
     }
 
     @Override
     public void destroy() {
-//        Boolean isAdmin = Boolean.valueOf(false);
+
     }
 
     @Override

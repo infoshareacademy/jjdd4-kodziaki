@@ -4,7 +4,6 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.infoshare.kodziaki.web.authorization.AdminConfig;
 import com.infoshare.kodziaki.web.authorization.IdTokenVerifierAndParser;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
-import com.infoshare.kodziaki.web.model.UserSession;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -26,7 +25,7 @@ import java.util.Map;
 public class LoginServlet extends HttpServlet {
 
     @Inject
-    AdminConfig adminConfig;
+    private AdminConfig adminConfig;
 
     private Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
