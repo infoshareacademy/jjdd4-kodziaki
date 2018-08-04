@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
-            resp.sendRedirect("/error");
+           // resp.sendRedirect("/error");
         }
 
     }

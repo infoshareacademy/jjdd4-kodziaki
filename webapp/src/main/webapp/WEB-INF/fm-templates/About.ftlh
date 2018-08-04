@@ -32,7 +32,10 @@
 
     <img class="us" src="http://127.0.0.1:4200/images/us.png"/>
     <a href="http://www.fanpop.com/clubs/top-cat/images/2652924/title/tc-gang-screencap">źródło</a>
-    <a href="https://www.pexels.com/">źródło zdjec</a>
+    </br>
+    </br>
+    </br>
+    <a href="https://www.pexels.com/">źródło zdjec w ogloszeniach</a>
 
 </div>
 <!-- /.container -->

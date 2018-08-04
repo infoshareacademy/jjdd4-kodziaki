@@ -41,7 +41,7 @@ public class ErrorDatabaseServlet extends HttpServlet {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             LOG.error("Template not found", e.getMessage());
-            response.sendRedirect("/error");
+           // response.sendRedirect("/error");
         }
     }
 }
