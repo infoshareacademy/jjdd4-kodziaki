@@ -35,7 +35,7 @@ html, body {
 }
 
 .jumbotron {
-  background-image: url("../images/city-view.jpg");
+  background-image: url("http://127.0.0.1:4200/images/city-view.jpg");
   background-size: cover;
   height: 400px;
   width: auto;
