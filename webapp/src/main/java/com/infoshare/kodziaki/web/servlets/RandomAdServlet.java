@@ -30,12 +30,12 @@ public class RandomAdServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(), "RandomAd.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
 
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
-        dataModel.put("randomPlace", placeDao.getRandomAd());
+        dataModel.put("ad", placeDao.getRandomAd());
 
         try {
             template.process(dataModel, response.getWriter());

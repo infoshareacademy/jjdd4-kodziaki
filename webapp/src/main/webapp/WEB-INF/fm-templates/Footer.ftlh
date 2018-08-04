@@ -2,6 +2,7 @@
     <div class="container">
         <p class="m-0 text-center text-white">Proudly developed &copy; Kodziaki // infoShare Academy Junior Java Developer - Daily #4 2018</p>
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <i class="fa fa-github" href="https://github.com/infoshareacademy/jjdd4-kodziaki"></i>
     </div>
 </footer>
 

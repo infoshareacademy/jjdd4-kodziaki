@@ -16,35 +16,87 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
 
-    <#--<!--Load the AJAX API&ndash;&gt;-->
-    <#--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
-    <#--<script type="text/javascript">-->
-        <#--google.charts.load("current", {packages:["corechart"]});-->
-        <#--google.charts.setOnLoadCallback(drawChart);-->
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+
         <#--function drawChart() {-->
-            <#--var data = google.visualization.arrayToDataTable([-->
-                <#--['Miasto', 'Liczba wyświetleń'],-->
-                <#--<#list citiesStatistics as city>-->
-                       <#--['${city[0]}', '${city[1]}'],-->
+
+            <#--// Create the data table.-->
+            <#--var data = new google.visualization.DataTable();-->
+            <#--data.addColumn('string', 'Miasto');-->
+            <#--data.addColumn('number', 'wyświetlenia');-->
+            <#--data.addRows([-->
+                <#--<#list cities as city>-->
+                <#--['${city[0]}', ${city[1]}],-->
                 <#--</#list>-->
             <#--]);-->
 
-            <#--var options = {-->
-                <#--legend: 'none',-->
-                <#--pieSliceText: 'label',-->
-                <#--title: 'Liczba wyświetleń ogłoszeń z danego miasta',-->
-                <#--pieStartAngle: 100,-->
-            <#--};-->
+            <#--// Set chart options-->
+            <#--var options = {'title':'Suma wyświetleń ogłoszeń z danego miasta',-->
+                <#--'width':800,-->
+                <#--'height':600};-->
 
-            <#--var chart = new google.visualization.PieChart(document.getElementById('piechart'));-->
+            <#--// Instantiate and draw our chart, passing in some options.-->
+            <#--var chart = new google.visualization.PieChart(document.getElementById('chart_div_cities'));-->
             <#--chart.draw(data, options);-->
         <#--}-->
-    <#--</script>-->
 
+        function drawChart() {
 
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Dzielnica');
+            data.addColumn('number', 'wyświetlenia');
+            data.addRows([
+                <#list districts as district>
+                ['${district[0]}', ${district[1]}],
+                </#list>
+            ]);
 
-<#return output>
-</#function>
+            // Set chart options
+            var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',
+                'width':800,
+                'height':600};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));
+            chart.draw(data, options);
+        }
+
+        function drawChart() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Id');
+            data.addColumn('number', 'wyświetlenia');
+            data.addRows([
+                <#list ads as ad>
+                ['id (${ad.id})', ${ad.visits}],
+                </#list>
+            ]);
+
+            // Set chart options
+            var options = {'title':'Statystyki wyswietleń poszczególnych ogłoszeń',
+                'width':800,
+                'height':600};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_ads'));
+            chart.draw(data, options);
+        }
+
+    </script>
 
 </head>
 
@@ -74,32 +126,13 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                    <#function pieChart rawData>
-                        <#local data = [] />
-
-                        <#list rawData as i>
-                            <#local data = data + [] />
-                        </#list>
-
-                        <#local output =
-                        "https://chart.googleapis.com/chart" +
-                        "?cht=pc" +
-                        "&chs=130x130" +
-                        "&chco=ffffff,066639,08a15e,7acfa9" +
-                        "&chp=-1.6" +
-                        "&chd=t:0|15,14,72"
-                        />
-
-                    <img src="${pieChart([10, 20, 50])}" />
-
-                        <div id="chart_div"></div>
+                        <div id="chart_div_ads"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-
-                    <#include "CitiesStat.ftlh">
+                        <div id="chart_div_cities"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <#include "DistrictsStat.ftlh">
+                        <div id="chart_div_districts"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                     <#include "EditAds.ftlh">

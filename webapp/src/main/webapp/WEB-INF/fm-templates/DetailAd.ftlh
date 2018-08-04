@@ -32,7 +32,7 @@
 
     <!-- Message after adding ad -->
     <#if message??>
-        <p>${message}</p>
+        <h5>${message}</h5>
     </#if>
 
     <!-- Portfolio Item Heading -->
@@ -48,10 +48,18 @@
         </div>
         <div class="col-md-4">
                 <p>Cena: <b>${ad.price} zł</b></p>
-                <p>Typ: <#if ad.placeType == "BED">
-                    miejsce w pokoju
-                </#if></p>
-                <p>Powierzchnia: <b>${ad.area} m2</b> </p>
+                <#switch ad.placeType>
+                    <#case "BED">
+                        <p>Typ wynajmu: <b>Miejsce w pokoju</b></p>
+                        <#break>
+                    <#case "ROOM">
+                        <p>Typ wynajmu: <b>Pokój</b></p>
+                        <#break>
+                    <#case "APARTMENT">
+                        <p>Typ wynajmu: <b>Mieszkanie</b></p>
+                        <#break>
+                </#switch>
+                <p>Powierzchnia: <b>${ad.area} m<sup>2</sup></b> </p>
                 <p>Liczba pokoi: <b>${ad.rooms}</b></p>
                 <p>Piętro: <b>#{ad.floor}</b></p>
                 <p>Winda: <b>${ad.hasElevator?string("tak", "nie")}</b> </p>
