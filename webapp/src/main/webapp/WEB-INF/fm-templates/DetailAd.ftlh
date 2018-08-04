@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>appPARTMENTS: Detailed Ad</title>
+    <title>: Detailed Ad</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+            <img width="750" height="500" src="http://kodziaki.jjdd4.is-academy.pl/${ad.imageURL1}" alt="">
         </div>
 
         <div class="col-md-4">
@@ -75,25 +75,25 @@
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl/${ad.imageURL2}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl/${ad.imageURL3}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl/${ad.imageURL4}" alt="">
             </a>
         </div>
 
         <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl/${ad.imageURL5}" alt="">
             </a>
         </div>
 

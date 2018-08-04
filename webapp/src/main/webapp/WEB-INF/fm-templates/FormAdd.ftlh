@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post" action="/add">
+    <form method="post" action="/add" enctype="multipart/form-data">
 
         <div class="form-row">
             <div class="form-group col-md-12">
@@ -97,6 +97,7 @@
                     <input type="radio" id="customRadio2" name="hasElevator" value="False" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio2">W budynku nie ma windy</label>
                 </div>
+                <br/>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="customRadio3" name="smokingAllowed" value="True" class="custom-control-input" checked>
                     <label class="custom-control-label" for="customRadio3">Palenie dozwolone</label>
@@ -105,6 +106,7 @@
                     <input type="radio" id="customRadio4" name="smokingAllowed" value="False" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio4">Palenie niedozwolone</label>
                 </div>
+                <br/>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="customRadio5" name="animalAllowed" value="True" class="custom-control-input" checked>
                     <label class="custom-control-label" for="customRadio5">Zwierzęta dozwolone</label>
@@ -113,6 +115,7 @@
                     <input type="radio" id="customRadio6" name="animalAllowed" value="False" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio6">Zwierzęta nie dozwolone</label>
                 </div>
+                <br/>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="customRadio7" name="onlyLongTerm" value="True" class="custom-control-input" checked>
                     <label class="custom-control-label" for="customRadio7">Tylko wynajem długoterminowy</label>
@@ -150,7 +153,11 @@
         </div>
         <br>
 
-        <button class="btn btn-primary" type="submit" name="save">Dodaj</button>
+        <input type="file" name="image" id="file" multiple="" style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" required/>
+        <label class="btn btn-primary" for="file">Dodaj zdjęcia</label><br/><br/>
+
+
+        <button class="btn btn-primary" type="submit" name="save">Dodaj ogłoszenie</button>
         <button class="btn btn-primary" type="reset" name="reset">Wyczyść dane</button>
         <br>
         <br>
