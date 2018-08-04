@@ -44,9 +44,9 @@
         <#list promotedAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img width="254" height="200" src="http://127.0.0.1:4200${ad.imageURL1}" alt="">
+                    <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl${ad.imageURL1}" alt="">
                     <div class="card-body">
-                        <img class="star" src="http://127.0.0.1:4200/images/star3.png"/>
+                        <img class="star" src="http://kodziaki.jjdd4.is-academy.pl/images/star3.png"/>
                         <h5 class="card-title"><b>${ad.title}</b></h5>
                         <p class="" city">${ad.city}, ${ad.district}</p>
                     </div>
@@ -66,7 +66,7 @@
         <#list mostPopularAds as ad>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img width="254" height="200" src="http://127.0.0.1:4200${ad.imageURL1}" alt="">
+                    <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl${ad.imageURL1}" alt="">
                     <div class="card-body">
                         <h5 class="card-title"><b>${ad.title}</b></h5>
                         <p class="city">${ad.city}, ${ad.district}</p>
