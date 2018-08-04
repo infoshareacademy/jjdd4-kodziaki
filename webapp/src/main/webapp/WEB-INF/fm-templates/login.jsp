@@ -14,7 +14,7 @@
 <body>
 <h2>Zaloguj się i pamiętaj o RODO</h2>
 <br>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true"></div>
 
 <script>
     function onSignIn(googleUser) {
