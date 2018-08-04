@@ -16,9 +16,6 @@ import javax.inject.Inject;
         })
 public class UserAuthenticationFilter implements Filter {
 
-    @Inject
-    private UserSession userSession;
-
     @Override
     public void init(FilterConfig filterConfig) {
 

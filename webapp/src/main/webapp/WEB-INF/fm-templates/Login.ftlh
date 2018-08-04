@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="428144478815-v80q409bhp3lrcel6272tesu1t5nf0gf.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="64666962785-3t7g65b7veos86fm3lbphjuv4vn4c7p5.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="author" content="">
 
