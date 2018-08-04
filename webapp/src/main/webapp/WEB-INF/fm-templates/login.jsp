@@ -12,9 +12,9 @@
     <title>appPartments - logowanie</title>
 </head>
 <body>
-<h2>Zaloguj się i pamiętaj o RODO</h2>
-<br>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <h5 class="log-in">Zaloguj się</h5>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
     function onSignIn(googleUser) {
@@ -39,3 +39,4 @@
 </script>
 </body>
 </html>
+

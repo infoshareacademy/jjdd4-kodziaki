@@ -28,7 +28,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
     <div class="row text-center">
         <#if filteredAds?size != 0>
             <#list filteredAds as ad>

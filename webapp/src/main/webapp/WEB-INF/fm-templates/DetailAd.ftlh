@@ -28,7 +28,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
 
     <!-- Message after adding ad -->
     <#if message??>

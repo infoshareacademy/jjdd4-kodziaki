@@ -28,7 +28,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
 
     <!-- Portfolio Item Heading -->
     <h1 class="my-4"><b>Statystyki</b></h1>

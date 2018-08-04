@@ -160,7 +160,6 @@
 
         <button class="btn btn-primary" type="submit" name="save">Szukaj</button>
         <button class="btn btn-primary" type="reset" name="reset">Wyczyść dane</button>
-        <br>
-        <br>
+
     </form>
 </div>

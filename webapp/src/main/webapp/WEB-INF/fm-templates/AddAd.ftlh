@@ -29,7 +29,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container-form">
+<div class="container main-content">
     <#include "FormAdd.ftlh">
 </div>
 <!-- /.container -->

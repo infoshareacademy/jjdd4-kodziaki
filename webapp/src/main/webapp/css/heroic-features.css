@@ -4,10 +4,14 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
  */
 
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   padding-top: 54px;
-  min-height: 100%;
   height: 100%;
+  min-height: 100%;
 }
 
 @media (min-width: 992px) {
@@ -19,6 +23,7 @@ html, body {
 .card {
   height: 100%;
 }
+
 
 .error {
   height: 100%;
@@ -61,4 +66,24 @@ html, body {
 
 .us {
   max-width: 800px;
+}
+
+.admin-panel-container h5 {
+  margin: 20px 0;
+}
+
+.footer {
+  margin-top: 30px;
+}
+
+.log-in {
+    margin-bottom: 20px;
+}
+
+.py-5 {
+  margin-top: 50px;
+}
+
+.main-content {
+  min-height: 80vh;
 }

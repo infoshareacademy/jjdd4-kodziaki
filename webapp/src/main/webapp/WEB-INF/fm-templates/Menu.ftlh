@@ -35,7 +35,7 @@
                     </li>
                 <#elseif isLoggedIn??>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="panel">Panel</a>
+                        <a class="nav-link" href="panel">Panel</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout">Wyloguj się</a>

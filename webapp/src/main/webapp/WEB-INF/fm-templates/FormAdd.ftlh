@@ -152,8 +152,6 @@
 
         <button class="btn btn-primary" type="submit" name="save">Dodaj</button>
         <button class="btn btn-primary" type="reset" name="reset">Wyczyść dane</button>
-        <br>
-        <br>
 
     </form>
 </div>

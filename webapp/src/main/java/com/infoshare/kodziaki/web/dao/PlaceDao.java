@@ -78,29 +78,6 @@ public class PlaceDao {
         return (List<Place>) query.getResultList();
     }
 
-    public List<Place> getXRandomAds(int num) {
-
-        Query queryIds = entityManager.createQuery("SELECT p.id FROM Place p");
-        List<Integer> ids = queryIds.getResultList();
-
-        if (num <= ids.size()) {
-
-            final Set<Integer> randomIds = new HashSet<>();
-            Random r = new Random();
-
-            while (randomIds.size() != num) {
-                randomIds.add(r.nextInt(ids.size()));
-            }
-
-            Query query = entityManager.createQuery("SELECT P FROM Place p WHERE p.id IN :ids");
-            query.setParameter("ids", randomIds);
-            return query.getResultList();
-
-        } else {
-            return new ArrayList<>();
-        }
-    }
-
     public Place getRandomAd() {
         Query queryIds = entityManager.createQuery("SELECT p.id FROM Place p");
         List<Integer> ids = queryIds.getResultList();
@@ -130,7 +107,6 @@ public class PlaceDao {
         for (Integer num : randomIndexes) {
             randomPromoted.add(allPromoted.get(num));
         }
-
         return randomPromoted;
     }
 

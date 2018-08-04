@@ -5,12 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="428144478815-v80q409bhp3lrcel6272tesu1t5nf0gf.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>appPARTMENTS main</title>
+    <title>appPARTMENTS: Panel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,27 +23,15 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <#include "Menu.ftlh">
+       <#include "Menu.ftlh">
     </div>
 </nav>
 
+
 <!-- Page Content -->
 <div class="container main-content">
-
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-            <#include "Header.ftlh">
-    </header>
-
-    <!-- Page Features -->
-    <div class="row">
-        <div class="col-lg-3 col-md-6 mb-4">
-            <#include "login.jsp">
-            <#--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
-                <#--<form method=”GET” action=”googleplus”></form>-->
-        </div>
-    </div>
-    <!-- /.row -->
+    <!-- tutej trzeba dać dwie opcje w zależności od tego kto się zalogował - User/Admin -->
+       <#include "AdminPanel.ftlh">
 
 </div>
 <!-- /.container -->
@@ -57,8 +43,4 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
-
 </body>
-
-</html>

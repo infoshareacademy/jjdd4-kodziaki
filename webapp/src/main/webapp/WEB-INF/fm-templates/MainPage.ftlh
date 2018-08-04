@@ -29,7 +29,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
 
     <!-- Jumbotron Header -->
     <header class="jumbotron jumbotron-fluid">
@@ -81,8 +81,14 @@
     </div>
 
     <#else>
-        <h5 class="main-page-section">Baza danych nie została wczytana.</h5>
-    <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-12 text-center">
+                   <h5 class="main-page-section">Baza danych nie została wczytana.</h5>
+                   <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
+               </div>
+           </div>
+       </div>
     </#if>
 
     <!-- /.row -->

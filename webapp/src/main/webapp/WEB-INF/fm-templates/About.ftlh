@@ -28,7 +28,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container-form">
+<div class="container main-content">
 
     <img class="us" src="../images/us.png"/>
     <a href="http://www.fanpop.com/clubs/top-cat/images/2652924/title/tc-gang-screencap">źródło</a>

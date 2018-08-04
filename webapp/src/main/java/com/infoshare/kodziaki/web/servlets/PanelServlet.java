@@ -19,8 +19,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet("/statistics")
-public class StatisticsServlet extends HttpServlet {
+@WebServlet("/panel")
+public class PanelServlet extends HttpServlet {
 
     Logger logger = Logger.getLogger(getClass().getName());
 
@@ -33,7 +33,7 @@ public class StatisticsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(), "Statistics.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "Panel.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
@@ -46,7 +46,6 @@ public class StatisticsServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.log(Level.INFO, "Template not found", e.getMessage());
-            resp.sendRedirect("/error");
         }
     }
 }
