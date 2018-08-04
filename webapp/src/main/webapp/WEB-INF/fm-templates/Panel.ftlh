@@ -79,27 +79,27 @@
         chart.draw(data, options);
         }
 
-        function drawDistrictsChart() {
+        <#--function drawDistrictsChart() {-->
 
-            // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Dzielnica');
-            data.addColumn('number', 'wyświetlenia');
-            data.addRows([
-                <#list districts as district>
-                ['${district[0]}', ${district[1]}],
-                </#list>
-            ]);
+            <#--// Create the data table.-->
+            <#--var data = new google.visualization.DataTable();-->
+            <#--data.addColumn('string', 'Dzielnica');-->
+            <#--data.addColumn('number', 'wyświetlenia');-->
+            <#--data.addRows([-->
+                <#--<#list districts as district>-->
+                <#--['${district[0]}', ${district[1]}],-->
+                <#--</#list>-->
+            <#--]);-->
 
-            // Set chart options
-            var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',
-                'width':800,
-                'height':600};
+            <#--// Set chart options-->
+            <#--var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',-->
+                <#--'width':800,-->
+                <#--'height':600};-->
 
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));
-            chart.draw(data, options);
-        }
+            <#--// Instantiate and draw our chart, passing in some options.-->
+            <#--var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));-->
+            <#--chart.draw(data, options);-->
+        <#--}-->
 
     </script>
 
@@ -126,6 +126,7 @@
                     <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Statystyki miast</a>
                     <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Statystyki dzielnic</a>
                     <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Edycja ogłoszeń</a>
+                    <a class="nav-link" id="v-pills-raports-tab" data-toggle="pill" href="#v-pills-raports" role="tab" aria-controls="v-pills-raports" aria-selected="false">Generowanie raportów</a>
                 </div>
             </div>
             <div class="col-9">
@@ -137,9 +138,11 @@
                         <div id="chart_div_cities"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <div id="chart_div_districts"></div>
+                        <#--<div id="chart_div_districts"></div>-->
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-raports" role="tabpanel" aria-labelledby="v-pills-raports-tab">
                     </div>
                 </div>
             </div>

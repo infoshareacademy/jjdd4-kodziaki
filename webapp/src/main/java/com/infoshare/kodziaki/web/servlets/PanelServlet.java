@@ -44,10 +44,11 @@ public class PanelServlet extends HttpServlet {
                 .getAll()
                 .stream()
                 .collect(Collectors
-                        .groupingBy(Place::getDistrict, Collectors
-                                .groupingBy(Place::getDistrict), Collectors.reducing(Place::getVisits)));
+                        .groupingBy(Place::getCity,
+                                Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits))));
 
-        dataModel.put("districts", placeDao.getDistrictsStatistics());
+
+        dataModel.put("districts", districtsStatistics);
         dataModel.put("cities", placeDao.getCitiesStatistics());
         dataModel.put("ads", placeDao.getAdsStatistics());
 
