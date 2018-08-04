@@ -61,11 +61,11 @@ public class PlaceDao {
         }
     }
 
-    public List<Object[]> getDistrictsStatistics() {
-        final Query query = entityManager
-                .createQuery("SELECT p.district,SUM(visits) FROM Place p GROUP BY p.district order by sum(visits) desc");
-        return (List<Object[]>) query.getResultList();
-    }
+//    public List<Object[]> getDistrictsStatistics() {
+//        final Query query = entityManager
+//                .createQuery("SELECT p.district,SUM(visits) FROM Place p GROUP BY p.district order by sum(visits) desc");
+//        return (List<Object[]>) query.getResultList();
+//    }
 
     public List<Object[]> getCitiesStatistics() {
         final Query query = entityManager

@@ -1,5 +1,6 @@
 package com.infoshare.kodziaki.web.servlets;
 
+import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @WebServlet("/panel")
 public class PanelServlet extends HttpServlet {
@@ -37,6 +39,13 @@ public class PanelServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+
+        Map<String, Map<String, Long>> districtsStatistics = placeDao
+                .getAll()
+                .stream()
+                .collect(Collectors
+                        .groupingBy(Place::getDistrict, Collectors
+                                .groupingBy(Place::getDistrict), Collectors.reducing(Place::getVisits)));
 
         dataModel.put("districts", placeDao.getDistrictsStatistics());
         dataModel.put("cities", placeDao.getCitiesStatistics());

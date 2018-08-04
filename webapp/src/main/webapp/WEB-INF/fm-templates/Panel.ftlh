@@ -24,57 +24,18 @@
         google.charts.load('current', {'packages':['corechart']});
 
         // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawAdsChart);
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawCitiesChart);
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawDistrictsChart);
 
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
         // draws it.
-
-        <#--function drawChart() {-->
-
-            <#--// Create the data table.-->
-            <#--var data = new google.visualization.DataTable();-->
-            <#--data.addColumn('string', 'Miasto');-->
-            <#--data.addColumn('number', 'wyświetlenia');-->
-            <#--data.addRows([-->
-                <#--<#list cities as city>-->
-                <#--['${city[0]}', ${city[1]}],-->
-                <#--</#list>-->
-            <#--]);-->
-
-            <#--// Set chart options-->
-            <#--var options = {'title':'Suma wyświetleń ogłoszeń z danego miasta',-->
-                <#--'width':800,-->
-                <#--'height':600};-->
-
-            <#--// Instantiate and draw our chart, passing in some options.-->
-            <#--var chart = new google.visualization.PieChart(document.getElementById('chart_div_cities'));-->
-            <#--chart.draw(data, options);-->
-        <#--}-->
-
-        function drawChart() {
-
-            // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Dzielnica');
-            data.addColumn('number', 'wyświetlenia');
-            data.addRows([
-                <#list districts as district>
-                ['${district[0]}', ${district[1]}],
-                </#list>
-            ]);
-
-            // Set chart options
-            var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',
-                'width':800,
-                'height':600};
-
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));
-            chart.draw(data, options);
-        }
-
-        function drawChart() {
+        function drawAdsChart() {
 
             // Create the data table.
             var data = new google.visualization.DataTable();
@@ -93,6 +54,50 @@
 
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div_ads'));
+            chart.draw(data, options);
+        }
+
+        function drawCitiesChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Miasto');
+        data.addColumn('number', 'wyświetlenia');
+        data.addRows([
+        <#list cities as city>
+        ['${city[0]}', ${city[1]}],
+        </#list>
+        ]);
+
+        // Set chart options
+        var options = {'title':'Suma wyświetleń ogłoszeń z danego miasta',
+        'width':800,
+        'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cities'));
+        chart.draw(data, options);
+        }
+
+        function drawDistrictsChart() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Dzielnica');
+            data.addColumn('number', 'wyświetlenia');
+            data.addRows([
+                <#list districts as district>
+                ['${district[0]}', ${district[1]}],
+                </#list>
+            ]);
+
+            // Set chart options
+            var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',
+                'width':800,
+                'height':600};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));
             chart.draw(data, options);
         }
 
@@ -135,14 +140,11 @@
                         <div id="chart_div_districts"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    <#include "EditAds.ftlh">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
 </div>
 <!-- /.container -->
