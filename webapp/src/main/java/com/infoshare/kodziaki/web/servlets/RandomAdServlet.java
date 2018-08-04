@@ -41,7 +41,7 @@ public class RandomAdServlet extends HttpServlet {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             LOG.error(e.getMessage());
-            response.sendRedirect("/error");
+            //response.sendRedirect("/error");
         }
     }
 }

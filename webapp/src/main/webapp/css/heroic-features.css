@@ -40,7 +40,7 @@ html, body {
 }
 
 .jumbotron {
-  background-image: url("../images/city-view.jpg");
+  background-image: url("http://kodziaki.jjdd4.is-academy.pl/images/city-view.jpg");
   background-size: cover;
   height: 400px;
   width: auto;
@@ -66,6 +66,11 @@ html, body {
 
 .us {
   max-width: 800px;
+}
+
+.descriptionArea {
+    height: 200px;
+    overflow: scroll;
 }
 
 .admin-panel-container h5 {

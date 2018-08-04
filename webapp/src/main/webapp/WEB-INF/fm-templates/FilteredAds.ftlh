@@ -32,27 +32,14 @@
     <div class="row text-center">
         <#if filteredAds?size != 0>
             <#list filteredAds as ad>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card">
-                        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                        <div class="card-body">
-                            <h4 class="card-title"><b>${ad.title}</b></h4>
-                                <#if ad.id == 3 || ad.id == 7 || ad.id == 11 || ad.id == 18 || ad.id == 1 || ad.id == 20>
-                                     <h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>
-                                </#if>
-                            <h5 class="" city">${ad.city}, ${ad.district}</h5>
-                        </div>
-                        <div class="card-footer">
-                            <a href="/detailed?id=${ad.id}" class="btn btn-primary">Zobacz</a>
-                        </div>
-                    </div>
-                </div>
+                <#include "AdCard.ftlh">
             </#list>
         <#else>
             <h2>Nie znaleziono ogłoszeń o wskazanych parametrach.</h2>
             <h2>Spróbuj jeszcze raz.</h2><a class="btn btn-primary" href="search"> >>>>>>> </a>
         </#if>
     </div>
+
 </div>
 <!-- /.container -->
 

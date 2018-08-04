@@ -42,41 +42,16 @@
 
     <div class="row text-center cards">
         <#list promotedAds as ad>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="../images/room1.jpg" alt="">
-                    <div class="card-body">
-                        <img class="star" src="../../images/star3.png"/>
-                        <h5 class="card-title"><b>${ad.title}</b></h5>
-                        <p class="" city">${ad.city}, ${ad.district}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/detailed?id=${ad.id}"
-                           class="btn btn-primary">Zobacz</a>
-                    </div>
-                </div>
-            </div>
+            <#include "AdCard.ftlh">
         </#list>
     </div>
+    </br></br>
 
     <h5 class="main-page-section">Najczęściej odwiedzane</h5>
 
     <div class="row text-center cards">
         <#list mostPopularAds as ad>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="../images/room2.jpg" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>${ad.title}</b></h5>
-                        <p class="city">${ad.city}, ${ad.district}</p>
-                        <p>wyświetleń: ${ad.visits}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/detailed?id=${ad.id}"
-                           class="btn btn-primary">Zobacz</a>
-                    </div>
-                </div>
-            </div>
+            <#include "AdCard.ftlh">
         </#list>
     </div>
 
