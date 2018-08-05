@@ -51,6 +51,7 @@ public class PanelServlet extends HttpServlet {
         dataModel.put("districts", districtsStatistics);
         dataModel.put("cities", placeDao.getCitiesStatistics());
         dataModel.put("ads", placeDao.getAdsStatistics());
+        dataModel.put("ad", placeDao.getAll());
 
         try {
             template.process(dataModel, resp.getWriter());
