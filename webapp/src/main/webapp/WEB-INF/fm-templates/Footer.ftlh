@@ -7,7 +7,7 @@
 
                 <a href="https://github.com/infoshareacademy/jjdd4-kodziaki" class="git-icon"><i class="fa fa-github fa-3x" ></i></a>
                 <p class="text-white img-sources">Źródła do zdjęć:<a href="https://www.pexels.com/"><i class="fa fa-thumb-tack fa-lg" aria-hidden="true"></i></a>
-                <a href="http://www.fanpop.com/clubs/top-cat/images/2652924/title/tc-gang-screencap"><i class="fa fa-thumb-tack fa-lg" aria-hidden="true"></i></a></p>
+                <a href="http://www.fanpop.com/clubs/top-cat/images/2652924/title/tc-gang-screencap"><i class="fa fa-thumb-tack fa-lg" aria-hidden="true"></i></a>
                 <a href="https://pixabay.com"><i class="fa fa-thumb-tack fa-lg" aria-hidden="true"></i></a></p>
             </div>
         </div>
