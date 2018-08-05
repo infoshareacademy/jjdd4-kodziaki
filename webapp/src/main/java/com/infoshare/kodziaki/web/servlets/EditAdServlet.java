@@ -69,7 +69,7 @@ public class EditAdServlet extends HttpServlet {
                 logger.info("Ad with id " + id + " has been set as promoted");
                 dataModel.put("message", "Ogłoszenie zostało oznaczone jako promowane");
                 break;
-            case "unpromote":
+            case "unpromoted":
                 placeDao.updateAdPromotion(id);
                 logger.info("Ad with id " + id + " has been set as promoted");
                 dataModel.put("message", "Promowanie ogłoszenia zostało zakończone");

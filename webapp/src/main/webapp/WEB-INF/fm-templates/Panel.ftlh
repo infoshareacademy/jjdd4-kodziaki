@@ -207,7 +207,7 @@
                                                     <input type="text" class="form-control" name="id" value="${ad.id}"
                                                            hidden>
                                                     <input type="text" class="form-control" name="action"
-                                                           value="unpromote" hidden>
+                                                           value="unpromoted" hidden>
                                                     <button type="submit" class="btn btn-secondary btn-sm btn-block">Zakończ promowanie
                                                     </button>
                                                 </form>
