@@ -62,8 +62,12 @@ public class PlaceDao {
 
     public void updateAdPromotion(int id) {
         final Place place = entityManager.find(Place.class, id);
+        if (place.isPromoted()) {
+            place.setPromoted(false);
+        } else {
             place.setPromoted(true);
-            entityManager.merge(place);
+        }
+        entityManager.merge(place);
     }
 
 //    public List<Object[]> getDistrictsStatistics() {

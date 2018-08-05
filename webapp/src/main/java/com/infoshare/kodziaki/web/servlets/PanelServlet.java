@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -37,18 +38,28 @@ public class PanelServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
 
-        Map<String, Map<String, Long>> districtsStatistics = placeDao
-                .getAll()
+        List<Place> allAds = placeDao.getAll();
+        Map<String, Long> gdanskStat = allAds
                 .stream()
-                .collect(Collectors
-                        .groupingBy(Place::getCity,
-                                Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits))));
+                .filter(p -> p.getCity().equals("Gdansk"))
+                .collect(Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits)));
 
+        Map<String, Long> gdyniaStat = allAds
+                .stream()
+                .filter(p -> p.getCity().equals("Gdynia"))
+                .collect(Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits)));
 
-        dataModel.put("districts", districtsStatistics);
-        dataModel.put("cities", placeDao.getCitiesStatistics());
-        dataModel.put("ads", placeDao.getAdsStatistics());
-        dataModel.put("ad", placeDao.getAll());
+        Map<String, Long> sopotStat = allAds
+                .stream()
+                .filter(p -> p.getCity().equals("Sopot"))
+                .collect(Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits)));
+
+        dataModel.put("ads", allAds);
+        dataModel.put("gdanskStat", gdanskStat);
+        dataModel.put("gdyniaStat", gdyniaStat);
+        dataModel.put("sopotStat", sopotStat);
+        dataModel.put("citiesStat", placeDao.getCitiesStatistics());
+        dataModel.put("adsStat", placeDao.getAdsStatistics());
 
         try {
             template.process(dataModel, resp.getWriter());

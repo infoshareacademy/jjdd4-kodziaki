@@ -25,12 +25,11 @@
 
         // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawAdsChart);
-
-        // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawCitiesChart);
+        google.charts.setOnLoadCallback(drawGdanskChart);
+        google.charts.setOnLoadCallback(drawGdyniaChart);
+        google.charts.setOnLoadCallback(drawSopotChart);
 
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawDistrictsChart);
 
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
@@ -40,9 +39,9 @@
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Id');
-            data.addColumn('number', 'wyświetlenia');
+            data.addColumn('number', 'Wyświetlenia');
             data.addRows([
-                <#list ads as ad>
+                <#list adsStat as ad>
                 ['id (${ad.id})', ${ad.visits}],
                 </#list>
             ]);
@@ -64,9 +63,9 @@
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Miasto');
-            data.addColumn('number', 'wyświetlenia');
+            data.addColumn('number', 'Wyświetlenia');
             data.addRows([
-        <#list cities as city>
+        <#list citiesStat as city>
         ['${city[0]}', ${city[1]}],
         </#list>
             ]);
@@ -83,27 +82,71 @@
             chart.draw(data, options);
         }
 
-        <#--function drawDistrictsChart() {-->
+        function drawGdanskChart() {
 
-        <#--// Create the data table.-->
-        <#--var data = new google.visualization.DataTable();-->
-        <#--data.addColumn('string', 'Dzielnica');-->
-        <#--data.addColumn('number', 'wyświetlenia');-->
-        <#--data.addRows([-->
-        <#--<#list districts as district>-->
-        <#--['${district[0]}', ${district[1]}],-->
-        <#--</#list>-->
-        <#--]);-->
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Dzielnica');
+        data.addColumn('number', 'Wyświetlenia');
+        data.addRows([
+        <#list gdanskStat as district, visits>
+        ['${district}', ${visits}],
+        </#list>
+        ]);
 
-        <#--// Set chart options-->
-        <#--var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',-->
-        <#--'width':800,-->
-        <#--'height':600};-->
+        // Set chart options
+        var options = {'title':'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Gdańsk',
+        'width':800,
+        'height':600};
 
-        <#--// Instantiate and draw our chart, passing in some options.-->
-        <#--var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));-->
-        <#--chart.draw(data, options);-->
-        <#--}-->
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_gdansk'));
+        chart.draw(data, options);
+        }
+
+        function drawGdyniaChart() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Dzielnica');
+            data.addColumn('number', 'Wyświetlenia');
+            data.addRows([
+        <#list gdyniaStat as district, visits>
+        ['${district}', ${visits}],
+        </#list>
+            ]);
+
+            // Set chart options
+            var options = {'title':'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Gdynia',
+                'width':800,
+                'height':600};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_gdynia'));
+            chart.draw(data, options);
+        }
+
+        function drawSopotChart() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Dzielnica');
+            data.addColumn('number', 'Wyświetlenia');
+            data.addRows([
+        <#list sopotStat as district, visits>
+        ['${district}', ${visits}],
+        </#list>
+            ]);
+
+            // Set chart options
+            var options = {'title':'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Sopot',
+                'width':800,
+                'height':600};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_sopot'));
+            chart.draw(data, options);
+        }
 
     </script>
 
@@ -126,47 +169,54 @@
             <div class="col-3">
                 <h5>Ustawienia</h5>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+
+                    <a class="nav-link active" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                       aria-controls="v-pills-settings" aria-selected="false">Edycja ogłoszeń</a>
+
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                        aria-controls="v-pills-home" aria-selected="true">Statystyki ogłoszeń</a>
+
                     <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
                        aria-controls="v-pills-profile" aria-selected="false">Statystyki miast</a>
+
                     <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
                        aria-controls="v-pills-messages" aria-selected="false">Statystyki dzielnic</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-                       aria-controls="v-pills-settings" aria-selected="false">Edycja ogłoszeń</a>
+
                     <a class="nav-link" id="v-pills-raports-tab" data-toggle="pill" href="#v-pills-raports" role="tab"
                        aria-controls="v-pills-raports" aria-selected="false">Generowanie raportów</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                         aria-labelledby="v-pills-home-tab">
-                        <div id="chart_div_ads"></div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                         aria-labelledby="v-pills-profile-tab">
-                        <div id="chart_div_cities"></div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                         aria-labelledby="v-pills-messages-tab">
-                    <#--<div id="chart_div_districts"></div>-->
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+
+                    <div class="tab-pane fade show active" id="v-pills-settings" role="tabpanel"
                          aria-labelledby="v-pills-settings-tab">
                         <div class="container">
-
-                                <#list ad as ad>
+                            <div class="row">
+                                <div class="col-sm-1">Id</div>
+                                <div class="col-sm-4">Tytuł</div>
+                                <div class="col-sm-1">Odwiedzin</div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                                <#list ads as ad>
                                     <div class="row">
                                         <div class="col-sm-1">
                                             ${ad.id}
                                         </div>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-4">
                                             ${ad.title}
+                                        </div>
+                                        <div class="col-sm-1">
+                                            ${ad.visits}
                                         </div>
                                         <div class="col-sm-2">
                                             <#if ad.isPromoted()>
-                                                <p>promowane</p>
+                                                <form method="POST" action="/edit">
+                                                    <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
+                                                    <input type="text" class="form-control" name="action" value="unpromote" hidden>
+                                                    <button type="submit" class="btn btn-primary">Zakończ promowanie</button>
+                                                </form>
                                             <#else>
                                                 <form method="POST" action="/edit">
                                                     <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
@@ -178,23 +228,32 @@
                                         <div class="col-sm-2">
                                             <form method="POST" action="/edit">
                                                 <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
-                                                <input type="text" class="form-control" name="action" value="edit" hidden>
-                                                <button type="submit" class="btn btn-primary">Edytuj</button>
-                                            </form>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <form method="POST" action="/edit">
-                                                <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
                                                 <input type="text" class="form-control" name="action" value="delete" hidden>
                                                 <button type="submit" class="btn btn-primary">Usuń</button>
                                             </form>
                                         </div>
                                     </div>
                                 </#list>
-
                         </div>
-
                     </div>
+
+                    <div class="tab-pane fade" id="v-pills-home" role="tabpanel"
+                         aria-labelledby="v-pills-home-tab">
+                        <div id="chart_div_ads"></div>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                         aria-labelledby="v-pills-profile-tab">
+                        <div id="chart_div_cities"></div>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                         aria-labelledby="v-pills-messages-tab">
+                    <div id="chart_div_gdansk"></div>
+                    <div id="chart_div_gdynia"></div>
+                    <div id="chart_div_sopot"></div>
+                    </div>
+
                     <div class="tab-pane fade" id="v-pills-raports" role="tabpanel"
                          aria-labelledby="v-pills-raports-tab">
                     </div>
