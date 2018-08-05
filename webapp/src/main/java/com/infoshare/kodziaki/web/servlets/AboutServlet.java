@@ -35,7 +35,6 @@ public class AboutServlet extends HttpServlet {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             logger.warning(e.getMessage());
-            //response.sendRedirect("/error");
         }
     }
 }

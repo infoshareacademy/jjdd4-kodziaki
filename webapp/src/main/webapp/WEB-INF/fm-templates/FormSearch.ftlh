@@ -4,7 +4,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Typ wynajmu</label>
-                <select name="placeType" class="form-control form-control-lg">
+                <select name="placeType" class="form-control form-control-sm">
                     <option value="all" selected>Pokaż wszystkie</option>
                     <option value="apartment">Mieszkanie</option>
                     <option value="room">Pokój</option>
@@ -13,7 +13,8 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Lokalizacja</label>
-                <select name="localization" class="form-control form-control-lg">
+                <select name="localization" required class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wybierz wartość z listy')" oninput="setCustomValidity('')">
+                    <option value="" disabled selected hidden>Wybierz</option>
                     <#list locations as key,values>
                         <optgroup label="${key}">
                             <option value="${key}">całe miasto ${key}</option>
@@ -26,14 +27,13 @@
             </div>
         </div>
 
-
         <div class="form-row">
-            <div class="form-group col-md-6">
+
+            <div class="form-group col-md-3">
                 <label>Cena</label>
-                <div class="input-group mb-2">
-                    <input list="minPriceList" type="number" name="minPrice" placeholder="Od" min="0" step="0.01"
-                           class="form-control form-control-sm">
-                    <div class="input-group-prepend">
+                <div class="input-group input-group-sm mb-2">
+                    <input list="minPriceList" type="number" name="minPrice" placeholder="Od" min="0" step="0.01" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
+                    <div class="input-group-prepend input-group-sm">
                         <div class="input-group-text">zł</div>
                     </div>
                 </div>
@@ -49,12 +49,12 @@
                     <option value="2500">
                 </datalist>
             </div>
-            <div class="form-group col-md-6">
-                <label>&nbsp;</label>
-                <div class="input-group mb-2">
-                    <input list="maxPriceList" type="number" name="maxPrice" placeholder="Do" min="0" step="0.01"
-                           class="form-control form-control-sm">
-                    <div class="input-group-prepend">
+
+            <div class="form-group col-md-3">
+                <label class="nbsp">&nbsp;</label>
+                <div class="input-group input-group-sm mb-2">
+                    <input list="maxPriceList" type="number" name="maxPrice" placeholder="Do" min="0" step="0.01" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
+                    <div class="input-group-prepend input-group-sm">
                         <div class="input-group-text">zł</div>
                     </div>
                 </div>
@@ -70,48 +70,45 @@
                     <option value="2500">
                 </datalist>
             </div>
-        </div>
 
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label>Powierzchnia</label>
-                <div class="input-group mb-2">
-                    <input type="number" name="minArea" placeholder="Od" min="0" step="0.01"
-                           class="form-control form-control-sm">
-                    <div class="input-group-prepend">
+                <div class="input-group input-group-sm mb-2">
+                    <input type="number" name="minArea" placeholder="Od" min="0" step="0.01" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
+                    <div class="input-group-prepend input-group-sm">
                         <div class="input-group-text">m<sup>2</sup></div>
                     </div>
                 </div>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label>&nbsp;</label>
-                <div class="input-group mb-2">
-                    <input type="number" name="maxArea" placeholder="Do" min="0" step="0.01"
-                           class="form-control form-control-sm">
-                    <div class="input-group-prepend">
+                <div class="input-group input-group-sm mb-2">
+                    <input type="number" name="maxArea" placeholder="Do" min="0" step="0.01" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
+                    <div class="input-group-prepend input-group-sm">
                         <div class="input-group-text">m<sup>2</sup></div>
                     </div>
                 </div>
             </div>
+
         </div>
 
+
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label>Piętro</label>
-                <input type="number" name="minFloor" placeholder="Od" min="0" class="form-control form-control-sm">
+                <input type="number" name="minFloor" placeholder="Od" min="0" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label>&nbsp;</label>
-                <input type="number" name="maxFloor" placeholder="Do" min="0" class="form-control form-control-sm">
+                <input type="number" name="maxFloor" placeholder="Do" min="0" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label>Liczba pokoi</label>
-                <input type="number" name="minRooms" placeholder="Od" min="0" class="form-control form-control-sm">
+                <input type="number" name="minRooms" placeholder="Od" min="0" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label>&nbsp;</label>
-                <input type="number" name="maxRooms" placeholder="Do" min="0" class="form-control form-control-sm">
+                <input type="number" name="maxRooms" placeholder="Do" min="0" class="form-control form-control-sm" oninvalid="this.setCustomValidity('Wartość musi być większa od 0')" oninput="setCustomValidity('')">
             </div>
         </div>
 
@@ -119,23 +116,19 @@
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio1" name="animalsAllowed" value="false"
-                           class="custom-control-input">
+                    <input type="radio" id="customRadio1" name="animalsAllowed" value="false" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio1">Mam alergię na zwierzęta</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio2" name="animalsAllowed" value="true"
-                           class="custom-control-input">
+                    <input type="radio" id="customRadio2" name="animalsAllowed" value="true" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio2">Mam zwierzaka</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio3" name="smokingAllowed" value="false"
-                           class="custom-control-input">
+                    <input type="radio" id="customRadio3" name="smokingAllowed" value="false" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio3">Tylko ogłoszenia dla niepalących</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio4" name="smokingAllowed" value="true"
-                           class="custom-control-input">
+                    <input type="radio" id="customRadio4" name="smokingAllowed" value="true" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio4">Tylko ogłoszenia dla palących</label>
                 </div>
             </div>
@@ -145,15 +138,12 @@
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="isElevator" value="true" class="custom-control-input"
-                           id="customCheck1">
+                    <input type="checkbox" name="isElevator" value="true" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">Winda obowiązkowo</label>
                 </div>
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="onlyLongTerm" value="true" class="custom-control-input"
-                           id="customCheck2">
-                    <label class="custom-control-label" for="customCheck2">Interesuje mnie tylko wynajem
-                        długoterminowy</label>
+                    <input type="checkbox" name="onlyLongTerm" value="true" class="custom-control-input" id="customCheck2">
+                    <label class="custom-control-label" for="customCheck2">Interesuje mnie tylko wynajem długoterminowy</label>
                 </div>
             </div>
         </div>

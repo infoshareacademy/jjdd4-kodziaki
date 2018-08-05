@@ -4,25 +4,18 @@ import com.infoshare.kodziaki.CsvReader;
 import com.infoshare.kodziaki.Place;
 import com.infoshare.kodziaki.web.dao.LocationDao;
 import com.infoshare.kodziaki.web.dao.PlaceDao;
-import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
-
-
-
 import com.infoshare.kodziaki.web.model.Location;
 import com.infoshare.kodziaki.web.model.LocationCsvReader;
+
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import java.util.logging.Logger;
 
 @WebServlet("/create-db")
@@ -43,9 +36,6 @@ public class CreateDataBaseServlet extends HttpServlet {
     @Inject
     private LocationDao locationDao;
 
-    @Inject
-    private TemplateProvider templateProvider;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
@@ -60,9 +50,7 @@ public class CreateDataBaseServlet extends HttpServlet {
 
         } catch (IOException e) {
             logger.info("Database hasn't been loaded");
-            //resp.sendRedirect("/error-db");
         }
-
     }
 
     private void loadLocationsFromCsv() throws IOException {
@@ -146,6 +134,8 @@ public class CreateDataBaseServlet extends HttpServlet {
         ads.get(19).setImageURL2("/images/kodziaki.jpg");
         ads.get(20).setImageURL2("/images/kodziaki.jpg");
         ads.get(21).setImageURL2("/images/kodziaki.jpg");
+
+
     }
 }
 

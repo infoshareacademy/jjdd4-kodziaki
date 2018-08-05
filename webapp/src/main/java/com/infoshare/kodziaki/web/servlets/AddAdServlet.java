@@ -59,7 +59,6 @@ public class AddAdServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.warning( "Template not found");
-           // resp.sendRedirect("/error");
         }
     }
 
@@ -78,8 +77,9 @@ public class AddAdServlet extends HttpServlet {
             Place place = savePlace(req);
             dataModel.put("ad", place);
             dataModel.put("message", "Ogłoszenie zostało dodane.");
+            logger.warning("Ad has been added");
         } catch (Exception e) {
-            resp.getWriter().println("Wystapił blad: " + e.getMessage());
+            logger.warning( "Ad hasn't been added, error");
         }
 
         try {

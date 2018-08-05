@@ -33,6 +33,7 @@ public class MainPageServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
 
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", request.getSession().getAttribute("adminLogged"));
 
         response.setContentType("text/html;charset=UTF-8");
 

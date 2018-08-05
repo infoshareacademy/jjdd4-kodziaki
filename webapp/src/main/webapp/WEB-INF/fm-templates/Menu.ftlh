@@ -23,19 +23,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="about">O nas</a>
                 </li>
-
-                    <#if isLoggedIn??>
+                <#if isAdminLoggedIn?? && isLoggedIn??>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="panel">Panel</a>
+                        <a class="nav-link" href="panel">Panel</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout">Wyloguj się</a>
                     </li>
-                    <#else>
+                <#elseif isLoggedIn??>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Wyloguj się</a>
+                    </li>
+                <#else>
                     <li class="nav-item">
                         <a class="nav-link" href="login">Zaloguj się</a>
                     </li>
-                    </#if>
-
+                </#if>
             </ul>
         </div>

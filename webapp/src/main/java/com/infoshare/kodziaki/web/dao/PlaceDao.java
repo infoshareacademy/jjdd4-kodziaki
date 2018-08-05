@@ -60,10 +60,10 @@ public class PlaceDao {
         }
     }
 
-    public List<Object[]> getDistrictsStatistics() {
-        final Query query = entityManager
-                .createQuery("SELECT p.district,SUM(visits) FROM Place p GROUP BY p.district order by sum(visits) desc");
-        return (List<Object[]>) query.getResultList();
+    public void updateAdPromotion(int id) {
+        final Place place = entityManager.find(Place.class, id);
+        place.setPromoted(!place.isPromoted());
+        entityManager.merge(place);
     }
 
     public List<Object[]> getCitiesStatistics() {
@@ -77,27 +77,24 @@ public class PlaceDao {
         return (List<Place>) query.getResultList();
     }
 
-    public List<Place> getXRandomAds(int num) {
 
-        Query queryIds = entityManager.createQuery("SELECT p.id FROM Place p");
-        List<Integer> ids = queryIds.getResultList();
+    public List<Place> getXPromotedAds() {
+        final Query query = entityManager.createQuery("SELECT p FROM Place p WHERE p.isPromoted=TRUE");
+        List<Place> allPromoted = (List<Place>) query.getResultList();
 
-        if (num <= ids.size()) {
+        final Set<Integer> randomIndexes = new HashSet<>();
+        Random r = new Random();
+        int num = 4;
 
-            final Set<Integer> randomIds = new HashSet<>();
-            Random r = new Random();
-
-            while (randomIds.size() != num) {
-                randomIds.add(r.nextInt(ids.size()));
-            }
-
-            Query query = entityManager.createQuery("SELECT P FROM Place p WHERE p.id IN :ids");
-            query.setParameter("ids", randomIds);
-            return query.getResultList();
-
-        } else {
-            return new ArrayList<>();
+        while (randomIndexes.size() != num) {
+            randomIndexes.add(r.nextInt(allPromoted.size()));
         }
+
+        List<Place> randomPromoted = new ArrayList<>();
+        for (Integer n : randomIndexes) {
+            randomPromoted.add(allPromoted.get(n));
+        }
+        return randomPromoted;
     }
 
     public Place getRandomAd() {
@@ -111,26 +108,8 @@ public class PlaceDao {
 
     public List<Place> getXMostPopularAds() {
         final Query query = entityManager.createQuery("SELECT p FROM Place p ORDER BY visits desc");
-        return (List<Place>) query.setMaxResults(4).getResultList();
-    }
-
-    public List<Place> getXPromotedAds() {
-        final Query query = entityManager.createQuery("SELECT p FROM Place p WHERE p.isPromoted = true");
-        List<Place> allPromoted = (List<Place>) query.getResultList();
-
-        final Set<Integer> randomIndexes = new HashSet<>();
-        Random r = new Random();
-
-        while (randomIndexes.size() != 4) {
-            randomIndexes.add(r.nextInt(allPromoted.size()));
-        }
-
-        List<Place> randomPromoted = new ArrayList<>();
-        for (Integer num : randomIndexes) {
-            randomPromoted.add(allPromoted.get(num));
-        }
-
-        return randomPromoted;
+        int num = 4;
+        return (List<Place>) query.setMaxResults(num).getResultList();
     }
 
     public List<Place> getAdsByUserPreferences(UserPreferences pref) {
