@@ -30,8 +30,7 @@ public class AdminService {
             logger.info("Admin is available");
             return objectMapper.readerFor(AdminConfig.class).readValue(servletContext.getResource("/WEB-INF/files/admin.json").getPath());
         } catch (IOException e) {
-            System.out.println("Wystapił blad: " + e.getMessage());
-            logger.severe("Error");
+            logger.warning("Error " + e.getMessage());
             throw new RuntimeException(e);
         }
     }

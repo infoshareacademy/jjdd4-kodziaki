@@ -30,6 +30,9 @@ public class LoginServlet extends HttpServlet {
     private AdminConfig adminConfig;
 
     @Inject
+    private  AdminService adminService;
+
+    @Inject
     private TemplateProvider templateProvider;
 
     @Override
@@ -72,6 +75,7 @@ public class LoginServlet extends HttpServlet {
 //          Working piece of code below for further tests.
             if (adminConfig.getAdmins().contains(email)){
                 session.setAttribute("adminLogged", true);
+                logger.info("User " + name + " is admin.");
             }
 
 //            if (adminService.isAdmin(email)){

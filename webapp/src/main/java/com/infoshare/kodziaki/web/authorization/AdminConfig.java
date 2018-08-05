@@ -17,7 +17,7 @@ public class AdminConfig {
 
     @PostConstruct
     public void initAdminsEmails() {
-        adminEmails = Arrays.asList("pawel.pinker@gmail.com");
+        adminEmails = Arrays.asList("kodziakiteam@gmail.com");
     }
 
     public AdminConfig(List<String> admins) {
