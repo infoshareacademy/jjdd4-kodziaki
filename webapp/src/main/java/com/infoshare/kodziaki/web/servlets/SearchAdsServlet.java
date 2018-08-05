@@ -9,8 +9,7 @@ import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import com.infoshare.kodziaki.web.model.Location;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,16 +19,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @WebServlet("/search")
 public class SearchAdsServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(SearchAdsServlet.class);
+    Logger logger = Logger.getLogger(getClass().getName());
 
     @Inject
     private TemplateProvider templateProvider;
@@ -53,7 +52,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            LOG.info("Template not found", e.getMessage());
+            logger.warning("Template not found ");
 //            resp.sendRedirect("/error");
         }
     }
@@ -66,8 +65,8 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             userPreferences = getUserPreferences(req);
         } catch (Exception e) {
-            LOG.info("User Preferences not loaded", e.getMessage());
-//            resp.sendRedirect("/error-db");
+            resp.getWriter().println("Wystapił błąd: " + e.getMessage());
+            logger.warning("Error ");
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
@@ -83,8 +82,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
-//            resp.sendRedirect("/error");
+            logger.warning("Template not found ");
         }
     }
 

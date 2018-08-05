@@ -2,16 +2,15 @@ package com.infoshare.kodziaki.web.authorization;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.kodziaki.web.servlets.AboutServlet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ejb.Singleton;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 @Singleton
 public class AdminService {
 
-    private Logger LOG = LoggerFactory.getLogger(AdminService.class);
+    Logger logger = Logger.getLogger(getClass().getName());
 
     private final AdminConfig adminConfig;
 
@@ -26,9 +25,11 @@ public class AdminService {
     private AdminConfig loadAdminFile() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
+            logger.info("Admin is available");
             return objectMapper.readerFor(AdminConfig.class).readValue(AdminService.class.getResourceAsStream("/admins.json"));
         } catch (IOException e) {
-            LOG.error(e.getMessage());
+            System.out.println("Wystapił blad: " + e.getMessage());
+            logger.severe("Error");
             throw new RuntimeException(e);
         }
     }

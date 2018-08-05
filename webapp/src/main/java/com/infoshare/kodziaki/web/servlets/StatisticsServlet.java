@@ -12,11 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @WebServlet("/statistics")
@@ -46,8 +43,8 @@ public class StatisticsServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            logger.log(Level.INFO, "Template not found", e.getMessage());
-//            resp.sendRedirect("/error");
+            logger.warning( "Template not found");
+            //resp.sendRedirect("/error");
         }
     }
 }

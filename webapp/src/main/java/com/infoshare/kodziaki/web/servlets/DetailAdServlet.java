@@ -4,8 +4,7 @@ import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -16,11 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @WebServlet("/detailed")
 public class DetailAdServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(DetailAdServlet.class);
+    Logger logger = Logger.getLogger(getClass().getName());
 
     @Inject
     private TemplateProvider templateProvider;
@@ -40,11 +40,12 @@ public class DetailAdServlet extends HttpServlet {
         placeDao.updateAdVisits(id);
         dataModel.put("ad", placeDao.findById(id));
 
+        logger.info("Application has been launched");
+
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
-//            response.sendRedirect("/error");
+            logger.warning("Template not found");
         }
     }
 }

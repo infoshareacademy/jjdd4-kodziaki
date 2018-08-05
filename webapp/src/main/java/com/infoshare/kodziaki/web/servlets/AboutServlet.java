@@ -3,8 +3,6 @@ package com.infoshare.kodziaki.web.servlets;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,11 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @WebServlet("/about")
 public class AboutServlet extends HttpServlet {
 
-    private Logger LOG = LoggerFactory.getLogger(AboutServlet.class);
+    Logger logger = Logger.getLogger(getClass().getName());
 
     @Inject
     private TemplateProvider templateProvider;
@@ -37,8 +36,8 @@ public class AboutServlet extends HttpServlet {
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            LOG.error(e.getMessage());
-//            response.sendRedirect("/error");
+            logger.warning(e.getMessage());
+            //response.sendRedirect("/error");
         }
     }
 }
