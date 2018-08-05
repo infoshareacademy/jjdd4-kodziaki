@@ -2,6 +2,7 @@ package com.infoshare.kodziaki;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.Consumes;
 import javax.xml.registry.infomodel.User;
 import java.math.BigDecimal;
 
@@ -75,6 +76,21 @@ public class Place {
 
     @Column(name = "promoted")
     private boolean isPromoted;
+
+    @Column(name = "imageURL1")
+    private String imageURL1;
+
+    @Column(name = "imageURL2")
+    private String imageURL2;
+
+    @Column(name = "imageURL3")
+    private String imageURL3;
+
+    @Column(name = "imageURL4")
+    private String imageURL4;
+
+    @Column(name = "imageURL5")
+    private String imageURL5;
 
     @Column(name = "visits")
     private long visits;
@@ -186,6 +202,26 @@ public class Place {
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
     public void setPromoted(boolean promoted) { isPromoted = promoted; }
+
+    public String getImageURL1() { return imageURL1; }
+
+    public void setImageURL1(String imageURL1) { this.imageURL1 = imageURL1; }
+
+    public String getImageURL2() { return imageURL2; }
+
+    public void setImageURL2(String imageURL2) { this.imageURL2 = imageURL2; }
+
+    public String getImageURL3() { return imageURL3; }
+
+    public void setImageURL3(String imageURL3) { this.imageURL3 = imageURL3; }
+
+    public String getImageURL4() { return imageURL4; }
+
+    public void setImageURL4(String imageURL4) { this.imageURL4 = imageURL4; }
+
+    public String getImageURL5() { return imageURL5; }
+
+    public void setImageURL5(String imageURL5) { this.imageURL5 = imageURL5; }
 
     public void setVisits(long visits) { this.visits = visits; }
 

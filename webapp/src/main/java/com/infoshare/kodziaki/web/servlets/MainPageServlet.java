@@ -46,7 +46,7 @@ public class MainPageServlet extends HttpServlet {
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            logger.info("Template not found ");
+            logger.warning("Template not found ");
         }
 
     }

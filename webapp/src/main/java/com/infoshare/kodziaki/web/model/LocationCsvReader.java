@@ -35,7 +35,7 @@ public class LocationCsvReader {
         } finally {
             if (source != null) {
                 reader.close();
-                logger.info("Exception");
+                logger.info("Invalid format");
 
 
 

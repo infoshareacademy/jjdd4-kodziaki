@@ -21,7 +21,6 @@ public class LocationDao {
     private EntityManager entityManager;
     Logger logger = Logger.getLogger(getClass().getName());
 
-
     public void save(Location location) {
         entityManager.persist(location);
     }
@@ -29,11 +28,9 @@ public class LocationDao {
     public List<Location> findAll() {
         final Query query = entityManager.createQuery("SELECT l FROM Location l");
         return (List<Location>) query.getResultList();
+        }
 
-
-    }
-
-    public Location findByName(String district, String city) {
+        public Location findByName(String district, String city) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Location> criteriaQuery = criteriaBuilder.createQuery(Location.class);
         Root<Location> root = criteriaQuery.from(Location.class);
@@ -45,13 +42,10 @@ public class LocationDao {
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
         Query query = entityManager.createQuery(criteriaQuery);
         return (Location) query.getSingleResult();
-
-
-    }
+        }
 
     public Location findById(long id) {
         return entityManager.find(Location.class, id);
-
     }
 }
 

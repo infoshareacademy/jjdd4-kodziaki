@@ -22,6 +22,5 @@ public class ConfigProvider {
         }
 
         return configuration;
-
     }
 }

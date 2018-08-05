@@ -10,6 +10,7 @@ import com.infoshare.kodziaki.web.model.Location;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
+
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,7 +52,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe("Template not found ");
+            logger.warning("Template not found ");
         }
     }
 
@@ -64,22 +65,22 @@ public class SearchAdsServlet extends HttpServlet {
             userPreferences = getUserPreferences(req);
         } catch (Exception e) {
             resp.getWriter().println("Wystapił błąd: " + e.getMessage());
-            logger.severe("Error ");
+            logger.warning("Error ");
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");
-        Map<String, Object> filteredAds = new HashMap<>();
-        filteredAds.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
 
         List<Place> adsList = placeDao.getAdsByUserPreferences(userPreferences);
-        filteredAds.put("filteredAds", adsList);
+        dataModel.put("filteredAds", adsList);
 
         resp.setContentType("text/html;charset=UTF-8");
 
         try {
-            template.process(filteredAds, resp.getWriter());
+            template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            logger.severe("Template not found ");
+            logger.warning("Template not found ");
         }
     }
 
@@ -106,14 +107,13 @@ public class SearchAdsServlet extends HttpServlet {
                     parseToBoolean(req.getParameter("isElevator")),
                     parseToBoolean(req.getParameter("smokingAllowed")),
                     parseToBoolean(req.getParameter("animalsAllowed")),
-                    parseToBoolean(req.getParameter("onlyLongTerm")));
-
+                    parseToBoolean(req.getParameter("onlyLongTerm"))
+            );
     }
 
     private String getCityParam(String parameter) {
         String[] localizationParams = parameter.split(",");
         return localizationParams[0];
-
     }
 
     private String getDistrictParam(String parameter) {

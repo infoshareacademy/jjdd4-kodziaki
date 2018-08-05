@@ -19,7 +19,6 @@ public class PlaceDao {
 
     Logger logger = Logger.getLogger(getClass().getName());
 
-
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -106,7 +105,7 @@ public class PlaceDao {
         List<Integer> ids = queryIds.getResultList();
 
         Random r = new Random();
-        int random = r.nextInt(ids.size()-1);
+        int random = r.nextInt(ids.size() - 1);
         return findById(random);
     }
 
@@ -218,8 +217,5 @@ public class PlaceDao {
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
         Query query = entityManager.createQuery(criteriaQuery);
         return (List<Place>) query.getResultList();
-
-
     }
-
 }

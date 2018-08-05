@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            logger.info("Template not found ");
+            logger.warning("Template not found ");
         }
 
     }

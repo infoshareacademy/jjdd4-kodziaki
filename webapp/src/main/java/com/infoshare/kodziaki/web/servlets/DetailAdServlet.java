@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 @WebServlet("/detailed")
 public class DetailAdServlet extends HttpServlet {
@@ -46,7 +44,7 @@ public class DetailAdServlet extends HttpServlet {
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            logger.log(Level.INFO, "Template not found", e.getMessage());
+            logger.warning("Template not found");
         }
     }
 }
