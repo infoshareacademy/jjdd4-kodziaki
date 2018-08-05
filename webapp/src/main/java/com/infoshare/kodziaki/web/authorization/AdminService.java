@@ -28,9 +28,11 @@ public class AdminService {
     private AdminConfig loadAdminFile() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
+            logger.info("Admin is available");
             return objectMapper.readerFor(AdminConfig.class).readValue(AdminService.class.getResourceAsStream("/admins.json"));
         } catch (IOException e) {
             System.out.println("Wystapił blad: " + e.getMessage());
+            logger.severe("Error");
             throw new RuntimeException(e);
         }
     }
