@@ -32,7 +32,7 @@
 
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
     <div class="row">
         <div class="col-lg-12 text-center">
             <h5 class="main-page-section">${message}</h5>
