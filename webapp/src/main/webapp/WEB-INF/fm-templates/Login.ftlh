@@ -18,6 +18,9 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -30,7 +33,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
@@ -38,7 +41,7 @@
     </header>
 
     <!-- Page Features -->
-    <div class="row text-center">
+    <div class="row">
         <div class="col-lg-3 col-md-6 mb-4">
           <#include "login.jsp">
         </div>

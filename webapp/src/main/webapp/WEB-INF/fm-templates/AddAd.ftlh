@@ -17,6 +17,9 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -29,7 +32,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container-form">
+<div class="container main-content">
     <#include "FormAdd.ftlh">
 </div>
 <!-- /.container -->

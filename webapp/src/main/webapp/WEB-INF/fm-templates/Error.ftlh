@@ -28,7 +28,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="error">
+<div class="container error main-content">
 
     <div style="text-align:center"><h2>Przepraszamy, wystąpił błąd.</h2></br><h2>Spróbuj ponownie później.</h2></div>
 

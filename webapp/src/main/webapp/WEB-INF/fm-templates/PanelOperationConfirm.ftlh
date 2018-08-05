@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>appPARTMENTS: Error Db</title>
+    <title>appPARTMENTS: Panel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,20 +26,19 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <#include "Menu.ftlh">
+       <#include "Menu.ftlh">
     </div>
 </nav>
 
+
 <!-- Page Content -->
-<div class="container error main-content">
-
-    <div style="text-align:center"><h2>Przepraszamy, wystąpił błąd.</h2></br><h2>Spróbuj ponownie później.</h2></div>
-
-    <img class="error" src="/../images/smart-home.png" alt="" align="middle"></br>
-    <img class="img-fluid" src="http://127.0.0.1:4200/images/smart-home.png" alt="" class="error"></br>
-
-    <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-
+<div class="container main-content">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h5 class="main-page-section">${message}</h5>
+            <a class="btn btn-primary" href="panel" role="button">Wróć do panelu</a>
+        </div>
+    </div>
 </div>
 <!-- /.container -->
 
@@ -51,5 +50,3 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
-</html>

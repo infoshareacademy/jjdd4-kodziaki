@@ -12,9 +12,12 @@ import javax.inject.Inject;
 
 @WebFilter(
         filterName = "UserAuthenticationFilter",
-        urlPatterns = {"/add", "/save", "/admin/*"
-        })
+        urlPatterns = {"/add", "/save", "/admin/*"}
+        )
 public class UserAuthenticationFilter implements Filter {
+
+    @Inject
+    private UserSession userSession;
 
     @Override
     public void init(FilterConfig filterConfig) {

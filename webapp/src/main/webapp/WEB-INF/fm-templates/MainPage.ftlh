@@ -17,6 +17,9 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -29,7 +32,7 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
 
     <!-- Jumbotron Header -->
     <header class="jumbotron jumbotron-fluid">
@@ -37,55 +40,36 @@
     </header>
 
     <!-- Page Features -->
+
     <#if promotedAds??>
         <h5 class="main-page-section">Polecamy!</h5>
 
-    <div class="row text-center cards">
-        <#list promotedAds as ad>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl${ad.imageURL1}" alt="">
-                    <div class="card-body">
-                        <img class="star" src="http://kodziaki.jjdd4.is-academy.pl/images/star3.png"/>
-                        <h5 class="card-title"><b>${ad.title}</b></h5>
-                        <p class="" city">${ad.city}, ${ad.district}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/detailed?id=${ad.id}"
-                           class="btn btn-primary">Zobacz</a>
-                    </div>
-                </div>
-            </div>
-        </#list>
-    </div>
-    </br></br>
+        <div class="row text-center cards">
+            <#list promotedAds as ad>
+                <#include "AdCard.ftlh">
+            </#list>
+        </div>
+        </br></br>
 
-    <h5 class="main-page-section">Najczęściej odwiedzane</h5>
+        <h5 class="main-page-section">Najczęściej odwiedzane</h5>
 
-    <div class="row text-center cards">
-        <#list mostPopularAds as ad>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl${ad.imageURL1}" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>${ad.title}</b></h5>
-                        <p class="city">${ad.city}, ${ad.district}</p>
-                        <p>wyświetleń: ${ad.visits}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/detailed?id=${ad.id}"
-                           class="btn btn-primary">Zobacz</a>
-                    </div>
-                </div>
-            </div>
-        </#list>
-    </div>
-
+        <div class="row text-center cards">
+            <#list mostPopularAds as ad>
+                <#include "AdCard.ftlh">
+            </#list>
+        </div>
     <#else>
-        <h5 class="main-page-section">Baza danych nie została wczytana.</h5>
-    <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
-    </#if>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h5 class="main-page-section">Baza danych nie została wczytana.</h5>
+                    <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
+                </div>
+            </div>
+        </div>
+
+    </#if>
     <!-- /.row -->
 
 </div>

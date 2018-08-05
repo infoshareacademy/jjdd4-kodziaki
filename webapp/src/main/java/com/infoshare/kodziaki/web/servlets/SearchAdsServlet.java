@@ -65,8 +65,7 @@ public class SearchAdsServlet extends HttpServlet {
         try {
             userPreferences = getUserPreferences(req);
         } catch (Exception e) {
-            resp.getWriter().println("Wystapił błąd: " + e.getMessage());
-            logger.warning("Error ");
+            logger.warning("User preferences cannot be parsed");
         }
 
         Template template = templateProvider.getTemplate(getServletContext(), "FilteredAds.ftlh");

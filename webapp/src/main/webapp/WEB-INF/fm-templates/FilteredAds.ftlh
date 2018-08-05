@@ -16,6 +16,9 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -28,29 +31,22 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container main-content">
     <div class="row text-center">
         <#if filteredAds?size != 0>
             <#list filteredAds as ad>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card">
-                        <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl${ad.imageURL1}" alt="">
-                        <div class="card-body">
-                            <h4 class="card-title"><b>${ad.title}</b></h4>
-                                <#if ad.id == 3 || ad.id == 7 || ad.id == 11 || ad.id == 18 || ad.id == 1 || ad.id == 20>
-                                     <h5 class="promoted" style="color:#ffcc00;">*POLECANE!*</h5>
-                                </#if>
-                            <h5 class="" city">${ad.city}, ${ad.district}</h5>
-                        </div>
-                        <div class="card-footer">
-                            <a href="/detailed?id=${ad.id}" class="btn btn-primary">Zobacz</a>
-                        </div>
-                    </div>
-                </div>
+                <#include "AdCard.ftlh">
             </#list>
         <#else>
-            <h2>Nie znaleziono ogłoszeń o wskazanych parametrach.</h2>
-            <h2>Spróbuj jeszcze raz.</h2><a class="btn btn-primary" href="search"> >>>>>>> </a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h5 class="main-page-section">Nie znaleziono ogłoszeń o wskazanych parametrach.</h5>
+                    <a class="btn btn-primary" href="search" role="button">Wyszukaj ponownie</a>
+                </div>
+            </div>
+        </div>
+
         </#if>
     </div>
 
