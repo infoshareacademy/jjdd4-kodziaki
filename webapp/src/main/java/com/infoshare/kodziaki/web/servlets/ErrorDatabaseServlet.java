@@ -1,6 +1,5 @@
 package com.infoshare.kodziaki.web.servlets;
 
-import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -20,9 +19,6 @@ import java.util.logging.Logger;
 public class ErrorDatabaseServlet extends HttpServlet {
 
     Logger logger = Logger.getLogger(getClass().getName());
-
-    @Inject
-    private PlaceDao placeDao;
 
     @Inject
     private TemplateProvider templateProvider;

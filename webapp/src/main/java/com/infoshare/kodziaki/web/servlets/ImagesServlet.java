@@ -17,7 +17,7 @@ import java.nio.file.Files;
 public class ImagesServlet extends HttpServlet {
 
     @Inject
-    ImageUploadDao imageUploadDao;
+    private ImageUploadDao imageUploadDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

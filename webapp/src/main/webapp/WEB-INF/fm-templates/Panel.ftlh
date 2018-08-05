@@ -185,30 +185,30 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-1">Id</div>
-                                <div class="col-sm-4">Tytuł</div>
-                                <div class="col-sm-1">Odwiedzin</div>
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-2"></div>
+                                <div class="col-sm-5">Tytuł</div>
+                                <div class="col-sm-1">Wizyty</div>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"></div>
                             </div>
                                 <#list ads as ad>
-                                    <div class="row">
+                                    <div class="row ads-list">
                                         <div class="col-sm-1">
                                             ${ad.id}
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-5">
                                             ${ad.title}
                                         </div>
                                         <div class="col-sm-1">
                                             ${ad.visits}
                                         </div>
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-3">
                                             <#if ad.isPromoted()>
                                                 <form method="POST" action="/edit">
                                                     <input type="text" class="form-control" name="id" value="${ad.id}"
                                                            hidden>
                                                     <input type="text" class="form-control" name="action"
                                                            value="unpromote" hidden>
-                                                    <button type="submit" class="btn btn-primary">Zakończ promowanie
+                                                    <button type="submit" class="btn btn-secondary btn-sm btn-block">Zakończ promowanie
                                                     </button>
                                                 </form>
                                             <#else>
@@ -217,7 +217,7 @@
                                                            hidden>
                                                     <input type="text" class="form-control" name="action"
                                                            value="promote" hidden>
-                                                    <button type="submit" class="btn btn-primary">Promuj</button>
+                                                    <button type="submit" class="btn btn-success btn-sm btn-block">Promuj</button>
                                                 </form>
                                             </#if>
                                         </div>
@@ -227,7 +227,7 @@
                                                        hidden>
                                                 <input type="text" class="form-control" name="action" value="delete"
                                                        hidden>
-                                                <button type="submit" class="btn btn-primary">Usuń</button>
+                                                <button type="submit" class="btn btn-secondary btn-sm btn-block">Usuń</button>
                                             </form>
                                         </div>
                                     </div>

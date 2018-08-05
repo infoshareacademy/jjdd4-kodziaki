@@ -140,3 +140,11 @@ html, body {
 .ad-description {
     margin-top: 40px;
 }
+
+.ads-list {
+    margin: 15px 0;
+}
+
+.tab-content {
+    padding-top: 20px;
+}

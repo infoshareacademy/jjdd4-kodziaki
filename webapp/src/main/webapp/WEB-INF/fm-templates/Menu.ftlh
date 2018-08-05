@@ -24,9 +24,6 @@
                     <a class="nav-link" href="about">O nas</a>
                 </li>
                 <#if isAdminLoggedIn?? && isLoggedIn??>
-                    <#--<li class="nav-item">-->
-                        <#--<a class="nav-link disabled" href="">Jestę adminę</a>-->
-                    <#--</li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="panel">Panel</a>
                     </li>
@@ -34,9 +31,6 @@
                         <a class="nav-link" href="logout">Wyloguj się</a>
                     </li>
                 <#elseif isLoggedIn??>
-                    <#--<li class="nav-item">-->
-                        <#--<a class="nav-link" href="panel">Panel</a>-->
-                    <#--</li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="logout">Wyloguj się</a>
                     </li>
