@@ -3,30 +3,32 @@ package com.infoshare.kodziaki.web.authorization;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infoshare.kodziaki.web.servlets.AboutServlet;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import java.io.IOException;
 import java.util.logging.Logger;
+import javax.inject.Inject;
+import javax.servlet.ServletContext;
 
 @Singleton
 public class AdminService {
 
     Logger logger = Logger.getLogger(getClass().getName());
 
-    private final AdminConfig adminConfig;
+    private AdminConfig adminConfig;
 
-    public AdminService() {
-        adminConfig = loadAdminFile();
-    }
+    @Inject
+    private ServletContext servletContext;
 
     public boolean isAdmin(String email) {
         return adminConfig.getAdmins().contains(email);
     }
 
-    private AdminConfig loadAdminFile() {
+    public AdminConfig loadAdminFile(String path) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             logger.info("Admin is available");
-            return objectMapper.readerFor(AdminConfig.class).readValue(AdminService.class.getResourceAsStream("/admins.json"));
+            return objectMapper.readerFor(AdminConfig.class).readValue(servletContext.getResource("/WEB-INF/files/admin.json").getPath());
         } catch (IOException e) {
             System.out.println("Wystapił blad: " + e.getMessage());
             logger.severe("Error");
