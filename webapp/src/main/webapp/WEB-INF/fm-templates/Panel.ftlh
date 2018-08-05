@@ -30,13 +30,8 @@
         google.charts.setOnLoadCallback(drawGdyniaChart);
         google.charts.setOnLoadCallback(drawSopotChart);
 
-
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
         function drawAdsChart() {
 
-            // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Id');
             data.addColumn('number', 'Wyświetlenia');
@@ -46,21 +41,18 @@
                 </#list>
             ]);
 
-            // Set chart options
             var options = {
                 'title': 'Statystyki wyswietleń poszczególnych ogłoszeń',
                 'width': 800,
                 'height': 600
             };
 
-            // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div_ads'));
             chart.draw(data, options);
         }
 
         function drawCitiesChart() {
 
-            // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Miasto');
             data.addColumn('number', 'Wyświetlenia');
@@ -70,43 +62,39 @@
         </#list>
             ]);
 
-            // Set chart options
             var options = {
                 'title': 'Suma wyświetleń ogłoszeń z danego miasta',
                 'width': 800,
                 'height': 600
             };
 
-            // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart(document.getElementById('chart_div_cities'));
             chart.draw(data, options);
         }
 
         function drawGdanskChart() {
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Dzielnica');
-        data.addColumn('number', 'Wyświetlenia');
-        data.addRows([
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Dzielnica');
+            data.addColumn('number', 'Wyświetlenia');
+            data.addRows([
         <#list gdanskStat as district, visits>
         ['${district}', ${visits}],
         </#list>
-        ]);
+            ]);
 
-        // Set chart options
-        var options = {'title':'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Gdańsk',
-        'width':800,
-        'height':600};
+            var options = {
+                'title': 'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Gdańsk',
+                'width': 800,
+                'height': 600
+            };
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div_gdansk'));
-        chart.draw(data, options);
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_gdansk'));
+            chart.draw(data, options);
         }
 
         function drawGdyniaChart() {
 
-            // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Dzielnica');
             data.addColumn('number', 'Wyświetlenia');
@@ -116,19 +104,18 @@
         </#list>
             ]);
 
-            // Set chart options
-            var options = {'title':'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Gdynia',
-                'width':800,
-                'height':600};
+            var options = {
+                'title': 'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Gdynia',
+                'width': 800,
+                'height': 600
+            };
 
-            // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div_gdynia'));
             chart.draw(data, options);
         }
 
         function drawSopotChart() {
 
-            // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Dzielnica');
             data.addColumn('number', 'Wyświetlenia');
@@ -138,12 +125,12 @@
         </#list>
             ]);
 
-            // Set chart options
-            var options = {'title':'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Sopot',
-                'width':800,
-                'height':600};
+            var options = {
+                'title': 'Suma wyświetleń ogłoszeń z poszczególnych dzielnic miasta Sopot',
+                'width': 800,
+                'height': 600
+            };
 
-            // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div_sopot'));
             chart.draw(data, options);
         }
@@ -170,7 +157,8 @@
                 <h5>Ustawienia</h5>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-                    <a class="nav-link active" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                    <a class="nav-link active" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
+                       role="tab"
                        aria-controls="v-pills-settings" aria-selected="false">Edycja ogłoszeń</a>
 
                     <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
@@ -213,22 +201,29 @@
                                         <div class="col-sm-2">
                                             <#if ad.isPromoted()>
                                                 <form method="POST" action="/edit">
-                                                    <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
-                                                    <input type="text" class="form-control" name="action" value="unpromote" hidden>
-                                                    <button type="submit" class="btn btn-primary">Zakończ promowanie</button>
+                                                    <input type="text" class="form-control" name="id" value="${ad.id}"
+                                                           hidden>
+                                                    <input type="text" class="form-control" name="action"
+                                                           value="unpromote" hidden>
+                                                    <button type="submit" class="btn btn-primary">Zakończ promowanie
+                                                    </button>
                                                 </form>
                                             <#else>
                                                 <form method="POST" action="/edit">
-                                                    <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
-                                                    <input type="text" class="form-control" name="action" value="promote" hidden>
+                                                    <input type="text" class="form-control" name="id" value="${ad.id}"
+                                                           hidden>
+                                                    <input type="text" class="form-control" name="action"
+                                                           value="promote" hidden>
                                                     <button type="submit" class="btn btn-primary">Promuj</button>
                                                 </form>
                                             </#if>
                                         </div>
                                         <div class="col-sm-2">
                                             <form method="POST" action="/edit">
-                                                <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
-                                                <input type="text" class="form-control" name="action" value="delete" hidden>
+                                                <input type="text" class="form-control" name="id" value="${ad.id}"
+                                                       hidden>
+                                                <input type="text" class="form-control" name="action" value="delete"
+                                                       hidden>
                                                 <button type="submit" class="btn btn-primary">Usuń</button>
                                             </form>
                                         </div>
@@ -249,9 +244,9 @@
 
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                          aria-labelledby="v-pills-messages-tab">
-                    <div id="chart_div_gdansk"></div>
-                    <div id="chart_div_gdynia"></div>
-                    <div id="chart_div_sopot"></div>
+                        <div id="chart_div_gdansk"></div>
+                        <div id="chart_div_gdynia"></div>
+                        <div id="chart_div_sopot"></div>
                     </div>
 
                     <div class="tab-pane fade" id="v-pills-raports" role="tabpanel"

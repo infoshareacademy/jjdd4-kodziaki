@@ -33,31 +33,19 @@ public class PanelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(), "Panel.ftlh");
+        req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
+
+        Template template = templateProvider.getTemplate(getServletContext(), "Panel.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", req.getSession().getAttribute("adminLogged"));
 
         List<Place> allAds = placeDao.getAll();
-        Map<String, Long> gdanskStat = allAds
-                .stream()
-                .filter(p -> p.getCity().equals("Gdansk"))
-                .collect(Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits)));
-
-        Map<String, Long> gdyniaStat = allAds
-                .stream()
-                .filter(p -> p.getCity().equals("Gdynia"))
-                .collect(Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits)));
-
-        Map<String, Long> sopotStat = allAds
-                .stream()
-                .filter(p -> p.getCity().equals("Sopot"))
-                .collect(Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits)));
-
         dataModel.put("ads", allAds);
-        dataModel.put("gdanskStat", gdanskStat);
-        dataModel.put("gdyniaStat", gdyniaStat);
-        dataModel.put("sopotStat", sopotStat);
+        dataModel.put("gdanskStat", getCityStatistics(allAds, "Gdansk"));
+        dataModel.put("gdyniaStat", getCityStatistics(allAds, "Gdynia"));
+        dataModel.put("sopotStat", getCityStatistics(allAds, "Sopot"));
         dataModel.put("citiesStat", placeDao.getCitiesStatistics());
         dataModel.put("adsStat", placeDao.getAdsStatistics());
 
@@ -65,7 +53,13 @@ public class PanelServlet extends HttpServlet {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.warning( "Template not found");
-            //resp.sendRedirect("/error");
         }
+    }
+
+    private Map<String, Long> getCityStatistics(List<Place> allAds, String city) {
+        return allAds
+                .stream()
+                .filter(p -> p.getCity().equals(city))
+                .collect(Collectors.groupingBy(Place::getDistrict, Collectors.summingLong(Place::getVisits)));
     }
 }

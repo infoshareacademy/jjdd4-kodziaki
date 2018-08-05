@@ -7,7 +7,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,21 +28,19 @@ public class EditAdServlet extends HttpServlet {
     private PlaceDao placeDao;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
 
         Template template = templateProvider.getTemplate(getServletContext(), "PanelOperationConfirm.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", req.getSession().getAttribute("adminLogged"));
 
-        Integer id = null;
-        try {
-            id = Integer.parseInt(req.getParameter("id"));
-        } catch (NumberFormatException e) {
-            logger.info("Value cannot be parsed");
-        }
-
+        Integer id = getId(req.getParameter("id"));
         Place place = null;
+
         if (id != null) {
             try {
                 place = placeDao.findById(id);
@@ -54,29 +51,8 @@ public class EditAdServlet extends HttpServlet {
 
         String action = req.getParameter("action");
         if (place != null) {
-            switch (action) {
-                case "promote":
-                    placeDao.updateAdPromotion(id);
-                    logger.info("Ad with id " + id + " has been set as promoted");
-                    dataModel.put("message", "Ogłoszenie zostało oznaczone jako promowane");
-                    break;
-                case "unpromote":
-                    placeDao.updateAdPromotion(id);
-                    logger.info("Ad with id " + id + " has been set as promoted");
-                    dataModel.put("message", "Promowanie ogłoszenia zostało zakończone");
-                    break;
-                case "delete":
-                    placeDao.delete(id);
-                    logger.info("Ad with id " + id + "has been removed from database");
-                    dataModel.put("message", "Ogłoszenie zostało usunięte");
-                    break;
-                default:
-                    logger.warning("The operation is unavailable");
-                    dataModel.put("message", "Operacja niedozwolona");
-            }
+            editAd(action, id, dataModel);
         }
-
-        resp.setContentType("text/html;charset=UTF-8");
 
         try {
             template.process(dataModel, resp.getWriter());
@@ -84,5 +60,37 @@ public class EditAdServlet extends HttpServlet {
             logger.warning("Template not found ");
         }
 
+    }
+
+    private void editAd(String action, Integer id, Map<String, Object> dataModel) {
+        switch (action) {
+            case "promote":
+                placeDao.updateAdPromotion(id);
+                logger.info("Ad with id " + id + " has been set as promoted");
+                dataModel.put("message", "Ogłoszenie zostało oznaczone jako promowane");
+                break;
+            case "unpromote":
+                placeDao.updateAdPromotion(id);
+                logger.info("Ad with id " + id + " has been set as promoted");
+                dataModel.put("message", "Promowanie ogłoszenia zostało zakończone");
+                break;
+            case "delete":
+                placeDao.delete(id);
+                logger.info("Ad with id " + id + "has been removed from database");
+                dataModel.put("message", "Ogłoszenie zostało usunięte");
+                break;
+            default:
+                logger.warning("The operation is unavailable");
+                dataModel.put("message", "Operacja niedozwolona");
+        }
+    }
+
+    private Integer getId(String id) {
+        try {
+            return Integer.parseInt(id);
+        } catch (Exception e) {
+           logger.info("Value cannot be parsed");
+        }
+        return null;
     }
 }
