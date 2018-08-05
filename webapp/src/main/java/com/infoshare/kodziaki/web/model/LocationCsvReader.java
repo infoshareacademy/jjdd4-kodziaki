@@ -5,12 +5,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @RequestScoped
 public class LocationCsvReader {
 
     private static final String SEPARATOR = ",";
+
+    Logger logger = Logger.getLogger(getClass().getName());
+
 
     public List<Location> readFile(Reader source) throws IOException, NumberFormatException {
         BufferedReader reader = null;
@@ -31,6 +35,11 @@ public class LocationCsvReader {
         } finally {
             if (source != null) {
                 reader.close();
+                logger.info("Invalid format");
+
+
+
+
             }
         }
     }

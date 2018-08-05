@@ -21,7 +21,7 @@
     <script type="text/javascript">
 
         // Load the Visualization API and the corechart package.
-        google.charts.load('current', {'packages':['corechart']});
+        google.charts.load('current', {'packages': ['corechart']});
 
         // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawAdsChart);
@@ -48,9 +48,11 @@
             ]);
 
             // Set chart options
-            var options = {'title':'Statystyki wyswietleń poszczególnych ogłoszeń',
-                'width':800,
-                'height':600};
+            var options = {
+                'title': 'Statystyki wyswietleń poszczególnych ogłoszeń',
+                'width': 800,
+                'height': 600
+            };
 
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div_ads'));
@@ -59,46 +61,48 @@
 
         function drawCitiesChart() {
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Miasto');
-        data.addColumn('number', 'wyświetlenia');
-        data.addRows([
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Miasto');
+            data.addColumn('number', 'wyświetlenia');
+            data.addRows([
         <#list cities as city>
         ['${city[0]}', ${city[1]}],
         </#list>
-        ]);
+            ]);
 
-        // Set chart options
-        var options = {'title':'Suma wyświetleń ogłoszeń z danego miasta',
-        'width':800,
-        'height':600};
+            // Set chart options
+            var options = {
+                'title': 'Suma wyświetleń ogłoszeń z danego miasta',
+                'width': 800,
+                'height': 600
+            };
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div_cities'));
-        chart.draw(data, options);
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div_cities'));
+            chart.draw(data, options);
         }
 
         <#--function drawDistrictsChart() {-->
 
-            <#--// Create the data table.-->
-            <#--var data = new google.visualization.DataTable();-->
-            <#--data.addColumn('string', 'Dzielnica');-->
-            <#--data.addColumn('number', 'wyświetlenia');-->
-            <#--data.addRows([-->
-                <#--<#list districts as district>-->
-                <#--['${district[0]}', ${district[1]}],-->
-                <#--</#list>-->
-            <#--]);-->
+        <#--// Create the data table.-->
+        <#--var data = new google.visualization.DataTable();-->
+        <#--data.addColumn('string', 'Dzielnica');-->
+        <#--data.addColumn('number', 'wyświetlenia');-->
+        <#--data.addRows([-->
+        <#--<#list districts as district>-->
+        <#--['${district[0]}', ${district[1]}],-->
+        <#--</#list>-->
+        <#--]);-->
 
-            <#--// Set chart options-->
-            <#--var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',-->
-                <#--'width':800,-->
-                <#--'height':600};-->
+        <#--// Set chart options-->
+        <#--var options = {'title':'Suma wyświetleń ogłoszeń z danej dzielnicy',-->
+        <#--'width':800,-->
+        <#--'height':600};-->
 
-            <#--// Instantiate and draw our chart, passing in some options.-->
-            <#--var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));-->
-            <#--chart.draw(data, options);-->
+        <#--// Instantiate and draw our chart, passing in some options.-->
+        <#--var chart = new google.visualization.BarChart(document.getElementById('chart_div_districts'));-->
+        <#--chart.draw(data, options);-->
         <#--}-->
 
     </script>
@@ -122,45 +126,77 @@
             <div class="col-3">
                 <h5>Ustawienia</h5>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Statystyki ogłoszeń</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Statystyki miast</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Statystyki dzielnic</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Edycja ogłoszeń</a>
-                    <a class="nav-link" id="v-pills-raports-tab" data-toggle="pill" href="#v-pills-raports" role="tab" aria-controls="v-pills-raports" aria-selected="false">Generowanie raportów</a>
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                       aria-controls="v-pills-home" aria-selected="true">Statystyki ogłoszeń</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                       aria-controls="v-pills-profile" aria-selected="false">Statystyki miast</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                       aria-controls="v-pills-messages" aria-selected="false">Statystyki dzielnic</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                       aria-controls="v-pills-settings" aria-selected="false">Edycja ogłoszeń</a>
+                    <a class="nav-link" id="v-pills-raports-tab" data-toggle="pill" href="#v-pills-raports" role="tab"
+                       aria-controls="v-pills-raports" aria-selected="false">Generowanie raportów</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                         aria-labelledby="v-pills-home-tab">
                         <div id="chart_div_ads"></div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                         aria-labelledby="v-pills-profile-tab">
                         <div id="chart_div_cities"></div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <#--<div id="chart_div_districts"></div>-->
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                         aria-labelledby="v-pills-messages-tab">
+                    <#--<div id="chart_div_districts"></div>-->
                     </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                         aria-labelledby="v-pills-settings-tab">
                         <div class="container">
 
                                 <#list ad as ad>
                                     <div class="row">
-                                <div class="col-sm">
-                                    ${ad.id}
-                                </div>
-                                <div class="col-sm">
-                                    ${ad.title}
-                                </div>
-                                <div class="col-sm">
-                                    <input class="btn btn-primary" type="button">
-                                </div>
+                                        <div class="col-sm-1">
+                                            ${ad.id}
+                                        </div>
+                                        <div class="col-sm-5">
+                                            ${ad.title}
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <#if ad.isPromoted()>
+                                                <p>promowane</p>
+                                            <#else>
+                                                <form method="POST" action="/edit">
+                                                    <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
+                                                    <input type="text" class="form-control" name="action" value="promote" hidden>
+                                                    <button type="submit" class="btn btn-primary">Promuj</button>
+                                                </form>
+                                            </#if>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <form method="POST" action="/edit">
+                                                <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
+                                                <input type="text" class="form-control" name="action" value="edit" hidden>
+                                                <button type="submit" class="btn btn-primary">Edytuj</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <form method="POST" action="/edit">
+                                                <input type="text" class="form-control" name="id" value="${ad.id}" hidden>
+                                                <input type="text" class="form-control" name="action" value="delete" hidden>
+                                                <button type="submit" class="btn btn-primary">Usuń</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </#list>
 
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="v-pills-raports" role="tabpanel" aria-labelledby="v-pills-raports-tab">
+                    <div class="tab-pane fade" id="v-pills-raports" role="tabpanel"
+                         aria-labelledby="v-pills-raports-tab">
                     </div>
                 </div>
             </div>

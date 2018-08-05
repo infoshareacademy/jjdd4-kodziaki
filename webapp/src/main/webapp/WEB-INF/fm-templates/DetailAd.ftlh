@@ -38,6 +38,9 @@
     <!-- Portfolio Item Heading -->
     <h3 class="my-4"><b>${ad.title}</b></h3>
     <h5>${ad.city}, ${ad.district}</h5>
+    <#if ad.isPromoted()>
+        <img class="star" src="http://kodziaki.jjdd4.is-academy.pl/images/star3.png"/> <p>p</p>
+    </#if>
 
     <!-- Portfolio Item Row -->
     <div class="row">
@@ -47,7 +50,7 @@
             </#if>
         </div>
         <div class="col-md-4">
-                <p>Cena: <b>${ad.price} zł</b></p>
+            <p>Cena: <b>${ad.price} zł</b></p>
                 <#switch ad.placeType>
                     <#case "BED">
                         <p>Typ wynajmu: <b>Miejsce w pokoju</b></p>
@@ -59,21 +62,21 @@
                         <p>Typ wynajmu: <b>Mieszkanie</b></p>
                         <#break>
                 </#switch>
-                <p>Powierzchnia: <b>${ad.area} m<sup>2</sup></b> </p>
-                <p>Liczba pokoi: <b>${ad.rooms}</b></p>
-                <p>Piętro: <b>#{ad.floor}</b></p>
-                <p>Winda: <b>${ad.hasElevator?string("tak", "nie")}</b> </p>
-                <p>Zwierzęta: <b>${ad.animalAllowed?string("dozwolone", "niedozwolone")}</b> </p>
-                <p>Palenie: <b>${ad.smokingAllowed?string("dozwolone", "niedozwolone")}</b></p>
-                <p>Tylko wynajem długoterminowy: <b>${ad.onlyLongTerm?string("tak", "nie")}</b> </p>
-                <p>Opis: </p>
-                <div class="descriptionArea">
-                    ${ad.description}
-                </div>
-                <p>Autor: <b>${ad.author}</b></p>
-                <p>Kontakt: <b>${ad.phoneNumber}</b></p>
-                <p>ID: <b>${ad.id}</b></p>
-                <p>Odwiedzin: <b>${ad.visits}</b></p>
+            <p>Powierzchnia: <b>${ad.area} m<sup>2</sup></b></p>
+            <p>Liczba pokoi: <b>${ad.rooms}</b></p>
+            <p>Piętro: <b>#{ad.floor}</b></p>
+            <p>Winda: <b>${ad.hasElevator?string("tak", "nie")}</b></p>
+            <p>Zwierzęta: <b>${ad.animalAllowed?string("dozwolone", "niedozwolone")}</b></p>
+            <p>Palenie: <b>${ad.smokingAllowed?string("dozwolone", "niedozwolone")}</b></p>
+            <p>Tylko wynajem długoterminowy: <b>${ad.onlyLongTerm?string("tak", "nie")}</b></p>
+            <p>Opis: </p>
+            <div class="descriptionArea">
+            ${ad.description}
+            </div>
+            <p>Autor: <b>${ad.author}</b></p>
+            <p>Kontakt: <b>${ad.phoneNumber}</b></p>
+            <p>ID: <b>${ad.id}</b></p>
+            <p>Odwiedzin: <b>${ad.visits}</b></p>
         </div>
     </div>
     <!-- /.row -->

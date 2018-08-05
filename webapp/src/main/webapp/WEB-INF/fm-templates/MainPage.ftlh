@@ -40,35 +40,36 @@
     </header>
 
     <!-- Page Features -->
+
     <#if promotedAds??>
         <h5 class="main-page-section">Polecamy!</h5>
 
-    <div class="row text-center cards">
-        <#list promotedAds as ad>
-            <#include "AdCard.ftlh">
-        </#list>
-    </div>
-    </br></br>
+        <div class="row text-center cards">
+            <#list promotedAds as ad>
+                <#include "AdCard.ftlh">
+            </#list>
+        </div>
+        </br></br>
 
-    <h5 class="main-page-section">Najczęściej odwiedzane</h5>
+        <h5 class="main-page-section">Najczęściej odwiedzane</h5>
 
-    <div class="row text-center cards">
-        <#list mostPopularAds as ad>
-            <#include "AdCard.ftlh">
-        </#list>
-    </div>
-
+        <div class="row text-center cards">
+            <#list mostPopularAds as ad>
+                <#include "AdCard.ftlh">
+            </#list>
+        </div>
     <#else>
-       <div class="container">
-           <div class="row">
-               <div class="col-lg-12 text-center">
-                   <h5 class="main-page-section">Baza danych nie została wczytana.</h5>
-                   <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
-               </div>
-           </div>
-       </div>
-    </#if>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h5 class="main-page-section">Baza danych nie została wczytana.</h5>
+                    <a class="btn btn-primary" href="create-db" role="button">Wczytaj bazę danych</a>
+                </div>
+            </div>
+        </div>
+
+    </#if>
     <!-- /.row -->
 
 </div>

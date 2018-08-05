@@ -35,9 +35,13 @@
                 <#include "AdCard.ftlh">
             </#list>
         <#else>
-        <div class="container text-center">
-            <h5>Nie znaleziono ogłoszeń o wskazanych parametrach.</h5>
-            <a class="btn btn-primary" href="search" role="button">Wyszukaj ponownie</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h5 class="main-page-section">Nie znaleziono ogłoszeń o wskazanych parametrach.</h5>
+                    <a class="btn btn-primary" href="search" role="button">Wyszukaj ponownie</a>
+                </div>
+            </div>
         </div>
 
         </#if>

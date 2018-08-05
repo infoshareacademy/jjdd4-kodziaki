@@ -7,29 +7,23 @@ import com.infoshare.kodziaki.web.dao.PlaceDao;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import com.infoshare.kodziaki.web.model.Location;
 import com.infoshare.kodziaki.web.model.LocationCsvReader;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import java.util.logging.Logger;
 
 @WebServlet("/create-db")
 public class CreateDataBaseServlet extends HttpServlet {
 
-    private Logger logger = LoggerFactory.getLogger(CreateDataBaseServlet.class);
+    Logger logger = Logger.getLogger(getClass().getName());
+
 
     @Inject
     private CsvReader csvReader;
@@ -77,7 +71,7 @@ public class CreateDataBaseServlet extends HttpServlet {
 
     private void loadAdsFromCsv() throws IOException {
         String placeCsvPath = getServletContext().getResource("/WEB-INF/files/ads.csv").getPath();
-        logger.info("CSV path 2 " + placeCsvPath);
+
         logger.info("ads file path: " + placeCsvPath);
         List<Place> ads = csvReader.readFile(new InputStreamReader(new FileInputStream(placeCsvPath), "UTF-8"));
         setFewAdsAsPromoted(ads);

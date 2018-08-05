@@ -4,7 +4,7 @@
                         <img width="254" height="200" src="http://kodziaki.jjdd4.is-academy.pl${ad.imageURL1}" alt="">
                     </#if>
         <div class="card-body">
-                        <#if ad.isAnimalAllowed()>
+                        <#if ad.isPromoted()>
                             <img class="star" src="http://kodziaki.jjdd4.is-academy.pl/images/star3.png"/>
                         </#if>
             <h5 class="card-title"><b>${ad.title}</b></h5>

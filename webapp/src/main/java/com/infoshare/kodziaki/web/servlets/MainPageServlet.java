@@ -7,20 +7,20 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
-import javax.persistence.Query;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 
 @WebServlet("/main")
 public class MainPageServlet extends HttpServlet {
-
 
     Logger logger = Logger.getLogger(getClass().getName());
 
@@ -38,23 +38,20 @@ public class MainPageServlet extends HttpServlet {
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
         dataModel.put("isAdminLoggedIn", request.getSession().getAttribute("adminLogged"));
 
-
         response.setContentType("text/html;charset=UTF-8");
 
         try {
             dataModel.put("mostPopularAds", placeDao.getXMostPopularAds());
             dataModel.put("promotedAds", placeDao.getXPromotedAds());
         } catch (Exception e) {
-               logger.info(e.getMessage());
+            dataModel.put("message", "Brak wczytanej bazy danych");
         }
 
         try {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
-            logger.info(e.getMessage());
-           // response.sendRedirect("/error");
+            logger.warning("Template not found ");
         }
 
     }
-
 }

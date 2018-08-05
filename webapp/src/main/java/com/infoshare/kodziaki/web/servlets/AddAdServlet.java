@@ -11,7 +11,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,21 +19,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigDecimal;
-import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import org.owasp.html.HtmlPolicyBuilder;
+
 
 @WebServlet("/add")
 @MultipartConfig
 public class AddAdServlet extends HttpServlet {
+
 
     Logger logger = Logger.getLogger(getClass().getName());
 
@@ -61,14 +58,14 @@ public class AddAdServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            logger.log(Level.INFO, "Template not found", e.getMessage());
+            logger.warning( "Template not found");
            // resp.sendRedirect("/error");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
+        
         Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
 
@@ -76,7 +73,7 @@ public class AddAdServlet extends HttpServlet {
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
 
         req.setCharacterEncoding("UTF-8");
-
+        
         try {
             Place place = savePlace(req);
             dataModel.put("ad", place);
@@ -88,10 +85,8 @@ public class AddAdServlet extends HttpServlet {
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
-            logger.log(Level.INFO, "Template not found", e.getMessage());
-           // resp.sendRedirect("/error");
+            logger.warning( "Template not found");
         }
-
     }
 
         private Map<String, List<Location>> sortDistrictsByCities () {
@@ -194,12 +189,12 @@ public class AddAdServlet extends HttpServlet {
 
 
             } catch (Exception e1) {
-                logger.log(Level.SEVERE, "Image not found");
+                logger.warning("Image not found");
                 throw new RuntimeException("Image not found", e1);
             }
 
             placeDao.saveAd(place);
-            logger.log(Level.INFO, "New place has been added " + place);
+            logger.warning("New place has been added " + place);
             return place;
         }
 
@@ -218,7 +213,7 @@ public class AddAdServlet extends HttpServlet {
             try {
                 return Integer.valueOf(value);
             } catch (Exception e) {
-                logger.log(Level.SEVERE, "Invalid value: " + value);
+                logger.warning("Invalid value: " + value);
                 throw new RuntimeException("Value '" + value + "' cannot be parsed into Integer");
             }
         }
@@ -227,7 +222,7 @@ public class AddAdServlet extends HttpServlet {
             try {
                 return Boolean.valueOf(value);
             } catch (Exception e) {
-                logger.log(Level.SEVERE, "Invalid value: " + value);
+                logger.warning("Invalid value: " + value);
             }
             throw new RuntimeException("Value '" + value + "' cannot be parsed into Boolean");
         }
@@ -236,7 +231,7 @@ public class AddAdServlet extends HttpServlet {
             try {
                 return Double.valueOf(value);
             } catch (Exception e) {
-                logger.log(Level.SEVERE, "Invalid value: " + value);
+                logger.warning("Invalid value: " + value);
                 throw new RuntimeException("Value '" + value + "' cannot be parsed into Double");
             }
         }
@@ -245,7 +240,7 @@ public class AddAdServlet extends HttpServlet {
             try {
                 return PlaceType.valueOf(value);
             } catch (Exception e) {
-                logger.log(Level.SEVERE, "Invalid value: " + value);
+                logger.warning("Invalid value: " + value);
                 throw new RuntimeException("Value '" + value + "' cannot be parsed into PlaceType");
             }
         }
@@ -254,10 +249,9 @@ public class AddAdServlet extends HttpServlet {
             try {
                 return new BigDecimal(value);
             } catch (Exception e) {
-                logger.log(Level.SEVERE, "Invalid value: " + value);
+                logger.warning("Invalid value: " + value);
                 throw new RuntimeException("Value '" + value + "' cannot be parsed into BigDecimal");
             }
         }
 
     }
-
