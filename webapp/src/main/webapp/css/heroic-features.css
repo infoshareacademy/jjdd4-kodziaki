@@ -68,17 +68,8 @@ html, body {
   max-width: 800px;
 }
 
-.descriptionArea {
-    height: 200px;
-    overflow: scroll;
-}
-
 .admin-panel-container h5 {
   margin: 20px 0;
-}
-
-.footer {
-  margin-top: 30px;
 }
 
 .log-in {
@@ -91,4 +82,61 @@ html, body {
 
 .main-content {
   min-height: 80vh;
+}
+
+.git-icon .fa-github {
+    color: #FFFFFF;
+    margin: 15px 0;
+}
+
+.git-icon .fa-github:hover {
+    color: #C7C7C7;
+}
+
+.img-sources .fa-thumb-tack {
+    color: #FFFFFF;
+    margin-left: 10px;
+}
+
+.img-sources .fa-thumb-tack:hover {
+    color: #C7C7C7;
+}
+
+.about .fa-mikolaj {
+    color: #ffe512;
+}
+
+.about .fa-dawid {
+    color: #faa35d;
+}
+
+.about .fa-pawel {
+    color: #4f60ac;
+}
+
+.about .fa-marta {
+    color: #ee7fb3;
+}
+
+.ad-details ul li {
+    list-style: none;
+}
+
+.ad-details p {
+    line-height: 0.7;
+}
+
+.ad-stars {
+    max-height: 27px;
+    margin: 0 0 8px 5px;
+}
+
+.ad-parameters p {
+    font-size: 14px;
+    color: gray;
+    margin-top: 25px;
+}
+
+.ad-description {
+    margin-top: 40px;
 }

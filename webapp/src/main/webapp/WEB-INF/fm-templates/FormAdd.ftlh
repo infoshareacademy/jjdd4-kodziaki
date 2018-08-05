@@ -168,7 +168,7 @@
         <br>
 
         <input type="file" name="image" id="file" multiple="" style=" width: 0.1px;weight: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;" required/>
-        <label class="btn btn-primary" for="file">Dodaj zdjęcia</label><br/><br/>
+        <button class="btn btn-primary" for="file">Dodaj zdjęcia</button><br><br>
 
 
         <button class="btn btn-primary" type="submit" name="save">Dodaj ogłoszenie</button>
