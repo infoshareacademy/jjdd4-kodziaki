@@ -30,8 +30,12 @@
 <!-- Page Content -->
 <div class="container-form">
 
-    <img class="us" src="../images/us.png"/>
+    <img class="us" src="http://kodziaki.jjdd4.is-academy.pl/images/us.png"/>
     <a href="http://www.fanpop.com/clubs/top-cat/images/2652924/title/tc-gang-screencap">źródło</a>
+    </br>
+    </br>
+    </br>
+    <a href="https://www.pexels.com/">źródło zdjec w ogloszeniach</a>
 
 </div>
 <!-- /.container -->
