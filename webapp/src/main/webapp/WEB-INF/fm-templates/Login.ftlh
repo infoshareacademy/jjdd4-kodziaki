@@ -39,14 +39,14 @@
 
     <!-- Page Features -->
     <div class="row text-center">
-        <#--<div class="col-lg-3 col-md-6 mb-4">-->
-          <#--<#include "login.jsp">-->
-            <#--&lt;#&ndash;<div class="g-signin2" data-onsuccess="onSignIn"></div>&ndash;&gt;-->
-                <#--&lt;#&ndash;<form method=”GET” action=”googleplus”></form>&ndash;&gt;-->
-        <#--</div>-->
-        <div class="container">
-             <#include "login2.jsp">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <#include "login.jsp">
+            <#--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+                <#--<form method=”GET” action=”googleplus”></form>-->
         </div>
+        <#--<div class="container">-->
+             <#--<#include "login2.jsp">-->
+        <#--</div>-->
     </div>
     <!-- /.row -->
 
