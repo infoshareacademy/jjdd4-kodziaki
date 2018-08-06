@@ -225,4 +225,33 @@ public class Place {
 
     public void setVisits(long visits) { this.visits = visits; }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Place{");
+        sb.append("id=").append(id);
+        sb.append(", placeType=").append(placeType);
+        sb.append(", price=").append(price);
+        sb.append(", area=").append(area);
+        sb.append(", rooms=").append(rooms);
+        sb.append(", floor=").append(floor);
+        sb.append(", district='").append(district).append('\'');
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", hasElevator=").append(hasElevator);
+        sb.append(", smokingAllowed=").append(smokingAllowed);
+        sb.append(", animalAllowed=").append(animalAllowed);
+        sb.append(", onlyLongTerm=").append(onlyLongTerm);
+        sb.append(", author='").append(author).append('\'');
+        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+        sb.append(", isPromoted=").append(isPromoted);
+        sb.append(", imageURL1='").append(imageURL1).append('\'');
+        sb.append(", imageURL2='").append(imageURL2).append('\'');
+        sb.append(", imageURL3='").append(imageURL3).append('\'');
+        sb.append(", imageURL4='").append(imageURL4).append('\'');
+        sb.append(", imageURL5='").append(imageURL5).append('\'');
+        sb.append(", visits=").append(visits);
+        sb.append('}');
+        return sb.toString();
+    }
 }
