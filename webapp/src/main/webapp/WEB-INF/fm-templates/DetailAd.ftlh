@@ -101,6 +101,7 @@
                 </a>
             </div>
         </div>
+
         <div class="col-md-4 ad-details">
             <h4>Cena: <b>${ad.price} zł</b></h4>
             <ul>
@@ -122,8 +123,8 @@
                 <li>Wynajmujący: <b>${ad.author}</b></li>
                 <li>Nr telefonu: <b>${ad.phoneNumber}</b></li>
             </ul>
-
         </div>
+
     </div>
 
     <div class="row">
