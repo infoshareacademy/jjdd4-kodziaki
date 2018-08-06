@@ -73,6 +73,7 @@ public class CreateDataBaseServlet extends HttpServlet {
         setImageURLs(ads);
         for (Place place : ads) {
             placeDao.saveAd(place);
+            logger.info("Saved: " + place);
         }
         logger.info("ads have been saved in database");
     }
