@@ -29,6 +29,8 @@ public class AboutServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", request.getSession().getAttribute("adminLogged"));
+
         request.setCharacterEncoding("UTF-8");
 
         try {

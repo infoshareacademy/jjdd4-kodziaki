@@ -43,9 +43,7 @@
     <!-- Page Features -->
     <div class="row">
         <div class="col-lg-3 col-md-6 mb-4">
-            <#include "login.jsp">
-            <#--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
-                <#--<form method=”GET” action=”googleplus”></form>-->
+          <#include "login.jsp">
         </div>
     </div>
     <!-- /.row -->

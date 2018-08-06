@@ -53,6 +53,8 @@ public class AddAdServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", req.getSession().getAttribute("adminLogged"));
+
         dataModel.put("locations", sortDistrictsByCities());
 
         try {
@@ -64,15 +66,16 @@ public class AddAdServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        
+
         Template template = templateProvider.getTemplate(getServletContext(), "DetailAd.ftlh");
         resp.setContentType("text/html;charset=UTF-8");
 
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", req.getSession().getAttribute("adminLogged"));
 
         req.setCharacterEncoding("UTF-8");
-        
+
         try {
             Place place = savePlace(req);
             dataModel.put("ad", place);

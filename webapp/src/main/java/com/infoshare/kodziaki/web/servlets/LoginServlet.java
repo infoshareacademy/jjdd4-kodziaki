@@ -2,6 +2,7 @@ package com.infoshare.kodziaki.web.servlets;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.infoshare.kodziaki.web.authorization.AdminConfig;
+import com.infoshare.kodziaki.web.authorization.AdminService;
 import com.infoshare.kodziaki.web.authorization.IdTokenVerifierAndParser;
 import com.infoshare.kodziaki.web.freemarker.TemplateProvider;
 import freemarker.template.Template;
@@ -68,6 +69,7 @@ public class LoginServlet extends HttpServlet {
 
             if (adminConfig.getAdmins().contains(email)){
                 session.setAttribute("adminLogged", true);
+                logger.info("User " + name + " is admin.");
             }
 
             resp.sendRedirect("/main");

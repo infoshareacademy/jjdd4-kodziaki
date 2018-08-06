@@ -34,6 +34,7 @@ public class ErrorServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
 
         dataModel.put("isLoggedIn", request.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", request.getSession().getAttribute("adminLogged"));
 
         response.setContentType("text/html;charset=UTF-8");
 
@@ -41,7 +42,6 @@ public class ErrorServlet extends HttpServlet {
             template.process(dataModel, response.getWriter());
         } catch (TemplateException e) {
             logger.warning("Template not found");
-            //response.sendRedirect("/error");
         }
     }
 }
