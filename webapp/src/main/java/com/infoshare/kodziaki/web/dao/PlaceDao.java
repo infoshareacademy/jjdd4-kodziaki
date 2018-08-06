@@ -36,9 +36,9 @@ public class PlaceDao {
     }
 
 
-    public Long getLastId() {
+    public Integer getLastId() {
         Query queryLastId = entityManager.createQuery("SELECT MAX(p.id) FROM Place p");
-        return (Long) queryLastId.getSingleResult();
+        return (Integer) queryLastId.getSingleResult();
     }
 
     public void delete(int id) {
