@@ -37,7 +37,7 @@ public class PlaceDao {
 
 
     public Long getLastId() {
-        Query queryLastId = entityManager.createQuery("SELECT COUNT(*) FROM Place p");
+        Query queryLastId = entityManager.createQuery("SELECT MAX(p.id) FROM Place p");
         return (Long) queryLastId.getSingleResult();
     }
 
