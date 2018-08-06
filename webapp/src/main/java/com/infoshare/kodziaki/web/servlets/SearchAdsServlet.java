@@ -47,13 +47,13 @@ public class SearchAdsServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), "SearchAds.ftlh");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("isLoggedIn", req.getSession().getAttribute("userLogged"));
+        dataModel.put("isAdminLoggedIn", req.getSession().getAttribute("adminLogged"));
         dataModel.put("locations", sortDistrictsByCities());
 
         try {
             template.process(dataModel, resp.getWriter());
         } catch (TemplateException e) {
             logger.warning("Template not found ");
-//            resp.sendRedirect("/error");
         }
     }
 

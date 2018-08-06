@@ -62,19 +62,9 @@ public class PlaceDao {
 
     public void updateAdPromotion(int id) {
         final Place place = entityManager.find(Place.class, id);
-        if (place.isPromoted()) {
-            place.setPromoted(false);
-        } else {
-            place.setPromoted(true);
-        }
+        place.setPromoted(!place.isPromoted());
         entityManager.merge(place);
     }
-
-//    public List<Object[]> getDistrictsStatistics() {
-//        final Query query = entityManager
-//                .createQuery("SELECT p.district,SUM(visits) FROM Place p GROUP BY p.district order by sum(visits) desc");
-//        return (List<Object[]>) query.getResultList();
-//    }
 
     public List<Object[]> getCitiesStatistics() {
         final Query query = entityManager

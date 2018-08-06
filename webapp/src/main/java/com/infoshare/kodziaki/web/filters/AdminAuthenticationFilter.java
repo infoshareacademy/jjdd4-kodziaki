@@ -3,7 +3,6 @@ package com.infoshare.kodziaki.web.filters;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -25,13 +24,11 @@ public class AdminAuthenticationFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException {
 
-        HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
         try {
-            boolean isAdmin = (boolean)request.getSession().getAttribute("adminLogged");
             filterChain.doFilter(req, resp);
         } catch (Exception e) {
             resp.getWriter().println("Nie posiadasz uprawnień - zaloguj się");
